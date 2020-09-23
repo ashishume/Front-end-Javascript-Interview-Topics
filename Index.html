@@ -11,14 +11,19 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <!-- <form id="form">
-      <input type="text" id="name" />
-      <input type="text" id="email" />
-      <input type="password" id="password" />
-      <input type="submit" value="Submit" />
+    <div class="container">
+      <form id="form">
+        <input type="text" class="input" id="name" placeholder="Name" />
+        <input type="text" class="input" id="email" placeholder="Email" />
+        <input type="text" class="input" id="username" placeholder="Username" />
+        <input type="submit" value="Fill form" />
 
-      <div id="message"></div>
-    </form> -->
+        <div id="message"></div>
+      </form>
+    </div>
+
+    <div class="loader"></div>
+
     <!-- Code available in Index.js (Do Not delete) -->
 
     <!-- <input id="field" />
@@ -26,10 +31,34 @@
     <button id="button">Submit</button>
     <ul id="list"></ul> -->
 
-
-
-
-
     <script src="./index.js"></script>
+
+    <style>
+      .loader {
+        display: none;
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .input {
+        height: 30px;
+        font-size: 20px;
+      }
+      .container {
+        display: block;
+      }
+    </style>
   </body>
 </html>

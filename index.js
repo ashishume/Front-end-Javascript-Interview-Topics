@@ -31,7 +31,6 @@
 //   }
 // });
 
-
 // For practice
 
 // let counter = 0;
@@ -52,3 +51,24 @@
 //   document.querySelector("#list").appendChild(li);
 //   document.querySelector("#field").value = "";
 // });
+
+document.querySelector("#form").addEventListener("submit", (e) => {
+  document.querySelector(".loader").setAttribute("style", "display:block");
+  e.preventDefault();
+  makeAPICall();
+});
+makeAPICall = () => {
+  fetch("https://jsonplaceholder.typicode.com/users/")
+    .then((response) => response.json())
+    .then((data) => {
+      const n = Math.floor(Math.random() * 10);
+      fillFormData(data[n]);
+    });
+  document.querySelector(".loader").setAttribute("style", "display:none");
+};
+
+fillFormData = (value) => {
+  document.querySelector("#name").value = value.name;
+  document.querySelector("#email").value = value.email;
+  document.querySelector("#username").value = value.username;
+};
