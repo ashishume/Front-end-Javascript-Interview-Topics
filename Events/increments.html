@@ -3,13 +3,25 @@
   <head></head>
 
   <body>
-    <button id="btn"></button>
-
+    <div class="parent">
+      <div class="child">Ashish</div>
+    </div>
     <style>
-      #btn {
-        height: 48px;
-        width: 96px;
-        font-size: 24px;
+      .parent {
+        width: 100%;
+        height: 400px;
+        background-color: aquamarine;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .child {
+        background-color: rgb(172, 146, 30);
+        font-size: 30px;
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        text-align: center;
       }
     </style>
     <script>

@@ -17,7 +17,11 @@ document.querySelector("#parent").addEventListener(
   "click",
   (e) => {
     console.log("parent");
-    e.stopPropagation();
+    e.stopPropagation(); //event.stopPropagation() stops the move upwards, but on the current 
+    //element all other handlers will run.
+
+    //To stop the bubbling and prevent handlers on the current element from running, 
+    //there’s a method event.stopImmediatePropagation(). After it no other handlers execute.
   },
   false
 );
@@ -42,18 +46,13 @@ const something = multiplyByNumber.bind(this, 3, 6);
 something();
 
 // <script></script>
-//In this case the html code parses then script is 
-// executed and the html waits for the script to fisnish 
+//In this case the html code parses then script is
+// executed and the html waits for the script to fisnish
 //then html parsing continues
-
 
 // <script async></script>
 // In Async html parsing and js code executes simultaneously
 
-
 // <script defer></script>
 // In Defer html parsing and js code executes simultaneously but
 // when the HTML parsing is completed then only js code is executed
-
-
-

@@ -31,3 +31,6 @@ const getCountryCodeName = (code) => {
       console.log(e);
     });
 };
+
+
+//https://javascript.info/currying-partials    for more info
