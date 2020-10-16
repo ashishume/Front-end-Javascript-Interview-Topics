@@ -7,11 +7,17 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container">
+    <!-- DO NOT DELETE ANY IF THIS HTML CODE ALL OF IT IS FOR PRACTICE PURPOSE AND REFERENCE -->
+
+    <!-- <div class="container">
       <form id="form">
         <input type="text" class="input" id="name" placeholder="Name" />
         <input type="text" class="input" id="email" placeholder="Email" />
@@ -20,9 +26,9 @@
 
         <div id="message"></div>
       </form>
-    </div>
+    </div> -->
 
-    <div class="loader"></div>
+    <!-- <div class="loader" onload="onLoadFunc()"></div> -->
 
     <!-- Code available in Index.js (Do Not delete) -->
 
@@ -31,13 +37,60 @@
     <button id="button">Submit</button>
     <ul id="list"></ul> -->
 
-    <script src="./index.js"></script>
+    <!-- 
+    <ul class="section">
+      <li class="para" id="test">it should be dark</li>
+      <li class="para" id="test">it should be dark</li>
+   
+    </ul> -->
+
+    <div class="container">
+      <div class="row">This is first text</div>
+      <div class="row">
+        <span class="material-icons" style="vertical-align: -6px">add</span>
+        Hello
+        <span class="material-icons" style="vertical-align: -6px">error</span>
+        Hello
+      </div>
+    </div>
 
     <style>
+      .container {
+        position: -webkit-sticky;
+        height: 50px;
+        margin: 0 auto;
+        background-color: #043672;
+        display: flex;
+        color: #fff;
+        flex-direction: row;
+      }
+
+      .row:nth-child(1) {
+        text-align: left;
+        align-self: center;
+        margin-left: 10px;
+      }
+      .row:nth-child(2) {
+        text-align: right;
+        align-self: center;
+        margin-right: 10px;
+      }
+      .row {
+        align-items: center;
+        /* height: 50px; */
+        width: 100%;
+        /* border: solid 1px black; */
+        /* background-color: skyblue; */
+      }
+
+      /* li:nth-child(even) {
+        background: red;
+      }
+
       .loader {
         display: none;
-        border: 16px solid #f3f3f3; /* Light grey */
-        border-top: 16px solid #3498db; /* Blue */
+        border: 16px solid #f3f3f3; 
+        border-top: 16px solid #3498db; 
         border-radius: 50%;
         width: 120px;
         height: 120px;
@@ -58,7 +111,9 @@
       }
       .container {
         display: block;
-      }
+      } */
     </style>
+
+    <script src="./index.js"></script>
   </body>
 </html>

@@ -52,23 +52,40 @@
 //   document.querySelector("#field").value = "";
 // });
 
-document.querySelector("#form").addEventListener("submit", (e) => {
-  document.querySelector(".loader").setAttribute("style", "display:block");
-  e.preventDefault();
-  makeAPICall();
-});
-makeAPICall = () => {
-  fetch("https://jsonplaceholder.typicode.com/users/")
-    .then((response) => response.json())
-    .then((data) => {
-      const n = Math.floor(Math.random() * 10);
-      fillFormData(data[n]);
-    });
-  document.querySelector(".loader").setAttribute("style", "display:none");
-};
+// document.querySelector("#form").addEventListener("submit", (e) => {
+//   document.querySelector(".loader").setAttribute("style", "display:block");
+//   e.preventDefault();
+//   makeAPICall();
+// });
+// makeAPICall = () => {
+//   fetch("https://jsonplaceholder.typicode.com/users/")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const n = Math.floor(Math.random() * 10);
+//       fillFormData(data[n]);
+//     });
+//   document.querySelector(".loader").setAttribute("style", "display:none");
+// };
 
-fillFormData = (value) => {
-  document.querySelector("#name").value = value.name;
-  document.querySelector("#email").value = value.email;
-  document.querySelector("#username").value = value.username;
-};
+// fillFormData = (value) => {
+//   document.querySelector("#name").value = value.name;
+//   document.querySelector("#email").value = value.email;
+//   document.querySelector("#username").value = value.username;
+// };
+
+// onLoadFunc = () => {
+//   var funcs = [];
+//   for (var i = 0; i < 10; i++)
+//     funcs[i] = function () {
+//       console.log(i);
+//       return i;
+//     };
+//   return funcs;
+// };
+
+// var funcs = onLoadFunc();
+// funcs[5]();
+
+window.addEventListener("load", (event) => {
+  // console.log(event);
+});
