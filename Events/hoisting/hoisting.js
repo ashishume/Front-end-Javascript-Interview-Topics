@@ -12,6 +12,12 @@ var a;
 //executed successfully
 
 
+
+//function getName() {}====> is treated as function property in call stack
+
+// const getName=()=>{}  ====> is treated as variable and declared as undefined when global context is introduced
+
+
 const func=function(){      //anonymous functions
     return 10;
 }
