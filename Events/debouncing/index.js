@@ -25,7 +25,7 @@ const deboucehandler = (func, delay) => {
   };
 };
 
-const fetchDelay = deboucehandler(getData, 300);
+const fetchDelay = deboucehandler(getData, 300); //when the key press/typing has a delay greater than 300ms then it makes the API call
 
 const throttleHandler = (func, limit) => {
   let flag = true;
@@ -40,8 +40,7 @@ const throttleHandler = (func, limit) => {
   };
 };
 
-const throttle = throttleHandler(getDataT, 500);
-
+const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes it makes the api call
 
 // Q. Diff bw throttling and debouncing is
 

@@ -11,7 +11,8 @@ const data = new Promise((resolve, reject) => {
 
 data
   .then((v) => {
-    console.log("1", v);
+    // console.log("1", v);
+    throw new Error("Hello");
   })
   .catch((e) => {
     console.log("2", e);
