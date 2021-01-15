@@ -1,91 +1,101 @@
-// checkEmptyValidation = (value) => {
-//   if (value == "") {
-//     // const node = document.createElement("p"); // Create a <li> node
-//     // const errorMessage = document.createTextNode("All fields are required");
-//     // node.append(errorMessage);
-//     document.querySelector("#message").innerHTML = "All fields are required";
-//     return false;
+// function sq(a) {
+//   return a * a;
+// }
+
+// console.log(typeof sq.toString());
+
+// var a = 7;
+// var b = 10;
+
+// function demo1() {
+//   return demo2(a, b) + ex();
+// }
+
+// function demo2(x, y) {
+//   return x + y;
+// }
+
+// function ex() {
+//   let a = 1;
+//   let b = 2;
+//   return a + b;
+// }
+
+// console.log(demo1())
+
+// let res=""
+
+// let u
+
+// var date = new Date("April 31, 2020 06:30:30");
+// var fetch = date.toJSON();
+
+// console.log(fetch);
+
+// let n = 1;
+
+// function myFun() {
+//   for (var i = 0; i < 4; i++) {
+//     n += 2;
+//     return youFunc(n);
 //   }
-//   document.querySelector("#message").innerHTML = "";
-//   return true;
-// };
+// }
 
-// document.querySelector("#form").addEventListener("submit", (e) => {
-//   e.preventDefault();
+// function youFunc(x) {
+//   x -= 1;
+//   if (x == 2) return x++;
+// }
 
-//   if (
-//     checkEmptyValidation(e.target[0].value) &&
-//     checkEmptyValidation(e.target[1].value) &&
-//     checkEmptyValidation(e.target[2].value)
-//   ) {
-//     const name = e.target[0].value;
-//     const email = e.target[1].value;
-//     const password = e.target[2].value;
+// console.log(myFun());
 
-//     const body = {
-//       name,
-//       email,
-//       password,
-//     };
-//     console.log(body);
-//   }
-// });
+// // // // var x = 4;
 
-// For practice
+// // // // const obj = {
+// // // //   x: 3,
+// // // //   bar: function () {
+// // // //     var x = 2;
+// // // //     setTimeout(function () {
+// // // //       var x = 1;
+// // // //       console.log(this.x);
+// // // //     }, 500);
+// // // //   },
+// // // // };
 
-// let counter = 0;
-// document.querySelector("#button").addEventListener("click", (e) => {
-//   const fieldData = document.querySelector("#field").value;
-//   if (fieldData == "") {
-//     document.querySelector("#root").innerHTML = "Required";
-//     return false;
-//   }
-//   counter++;
-//   console.log(counter);
-//   const li = document.createElement("li");
-//   if (counter % 2 == 0) {
-//     li.setAttribute("style", "color:red");
-//   }
-//   const text = document.createTextNode(fieldData);
-//   li.appendChild(text);
-//   document.querySelector("#list").appendChild(li);
-//   document.querySelector("#field").value = "";
-// });
+// // // // // console.log(obj.bar());
 
-// document.querySelector("#form").addEventListener("submit", (e) => {
-//   document.querySelector(".loader").setAttribute("style", "display:block");
-//   e.preventDefault();
-//   makeAPICall();
-// });
-// makeAPICall = () => {
-//   fetch("https://jsonplaceholder.typicode.com/users/")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const n = Math.floor(Math.random() * 10);
-//       fillFormData(data[n]);
-//     });
-//   document.querySelector(".loader").setAttribute("style", "display:none");
-// };
+// // // // const a=["1", "2", "3"].map(parseInt);
 
-// fillFormData = (value) => {
-//   document.querySelector("#name").value = value.name;
-//   document.querySelector("#email").value = value.email;
-//   document.querySelector("#username").value = value.username;
-// };
+// // // // console.log(a);
 
-// onLoadFunc = () => {
-//   var funcs = [];
-//   for (var i = 0; i < 10; i++)
-//     funcs[i] = function () {
-//       console.log(i);
-//       return i;
-//     };
-//   return funcs;
-// };
+// // // // // // // // function bar() {
+// // // // // // // //   return foo;
 
-// var funcs = onLoadFunc();
-// funcs[5]();
+// // // // // // // //   foo = 10;
 
-window.addEventListener("load", (event) => {
-  // console.log(event);
-});
+// // // // // // // //   function foo() {}
+// // // // // // // //   var foo = 11;
+// // // // // // // // }
+
+// // // // // // // // console.log(typeof bar());
+
+// // // // // // // var res = (function (x) {
+// // // // // // //   delete x;
+// // // // // // //   return x;
+// // // // // // // })(0);
+
+// // // // // // // console.log(res);
+
+// // // // // function fun1() {
+// // // // //   var test = [];
+// // // // //   for (let z = 0; z < 5; z++) {
+// // // // //     //   console.log(z);
+// // // // //     test[z] = function () {
+// // // // //       return z;
+// // // // //     };
+// // // // //   }
+// // // // //   return test;
+// // // // // }
+
+// // // // // var test = fun1();
+
+// // // // // console.log(test[4]());
