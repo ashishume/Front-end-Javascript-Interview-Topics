@@ -31,6 +31,15 @@ function delayLoopFuncVar() {
   }
 }
 
+// function setTimeFunc() {
+//   var i = 9;
+//   setTimeout(() => {
+//     console.log("==>", i);
+//   }, 1000);
+// }
+
+// setTimeFunc();
+
 // loopFunc();
 // delayLoopFunc();
 // delayLoopFuncVar()

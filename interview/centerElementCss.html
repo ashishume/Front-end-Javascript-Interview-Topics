@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Center elements</title>
+  </head>
+  <body>
+    <style>
+      .parent {
+        background-color: green;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*1)   display: grid;             ways to center horizontally and vertically center this doesnt require child css
+          place-items: center; */
+
+        /*2)  display: grid;  2nd way to center along "margin:auto" in child*/
+
+        /*
+        3) display:flex;
+          justify-content:center;
+          align-items:center;       //this also doesnt require anything in child css      
+          */
+      }
+
+      .child {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        /* 2) margin: auto; */
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid red; /* change to border-top to reverse the triangle     */
+      }
+    </style>
+    <div class="parent">
+      <div class="child"></div>
+      <div class="triangle"></div>
+    </div>
+  </body>
+</html>

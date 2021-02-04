@@ -9,8 +9,10 @@ const obj2 = {
 
 //obj passed through apply is called using this (here Ashish and age is called)
 function randomFunc(x, y) {
+  // console.log(x);
+  // console.log(y);
   return `<div>
-             My name is ${this.name} and and friend is ${y}
+             My name is ${this.name} and and friend is ${x} and ${y}
           </div>`;
 }
 
@@ -18,8 +20,8 @@ function randomFunc(x, y) {
 
 // var b = randomFunc.call(obj2, "aa", "Raahul"); //passed call as comma seprated args
 
-var c = randomFunc.bind(obj2); //passed the object context and can be accessed using this keyword
-console.log(c("Amy", "Ayush")); //passed the args using comma and called
+var c = randomFunc.bind(obj1,"Amy", "Ayush"); //passed the object context and can be accessed using this keyword
+console.log(c()); //passed the args using comma and called
 
 function sample(x) {
   //when used arrow function x will not work because new opertor  doesnt work in arrow
