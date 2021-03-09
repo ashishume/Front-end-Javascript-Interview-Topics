@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flipkart</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+      <input type="text" onkeyup="searchTableData(event)" class="search" placeholder="Search..." />
+      <div class="table_container">
+      <table class="data-table">
+        <tr class="header-row">
+          <th id="key"></th>
+          <th id="key">Key</th>
+          <th id="value">Value</th>
+          <th id="desc">Description</th>
+        </tr>
+        <tbody class="table-data-container"></tbody>
+      </table>
+      <button class="button" onclick="showResult()">Done</button>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

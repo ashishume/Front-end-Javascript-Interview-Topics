@@ -21,6 +21,7 @@ function randomFunc(x, y) {
 // var b = randomFunc.call(obj2, "aa", "Raahul"); //passed call as comma seprated args
 
 var c = randomFunc.bind(obj1,"Amy", "Ayush"); //passed the object context and can be accessed using this keyword
+//bind creates a new function
 console.log(c()); //passed the args using comma and called
 
 function sample(x) {

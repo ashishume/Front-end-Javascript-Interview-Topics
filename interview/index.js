@@ -1,22 +1,90 @@
-function Graph() {
-  this.vertices = [];
-  this.edges = [];
+/*
+Libs included:
+    underscore lodash chai sinon sinon-chai mocha async request q bluebird jsdom
+*/
+
+//let arr=[7,7,8,8,9,1,1,4,2,2000];
+
+//arr.filter(value=>)
+
+let cars = [
+  {
+    make: "audi",
+    model: "r8",
+    year: "2012",
+  },
+  {
+    make: "audi",
+    model: "rs5",
+    year: "2013",
+  },
+  {
+    make: "ford",
+    model: "mustang",
+    year: "2012",
+  },
+  {
+    make: "ford",
+    model: "fusion",
+    year: "2015",
+  },
+  {
+    make: "kia",
+    model: "optima",
+    year: "2012",
+  },
+];
+
+let output = {
+  audi: [
+    { model: "r8", year: "2012" },
+    { model: "rs5", year: "2013" },
+  ],
+  ford: [
+    { model: "mustang", year: "2012" },
+    { model: "fusion", year: "2015" },
+  ],
+  kia: [{ model: "optima", year: "2012" }],
+};
+var res = {};
+function groupCars(make, cars) {
+  let temp = [];
+  cars.map((value) => {
+    if (value.make == make) {
+      temp.push({ model: value.model, year: value.year });
+    }
+    res[make] = temp;
+  });
+
+  //   console.log(CarsObj);
 }
 
-Graph.prototype = {
-  addVertex: function (v) {
-    this.vertices.push(v);
-  },
-};
+groupCars("audi", cars);
+groupCars("ford", cars);
+groupCars("kia", cars);
+console.log(res);
 
-var g = new Graph();
-console.log(g.addVertex(10));
-console.log(g.addVertex(10));
-console.log(g.addVertex(10));
-console.log(g.addVertex(10));
-console.log(g.addVertex(10));
-console.log(g.edges);
-console.log(g.vertices);
+
+
+// function Graph() {
+//   this.vertices = [];
+//   this.edges = [];
+// }
+
+// Graph.prototype = {
+//   addVertex: function (v) {
+//     this.vertices.push(v);
+//   },
+// };
+
+// var g = new Graph();
+// console.log(g.addVertex(10));
+// console.log(g.addVertex(10));
+// console.log(g.addVertex(10));
+// console.log(g.addVertex(10));
+// console.log(g.addVertex(10));
+// console.log(g.edges);
+// console.log(g.vertices);
 // g is an object with own properties 'vertices' and 'edges'.
 // g.[[Prototype]] is the value of Graph.prototype when new Graph() is executed.
 // var o = {

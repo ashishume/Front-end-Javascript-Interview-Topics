@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header-row {
+  background-color: lightgray;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table-data-container {
+  padding: 10px;
+  margin: 20px;
+}
+.search {
+  width: 50%;
+  height: 30px;
+  margin: 20px;
+}
+
+.button {
+  background: rgb(92, 92, 184);
+  float: right;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
