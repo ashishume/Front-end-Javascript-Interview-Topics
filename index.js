@@ -1,4 +1,3 @@
-
 // function sq(a) {
 //   return a * a;
 // }
@@ -49,54 +48,54 @@
 
 // console.log(myFun());
 
-// // // // var x = 4;
+// var x = 4;
 
-// // // // const obj = {
-// // // //   x: 3,
-// // // //   bar: function () {
-// // // //     var x = 2;
-// // // //     setTimeout(function () {
-// // // //       var x = 1;
-// // // //       console.log(this.x);
-// // // //     }, 500);
-// // // //   },
-// // // // };
+// const obj = {
+//   x: 3,
+//   bar: function () {
+//     var x = 2;
+//     setTimeout(function () {
+//       var x = 1;
+//       console.log(this.x);
+//     }, 500);
+//   },
+// };
 
-// // // // // console.log(obj.bar());
+// console.log(obj.bar());
 
-// // // // const a=["1", "2", "3"].map(parseInt);
+// const a=["1", "2", "3"].map(parseInt);
 
-// // // // console.log(a);
+// console.log(a);
 
-// // // // // // // // function bar() {
-// // // // // // // //   return foo;
+// function bar() {
+//   return foo;
 
-// // // // // // // //   foo = 10;
+//   function foo() {}
+//   foo = 10;
 
-// // // // // // // //   function foo() {}
-// // // // // // // //   var foo = 11;
-// // // // // // // // }
+//   var foo = 11;
+// }
 
-// // // // // // // // console.log(typeof bar());
+// console.log(bar());
 
-// // // // // // // var res = (function (x) {
-// // // // // // //   delete x;
-// // // // // // //   return x;
-// // // // // // // })(0);
+// var res = (function (x) {
+//   delete x;
+//   return x;
+// })(0);
 
-// // // // // // // console.log(res);
+// console.log(res);
 
-// // // // // function fun1() {
-// // // // //   var test = [];
-// // // // //   for (let z = 0; z < 5; z++) {
-// // // // //     //   console.log(z);
-// // // // //     test[z] = function () {
-// // // // //       return z;
-// // // // //     };
-// // // // //   }
-// // // // //   return test;
-// // // // // }
+// function fun1() {
+//   var test = [];
+//   for (var z = 0; z < 5; z++) {
+//     //   console.log(z);
+//     test[z] = function () {
+//       return z;
+//     };
+//   }
+//   return test;
+// }
 
-// // // // // var test = fun1();
+// var test = fun1();
 
-// // // // // console.log(test[4]());
+// console.log(test[3]());

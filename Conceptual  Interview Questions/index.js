@@ -44,23 +44,3 @@ function delayLoopFuncVar() {
 // delayLoopFunc();
 // delayLoopFuncVar()
 
-const arr = [1, 5, 6, 7, 8];
-delete arr[1]; //here "delete" removes the value and key but while printing key doesnt show up.
-//result==>  arr[0]  "empty"  arr[2] arr[3] arr[4]
-// console.log(arr);
-
-function NormalFunc(a, b) {
-  console.log(arguments[0]); //works here
-}
-const ArrowFunc = (a, b) => {
-  //duplicate named not allowed in arrow function
-  console.log(this.arguments[0]); //error
-};
-
-// const ar1 = [1, 2];
-// const ar2 = ["a", "b"];
-
-// console.log([...ar1, ...ar2]);
-
-NormalFunc(81, 82);
-ArrowFunc(85, 86);
