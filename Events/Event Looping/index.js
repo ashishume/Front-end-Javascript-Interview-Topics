@@ -1,5 +1,7 @@
 // Refer article for more about event loop
-//medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd
+/*
+https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd
+*/
 
 // Javascript is single threaded language
 // due to which when various fucntion calls or events are put into queue that is called as EVENT QUEUE
@@ -15,12 +17,8 @@
 // 2. Job Queue (also called microtask queue) // only reserved for Promises
 // 3. Callback queue   //settimeout (all kinds of web APIs)
 
-
-
 //if microtask queue keeps on mutating continuos thenable statements, it will not allow callback queue to execute
-// this is called STARVATION  
-
-
+// this is called STARVATION
 
 console.log("Message no. 1: Sync"); // executes 1
 
