@@ -1,36 +1,16 @@
-//Making recursion function call to implement the pagination for geting the desired result
+function curry(f) { // curry(f) does the currying transform
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+}
 
-document.querySelector("#root").addEventListener("click", (e) => {
-  getCountryCodeName("SM");
-});
-let getNameData;
-let currentPageNumber = 1;
-const getCountryCodeName = (code) => {
-  fetch(
-    `https://jsonmock.hackerrank.com/api/countries?page=${currentPageNumber}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      document.querySelector(".loader").style.display = "block";
-      if (data.data.length) {
-        data.data.map((value) => {
-          if (value.alpha2Code == code) {
-            getNameData = value.name;
-            document.querySelector(".loader").style.display = "none";
-            console.log("insideFunc==>", getNameData);
-            return getNameData;
-          }
-        });
-      }
-      if (!getNameData) {
-        currentPageNumber++;
-        getCountryCodeName("SM");
-      }
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
+// usage
+function sum(a, b) {
+  return a + b;
+}
 
+let curriedSum = curry(sum);
 
-//https://javascript.info/currying-partials    for more info
+alert( curriedSum(1)(2) ); // 3

@@ -1,5 +1,5 @@
-a = "Ashish";
 console.log(a);
+a = "Ashish";
 
 var a;
 
@@ -11,14 +11,12 @@ var a;
 //similar example we defined the function later and printed first even then also the funcion gets
 //executed successfully
 
-
-
 //function getName() {}====> is treated as function property in call stack
 
 // const getName=()=>{}  ====> is treated as variable and declared as undefined when global context is introduced
 
-
-const func=function(){      //anonymous functions
-    return 10;
-}
+const func = function () {
+  //anonymous functions
+  return 10;
+};
 console.log(func());

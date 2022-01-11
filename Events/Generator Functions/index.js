@@ -14,13 +14,7 @@ console.log(gen.next().value); /* Calling next() indicates whether the generator
 console.log(gen.next().value); //if we do not execute this line function prints upto line 2, below that it doesnt print
 // expected output: 20
 
-class Rectangle {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-}
 
-const obj = new Rectangle();
-
-console.log(obj);
+/**
+ * Generator functions solves the problem of Inversion of control and callback hell (http://callbackhell.com/)
+ */

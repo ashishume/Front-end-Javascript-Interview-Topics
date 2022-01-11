@@ -7,7 +7,7 @@
 //true ==capturing
 //false ==bubbling
 //capturing if true is present (top to bottom)
-//bubling if true is present (bottom to top)
+//bubling if false is present (bottom to top)
 
 document.querySelector("#grandparent").addEventListener(
   "click",

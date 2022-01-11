@@ -16,17 +16,19 @@ function randomFunc(x, y) {
           </div>`;
 }
 
-// var a = randomFunc.apply(obj1, ["Rahul", "Diya"]); //x and y contains the array args e.g. Rahul and Diya
+var a = randomFunc.apply(obj1, ["Rahul", "Diya"]); //apply calls the method only arguments needs to passed as array
 
-// var b = randomFunc.call(obj2, "aa", "Raahul"); //passed call as comma seprated args
+var b = randomFunc.call(obj2, "aa", "Raahul"); //call, calls the method on whichever method is being used
 
-var c = randomFunc.bind(obj1,"Amy", "Ayush"); //passed the object context and can be accessed using this keyword
+var c = randomFunc.bind(obj1, "Amy", "Ayush"); //bind returns a copy of the function (other things is similar to call)
 //bind creates a new function
-console.log(c()); //passed the args using comma and called
+// console.log(a);
+// console.log(b);
+// console.log(c());
 
 function sample(x) {
   //when used arrow function x will not work because new opertor  doesnt work in arrow
-  console.log(x);
+  // console.log(x);
 }
 
 const z = new sample("Ashish");
