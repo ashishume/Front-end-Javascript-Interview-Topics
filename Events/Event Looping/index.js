@@ -3,6 +3,13 @@
 https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd
 */
 
+/**
+ * To run event loop events visual example
+ * https://www.jsv9000.app/
+ */
+
+
+
 // Javascript is single threaded language
 // due to which when various fucntion calls or events are put into queue that is called as EVENT QUEUE
 //Event looop is the execution of various functions and events from stack of event queue (CALL STACK)
