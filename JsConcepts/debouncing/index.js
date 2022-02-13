@@ -53,3 +53,23 @@ const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes 
 
 //Q. sum(1)(2)(3)(4)()
 // Solution: let sum =a=>b=> return b? sum(a+b) :a;
+
+
+
+/**
+ * New debouncing method (better readability) (updated 2022)
+ */
+
+const myDebounce = (functions, delay) => {
+  let timer;
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      functions(...args);
+    }, delay);
+  };
+};
+
+const clickNewDebounce = myDebounce(() => {
+  console.log("clicked");
+}, 500);
