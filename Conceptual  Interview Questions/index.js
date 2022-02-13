@@ -35,10 +35,10 @@ function setTimeFunc() {
     console.log("==>", i);
   }, 1000);
 }
-setTimeFunc();
-loopFunc();
-delayLoopFunc();
-delayLoopFuncVar();
+// setTimeFunc();
+// loopFunc();
+// delayLoopFunc();
+// delayLoopFuncVar();
 
 //code snippet
 
@@ -60,4 +60,19 @@ const calc = {
 
 const result = calc.add(10).multiply(5).substract(30).add(10);
 
-console.log(result.total);
+// console.log(result.total);
+
+/** print 0 1 2 using var keyboard in for loop */
+
+function printNormalValues() {
+  for (var i = 0; i < 3; i++) {
+    function timer(i) {
+      setTimeout(() => {
+        console.log(i);
+      });
+    }
+    timer(i);
+  }
+}
+
+printNormalValues();
