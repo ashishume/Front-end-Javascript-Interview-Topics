@@ -30,7 +30,8 @@ Deep copy vs shallow copy
 A deep copying means that value of the new variable is disconnected from the original 
 variable 
 
- Shallow copy means that some values are still connected to the original variable.
+ Shallow copy means that "some" values are still connected to the original variable.
+ in other words: in shallow copy nested objects are still connected;
 
 */
 
