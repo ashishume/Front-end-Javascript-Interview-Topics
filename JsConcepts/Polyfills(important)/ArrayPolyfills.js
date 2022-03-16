@@ -39,6 +39,7 @@ Array.prototype.customFilter = function (callback, context) {
 
 // const a = items.customFilter((value) => value < 4);
 
+
 /** polyfill for reduce
  * @param context is optional
  */
