@@ -20,3 +20,19 @@ const func = function () {
   return 10;
 };
 console.log(func());
+
+b = "Dev";
+
+let b;
+
+/**
+ * Hoisting is for var where it assigns undefined to the var
+ * let and const works differently
+ * let throws error if assigned value before declaration
+ * const should be assigned value at the time of declaration
+ * 
+ * 
+ * Note: Variables declared with let and const are hoisted but not initialized 
+ * with a default value. Accessing a let or const variable before it's declared
+ *  will result in a ReferenceError:
+ */
