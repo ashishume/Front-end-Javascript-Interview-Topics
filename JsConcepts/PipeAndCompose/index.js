@@ -17,9 +17,13 @@ const pipe = (...functions) => {
 
 console.log(pipe(getName, capitilizeName, reverseString)());
 
-
 /** compose is same as pipe() just that its opposite in direction,
  * i.e. functions executet from right to left, to do so
  * use: functions.reduceRight()
- * 
+ *
  */
+
+const compose =
+  (...functions) =>
+  (args) =>
+    functions.reduceRight((currVal, currFunc) => currFunc(currVal), args);
