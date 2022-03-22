@@ -55,3 +55,29 @@ new CustomPromise((res, rej) => {
     // console.log(d);
   })
   .catch((err) => console.log(err));
+
+CustomPromise.all = function (promises) {
+  return new CustomPromise(function executor(resolve, reject) {
+    let count = 0;
+    let res = [];
+
+    if (promises.length === 0) {
+      resolve(promises);
+      return;
+    }
+
+    for (let i = 0; i < promises.length; i++) {
+      promises[i]
+        .then((val) => {
+          done(val, i);
+        })
+        .catch((err) => reject(err));
+    }
+
+    function done(val, i) {
+      res[i] = val;
+      ++count;
+      if (promises.length === count) resolve(res);
+    }
+  });
+};
