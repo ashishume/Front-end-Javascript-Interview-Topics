@@ -35,4 +35,7 @@ let b;
  * Note: Variables declared with let and const are hoisted but not initialized 
  * with a default value. Accessing a let or const variable before it's declared
  *  will result in a ReferenceError:
+ * 
+ * 
+ * functions are hoisted first then variables are hoisted
  */
