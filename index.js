@@ -100,19 +100,15 @@
 
 // console.log(test[3]());
 
-const promise = new Promise((res, rej) => {
-  console.log(1);
+// const obj = {
+//   name: "Ashish",
+//   foo: function () {
+//     console.log(this.name);
+//   },
+// };
 
-  setTimeout(() => {
-    console.log("timerStart");
-    res("success");
-    console.log("timerend");
-  }, 0);
-  console.log(2);
-});
+// var name = "Dev";
 
-promise.then((res) => {
-  console.log(res);
-});
-console.log(4);
+// obj.foo(); //prints Ashish
 
+// setTimeout(obj.foo, 100); //print Dev

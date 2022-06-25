@@ -32,7 +32,7 @@ Normal function =>
 Arrow function => 
 1. new keyword cannot be used to call the functions
 2. "arguments" doesnt work in normal function instead ...args can be used to access the arguments
-3. they dont have their own "this"
+3. they dont have their own "this", i.e. even if we pass the context, it will show the global 'this'
 */
 
 NormalFunc.call({ a: "Ashish" }, 81, 82);
