@@ -81,3 +81,38 @@ CustomPromise.all = function (promises) {
     }
   });
 };
+
+//---- Independent promise.all() polyfill
+function PromiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    let result = [];
+
+    if (promises.length === 0) resolve(result);
+
+    let pendingPromises = promises.length;
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise).then((value) => {
+        result[index] = value;
+        pendingPromises--;
+
+        if (pendingPromises === 0) resolve(result);
+      }, reject);
+    });
+  });
+}
+
+/** Promise all example using the above polyfill */
+const samplePromise1 = new Promise((res, rej) => {
+  setTimeout(() => {
+    res(true);
+  }, 2000);
+});
+const samplePromise2 = new Promise((res, rej) => {
+  setTimeout(() => {
+    res(true);
+  }, 5000);
+});
+
+PromiseAll([samplePromise1, samplePromise2]).then((d) => {
+  console.log(d);
+});
