@@ -1,9 +1,3 @@
-// TODO: study about Symbol()
-
-// TO BE COMPLETED
-//https://www.youtube.com/watch?v=IUFJzLlf2cE&list=PL0b6OzIxLPbzvz4j1N4J8zCY8mu3l29MG
-
-
 // function sq(a) {
 //   return a * a;
 // }

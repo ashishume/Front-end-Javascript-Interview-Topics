@@ -35,5 +35,31 @@ Arrow function =>
 3. they dont have their own "this", i.e. even if we pass the context, it will show the global 'this'
 */
 
-NormalFunc.call({ a: "Ashish" }, 81, 82);
-ArrowFunc.call({ a: "Debnath" }, 85, 86); /** arrow function doesnt have its own context */
+// NormalFunc.call({ a: "Ashish" }, 81, 82);
+// ArrowFunc.call({ a: "Debnath" }, 85, 86); /** arrow function doesnt have its own context */
+
+/**
+ * 
+ * Difference between Function constructor and function declaration?
+Functions created with the Function constructor do not create closures to their 
+creation contexts; they always are created in the global scope. When running them, 
+they will only be able to access their own local variables and global ones, not 
+the ones from the scope in which the Function constructor was created
+ */
+
+const x = 10;
+function createFunction1() {
+  const x = 20;
+  return new Function("return x;"); // this |x| refers global |x|
+}
+function createFunction2() {
+  const x = 20;
+  function f() {
+    return x; // this |x| refers local |x| above
+  }
+  return f;
+}
+const f1 = createFunction1();
+console.log(f1()); // 10
+const f2 = createFunction2();
+console.log(f2()); // 20
