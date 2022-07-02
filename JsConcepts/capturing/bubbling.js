@@ -35,17 +35,3 @@ document.querySelector("#child").addEventListener(
   },
   { capture: false }  //shorthand false and passed as callback
 );
-
-//function currying
-
-// <script></script>
-//In this case the html code parses then script is
-// executed and the html waits for the script to fisnish
-//then html parsing continues
-
-// <script async></script>
-// In Async html parsing and js code executes simultaneously
-
-// <script defer></script>
-// In Defer html parsing and js code executes simultaneously but
-// when the HTML parsing is completed then only js code is executed

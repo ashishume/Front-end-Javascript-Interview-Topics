@@ -26,10 +26,5 @@ var c = randomFunc.bind(obj1, "Amy", "Ayush"); //bind returns a copy of the func
 // console.log(b);
 // console.log(c());
 
-function sample(x) {
-  //when used arrow function x will not work because new opertor  doesnt work in arrow
-  // console.log(x);
-}
-
 const z = new sample("Ashish");
 // console.log(z);

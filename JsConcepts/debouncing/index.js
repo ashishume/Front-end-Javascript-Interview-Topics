@@ -51,10 +51,6 @@ const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes 
 //e.g Debouncing:- Samsung...(api call made)  //when user stops typing then only api call is made
 //Throttling:- Sams..ung... (api call started from ..ung...) //startes api call when the delay is finised
 
-//Q. sum(1)(2)(3)(4)()
-// Solution: let sum =a=>b=> return b? sum(a+b) :a;
-
-
 
 /**
  * New debouncing method (better readability) (updated 2022)
