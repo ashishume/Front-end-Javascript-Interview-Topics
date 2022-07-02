@@ -4,4 +4,10 @@ const data = array.filter((item, i) => {
   return array.indexOf(item) == i;
 });
 
-console.log(data);
+// console.log(data);
+
+
+//2nd way
+const b = [...new Set(array)];
+
+console.log(b);
