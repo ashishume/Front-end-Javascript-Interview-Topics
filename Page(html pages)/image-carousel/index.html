@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://etc.usf.edu/clipart/70300/70317/70317_258_c-2b_s_lg.gif"
+        style="width: 50px; height: 50px; position: absolute; right: 0; top: 50%"
+        onclick="moveImage(true)"
+      />
+      <div class="image-container"></div>
+      <img
+        src="https://etc.usf.edu/clipart/70300/70317/70317_258_c-2b_s_lg.gif"
+        style="width: 50px; height: 50px; position: absolute; left: 0; top: 50%; transform: rotate(180deg)"
+        onclick="moveImage(false)"
+      />
+    </div>
+
+    <style>
+      .image-item {
+        display: none;
+        width: 450px;
+        height: 300px;
+      }
+      .text-item {
+        font-size: 30px;
+        width: 100%;
+        display: none;
+      }
+    </style>
+    <script src="./index.js"></script>
+  </body>
+</html>
