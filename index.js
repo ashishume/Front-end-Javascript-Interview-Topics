@@ -1,3 +1,8 @@
+/** TODO: complete the MDN docs  for Objects
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+ * 
+*/
+
 // function sq(a) {
 //   return a * a;
 // }
