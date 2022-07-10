@@ -29,4 +29,18 @@ const obj = {
   c: "String",
 };
 
-forInLoop(obj);
+// forInLoop(obj);
+
+// for (let [key, value] of Object.entries(obj)) {
+//   console.log(key);
+//   console.log(value);
+// }
+
+// console.log(Object.entries(obj));
+/**
+  [
+   ["a", 1],
+   ["b", 2],
+   ["c", "String"],
+  ];
+  */

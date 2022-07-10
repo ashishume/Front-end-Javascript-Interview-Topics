@@ -1,4 +1,4 @@
-const items = [1, 2, 3, 4, 5];
+const items = [4, 5, 1, 2, 3];
 
 /** For each polyfill */
 Array.prototype.customForEach = function (callback) {
@@ -39,7 +39,6 @@ Array.prototype.customFilter = function (callback, context) {
 
 // const a = items.customFilter((value) => value < 4);
 
-
 /** polyfill for reduce
  * @param context is optional
  */
@@ -70,4 +69,44 @@ Array.prototype.customFind = function (callback, context) {
 
 // const a = items.customFind((val) => val === 3);
 
+// console.log(a);
+
+/** polyfill for indexOf()
+ * @param context is optional
+ */
+Array.prototype.customIndexOf = function (value, context) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === value) return i;
+  }
+  return -1;
+};
+
+// const a = items.customIndexOf(3);
+// console.log(items.indexOf(3));
+// console.log(a);
+
+/** polyfill for some()
+ * @param context is optional
+ */
+Array.prototype.customSome = function (callback, context) {
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) return true;
+  }
+  return false;
+};
+
+// const a = items.customSome((val) => val > 5);
+// console.log(a);
+
+/** polyfill for every()
+ * @param context is optional
+ */
+Array.prototype.customEvery = function (callback, context) {
+  for (let i = 0; i < this.length; i++) {
+    if (!callback(this[i], i, this)) return false;
+  }
+  return true;
+};
+
+// const a = items.customEvery((val) => val > 0);
 // console.log(a);
