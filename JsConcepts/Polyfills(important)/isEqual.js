@@ -3,6 +3,18 @@
  * Array, Objects literals, Function
  */
 function isEqual(obj1, obj2) {
+  function getType(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+  }
+
+  let type = getType(obj1);
+
+  // If the two items are not the same type, return false
+  if (type !== getType(obj2)) return false;
+  if (type === "array") return areArraysEqual();
+  if (type === "object") return areObjectsEqual();
+  if (type === "function") return areFunctionsEqual();
+
   function areArraysEqual() {
     // Check length
     if (obj1.length !== obj2.length) return false;
@@ -30,21 +42,16 @@ function isEqual(obj1, obj2) {
   function arePrimativesEqual() {
     return obj1 === obj2;
   }
-  // If the two items are not the same type, return false
-  if (typeof obj1 !== typeof obj2) return false;
-  if (typeof obj1 === "array") return areArraysEqual();
-  if (typeof obj1 === "object") return areObjectsEqual();
-  if (typeof obj1 === "function") return areFunctionsEqual();
   return arePrimativesEqual();
 }
 
 const a = {
   name: "Ashish",
   age: 24,
-  array: [1, 2, 3],
   more: {
     random: "data",
   },
+  array: [1, 2, 3],
 };
 const b = {
   name: "Ashish",

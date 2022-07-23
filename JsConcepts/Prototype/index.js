@@ -55,6 +55,8 @@ console.log(person.__proto__ === Person.prototype);
  * that its inheriting from.
  * Prototype is a property on the constructor function that contains all the stuff that will
  * be inhertited by its instance.
+ * 
+ * //NOTE: __proto__ has been deprecated and you should avoid using it.
  */
 
 // ---------------------------------------------
