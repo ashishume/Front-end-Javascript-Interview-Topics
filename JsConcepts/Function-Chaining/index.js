@@ -19,11 +19,9 @@ const operations = function () {
   };
 };
 const obj = new operations();
-const b = obj.add(10).mul(2).div(2);
+const b = obj.add(10).mul(2).div(2).add(2);
 // console.log(b.result);
 // -------------------------------------------------------------------------
-
-
 
 function add(a) {
   return 10 + a;
@@ -40,4 +38,4 @@ function funcList(functions) {
   };
 }
 const a = funcList([add, mul, div])(2);
-console.log(a);
+// console.log(a);
