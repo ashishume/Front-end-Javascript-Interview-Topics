@@ -16,15 +16,15 @@ function randomFunc(x, y) {
           </div>`;
 }
 
-var a = randomFunc.apply(obj1, ["Rahul", "Diya"]); //apply calls the method only arguments needs to passed as array
+var applyMethod = randomFunc.apply(obj1, ["Rahul", "Diya"]); //apply calls the method only arguments needs to passed as array
 
-var b = randomFunc.call(obj2, "aa", "Raahul"); //call, calls the method on whichever method is being used
+var callMethod = randomFunc.call(obj2, "aa", "Raahul"); //call, calls the method on whichever method is being used
 
-var c = randomFunc.bind(obj1, "Amy", "Ayush"); //bind returns a copy of the function (other things is similar to call)
-//bind creates a new function
-// console.log(a);
-// console.log(b);
-// console.log(c());
+var bindMethod = randomFunc.bind(obj1, "Amy", "Ayush"); //bind returns a copy of the function
+
+// console.log(applyMethod);
+// console.log(callMethod);
+// console.log(bindMethod());  //bind still needs to call the function separetly with () braces
 
 const z = new sample("Ashish");
 // console.log(z);
