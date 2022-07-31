@@ -1,5 +1,5 @@
 /**
- * Life cycle methods based on order
+ * Life cycle methods based on order of execution
  */
 
 /*
