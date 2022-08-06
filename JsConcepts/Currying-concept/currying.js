@@ -26,7 +26,7 @@ function sum(a) {
 const a = sum(1)(2)(3)(4)(5)(6);
 // console.log(a());
 
-/** convert func(a,b,c,d) to func(a)(b)(c)(d) */
+/** convert func(a,b,c,d) to func(a)(b)(c)(d) also called perpertual currying  */
 function curry(func) {
   return function curriedFunc(...args) {
     if (args.length >= func.length) {
