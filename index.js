@@ -1,3 +1,8 @@
+// const arr = ["Australia", "India", "USA", "Pakistan", "canada", "England", "bangladesh"];
+// const numbers = [1, 7, 3, 6, 99, 345, 534, 21];
+
+// const x = arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+// const y = numbers.sort((a, b) => a - b);
 
 // console.log(c);
 // const a = document.getElementById("inner");
