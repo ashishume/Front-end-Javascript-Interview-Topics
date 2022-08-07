@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input placeholder="Search..." id="search" onkeyup="debounceMethod(event)" />
+
+    <script>
+      const list = [
+        "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        "Mens Casual Premium Slim Fit T-Shirts ",
+        "Mens Cotton Jacket",
+        "Mens Casual Slim Fit",
+        "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+        "Solid Gold Petite Micropave ",
+        "White Gold Plated Princess",
+        "Pierced Owl Rose Gold Plated Stainless Steel Double",
+        "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+        "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+      ];
+
+      function onChangeData(event) {
+        const value = event.target.value;
+        const filteredArray = myFilter(value);
+        console.log(filteredArray);
+      }
+
+      const myFilter = (value) => {
+        return list.filter((option) => option?.toLowerCase().includes(value));
+      };
+
+      const myDebounce = (functions, delay) => {
+        let timer;
+        return (...args) => {
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(() => {
+            functions(...args);
+          }, delay);
+        };
+      };
+      const debounceMethod = myDebounce(onChangeData, 300);
+    </script>
+  </body>
+</html>
