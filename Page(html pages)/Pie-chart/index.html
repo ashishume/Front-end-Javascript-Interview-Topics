@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index file</title>
+  </head>
+  <body>
+    <input type="range" value="10" id="range" max="100" style="width: 500px" />
+    <div class="circle" style="--percent: 10%"></div>
+    <style>
+      .circle {
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        background-image: conic-gradient(green var(--percent), aquamarine 0);
+      }
+    </style>
+    <script>
+      const circle = document.querySelector(".circle");
+      document.getElementById("range").addEventListener("input", (e) => {
+        const newVal = e.target.value;
+        circle.style = `--percent:${newVal}%`;
+      });
+    </script>
+    <script src="./index.js"></script>
+  </body>
+</html>
