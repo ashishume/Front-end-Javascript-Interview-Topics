@@ -1,3 +1,32 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(null instanceof Object); //false
+// console.log(1 instanceof Number); //false
+// console.log(1 instanceof Object); // false
+// console.log(Number(1) instanceof Object); //false
+// console.log(new Number(1) instanceof Object); //true
+// console.log(true instanceof Boolean);  //false
+// console.log(true instanceof Object); //false
+// console.log(Boolean(true) instanceof Object); //false
+// console.log(new Boolean(true) instanceof Object); //true
+// console.log([] instanceof Array); //true
+// console.log([] instanceof Object); //true
+// console.log((() => {}) instanceof Object); //true
+
 // const arr = ["Australia", "India", "USA", "Pakistan", "canada", "England", "bangladesh"];
 // const numbers = [1, 7, 3, 6, 99, 345, 534, 21];
 
