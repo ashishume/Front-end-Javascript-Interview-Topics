@@ -49,3 +49,69 @@
     </style>
   </body>
 </html>
+
+
+<!-- 
+  27. How to center align a div inside another div?
+Centering with Table:
+HTML:
+
+<div class=”cn”><div class=”inner”>your content</div></div>
+CSS:
+
+.cn {
+	display: table-cell;
+	width: 500px;
+	height: 500px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.inner {
+	display: inline-block;
+	width: 200px; height: 200px;
+}
+Centering with Transform
+HTML:
+
+<div class="cn"><div class="inner">your content</div></div>
+CSS:
+
+.cn {
+	position: relative;
+	width: 500px;
+	height: 500px;
+}
+
+.inner {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	width: 200px;
+	height: 200px;
+}
+Centering with Flexbox
+HTML:
+
+<div class="cn"><div class="inner">your content</div></div>
+CSS:
+
+.cn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+Centering with Grid
+HTML:
+
+<div class=”wrap_grid”>
+	<div id=”container”>vertical aligned text<br />some more text here
+	</div>
+</div>
+CSS:
+
+.wrap-grid {
+	display: grid;
+	place-content: center;
+}
+ -->

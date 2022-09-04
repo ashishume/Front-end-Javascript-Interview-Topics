@@ -52,6 +52,7 @@ const a = {
     random: "data",
   },
   array: [1, 2, 3],
+  rand: () => {},
 };
 const b = {
   name: "Ashish",
@@ -60,6 +61,7 @@ const b = {
   more: {
     random: "data",
   },
+  rand: () => {},
 };
 const res = isEqual(a, b);
 console.log(res);
