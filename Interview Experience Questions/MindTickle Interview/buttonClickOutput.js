@@ -26,14 +26,10 @@ document.getElementsByTagName("button")[0].addEventListener("click", logger1);
 document.getElementsByTagName("button")[0].addEventListener("click", logger2);
 
 // document.getElementsByTagName("button")[0].click();
-
-//logger 2
-//promise logger 2
-
 /** 
 CORRECT OUTPUT:
 logger1
-Index.html:29 promise logger 1
-Index.html:38 logger 2
-Index.html:36 promise logger 2
+promise logger 1
+logger 2
+promise logger 2
 */
