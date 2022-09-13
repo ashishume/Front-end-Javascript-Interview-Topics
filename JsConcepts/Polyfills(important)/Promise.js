@@ -1,17 +1,18 @@
 /** Code refer: @link https://medium.com/@manojsingh047/polyfill-for-javascript-promise-81053b284e37 */
 
 function CustomPromise(executor) {
-  let onResolve;
-  let onReject;
-  let isCalled = false;
-  let isResolved = false;
-  let isRejected = false;
-  let value;
-  let error;
+  let onResolve,
+    onReject,
+    isCalled = false,
+    isResolved = false,
+    isRejected = false,
+    value,
+    error;
 
   function resolve(val) {
     isResolved = true;
     value = val;
+    /** if resolve is called for sync operation */
     if (typeof onResolve === "function" && !isCalled) {
       onResolve(val);
       isCalled = true;
@@ -20,14 +21,15 @@ function CustomPromise(executor) {
   function reject(err) {
     isRejected = true;
     error = err;
+    /** if reject is called for sync operation */
     if (typeof onReject === "function" && !isCalled) {
       onReject(err);
       isCalled = true;
     }
   }
 
-  this.then = function (thenHandler) {
-    onResolve = thenHandler;
+  this.then = function (callback) {
+    onResolve = callback;
     if (isResolved && !isCalled) {
       onResolve(value);
       isCalled = true;

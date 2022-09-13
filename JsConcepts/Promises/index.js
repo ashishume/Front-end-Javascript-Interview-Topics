@@ -63,7 +63,7 @@ const fetchGitUsers = () =>
 //   });
 
 /** whichever promise finishes first(only one promise) will get returned as the callback,
- * even if some of the promises fails, it doesnt print, as some promises have already fullfilled.
+ * it only prints the resolved ones, ignores the rejected ones.
  * if none of the promises gets resolved then, throws an
  * "AggregateError: All promises were rejected"
  */
