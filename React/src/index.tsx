@@ -1,14 +1,16 @@
+import ReactDOM from "react-dom";
 import React from "react";
-import "./styles/globalStyles.scss";
-import { createRoot } from "react-dom/client";
-import App from "./App";
+import Routing from "./Routing/Routing";
 import { Provider } from "react-redux";
-import store from "./store";
+import { store } from "./Projects/e-commerce/store";
+import { createRoot } from "react-dom/client";
 
-const container = document.getElementById("app-root")!;
-const root = createRoot(container);
+const domNode = document.getElementById("root") as HTMLElement;
+const root = createRoot(domNode);
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <Routing />
+    </Provider>
+  </React.StrictMode>
 );

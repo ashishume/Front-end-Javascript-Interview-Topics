@@ -1,31 +1,18 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import DataDisplay from "./components/data-display";
-import Input from "./components/input";
-import Layout from "./pages/Layout/Layout";
-import { addProducts } from "./store/actions/actionItems";
-
+import "./style.scss";
+import { Link } from "react-router-dom";
+import { routes } from "./Routing/routes";
 const App = () => {
-  const [task, setTask] = useState("");
-  const dispatch = useDispatch();
-
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTask(event.target.value);
-  };
-  const onSubmitData = () => {
-    dispatch(addProducts(task));
-  };
-
   return (
-    <Layout>
-      <div className="task-editor-container">
-        <Input onInputChange={onInputChange} />
-        <Button onClick={onSubmitData}>Add</Button>
+    <div className="container">
+      <h1>Interview Concepts</h1>
+      <div className="routing-container">
+        {routes.map(({ routeName }) => (
+          <Link key={routeName} className="link-routes" to={routeName}>
+            {routeName}
+          </Link>
+        ))}
       </div>
-
-      <DataDisplay value={""} />
-    </Layout>
+    </div>
   );
 };
 
