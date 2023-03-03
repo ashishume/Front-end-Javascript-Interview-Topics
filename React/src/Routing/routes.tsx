@@ -1,22 +1,37 @@
-import { ReactElement } from "react";
-import App from "../App";
-import Photo from "../Projects/Tag/Photo";
+import React, { ReactElement } from "react";
 import { FolderData } from "../Projects/FolderStructure(Recursive)/FolderData";
-import Input from "../Projects/hooks/customHooks/input";
-import UseCallbackHook from "../Projects/hooks/UseCallback/useCallback";
-import UseContext from "../Projects/hooks/UseContext";
-import Factorial from "../Projects/hooks/useMemo";
-import UseMemo2 from "../Projects/hooks/useMemo2";
-import StopWatch from "../Projects/hooks/useReducer";
-import UseRef from "../Projects/hooks/useRef";
-import AxiosContainer from "../Projects/Axios";
-import FolderComponent from "../Projects/FolderStructure(Recursive)/FolderComponent";
-import InfiniteScrolls from "../Projects/Infinite-Scroll";
-import Parent from "../Projects/hooks/UseCallback(2nd example)/Parent";
-import Dashboard from "../Projects/e-commerce/components/dashboard";
-import Cart from "../Projects/e-commerce/containers/cart";
-import FolderStructure from "../Projects/FolderStructure(Recursive)/FolderStructure(Another Example)";
-import Pagination from "../Projects/Pagination";
+const App = React.lazy(() => import("../App"));
+const Photo = React.lazy(() => import("../Projects/Tag/Photo"));
+const Input = React.lazy(() => import("../Projects/hooks/customHooks/input"));
+const UseCallbackHook = React.lazy(
+  () => import("../Projects/hooks/UseCallback/useCallback")
+);
+const UseContext = React.lazy(() => import("../Projects/hooks/UseContext"));
+const Factorial = React.lazy(() => import("../Projects/hooks/useMemo"));
+const UseMemo2 = React.lazy(() => import("../Projects/hooks/useMemo2"));
+const StopWatch = React.lazy(() => import("../Projects/hooks/useReducer"));
+const UseRef = React.lazy(() => import("../Projects/hooks/useRef"));
+const AxiosContainer = React.lazy(() => import("../Projects/Axios"));
+const FolderComponent = React.lazy(
+  () => import("../Projects/FolderStructure(Recursive)/FolderComponent")
+);
+const InfiniteScrolls = React.lazy(() => import("../Projects/Infinite-Scroll"));
+const Parent = React.lazy(
+  () => import("../Projects/hooks/UseCallback(2nd example)/Parent")
+);
+const Dashboard = React.lazy(
+  () => import("../Projects/e-commerce/components/dashboard")
+);
+const Cart = React.lazy(() => import("../Projects/e-commerce/containers/cart"));
+const FolderStructure = React.lazy(
+  () =>
+    import(
+      "../Projects/FolderStructure(Recursive)/FolderStructure(Another Example)"
+    )
+);
+
+const Pagination = React.lazy(() => import("../Projects/Pagination"));
+
 export const routes: {
   routeName: string;
   component: ReactElement;
