@@ -6,14 +6,29 @@
  * below in the second event listener.
  */
 
-const controller = new AbortController();
-const signal = controller.signal;
+let controller;
+const url = "https://jsonplaceholder.typicode.com/todos/1";
 
-fetch("https://jsonplaceholder.typicode.com/todos/1", { signal })
-  .then((d) => d.json())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.error(`Download error: ${err.message}`);
-  });
+const downloadBtn = document.querySelector(".download");
+const abortBtn = document.querySelector(".abort");
+
+downloadBtn.addEventListener("click", fetchVideo);
+
+abortBtn.addEventListener("click", () => {
+  if (controller) {
+    controller.abort();
+    console.log("Download aborted");
+  }
+});
+
+function fetchVideo() {
+  controller = new AbortController();
+  const signal = controller.signal;
+  fetch(url, { signal })
+    .then((response) => {
+      console.log("Download complete", response);
+    })
+    .catch((err) => {
+      console.error(`Download error: ${err.message}`);
+    });
+}

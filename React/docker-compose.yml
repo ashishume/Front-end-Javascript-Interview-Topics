@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    container_name: reactcontainer
+    build: .
+    ports:
+      - 3000:80
+
+#COMMAND to run this file: docker-compose up -d
+# -d is for running in detached mode (background)
+# this helps to avoid running long docker commands
+
+# close the server
+# COMMAND: docker-compose down
