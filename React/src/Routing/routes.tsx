@@ -19,6 +19,7 @@ import FolderStructure from "../Projects/FolderStructure(Recursive)/FolderStruct
 import Pagination from "../Projects/Pagination";
 import Welcome from "../Projects/Authentication/welcome";
 import Login from "../Projects/Authentication";
+import EMICalculator from "../Projects/EMI-Calculator";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -98,5 +99,9 @@ export const routes: {
   {
     routeName: "pagination",
     component: <Pagination />,
+  },
+  {
+    routeName: "emi-calculator",
+    component: <EMICalculator />,
   },
 ];

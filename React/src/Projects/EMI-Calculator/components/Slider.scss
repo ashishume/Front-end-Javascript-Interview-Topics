@@ -1,0 +1,11 @@
+.slider-body {
+  width: 50%;
+  margin: 12px 0;
+  .min-max-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
