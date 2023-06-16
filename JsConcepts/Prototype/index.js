@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
+
 const human = {
   age: 12,
 };
@@ -44,6 +46,7 @@ console.log(person.__proto__); //undefined, it should be __proto__
 console.log(Person.prototype); //prints constructor of function
 console.log(person.__proto__ === Person.prototype);
 
+console.log(Object.getPrototypeOf({ a: "Ashish" }));
 /**
  * __proto__ is the actual object that is used in the lookup chain to
  * resolve methods, etc. prototype is the object that is used to build __proto__
@@ -55,8 +58,6 @@ console.log(person.__proto__ === Person.prototype);
  * that its inheriting from.
  * Prototype is a property on the constructor function that contains all the stuff that will
  * be inhertited by its instance.
- * 
- * //NOTE: __proto__ has been deprecated and you should avoid using it.
  */
 
 // ---------------------------------------------

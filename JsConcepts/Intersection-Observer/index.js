@@ -1,26 +1,28 @@
 const cardContainer = document.querySelector(".container");
 const cards = document.querySelectorAll(".card");
 
+
+const callbackMethod = (entries) => {
+  /** looping through all the objects which has been called with .observe() */
+  entries.forEach((value) => {
+    value.target.classList.toggle("show", value.isIntersecting);
+    if (value.isIntersecting) {
+      /** unobserving which have already been observed */
+      observer.unobserve(value.target);
+    }
+  });
+};
+
+
 /** all the contents shown dom (default is root)
  * creating an intersection object where all the divs will be
  * looped and passed to this object.
  */
-let observer = new IntersectionObserver(
-  (entries) => {
-    /** looping through all the objects which has been called with .observe() */
-    entries.forEach((value) => {
-      value.target.classList.toggle("show", value.isIntersecting);
-      if (value.isIntersecting) {
-        /** unobserving which have already been observed */
-        observer.unobserve(value.target);
-      }
-    });
-  },
-  {
-    threshold: 1, //if 100% of the element is visible to the viewport then only call intersection true
-    rootMargin: "100px", //defines the viewport area where intersecion is detected (like margin in html)
-  }
-);
+let observer = new IntersectionObserver(callbackMethod, {
+  threshold: 1, //if 100% of the element is visible to the viewport then only call intersection true
+  rootMargin: "100px", //defines the viewport area where intersecion is detected (like margin in html)
+});
+
 
 const lastCardObserver = new IntersectionObserver((entries) => {
   const lastCard = entries[0]; //when only last child is passed to this, so only 1 element is required to check
@@ -48,5 +50,6 @@ function observeLastCard() {
 
 /** looping through all the divs to check whether it intersects with the viewport or not */
 cards.forEach((card) => {
+  console.log(card);
   observer.observe(card);
 });

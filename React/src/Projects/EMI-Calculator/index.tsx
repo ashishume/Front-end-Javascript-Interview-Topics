@@ -17,132 +17,67 @@ This also means that the EMI value will change every time you change any of the 
 
  */
 
-import { useEffect, useState } from "react";
-import { Form, InputGroup } from "react-bootstrap";
-import RangeSlider from "./components/Slider";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./style.scss";
-import { addCommas, markActive } from "./Utils/HelperMethods";
+
 const EMICalculator = () => {
-  const [totalAssetsCost, setTotalAssetsCost] = useState(800000);
-  const [interestRate, setInterestRate] = useState(8.65);
-  const [processingFee, setProcessingFee] = useState(1);
-  const [loanEMI, setLoanEMI] = useState(0);
-  const [downpayment, setDownpayment] = useState(0.2 * totalAssetsCost);
-  const [totalDownpaymentPayable, setTotalDownpaymentPayable] = useState(0);
-  const [bankLoan, setBankLoan] = useState(totalAssetsCost - downpayment);
-  const [activeYear, setActiveYear] = useState(12);
-  const [tenureYears, setTenueYears] = useState([
-    {
-      isActive: true, //default selected
-      value: 12,
-    },
-    {
-      isActive: false,
-      value: 24,
-    },
-    {
-      isActive: false,
-      value: 36,
-    },
-    {
-      isActive: false,
-      value: 48,
-    },
-    {
-      isActive: false,
-      value: 60,
-    },
-  ]);
-  const calculateMonthlyEMI = () => {
-    const r = interestRate / 1200; // Convert annual interest rate to monthly rate
-    const numerator = bankLoan * r * Math.pow(1 + r, activeYear);
-    const denominator = Math.pow(1 + r, activeYear) - 1;
-    setLoanEMI(numerator / denominator);
+  const [cost, setCost] = useState<number>(0);
+  const [interest, setInterest] = useState(10);
+  const [fee, setFee] = useState(1);
+  const [downpayment, setDownpayment] = useState(0);
+  const [tenure, setTenure] = useState(12);
+  const [emi, setEmi] = useState(0);
+
+  const updateEMI = (e: ChangeEvent): void => {
+    console.log(e);
   };
-
-  const calculateBankLoanAmount = async (downpaymentValue: number) => {
-    console.log("1", downpaymentValue);
-    await setDownpayment(downpaymentValue);
-
-    const total =
-      downpaymentValue +
-      (processingFee / 100) * (totalAssetsCost - downpaymentValue);
-    await setTotalDownpaymentPayable(total);
-    console.log("2", total);
-
-    await calculateMonthlyEMI();
+  const updateDownpayment = (e: ChangeEvent): void => {
+    console.log(e);
   };
-
-  useEffect(() => {
-    calculateBankLoanAmount(downpayment);
-  }, [totalAssetsCost]);
-
+  const calculateEMI = (e: number): number => {
+    return 0;
+  };
   return (
     <>
-      <div className="range-container">
-        <Form.Control
-          placeholder="Total assets value"
+      <div className="container">
+        <h3>EMI Calculator</h3>
+        <div className="title">Total cost of Asset</div>
+        <input
           type="number"
-          className="totalAssets"
-          min={0}
-          value={totalAssetsCost}
-          onChange={(e) => setTotalAssetsCost(e.target.value as any)}
-          aria-describedby="basic-addon1"
+          value={cost}
+          onChange={(e) => setCost(parseInt(e.target.value))}
         />
-        <RangeSlider
+        <div className="title">Interest rate(in %)</div>
+        <input
+          type="number"
+          value={interest}
+          onChange={(e) => setInterest(parseInt(e.target.value))}
+        />
+        <div className="title">Processing Fee (in %)</div>
+        <input
+          type="number"
+          value={fee}
+          onChange={(e) => setFee(parseInt(e.target.value))}
+        />
+        <div className="title">Down payment</div>
+        <input
+          type="range"
+          min={0}
+          max={cost}
           value={downpayment}
-          onChangeHandler={(e) => calculateBankLoanAmount(e.target.value)}
-          prefix="₹"
-          min={0}
-          step={1}
-          max={totalAssetsCost}
-          label="Total down payment (in ₹)"
+          onChange={updateEMI}
         />
-
-        <div>
-          Total downpayment payable: {addCommas(totalDownpaymentPayable)}
-        </div>
-        <RangeSlider
-          value={interestRate}
-          min={0}
-          suffix="%"
-          step={1}
-          onChangeHandler={(e) => setInterestRate(e.target.value)}
-          max={30}
-          label="Interest rate (in %)"
+        <div className="title">Loan per month</div>
+        <input
+          type="range"
+          value={emi}
+          min={calculateEMI(cost)}
+          max={calculateEMI(0)}
+          onChange={updateDownpayment}
         />
-        <RangeSlider
-          value={processingFee}
-          min={0}
-          suffix="%"
-          onChangeHandler={(e) => setProcessingFee(e.target.value)}
-          max={100}
-          label="Processing fee (in %)"
-        />
-
-        <div className="year-container">
-          {tenureYears.map((value) => {
-            return (
-              <div
-                key={value.value}
-                onClick={() =>
-                  markActive(value, tenureYears, setTenueYears, setActiveYear)
-                }
-                className={value.isActive ? "year-text-active" : "year-text"}
-              >
-                {value.value}
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="loan-amount">EMI per month: ₹ {loanEMI}</div>
-        <div className="loan-amount">
-          loan from bank: ₹ {addCommas(bankLoan)}
-        </div>
+        <div className="title">Tenure</div>
       </div>
     </>
   );
 };
-
 export default EMICalculator;
