@@ -68,13 +68,18 @@ const EMICalculator = () => {
           onChange={updateEMI}
         />
         <div className="title">Loan per month</div>
+        <div>
+          <label>{calculateEMI(cost)}</label>
+          <label>{downpayment}</label>
+          <label>{calculateEMI(0)}</label>
+        </div>
         <input
           type="range"
           value={emi}
           min={calculateEMI(cost)}
           max={calculateEMI(0)}
           onChange={updateDownpayment}
-        />
+        /> 
         <div className="title">Tenure</div>
       </div>
     </>
