@@ -29,17 +29,14 @@ let cars = [
 ];
 
 function createOutput(cars) {
-  let result = {};
-  for (let index in cars) {
-    if (!result[cars[index].make]) {
-      result[cars[index].make] = [];
+  let output = cars.reduce((acc, car) => {
+    if (!acc[car.make]) {
+      acc[car.make] = [];
     }
-    result[cars[index].make].push({
-      model: cars[index].model,
-      year: cars[index].year,
-    });
-  }
-  return result;
+    acc[car.make].push({ model: car.model, year: car.year });
+    return acc;
+  }, {});
+  return output;
 }
 
 const a = createOutput(cars);
