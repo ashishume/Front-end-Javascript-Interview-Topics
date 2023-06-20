@@ -1,4 +1,3 @@
-
 // console.log(null instanceof Object); //false
 // console.log(1 instanceof Number); //false
 // console.log(1 instanceof Object); // false
