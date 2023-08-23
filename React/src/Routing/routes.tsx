@@ -20,6 +20,8 @@ import Pagination from "../Projects/Pagination";
 import Welcome from "../Projects/Authentication/welcome";
 import Login from "../Projects/Authentication";
 import EMICalculator from "../Projects/EMI-Calculator";
+import WhyDidYouUpdateCustomHook from "../Projects/useWhyDidYouUpdate-hook";
+import UseCopyHook from "../Projects/useCopyHooks";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -103,5 +105,13 @@ export const routes: {
   {
     routeName: "emi-calculator",
     component: <EMICalculator />,
+  },
+  {
+    routeName: "why-did-you-update-custom-hook",
+    component: <WhyDidYouUpdateCustomHook />,
+  },
+  {
+    routeName: "use-copy-custom-hook",
+    component: <UseCopyHook />,
   },
 ];
