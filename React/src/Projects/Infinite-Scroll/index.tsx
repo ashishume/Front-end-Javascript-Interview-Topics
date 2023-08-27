@@ -16,10 +16,9 @@ const InfiniteScrolls = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
 
   const observer: React.MutableRefObject<any> = useRef();
-  const lastItemRef = useCallback((node) => {
+  const lastItemRef = useCallback((node: any) => {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      console.log(entries);
       if (entries[0].isIntersecting) {
         setPageNumber((prev) => prev + 1);
       }
@@ -33,15 +32,11 @@ const InfiniteScrolls = () => {
   }, [pageNumber]);
 
   const fetchData = (pageNumber: number = 1, size: number = 30) => {
-    fetch(
-      `https://api.instantwebtools.net/v1/passenger?page=${pageNumber}&size=${size}`
-    )
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${pageNumber}`)
       .then((d) => d.json())
       .then((data: any) => {
         setProducts((prevData: any) => {
-          const first = [...prevData, ...data.data];
-          console.log(first);
-
+          const first = [...prevData, ...data];
           return first;
         });
       });
@@ -49,7 +44,7 @@ const InfiniteScrolls = () => {
   return (
     <div>
       {products.map((value: Product, index: number) => {
-        return products.length === index + 1 ? (
+        return products?.length === index + 1 ? (
           <div
             ref={lastItemRef}
             key={index}
@@ -59,7 +54,7 @@ const InfiniteScrolls = () => {
               marginLeft: "20px",
             }}
           >
-            {value.name} | {value.airline[0].head_quaters}
+            {value.name}
           </div>
         ) : (
           <div
@@ -70,7 +65,7 @@ const InfiniteScrolls = () => {
               marginLeft: "20px",
             }}
           >
-            {value.name} | {value.airline[0].head_quaters}
+            {value.name}
           </div>
         );
       })}

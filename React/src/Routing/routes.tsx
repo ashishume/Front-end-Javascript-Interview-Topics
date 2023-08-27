@@ -22,6 +22,7 @@ import Login from "../Projects/Authentication";
 import EMICalculator from "../Projects/EMI-Calculator";
 import WhyDidYouUpdateCustomHook from "../Projects/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../Projects/useCopyHooks";
+import InfiniteScroll from "../Projects/Infinite-Scroll/infinite.scroll-2";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -85,6 +86,10 @@ export const routes: {
   {
     routeName: "infinite-scroll",
     component: <InfiniteScrolls />,
+  },
+  {
+    routeName: "infinite-scroll-2",
+    component: <InfiniteScroll />,
   },
   {
     routeName: "rendering",

@@ -8,9 +8,9 @@ import { createRoot } from "react-dom/client";
 const domNode = document.getElementById("root") as HTMLElement;
 const root = createRoot(domNode);
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <Routing />
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
