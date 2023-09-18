@@ -23,6 +23,7 @@ import EMICalculator from "../Projects/EMI-Calculator";
 import WhyDidYouUpdateCustomHook from "../Projects/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../Projects/useCopyHooks";
 import InfiniteScroll from "../Projects/Infinite-Scroll/infinite.scroll-2";
+import SlideShow from "../Projects/SlideShow";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -118,5 +119,9 @@ export const routes: {
   {
     routeName: "use-copy-custom-hook",
     component: <UseCopyHook />,
+  },
+  {
+    routeName: "slide-show",
+    component: <SlideShow />,
   },
 ];
