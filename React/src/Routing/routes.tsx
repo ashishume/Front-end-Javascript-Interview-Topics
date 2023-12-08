@@ -24,6 +24,7 @@ import WhyDidYouUpdateCustomHook from "../Projects/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../Projects/useCopyHooks";
 import InfiniteScroll from "../Projects/Infinite-Scroll/infinite.scroll-2";
 import SlideShow from "../Projects/SlideShow";
+import StopWatchComp from "../Projects/StopWatch";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -123,5 +124,9 @@ export const routes: {
   {
     routeName: "slide-show",
     component: <SlideShow />,
+  },
+  {
+    routeName: "stop-watch",
+    component: <StopWatchComp />,
   },
 ];
