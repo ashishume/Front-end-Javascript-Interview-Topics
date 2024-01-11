@@ -40,6 +40,32 @@ const throttleHandler = (func, limit) => {
   };
 };
 
+/** throttle method withtout settimeout */
+const throttleWithoutSetTimeout = (func, delay) => {
+  let lastCalledTimeStamp = 0;
+
+  return (...args) => {
+    const now = Date.now();
+    if (now - lastCalledTimeStamp >= delay) {
+      func(...args);
+      lastCalledTimeStamp = now;
+    }
+  };
+};
+
+/** throttle method withtout settimeout */
+const debounceWithoutSetTimeout = (func, delay) => {
+  let lastCalledTimeStamp = 0;
+  return (...args) => {
+    const now = Date.now();
+    if (now - lastCalledTimeStamp < delay) {
+      return;
+    }
+    func(...args);
+    lastCalledTimeStamp = now;
+  };
+};
+
 const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes it makes the api call
 
 // Q. Diff bw throttling and debouncing is
@@ -50,7 +76,6 @@ const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes 
 
 //e.g Debouncing:- Samsung...(api call made)  //when user stops typing then only api call is made
 //Throttling:- Sams..ung... (api call started from ..ung...) //startes api call when the delay is finised
-
 
 /**
  * New debouncing method (better readability) (updated 2022)

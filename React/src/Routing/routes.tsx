@@ -30,103 +30,103 @@ export const routes: {
   component: ReactElement;
 }[] = [
   {
-    routeName: "",
+    routeName: "/",
     component: <App />,
   },
   {
-    routeName: "welcome",
+    routeName: "/welcome",
     component: <Welcome />,
   },
   {
-    routeName: "login",
+    routeName: "/login",
     component: <Login />,
   },
   {
-    routeName: "use-callback",
+    routeName: "/use-callback",
     component: <UseCallbackHook />,
   },
   {
-    routeName: "nested-folder",
+    routeName: "/nested-folder",
     component: <FolderComponent explorer={FolderData} />,
   },
   {
-    routeName: "use-memo",
+    routeName: "/use-memo",
     component: <Factorial />,
   },
   {
-    routeName: "use-memo2",
+    routeName: "/use-memo2",
     component: <UseMemo2 />,
   },
   {
-    routeName: "use-reducer",
+    routeName: "/use-reducer",
     component: <StopWatch />,
   },
   {
-    routeName: "photo-tagging",
+    routeName: "/photo-tagging",
     component: <Photo />,
   },
   {
-    routeName: "context-api",
+    routeName: "/context-api",
     component: <UseContext />,
   },
   {
-    routeName: "store",
+    routeName: "/store",
     component: <Dashboard />,
   },
   {
-    routeName: "store/cart",
+    routeName: "/store/cart",
     component: <Cart />,
   },
   {
-    routeName: "use-ref",
+    routeName: "/use-ref",
     component: <UseRef />,
   },
   {
-    routeName: "custom-hooks",
+    routeName: "/custom-hooks",
     component: <Input />,
   },
   {
-    routeName: "infinite-scroll",
+    routeName: "/infinite-scroll",
     component: <InfiniteScrolls />,
   },
   {
-    routeName: "infinite-scroll-2",
+    routeName: "/infinite-scroll-2",
     component: <InfiniteScroll />,
   },
   {
-    routeName: "rendering",
+    routeName: "/rendering",
     component: <Parent />,
   },
   {
-    routeName: "axios",
+    routeName: "/axios",
     component: <AxiosContainer />,
   },
   {
-    routeName: "folder-structure-2",
+    routeName: "/folder-structure-2",
     component: <FolderStructure />,
   },
   {
-    routeName: "pagination",
+    routeName: "/pagination",
     component: <Pagination />,
   },
   {
-    routeName: "emi-calculator",
+    routeName: "/emi-calculator",
     component: <EMICalculator />,
   },
   {
-    routeName: "why-did-you-update-custom-hook",
+    routeName: "/why-did-you-update-custom-hook",
     component: <WhyDidYouUpdateCustomHook />,
   },
   {
-    routeName: "use-copy-custom-hook",
+    routeName: "/use-copy-custom-hook",
     component: <UseCopyHook />,
   },
   {
-    routeName: "slide-show",
+    routeName: "/slide-show",
     component: <SlideShow />,
   },
   {
-    routeName: "stop-watch",
+    routeName: "/stop-watch",
     component: <StopWatchComp />,
   },
 ];
