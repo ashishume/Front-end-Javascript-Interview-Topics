@@ -4,18 +4,33 @@ const AxiosContainer = () => {
   const [id, setId] = useState(1);
 
   useEffect(() => {
-    const source = axios.CancelToken.source();
-    axios("https://jsonplaceholder.typicode.com/todos/" + id, {
-      cancelToken: source.token,
-    })
-      .catch(function (thrown) {
-        if (axios.isCancel(thrown)) {
-          console.log("request cancelled", thrown.message);
-        }
+    const controller = new AbortController();
+    const { signal } = controller;
+    // const source = axios.CancelToken.source();
+    // axios("https://jsonplaceholder.typicode.com/todos/" + id, {
+    //   cancelToken: source.token,
+    // })
+    //   .catch(function (thrown) {
+    //     if (axios.isCancel(thrown)) {
+    //       console.log("request cancelled", thrown.message);
+    //     }
+    //   })
+    //   .then((json: any) => {
+    //     console.log(json.data);
+    //   });
+
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos", { signal })
+      .then((data) => {
+        console.log(data);
       })
-      .then((json: any) => {
-        console.log(json.data);
+      .catch((err) => {
+        console.log(err);
       });
+
+    return () => {
+      controller.abort();
+    };
   }, [id]);
 
   return (

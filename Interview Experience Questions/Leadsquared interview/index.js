@@ -33,11 +33,11 @@
 
 // convert the given funcList([f,g,h,i,j])(x) function into below function f(g(h(i(j(x))))
 // Solution
-//  const pipe = (functions) => {
-//   return (args) => {
-//     return functions.reduce((currVal, currFunc) => currFunc(currVal), args);
+// function composeFunctions(funcs) {
+//   return function (x) {
+//     return funcs.reduceRight((acc, func) => func(acc), x);
 //   };
-// };
+// }
 
 // --------------------------------------------------------------------------------------------
 
@@ -55,7 +55,6 @@
 //## func.call(context,a,b)
 //## func.bind(context,a,b)
 //## func.apply(context,[])
-
 
 //## os().add().sub().sub().add().mul();
 //## ops
@@ -92,11 +91,10 @@
 // check();
 // }
 // console.log(func());
-// Output: 
+// Output:
 // undefined
 // undefined
 // 2
-
 
 //     function check(){​​​​​​
 //     // for(let i=0; i < 5; i++){​​​​​​
@@ -113,4 +111,3 @@
 //         }​​​​​​,100)
 //     }​​​​​​
 // }​​​​​​
-
