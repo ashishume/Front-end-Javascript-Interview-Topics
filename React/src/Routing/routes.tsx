@@ -26,6 +26,7 @@ import InfiniteScroll from "../Projects/Infinite-Scroll/infinite.scroll-2";
 import SlideShow from "../Projects/SlideShow";
 import StopWatchComp from "../Projects/StopWatch";
 import ParentForm from "../Projects/React-hook-form/ParentForm";
+import LazyParentComp from "../Projects/CodeSplitting";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -133,5 +134,9 @@ export const routes: {
   {
     routeName: "/stop-watch",
     component: <StopWatchComp />,
+  },
+  {
+    routeName: "code-splitting",
+    component: <LazyParentComp />,
   },
 ];
