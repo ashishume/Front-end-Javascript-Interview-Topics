@@ -9,10 +9,8 @@ starContainer.addEventListener("mouseover", (e) => {
   if (e.target.className === "star-item") {
     const starItem = e.target;
     for (let i = 0; i < childNodesCount; i++) {
-      if (childNodes[i].innerText !== starItem.innerText) {
-        childNodes[i].style.background = highlight;
-      } else {
-        childNodes[i].style.background = highlight;
+      childNodes[i].style.background = highlight;
+      if (childNodes[i].innerText === starItem.innerText) {
         break;
       }
     }
