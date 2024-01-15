@@ -2,17 +2,17 @@ import { ReactElement } from "react";
 import App from "../App";
 import Photo from "../Projects/Tag/Photo";
 import { FolderData } from "../Projects/FolderStructure(Recursive)/FolderData";
-import Input from "../Projects/hooks/customHooks/input";
-import UseCallbackHook from "../Projects/hooks/UseCallback/useCallback";
-import UseContext from "../Projects/hooks/UseContext";
-import Factorial from "../Projects/hooks/useMemo";
-import UseMemo2 from "../Projects/hooks/useMemo2";
-import StopWatch from "../Projects/hooks/useReducer";
-import UseRef from "../Projects/hooks/useRef";
+import Input from "../Projects/Hooks/CustomHooks/input";
+import UseCallbackHook from "../Projects/Hooks/UseCallback/useCallback";
+import UseContext from "../Projects/Hooks/UseContext";
+import Factorial from "../Projects/Hooks/useMemo";
+import UseMemo2 from "../Projects/Hooks/useMemo2";
+import StopWatch from "../Projects/Hooks/useReducer";
+import UseRef from "../Projects/Hooks/useRef";
 import AxiosContainer from "../Projects/Axios";
 import FolderComponent from "../Projects/FolderStructure(Recursive)/FolderComponent";
 import InfiniteScrolls from "../Projects/Infinite-Scroll";
-import Parent from "../Projects/hooks/UseCallback(2nd example)/Parent";
+import Parent from "../Projects/Hooks/UseCallback(2nd example)/Parent";
 import Dashboard from "../Projects/e-commerce/components/dashboard";
 import Cart from "../Projects/e-commerce/containers/cart";
 import FolderStructure from "../Projects/FolderStructure(Recursive)/FolderStructure(Another Example)";
@@ -27,6 +27,7 @@ import SlideShow from "../Projects/SlideShow";
 import StopWatchComp from "../Projects/StopWatch";
 import ParentForm from "../Projects/React-hook-form/ParentForm";
 import LazyParentComp from "../Projects/CodeSplitting";
+import ParentComponent from "../Projects/Hooks/ForwardRef/ParentComponent";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -38,6 +39,10 @@ export const routes: {
   {
     routeName: "/welcome",
     component: <Welcome />,
+  },
+  {
+    routeName: "/forward-ref",
+    component: <ParentComponent />,
   },
   {
     routeName: "/react-hook-form",
