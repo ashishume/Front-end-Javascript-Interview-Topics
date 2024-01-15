@@ -44,3 +44,16 @@ const sumValue = (a, b, c, d) => a + b + c + d;
 const totalSum = curry(sumValue);
 
 // console.log(totalSum(1)(2)(3)(4));
+
+function addSub(...args) {
+  let sum = 0;
+  function curry(...innerArgs) {
+    if (innerArgs.length === 0) return sum;
+    sum += innerArgs.reduce((acc, num) => acc + num, 0);
+    return curry;
+  }
+  return curry(...args);
+}
+
+// Create a currying function which adds all the numbers passed as arguments
+console.log(addSub(1, 2)(3)(4, 5, 6)(7, 9)());
