@@ -28,6 +28,7 @@ import StopWatchComp from "../Projects/StopWatch";
 import ParentForm from "../Projects/React-hook-form/ParentForm";
 import LazyParentComp from "../Projects/CodeSplitting";
 import ParentComponent from "../Projects/Hooks/ForwardRef/ParentComponent";
+import Phone from "../Projects/OTP-login";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -39,6 +40,10 @@ export const routes: {
   {
     routeName: "/welcome",
     component: <Welcome />,
+  },
+  {
+    routeName: "/otp-login",
+    component: <Phone />,
   },
   {
     routeName: "/forward-ref",
