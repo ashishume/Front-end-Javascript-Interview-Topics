@@ -6,12 +6,11 @@ function findNthMaxOccurrence(arr, n) {
     frequencyMap[element] = (frequencyMap[element] || 0) + 1;
   });
 
-  let currentN = 0;
-  let nthMaxElement;
+  const resultArray = [];
 
-  // Find the n-th most occurring element without using sort
-  while (currentN < n) {
+  for (let i = 0; i < n; i++) {
     let maxOccurrences = -1;
+    let nthMaxElement;
 
     for (const key in frequencyMap) {
       if (
@@ -23,19 +22,21 @@ function findNthMaxOccurrence(arr, n) {
       }
     }
 
-    // Set the occurrences of the found element to -1 to avoid recounting
-    frequencyMap[nthMaxElement] = -1;
-
-    currentN++;
+    if (nthMaxElement !== undefined) {
+      resultArray.push(parseInt(nthMaxElement));
+      frequencyMap[nthMaxElement] = -1; // Set occurrences to -1 to avoid recounting
+    } else {
+      break; // Break if no more unique elements
+    }
   }
 
-  // Return the n-th most occurring element
-  return nthMaxElement ? parseInt(nthMaxElement) : undefined;
+  return resultArray;
 }
 
 // Example usage:
 const arr = [1, 4, 5, 1, 1, 4, 1, 4, 3, 3, 3, 3, 3];
-console.log(findNthMaxOccurrence(arr, 1)); // Output: 1
-console.log(findNthMaxOccurrence(arr, 2)); // Output: 4
-console.log(findNthMaxOccurrence(arr, 3)); // Output: 5
-console.log(findNthMaxOccurrence(arr, 4)); // Output: undefined (out of bounds)
+
+console.log(findNthMaxOccurrence(arr, 1)); // Output: 3
+console.log(findNthMaxOccurrence(arr, 2)); // Output: 1
+console.log(findNthMaxOccurrence(arr, 3)); // Output: 4
+console.log(findNthMaxOccurrence(arr, 4)); // Output: 5
