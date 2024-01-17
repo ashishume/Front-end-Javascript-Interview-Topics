@@ -29,6 +29,7 @@ import ParentForm from "../Projects/React-hook-form/ParentForm";
 import LazyParentComp from "../Projects/CodeSplitting";
 import ParentComponent from "../Projects/Hooks/ForwardRef/ParentComponent";
 import Phone from "../Projects/OTP-login";
+import SSRPagination from "../Projects/SSR-Table-Pagination";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -44,6 +45,10 @@ export const routes: {
   {
     routeName: "/otp-login",
     component: <Phone />,
+  },
+  {
+    routeName: "/ssr-pagination",
+    component: <SSRPagination />,
   },
   {
     routeName: "/forward-ref",

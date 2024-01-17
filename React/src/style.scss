@@ -3,11 +3,12 @@
 .container {
   margin-left: 10px;
   .routing-container {
-    font-size: 25px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     .link-routes {
-      padding: 10px 0;
+      padding: 5px 0;
+      display: inline-block;
     }
   }
 }
