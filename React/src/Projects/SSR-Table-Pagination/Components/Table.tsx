@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { ITableData } from "..";
+import { ITableConfig2, ITableData } from "..";
 import { Pagination } from "react-bootstrap";
 
 export interface ITableConfig {
-  tableData: any;
+  tableData: ITableData[];
   pageSize: number;
   pageNo: number;
+  isLoading: boolean;
+  tableConfigData: ITableConfig2[];
   handlePagination: (page: number) => void;
 }
 const TableComp = ({
@@ -14,6 +16,8 @@ const TableComp = ({
   pageSize,
   pageNo,
   handlePagination,
+  isLoading,
+  tableConfigData,
 }: ITableConfig) => {
   const [tableConfig, setTableConfig] = useState<
     {
@@ -22,44 +26,30 @@ const TableComp = ({
     }[]
   >();
 
-  useEffect(() => {
-    if (tableData?.length) {
-      let temp: {
-        key: number;
-        value: string;
-      }[] = [];
-      Object.keys(tableData[0]).forEach((value, i) => {
-        temp.push({
-          key: i,
-          value: value.toLocaleUpperCase(),
-        });
-      });
-      setTableConfig(temp);
-    }
-  }, []);
-
   return (
     <div className="table-container">
       <Table striped bordered hover>
         <thead>
           <tr>
-            {tableConfig &&
-              tableConfig.map(({ key, value }) => {
-                return value !== "ID" ? <td key={key}>{value}</td> : null;
+            {tableConfigData &&
+              tableConfigData.map(({ key, value }) => {
+                return value !== "USERID" ? <td key={key}>{value}</td> : null;
               })}
           </tr>
         </thead>
         <tbody>
-          {tableData &&
+          {!isLoading &&
+            tableData &&
             tableData.map(({ body, id, title, userId }: ITableData) => {
               return (
                 <tr key={id}>
-                  <td>{userId}</td>
+                  <td>{id}</td>
                   <td>{title}</td>
                   <td>{body}</td>
                 </tr>
               );
             })}
+          {isLoading ? <div>Loading...</div> : null}
         </tbody>
       </Table>
       <Pagination>
