@@ -27,7 +27,11 @@ const EnterPhone = ({
 
   return (
     <div className="phone-container">
-      <input type="number" onChange={changePhoneNumber} />
+      <input
+        type="number"
+        placeholder="Enter phone no."
+        onChange={changePhoneNumber}
+      />
       <Button
         onClick={() => submitPhone(phoneData)}
         size="sm"

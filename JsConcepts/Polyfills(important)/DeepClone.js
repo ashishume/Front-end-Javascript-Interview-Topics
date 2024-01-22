@@ -1,22 +1,21 @@
-function cloneDeep(obj, map = new Map()) {
+function cloneDeep(obj) {
   if (obj === null || typeof obj !== "object") {
     return obj;
   }
-
-  if (map.has(obj)) {
-    return map.get(obj);
+  if (Array.isArray(obj)) {
+    const newArray = [];
+    for (let i = 0; i < obj.length; i++) {
+      newArray[i] = cloneDeep(obj[i]);
+    }
+    return newArray;
   }
-
-  const output = Array.isArray(obj) ? [] : {};
-  map.set(obj, output);
-  const keys = [...Object.getOwnPropertySymbols(obj), ...Object.keys(obj)];
-
-  for (const key of keys) {
-    const val = obj[key];
-    output[key] = cloneDeep(val, map);
+  const newObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = cloneDeep(obj[key]);
+    }
   }
-
-  return output;
+  return newObj;
 }
 
 const obj = {
