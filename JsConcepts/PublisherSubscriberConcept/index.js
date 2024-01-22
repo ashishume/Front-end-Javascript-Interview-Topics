@@ -7,57 +7,64 @@
  * depending directly on each other
  */
 class PubSub {
-  /** added a listner object to store all key and value pair functions */
   constructor() {
-    this.listeners = {};
+    this.topics = {};
   }
-
-  /** subscribes to the event
-   * @param eventName event name as key
-   * @param func function as parameter
-   */
-  subscribe(eventName, func) {
-    /** if event name doesnt exist then add empty event name array */
-    if (!this.listeners[eventName]) {
-      this.listeners[eventName] = [];
+  subscribe(topic, callback) {
+    // Create the topic if it doesn't exist
+    if (!this.topics[topic]) {
+      this.topics[topic] = [];
     }
-    //push statement returns the index which we store to a variable and use that for unsubscribe
-    let index = this.listeners[eventName].push(func) - 1;
+
+    this.topics[topic].push(callback);
+
+    // Return a reference to the subscription (useful for unsubscribing)
     return {
-      /** un-subscribes to the event as return statement
-       */
-      unsubscribe: () => {
-        this.listeners[eventName].splice(index, 1);
-      },
+      topic,
+      callback,
     };
   }
 
-  /**
-   * the event to published
-   * @param eventName
-   * @param  args all the arguments to pass in the func
-   */
-  publish(eventName, ...args) {
-    /** if the event name doesnt exist then return */
-    if (!this.listeners[eventName]) return;
+  // Publish to a topic
+  publish(topic, data) {
+    if (!this.topics[topic] && !this.topics[topic]?.length) {
+      return;
+    }
 
-    /** execute the functions passed for the event name one by one */
-    this.listeners[eventName].forEach((func) => {
-      func.apply(null, args);
+    // Notify all subscribers with the provided data
+    this.topics[topic].forEach((callback) => {
+      callback(data);
     });
+  }
+
+  // Unsubscribe from a topic
+  unsubscribe(subscription) {
+    const { topic, callback } = subscription;
+
+    // If the topic exists and has subscribers, remove the specified callback
+    if (this.topics[topic]) {
+      this.topics[topic] = this.topics[topic].filter((val) => val !== callback);
+
+      // If no more subscribers for the topic, remove the topic
+      if (!this.topics[topic].length) {
+        delete this.topics[topic];
+      }
+    }
   }
 }
 
 const pubSub = new PubSub();
 
-let subs;
-
-subs = pubSub.subscribe("activate", (x) => {
-  console.log(x + 1);
-  subs.unsubscribe();
+// Subscribe to a topic
+const subscription = pubSub.subscribe("news", (data) => {
+  console.log("Received news:", data);
 });
-pubSub.publish("activate", 1); //prints 2
-pubSub.publish("activate", 2); //does not print anything as already unsubscribed in line 57
+
+// Publish to the 'news' topic
+pubSub.publish("news", "Breaking news: JavaScript is awesome!");
+
+// Unsubscribe from the topic
+pubSub.unsubscribe(subscription);
 
 // below is a separate concept----------------------------------------
 
