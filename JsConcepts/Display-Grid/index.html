@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        display: grid;
+        background-color: bisque;
+        grid-template-columns: 1fr 1fr 1fr; /** fr means fraction, this defines 3 columns with each having equal distribution */
+        grid-auto-columns: 200px; /** this defines the default size of column   */
+        grid-template-rows: 100px 100px 100px 100px; /** this defines 3 rows with each having equal distribution, 
+                                                          even if there no more child the parent will extend beyond and 
+                                                          extend the rows */
+        grid-auto-rows: 100px; /** this defines the default size of row  */
+      }
+      .container > div {
+        border: solid 1px black;
+      }
+      .another-container {
+        display: grid;
+        height: 90vh;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        row-gap: 5px;
+        column-gap: 5px;
+        grid-template-areas:
+          "header header header"
+          "content content sidebar"
+          "content content sidebar"
+          "footer footer footer";
+      }
+      .child1 {
+        grid-area: header;
+      }
+      .child2 {
+        grid-area: content;
+      }
+      .child3 {
+        grid-area: sidebar;
+      }
+      .child4 {
+        grid-area: footer;
+      }
+
+      .another-container > div {
+        border: solid 1px black;
+      }
+      .third-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100px 100px;
+        grid-auto-rows: 100px;
+      }
+      .content1 {
+        grid-column-start: 1; /* starting point starts with left most edge  */
+        grid-column-end: 3; /* end point is 3 as 2 means half of the column and 3 means end of the grid layout (horizontally)  */
+      }
+      .third-container > div {
+        border: solid 1px black;
+      }
+    </style>
+
+    <div class="third-container">
+      <div class="content1">1</div>
+      <div class="content2">2</div>
+      <div class="content3">3</div>
+      <div class="content4">4</div>
+    </div>
+    <!-- <div class="another-container">
+        <div class="child1">1</div>
+        <div class="child2">2</div>
+        <div class="child3">3</div>
+        <div class="child4">4</div>
+      </div> -->
+    <!-- <div class="container">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item8">8</div>
+        <div class="item9">9</div>
+      </div> -->
+  </body>
+</html>
