@@ -12,25 +12,19 @@ let obj = {
   },
 };
 
-function createObject(obj) {
-  let res = {};
-  function helper(obj, merger = "") {
-    for (let key in obj) {
-      const newKey = merger ? `${merger}.${key}` : key;
-
-      if (typeof obj[key] !== "object") {
-        res[newKey] = obj[key];
-      } else {
-        helper(obj[key], newKey);
-      }
+function flattenObject(object, merger = "", result = {}) {
+  for (let key in object) {
+    const newKey = merger ? `${merger}.${key}` : key;
+    if (typeof object[key] === "object" && object[key]) {
+      flattenObject(object[key], newKey, result);
+    } else {
+      result[newKey] = object[key];
     }
-    return res;
   }
-  helper(obj);
-  return res;
+  return result;
 }
 
-console.log(createObject(obj));
+console.log(flattenObject(obj));
 // expected output:
 // {
 //     Company: 'GeeksforGeeks',

@@ -3,8 +3,12 @@
 // import "./styles.css";
 
 document.getElementById("app").innerHTML = `
-<button>Button</button>
+<button  class="primary" onclick="btnClick(event)">Button</button>
 `;
+
+function btnClick(event) {
+  console.log(event);
+}
 
 function logger1(string) {
   console.log("logger1");
@@ -28,6 +32,9 @@ document.getElementsByTagName("button")[0].addEventListener("click", logger2);
 // document.getElementsByTagName("button")[0].click();
 /** 
 CORRECT OUTPUT:
+
+pointer event (....)
+
 logger1
 promise logger 1
 logger 2
