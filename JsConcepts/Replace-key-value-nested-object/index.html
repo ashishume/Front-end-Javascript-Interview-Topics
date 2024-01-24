@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const nestedObject = {
+        a: {
+          b: {
+            c: 123,
+            d: {
+              e: 456,
+              f: 789,
+            },
+          },
+        },
+        g: {
+          h: 987,
+          i: 654,
+        },
+      };
+
+      function replaceValuefunc(obj, replaceKey, replaceValue) {
+        for (let key in obj) {
+          if (key === replaceKey) {
+            obj[key] = replaceValue;
+          } else {
+            obj[key] = replaceValuefunc(obj[key], replaceKey, replaceValue);
+          }
+        }
+        return obj;
+      }
+
+      console.log(JSON.parse(JSON.stringify(nestedObject)));
+      console.log(replaceValuefunc(nestedObject, "e", 999));
+    </script>
+  </body>
+</html>
