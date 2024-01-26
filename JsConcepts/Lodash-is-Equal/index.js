@@ -1,3 +1,32 @@
+/**
+ * Simpler version for interview purpose.
+ */
+
+function simplerIsEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  if (
+    a === null ||
+    b === null ||
+    typeof a !== "object" ||
+    typeof b !== "object"
+  ) {
+    return false;
+  }
+
+  if (Object.keys(a).length !== Object.keys(b).length) {
+    return false;
+  }
+
+  for (let key in a) {
+    if (!simplerIsEqual(a[key], b[key])) return false;
+  }
+
+  return true;
+}
+
 /** supports data types like:
  * Primitive data types
  * Array, Objects literals, Function
@@ -51,17 +80,17 @@ const a = {
   more: {
     random: "data",
   },
-  array: [1, 2, 3],
-  rand: () => {},
+  // array: [1, 2, 3],
+  // rand: () => {},
 };
 const b = {
   name: "Ashish",
-  array: [1, 2, 3],
+  // array: [1, 2, 3],
   age: 24,
   more: {
     random: "data",
   },
-  rand: () => {},
+  // rand: () => {},
 };
-const res = isEqual(a, b);
+const res = simplerIsEqual(a, b);
 console.log(res);
