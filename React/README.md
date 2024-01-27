@@ -18,3 +18,8 @@
 - useDebugValue()
 - useRef()
 - useLayoutEffect()
+
+## Some random react projects to to understand the advanced react project flow
+
+* https://github.com/idurar/idurar-erp-crm
+* https://github.com/oldboyxx/jira_clone
