@@ -1,4 +1,4 @@
-/** Alternate(polyfill) for getElementsByClassName() */
+/** Polyfill for getElementsByClassName() */
 document.findByClass = function (requiredClass) {
   const root = this.body;
   function search(node) {
@@ -13,5 +13,4 @@ document.findByClass = function (requiredClass) {
   }
   return search(root);
 };
-console.log(document.findByClass("container"));
-
+console.log(document.findByClass("1"));
