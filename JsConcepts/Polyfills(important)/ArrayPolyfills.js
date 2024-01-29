@@ -1,9 +1,12 @@
-const items = [4, 5, 1, 2, 3];
+const items = [1, 2, 3, 4, 5, 6];
 
 /** For each polyfill */
-Array.prototype.customForEach = function (callback) {
+Array.prototype.customForEach = function (callback, thisArg) {
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
   for (let i = 0; i < this.length; i++) {
-    callback(this[i], i, this);
+    callback.call(thisArg, this[i], i, this);
   }
 };
 
@@ -12,25 +15,32 @@ Array.prototype.customForEach = function (callback) {
 // });
 
 /** polyfill for map */
-Array.prototype.customMap = function (callback) {
-  let arr = [];
-  for (let i = 0; i < this.length; i++) {
-    arr.push(callback(this[i], i, this));
+Array.prototype.customMap = function (callback, thisArg) {
+  if (this == null) {
+    throw new TypeError("this is null or not defined");
   }
-  return arr;
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+  let mappedArray = [];
+  for (let i = 0; i < this.length; i++) {
+    mappedArray.push(callback.call(thisArg, this[i], i, this));
+  }
+  return mappedArray;
 };
 
-//  items.customMap((value) => {
+// const res = items.customMap((value) => {
 //   return value + 1;
 // });
+// console.log(res);
 
 /** polyfill for filter
  * @param context is optional
  */
-Array.prototype.customFilter = function (callback, context) {
+Array.prototype.customFilter = function (callback, thisArgs) {
   let arr = [];
   for (let i = 0; i < this.length; i++) {
-    if (callback.call(context, this[i], i, this)) {
+    if (callback.call(thisArgs, this[i], i, this)) {
       arr.push(this[i]);
     }
   }
@@ -38,37 +48,38 @@ Array.prototype.customFilter = function (callback, context) {
 };
 
 // const a = items.customFilter((value) => value < 4);
+// console.log(a);
 
 /** polyfill for reduce
  * @param context is optional
  */
-Array.prototype.customReduce = function (callback, initialValue, context) {
-  let accumulator = initialValue || undefined;
-
-  for (let i = 0; i < this.length; i++) {
+Array.prototype.customReduce = function (callback, initialValue) {
+  let accumulator = initialValue || undefined || Object(this)[0];
+  for (let i = initialValue !== undefined ? 0 : 1; i < this.length; i++) {
     if (accumulator !== undefined) {
-      accumulator = callback.call(context, accumulator, this[i], i, this);
+      accumulator = callback.call(undefined, accumulator, this[i], i, this);
     } else {
       accumulator = this[i];
     }
   }
-
   return accumulator;
 };
+
+// const a = items.customReduce((total, value) => total + value);
+// console.log(a);
 
 /** polyfill for find
  * @param context is optional
  */
 Array.prototype.customFind = function (callback, context) {
   for (let i = 0; i < this.length; i++) {
-    if (callback(this[i], i, this)) {
+    if (callback.call(context, this[i], i, this)) {
       return this[i];
     }
   }
 };
 
 // const a = items.customFind((val) => val === 3);
-
 // console.log(a);
 
 /** polyfill for indexOf()
@@ -90,7 +101,7 @@ Array.prototype.customIndexOf = function (value, context) {
  */
 Array.prototype.customSome = function (callback, context) {
   for (let i = 0; i < this.length; i++) {
-    if (callback(this[i], i, this)) return true;
+    if (callback.call(context, this[i], i, this)) return true;
   }
   return false;
 };
@@ -103,7 +114,7 @@ Array.prototype.customSome = function (callback, context) {
  */
 Array.prototype.customEvery = function (callback, context) {
   for (let i = 0; i < this.length; i++) {
-    if (!callback(this[i], i, this)) return false;
+    if (!callback.call(context, this[i], i, this)) return false;
   }
   return true;
 };
