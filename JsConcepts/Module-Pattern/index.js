@@ -1,3 +1,8 @@
+/**
+ * The module pattern is a design pattern in JavaScript that allows you to group related 
+ * variables and functions together into a single object. 
+ * This can be useful for organizing your code and making it more reusable.
+ */
 const module = (function () {
   function privateMethod() {
     return "private method";

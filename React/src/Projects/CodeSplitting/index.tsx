@@ -1,5 +1,4 @@
 import { Suspense, lazy, useState } from "react";
-import "./lazyComp";
 
 function isDelayCheck(callback: any) {
       return new Promise((resolve) => {

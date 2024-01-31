@@ -30,6 +30,11 @@ import LazyParentComp from "../Projects/CodeSplitting";
 import ParentComponent from "../Projects/Hooks/ForwardRef/ParentComponent";
 import Phone from "../Projects/OTP-login";
 import SSRPagination from "../Projects/SSR-Table-Pagination";
+import ReduxIndex from "../Projects/Redux";
+import { Provider } from "react-redux";
+import reduxStore from "../Projects/Redux/store";
+import reduxSliceStore from "../Projects/Redux-Slices/store";
+import ReduxSliceIndex from "../Projects/Redux-Slices";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -41,6 +46,22 @@ export const routes: {
   {
     routeName: "/welcome",
     component: <Welcome />,
+  },
+  {
+    routeName: "/redux",
+    component: (
+      <Provider store={reduxStore}>
+        <ReduxIndex />,
+      </Provider>
+    ),
+  },
+  {
+    routeName: "/redux-slice",
+    component: (
+      <Provider store={reduxSliceStore}>
+        <ReduxSliceIndex />,
+      </Provider>
+    ),
   },
   {
     routeName: "/otp-login",
