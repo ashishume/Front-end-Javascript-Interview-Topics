@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { Button, FormControl } from "react-bootstrap";
-import ChildComponent from "./ChildComponent";
 
 const ParentComponent = () => {
   const childRef = useRef();
@@ -22,5 +26,23 @@ const ParentComponent = () => {
     </div>
   );
 };
+
+/** forward ref is defined as we need to pass the ref of input field to parent  */
+export const ChildComponent = forwardRef((props, ref) => {
+  const childRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    focusChild: () => {
+      (childRef.current as any).focus();
+    },
+    getValue: () => {
+      return (childRef.current as any).value;
+    },
+  }));
+
+  return (
+    <FormControl ref={childRef} placeholder="Start typing..."></FormControl>
+  );
+});
 
 export default ParentComponent;
