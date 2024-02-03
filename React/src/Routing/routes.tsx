@@ -20,8 +20,8 @@ import Pagination from "../Projects/Pagination";
 import Welcome from "../Projects/Authentication/welcome";
 import Login from "../Projects/Authentication";
 import EMICalculator from "../Projects/EMI-Calculator";
-import WhyDidYouUpdateCustomHook from "../Projects/useWhyDidYouUpdate-hook";
-import UseCopyHook from "../Projects/useCopyHooks";
+import WhyDidYouUpdateCustomHook from "../Projects/hooks/useWhyDidYouUpdate-hook";
+import UseCopyHook from "../Projects/hooks/useCopyHooks";
 import InfiniteScroll from "../Projects/Infinite-Scroll/infinite.scroll-2";
 import SlideShow from "../Projects/SlideShow";
 import StopWatchComp from "../Projects/StopWatch";
@@ -35,6 +35,8 @@ import { Provider } from "react-redux";
 import reduxStore from "../Projects/Redux/store";
 import reduxSliceStore from "../Projects/Redux-Slices/store";
 import ReduxSliceIndex from "../Projects/Redux-Slices";
+import Languagei18next from "../Projects/i18n-accessiblity";
+import TableSorting from "../Projects/Table-with-sorting";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -46,6 +48,14 @@ export const routes: {
   {
     routeName: "/welcome",
     component: <Welcome />,
+  },
+  {
+    routeName: "/i18next",
+    component: <Languagei18next />,
+  },
+  {
+    routeName: "/table-with-sorting",
+    component: <TableSorting />,
   },
   {
     routeName: "/redux",
