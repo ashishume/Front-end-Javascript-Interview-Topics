@@ -41,27 +41,16 @@ export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
-  {
-    routeName: "/",
-    component: <App />,
-  },
-  {
-    routeName: "/welcome",
-    component: <Welcome />,
-  },
-  {
-    routeName: "/i18next",
-    component: <Languagei18next />,
-  },
-  {
-    routeName: "/table-with-sorting",
-    component: <TableSorting />,
-  },
+  { routeName: "/", component: <App /> },
+  { routeName: "/welcome", component: <Welcome /> },
+  { routeName: "/i18next", component: <Languagei18next /> },
+  { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
+  { routeName: "/table-with-sorting", component: <TableSorting /> },
   {
     routeName: "/redux",
     component: (
       <Provider store={reduxStore}>
-        <ReduxIndex />,
+        <ReduxIndex />
       </Provider>
     ),
   },
@@ -69,120 +58,41 @@ export const routes: {
     routeName: "/redux-slice",
     component: (
       <Provider store={reduxSliceStore}>
-        <ReduxSliceIndex />,
+        <ReduxSliceIndex />
       </Provider>
     ),
   },
-  {
-    routeName: "/otp-login",
-    component: <Phone />,
-  },
-  {
-    routeName: "/ssr-pagination",
-    component: <SSRPagination />,
-  },
-  {
-    routeName: "/forward-ref",
-    component: <ParentComponent />,
-  },
-  {
-    routeName: "/react-hook-form",
-    component: <ParentForm />,
-  },
-  {
-    routeName: "/login",
-    component: <Login />,
-  },
-  {
-    routeName: "/use-callback",
-    component: <UseCallbackHook />,
-  },
+  { routeName: "/otp-login", component: <Phone /> },
+  { routeName: "/forward-ref", component: <ParentComponent /> },
+  { routeName: "/react-hook-form", component: <ParentForm /> },
+  { routeName: "/login", component: <Login /> },
+  { routeName: "/use-callback", component: <UseCallbackHook /> },
   {
     routeName: "/nested-folder",
     component: <FolderComponent explorer={FolderData} />,
   },
-  {
-    routeName: "/use-memo",
-    component: <Factorial />,
-  },
-  {
-    routeName: "/use-memo2",
-    component: <UseMemo2 />,
-  },
-  {
-    routeName: "/use-reducer",
-    component: <StopWatch />,
-  },
-  {
-    routeName: "/photo-tagging",
-    component: <Photo />,
-  },
-  {
-    routeName: "/context-api",
-    component: <UseContext />,
-  },
-  {
-    routeName: "/store",
-    component: <Dashboard />,
-  },
-  {
-    routeName: "/store/cart",
-    component: <Cart />,
-  },
-  {
-    routeName: "/use-ref",
-    component: <UseRef />,
-  },
-  {
-    routeName: "/custom-hooks",
-    component: <Input />,
-  },
-  {
-    routeName: "/infinite-scroll",
-    component: <InfiniteScrolls />,
-  },
-  {
-    routeName: "/infinite-scroll-2",
-    component: <InfiniteScroll />,
-  },
-  {
-    routeName: "/rendering",
-    component: <Parent />,
-  },
-  {
-    routeName: "/axios",
-    component: <AxiosContainer />,
-  },
-  {
-    routeName: "/folder-structure-2",
-    component: <FolderStructure />,
-  },
-  {
-    routeName: "/pagination",
-    component: <Pagination />,
-  },
-  {
-    routeName: "/emi-calculator",
-    component: <EMICalculator />,
-  },
+  { routeName: "/use-memo", component: <Factorial /> },
+  { routeName: "/use-memo2", component: <UseMemo2 /> },
+  { routeName: "/use-reducer", component: <StopWatch /> },
+  { routeName: "/photo-tagging", component: <Photo /> },
+  { routeName: "/context-api", component: <UseContext /> },
+  { routeName: "/store", component: <Dashboard /> },
+  { routeName: "/store/cart", component: <Cart /> },
+  { routeName: "/use-ref", component: <UseRef /> },
+  { routeName: "/custom-hooks", component: <Input /> },
+  { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
+  { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
+  { routeName: "/rendering", component: <Parent /> },
+  { routeName: "/axios", component: <AxiosContainer /> },
+  { routeName: "/folder-structure-2", component: <FolderStructure /> },
+  { routeName: "/pagination", component: <Pagination /> },
+  { routeName: "/emi-calculator", component: <EMICalculator /> },
   {
     routeName: "/why-did-you-update-custom-hook",
     component: <WhyDidYouUpdateCustomHook />,
   },
-  {
-    routeName: "/use-copy-custom-hook",
-    component: <UseCopyHook />,
-  },
-  {
-    routeName: "/slide-show",
-    component: <SlideShow />,
-  },
-  {
-    routeName: "/stop-watch",
-    component: <StopWatchComp />,
-  },
-  {
-    routeName: "code-splitting",
-    component: <LazyParentComp />,
-  },
+  { routeName: "/use-copy-custom-hook", component: <UseCopyHook /> },
+  { routeName: "/slide-show", component: <SlideShow /> },
+  { routeName: "/stop-watch", component: <StopWatchComp /> },
+  { routeName: "code-splitting", component: <LazyParentComp /> },
 ];
