@@ -37,6 +37,9 @@ import reduxSliceStore from "../Projects/Redux-Slices/store";
 import ReduxSliceIndex from "../Projects/Redux-Slices";
 import Languagei18next from "../Projects/i18n-accessiblity";
 import TableSorting from "../Projects/Table-with-sorting";
+import ErrorBoundaryComponent from "../Projects/HOOKS(React)/useErrorBoundary";
+
+
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -63,6 +66,7 @@ export const routes: {
     ),
   },
   { routeName: "/otp-login", component: <Phone /> },
+  { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
   { routeName: "/react-hook-form", component: <ParentForm /> },
   { routeName: "/login", component: <Login /> },
