@@ -38,6 +38,7 @@ import ReduxSliceIndex from "../Projects/Redux-Slices";
 import Languagei18next from "../Projects/i18n-accessiblity";
 import TableSorting from "../Projects/Table-with-sorting";
 import ErrorBoundaryComponent from "../Projects/HOOKS(React)/useErrorBoundary";
+import ParentClassComponent from "../Projects/React-Class-based-comp";
 
 
 export const routes: {
@@ -65,6 +66,7 @@ export const routes: {
       </Provider>
     ),
   },
+  { routeName: "/react-class", component: <ParentClassComponent /> },
   { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
