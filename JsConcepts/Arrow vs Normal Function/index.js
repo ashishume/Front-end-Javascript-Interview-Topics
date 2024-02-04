@@ -32,7 +32,8 @@ Normal function =>
 Arrow function => 
 1. new keyword cannot be used to call the functions
 2. "arguments" doesnt work in normal function instead ...args can be used to access the arguments
-3. they dont have their own "this", i.e. even if we pass the context, it will show the global 'this'
+3. they dont have their own "this", i.e. even if we pass the context, it will show the global 'this' 
+   or their immidiate parent context
 */
 
 // NormalFunc.call({ a: "Ashish" }, 81, 82);
@@ -41,11 +42,21 @@ Arrow function =>
 /**
  * 
  * Difference between Function constructor and function declaration?
-Functions created with the Function constructor do not create closures to their 
-creation contexts; they always are created in the global scope. When running them, 
-they will only be able to access their own local variables and global ones, not 
-the ones from the scope in which the Function constructor was created
- */
+function declaration is simple function 
+function myFunction() {}
+
+
+Function Constructor:
+
+The Function constructor is a way to create functions dynamically using the new Function syntax:
+
+const myFunction = new Function("arg1", "arg2", "return arg1 + arg2;");
+
+Function constructor calls are not hoisted. You cannot call the function before it's defined in the code.
+*/
+
+// this is function constructor
+// const res = new Function("a", "b", "return a+b");
 
 const x = 10;
 function createFunction1() {
