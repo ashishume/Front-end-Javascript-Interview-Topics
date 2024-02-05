@@ -63,7 +63,7 @@ const Photo = () => {
       <div className="container">
         <img
           onClick={clickEventHandler as any}
-          src={require("../../../assets/stock.jpg")}
+          src={require("../../assets/stock.jpg")}
           alt="stock"
           style={{ cursor: "pointer" }}
           width="700"
