@@ -40,6 +40,7 @@ import TableSorting from "../Table-with-sorting";
 import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
 import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
+import DyamicFolder from "../FolderStructure(Dynamic)/parent";
 
 
 export const routes: {
@@ -68,6 +69,7 @@ export const routes: {
     ),
   },
   { routeName: "/react-class", component: <ParentClassComponent /> },
+  { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },
   { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
