@@ -3,7 +3,7 @@ Function.prototype.myBind = function (context = {}, ...args) {
     throw new Error(this + "this is not callable");
   }
   context.func = this; //pass the context into new function 'func'
-  return function (...newArgs) {
+  return (...newArgs) => {
     //returning the function instead of calling it,
     //so user can call the function later
     return context.func(...args, ...newArgs);
@@ -35,4 +35,4 @@ Function.prototype.myApply = function (context = {}, args = []) {
 // function testFunction() {
 //   console.log("hey ashish");
 // }
-// console.log(testFunction.myBind(person));
+// console.log(testFunction.myBind(person)());
