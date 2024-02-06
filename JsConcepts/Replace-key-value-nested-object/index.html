@@ -36,6 +36,39 @@
 
       console.log(JSON.parse(JSON.stringify(nestedObject)));
       console.log(replaceValuefunc(nestedObject, "e", 999));
+
+      //       {
+      //     "a": {
+      //         "b": {
+      //             "c": 123,
+      //             "d": {
+      //                 "e": 456,   // value to be replaced
+      //                 "f": 789
+      //             }
+      //         }
+      //     },
+      //     "g": {
+      //         "h": 987,
+      //         "i": 654
+      //     }
+      // }
+
+      // new output
+      //       {
+      //     "a": {
+      //         "b": {
+      //             "c": 123,
+      //             "d": {
+      //                 "e": 999,  // new value replaced with 456
+      //                 "f": 789
+      //             }
+      //         }
+      //     },
+      //     "g": {
+      //         "h": 987,
+      //         "i": 654
+      //     }
+      // }
     </script>
   </body>
 </html>
