@@ -39,6 +39,7 @@ import Languagei18next from "../i18n-accessiblity";
 import TableSorting from "../Table-with-sorting";
 import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
 import ParentClassComponent from "../React-Class-based-comp";
+import PureClassBasedComponent from "../Pure-Components";
 
 
 export const routes: {
@@ -67,6 +68,7 @@ export const routes: {
     ),
   },
   { routeName: "/react-class", component: <ParentClassComponent /> },
+  { routeName: "/pure-component", component: <PureClassBasedComponent /> },
   { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
