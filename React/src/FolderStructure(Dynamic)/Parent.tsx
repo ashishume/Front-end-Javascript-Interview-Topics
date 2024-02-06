@@ -68,7 +68,7 @@ export default function DyamicFolder() {
         if (item?.id === selected?.id) {
           selected.children.push({
             type: "file",
-            id: 9999, // here uuid generator is req
+            id: Math.floor(Math.random() * (10000 - 0 + 1)) + 0, // here uuid generator is req
             name: fileName,
           });
           setFileData(null);
@@ -85,17 +85,25 @@ export default function DyamicFolder() {
   };
 
   const handleRemoveItem = (items: any, itemToRemove: any) => {
-    let result = items;
-    result.forEach((item: any) => {
-      if (Array.isArray(item?.children)) {
-        item.children = item?.children.filter((child: any) => {
-          return child.id !== itemToRemove?.id;
+    function removeFromChildren(items: any, itemToRemove: any) {
+      const index = items?.findIndex(
+        (child: any) => child?.id === itemToRemove.id
+      );
+      if (index !== -1) {
+        items.splice(index, 1);
+      } else {
+        items?.forEach((child: any) => {
+          if (child.type === "folder") {
+            removeFromChildren(child.children, itemToRemove);
+          }
         });
       }
-    });
+      return items;
+    }
 
+    const res = removeFromChildren(items, itemToRemove);
     setItems({
-      data: result,
+      data: res,
     });
   };
 
@@ -114,13 +122,13 @@ export default function DyamicFolder() {
         </form>
       ) : null}
       {items?.data &&
-        items?.data.map((item:any) => {
+        items?.data.map((item: any) => {
           return (
             <FolderComp
               key={item.id}
               item={item}
               handleAddItem={handleAddItem}
-              handleRemoveItem={(e:any) => handleRemoveItem(items?.data, e)}
+              handleRemoveItem={(e: any) => handleRemoveItem(items?.data, e)}
             />
           );
         })}

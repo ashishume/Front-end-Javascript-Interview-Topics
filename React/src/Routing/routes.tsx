@@ -40,7 +40,7 @@ import TableSorting from "../Table-with-sorting";
 import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
 import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
-import DyamicFolder from "../FolderStructure(Dynamic)/parent";
+import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 
 
 export const routes: {
