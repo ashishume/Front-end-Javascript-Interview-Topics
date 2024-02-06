@@ -16,13 +16,15 @@ https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-
 
 // All `thenable`(Promise) callbacks of the promise are called first, then the setTimeout callback is called.
 
-// Job Queue has high priority in executing callbacks, if event loop tick comes to Job Queue, it will execute all the jobs in job queue
+// Job Queue has high priority in executing callbacks, if event loop tick comes to Job Queue, it will execute all the 
+//jobs in job queue
 // first until it gets empty, then will move to callback queue.
 
 /* Priority
  1. Main stack execution   // all kind of task execution
  2. Job Queue (also called microtask queue) // only reserved for Promises
-    EXAMPLES: Mircotasks include: MutationObserver, Promise.then() and Promise.catch(), other techniques based on Promise such as the fetch API, V8 garbage collection process, process.nextTick() in node environment.
+    EXAMPLES: Mircotasks include: MutationObserver, Promise.then() and Promise.catch(), other techniques based on Promise such 
+    as the fetch API, V8 garbage collection process, process.nextTick() in node environment.
  3. Callback queue (task queue)   //settimeout (all kinds of web APIs)
  */
 
