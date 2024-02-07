@@ -1,53 +1,25 @@
 /** Refer this link for more details: https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/ */
 
 
-# URL Parsing:
-The browser breaks down the URL into components like protocol (HTTP/HTTPS), 
-domain (e.g., www.example.com), and path (the specific resource).
+The rendering process of a web page in a browser involves several steps:
+
+# HTML Parsing:  (DOM content loading)
+- The browser begins by fetching the HTML content of the web page from the server. Once the HTML is received, the browser parses it into a DOM (Document Object Model) tree. The DOM represents the structure of the web page, with each HTML element becoming a node in the tree.
+
+# CSS Parsing and Styling: (parsing CSSOM)
+- After parsing the HTML, the browser fetches and parses any linked CSS files or inline styles. This process generates a CSSOM (CSS Object Model), which represents the styles applied to each element in the DOM tree. The browser then computes the final styles for each element by resolving conflicts, applying inheritance, and calculating specificity.
+
+# Rendering Tree Construction:  (Combining of CSSOM and DOM)
+- Next, the browser combines the DOM tree and CSSOM to create a rendering tree, also known as the render tree. The rendering tree contains only the elements that will be displayed on the screen, along with their styles and layout information. Elements that are hidden or not rendered, such as those inside head or script tags, are excluded from the rendering tree.
 
 
-# DNS Resolution:
-The browser queries a DNS server to obtain the IP address associated with the 
-domain name. This step is crucial for establishing a connection to the server.
+# Layout (Reflow): (forms Layout and browser makes calculation of each element)
+- With the rendering tree constructed, the browser calculates the layout or geometry of each element on the page. This process, also called reflow or layout, determines the size and position of each element relative to the viewport. Changes to the layout of one element may trigger reflows of other elements, impacting performance.
 
+# Painting: (browser starts painting the on the screen)
+- Once the layout is computed, the browser proceeds to paint the content of the rendering tree onto the screen. This involves drawing pixels for each visible element, applying styles, colors, borders, backgrounds, and other visual properties. The painting process is typically optimized for speed to ensure smooth rendering performance.
 
-# HTTP Request:
-Using the IP address, the browser sends an HTTP request to the server. 
-This request contains information like the method (GET, POST, etc.), headers, 
-and may include additional data.
+# Compositing: (browser finally presents visual of webpage)
+- In the final stage, the browser combines the painted layers to create the complete visual representation of the web page. This process, known as compositing, involves stacking and blending the layers to produce the final image displayed to the user. Modern browsers often use hardware acceleration and GPU (Graphics Processing Unit) rendering to optimize compositing performance.
 
-
-# Server Processing:
-The server receives the request, processes it, and returns the requested resource. 
-This could be an HTML file, which is the starting point for rendering the webpage.
-
-
-# HTML Parsing:
-The browser parses the HTML document, creating a DOM tree that represents the 
-structure of the page. This tree consists of elements like headings, paragraphs, and other HTML tags.
-
-
-# CSS Styling:
-External CSS files are fetched and parsed. The styles defined in these files are applied 
-to the corresponding elements in the DOM, creating a styled DOM.
-
-
-# JavaScript Execution:
-If there are JavaScript scripts in the HTML, the browser executes them. 
-These scripts can manipulate the DOM, handle events, and make dynamic updates to the page.
-
-
-# Rendering the Page:
-The browser combines the styled DOM and executes layout computations to determine the position and size of each element. 
-It then paints the pixels on the screen accordingly.
-
-
-# Rendering Updates:
-Any changes to the DOM triggered by user interactions or dynamic content (e.g., AJAX requests) 
-lead to updates in the Render Tree. The browser re-renders affected portions of the page.
-
-
-# Displaying the Page:
-The final rendered page is displayed on the user's screen, 
-combining HTML, CSS, and JavaScript to create the interactive and 
-visually appealing web experience.
+- Throughout this rendering process, browsers may employ various optimizations, such as caching, lazy loading, and incremental rendering, to improve the speed and efficiency of page rendering. Additionally, browser extensions, plugins, and user preferences can also influence the rendering behavior and appearance of web pages.
