@@ -25,3 +25,47 @@ console.log(longestPrefix(arr));
 3. debounce handler method 
 
  */
+
+// <style>
+// #outer {
+//   height: 200px;
+//   width: 500px;
+//   border: solid 1px black;
+// }
+// #inner {
+//   height: 200px;
+//   width: 300px;
+//   border: solid 1px black;
+// }
+// #btn {
+//   height: 200px;
+//   border: solid 1px black;
+//   width: 200px;
+// }
+// </style>
+// <div id="outer">
+// <div id="inner">
+//   <button id="btn">Click me</button>
+// </div>
+// </div>
+// <script>
+// document.getElementById("outer").addEventListener(
+//   "click",
+//   function () {
+//     console.log("Outer Div Clicked");
+//   },
+//   true
+// );
+
+// document.getElementById("inner").addEventListener(
+//   "click",
+//   function () {
+//     console.log("Inner Div Clicked");
+//   },
+//   false
+// );
+
+// document.getElementById("btn").addEventListener("click", function () {
+//   console.log("Button Clicked");
+// });
+// </script>
