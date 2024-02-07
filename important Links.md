@@ -1,2 +1,0 @@
-- How DOM and CSSOM works in browser
-https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969#:~:text=Unlike%20DOM%20API%20which%20gives,on%20the%20DOM%20element%20itself.

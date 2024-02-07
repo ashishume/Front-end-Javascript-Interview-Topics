@@ -1,6 +1,6 @@
 # Front-end JavaScript Programs
 
-Welcome to the Front-end JavaScript Programs repository! This repository contains a collection of questions and code related to JavaScript and React.
+Welcome to the Front-end JavaScript Programs repository! This repository contains a collection of questions and code related to JavaScript and React which are essential for interviews
 
 ## Table of Contents
 
@@ -9,6 +9,7 @@ Welcome to the Front-end JavaScript Programs repository! This repository contain
 - Javascript experience questions
 - JS co concepts
 - React questions
+- Design patterns (important ones)
 
 ## Introduction
 
@@ -33,7 +34,7 @@ To get started with this repository, follow these steps:
    ```bash
    git clone https://github.com/ashishume/Front-end-Javascript-Programs.git
 
-## All codes and examples where contributed by
+## All codes and examples where contributed by (from interview experience)
 
 - Ashish Debnath (ashishume@gmail.com)
 
