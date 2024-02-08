@@ -41,6 +41,7 @@ import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
 import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
 import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
+import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
 
 
 export const routes: {
@@ -105,4 +106,5 @@ export const routes: {
   { routeName: "/slide-show", component: <SlideShow /> },
   { routeName: "/stop-watch", component: <StopWatchComp /> },
   { routeName: "code-splitting", component: <LazyParentComp /> },
+  { routeName: "use-layout-effect", component: <UseLayoutEffectHook /> },
 ];
