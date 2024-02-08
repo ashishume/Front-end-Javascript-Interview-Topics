@@ -8,7 +8,7 @@ module.exports = {
     //hot reload gives us the functionality to update state without updating the whole component (no refresh => when set to true)
     hot: false,
     open: true,
-    port: 3000,
+    port: 3001,
     historyApiFallback: {
       disableDotRule: true,
     },
