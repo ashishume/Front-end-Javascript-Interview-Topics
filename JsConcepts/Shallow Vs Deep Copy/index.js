@@ -35,6 +35,9 @@ variable
 
 */
 
+// one more key difference why cloneDeep is superior over JSON.parse(JSON.stringify(object)) is that
+// it handles circular references or non-JSON-serializable values like functions or undefined.
+
 copiedData.address.state = "Karnataka"; //original gets modified because of shallow copy
 
 const animal = {
