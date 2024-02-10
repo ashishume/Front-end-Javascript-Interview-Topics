@@ -46,19 +46,32 @@ const NestedCheckbox = () => {
   const handleCheckedItem = (data: any, checked: boolean, item: any) => {
     let res = null;
 
-    item.checked = checked;
-    res = data.map((value: any) => {
-      if (value.id === item.id) {
-        return {
-          ...value,
-          ...item,
-        };
+    const utilHelper = (data: any, checked: boolean, item: any) => {
+      if (!item.children) {
+        item.checked = checked;
+      } else {
+        /** check all the children as well when parent is clicked */
+        item.checked = checked;
+        item.children.forEach((child: any) => {
+          child.checked = checked;
+        });
       }
-      if (value?.children) {
-        handleCheckedItem(value.children, checked, item);
-      }
-      return value;
-    });
+      /** loop through nested children if any child is clicked */
+      res = data.map((value: any) => {
+        if (value.id === item.id) {
+          return {
+            ...value,
+            ...item,
+          };
+        }
+        if (value?.children) {
+          utilHelper(value.children, checked, item);
+        }
+        return value;
+      });
+    };
+
+    utilHelper(data, checked, item);
     setCheckedStateData(res);
   };
 
