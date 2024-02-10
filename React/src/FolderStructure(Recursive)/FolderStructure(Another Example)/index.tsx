@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import data from "./data.json";
+
 const TreeItem = ({ item }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,3 +29,88 @@ export default function App() {
     </div>
   );
 }
+
+const data = {
+  data: [
+    {
+      label: "Chooky",
+      id: 1,
+      children: [
+        {
+          label: "Wendy",
+          id: 2,
+        },
+        {
+          label: "Natsu",
+          id: 3,
+        },
+        {
+          label: "Lufy",
+          id: 4,
+          children: [
+            {
+              label: "Yaga",
+              id: 5,
+              children: [
+                {
+                  label: "Pinocchio",
+                  id: 6,
+                },
+                {
+                  label: "Lucy",
+                  id: 7,
+                },
+                {
+                  label: "Jack",
+                  id: 8,
+                  children: [
+                    {
+                      label: "Tinker Bell",
+                      id: 9,
+                    },
+                    {
+                      label: "Yesta",
+                      id: 10,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "",
+          id: 11,
+        },
+      ],
+    },
+    {
+      label: "Juvia",
+      id: 12,
+    },
+    {
+      label: "Fairy",
+      id: 13,
+      children: [
+        {
+          label: "Hag",
+          id: 14,
+          children: [
+            {
+              label: "Geppetto",
+              id: 15,
+            },
+            {
+              label: "Erza",
+              id: 16,
+            },
+            {
+              label: "Ariel",
+              id: 17,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
