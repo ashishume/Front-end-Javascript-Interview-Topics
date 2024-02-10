@@ -43,6 +43,7 @@ import PureClassBasedComponent from "../Pure-Components";
 import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
 import NestedCheckbox from "../Checkbox-Nested";
+import DynamicForm from "../Dynamic-Input-Form";
 
 
 export const routes: {
@@ -52,6 +53,7 @@ export const routes: {
   { routeName: "/", component: <App /> },
   { routeName: "/welcome", component: <Welcome /> },
   { routeName: "/i18next", component: <Languagei18next /> },
+  { routeName: "/dynamic-form", component: <DynamicForm /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   { routeName: "/table-with-sorting", component: <TableSorting /> },
   {
