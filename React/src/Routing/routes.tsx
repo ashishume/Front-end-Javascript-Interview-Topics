@@ -42,6 +42,7 @@ import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
 import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
+import NestedCheckbox from "../Checkbox-Nested";
 
 
 export const routes: {
@@ -69,6 +70,7 @@ export const routes: {
       </Provider>
     ),
   },
+  { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
   { routeName: "/react-class", component: <ParentClassComponent /> },
   { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },
