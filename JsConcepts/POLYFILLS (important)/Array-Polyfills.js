@@ -1,12 +1,12 @@
 const items = [1, 2, 3, 4, 5, 6];
 
 /** For each polyfill */
-Array.prototype.customForEach = function (callback, thisArg) {
+Array.prototype.customForEach = function (callback, context) {
   if (typeof callback !== "function") {
     throw new TypeError(callback + " is not a function");
   }
   for (let i = 0; i < this.length; i++) {
-    callback.call(thisArg, this[i], i, this);
+    callback.call(context, this[i], i, this);
   }
 };
 
@@ -15,7 +15,7 @@ Array.prototype.customForEach = function (callback, thisArg) {
 // });
 
 /** polyfill for map */
-Array.prototype.customMap = function (callback, thisArg) {
+Array.prototype.customMap = function (callback, context) {
   if (this == null) {
     throw new TypeError("this is null or not defined");
   }
@@ -24,7 +24,7 @@ Array.prototype.customMap = function (callback, thisArg) {
   }
   let mappedArray = [];
   for (let i = 0; i < this.length; i++) {
-    mappedArray.push(callback.call(thisArg, this[i], i, this));
+    mappedArray.push(callback.call(context, this[i], i, this));
   }
   return mappedArray;
 };
@@ -37,10 +37,10 @@ Array.prototype.customMap = function (callback, thisArg) {
 /** polyfill for filter
  * @param context is optional
  */
-Array.prototype.customFilter = function (callback, thisArgs) {
+Array.prototype.customFilter = function (callback, context) {
   let arr = [];
   for (let i = 0; i < this.length; i++) {
-    if (callback.call(thisArgs, this[i], i, this)) {
+    if (callback.call(context, this[i], i, this)) {
       arr.push(this[i]);
     }
   }
