@@ -1,3 +1,58 @@
+// Q. Diff bw throttling and debouncing is
+
+//Solution :
+// 1. Debouncing makes the a delay in api call whereas throttling ignores all the previous
+//key press that occured
+
+//e.g Debouncing:- Samsung...(api call made)  //when user stops typing then only api call is made
+//Throttling:- Sams..ung... (api call started from ..ung...) //startes api call when the delay is finised
+
+/**
+ * New debouncing method (better readability) (updated 2022)
+ */
+
+const myDebounce = (functions, delay) => {
+  let timer;
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      functions.apply(this, args);
+      // functions.call(this, ...args); we can use both call or apply
+    }, delay);
+  };
+};
+
+const clickNewDebounce = myDebounce(() => {
+  console.log("clicked");
+}, 500);
+
+/** Throttle */
+const myThrottle = (callback, delay) => {
+  let isThrottled = false;
+  return (...args) => {
+    if (!isThrottled) {
+      // Execute the callback immediately if not throttled
+      callback.apply(this, args);
+      // functions.call(this, ...args); we can use both call or apply
+
+      isThrottled = true;
+      // Set a timeout to reset the throttle flag after the delay
+      setTimeout(() => {
+        isThrottled = false;
+      }, delay);
+    }
+  };
+};
+
+// Example usage:
+const throttledScrollHandler = myThrottle(() => {
+  console.log("Scrolled!");
+}, 1000); // Throttle to once per second
+
+window.addEventListener("scroll", throttledScrollHandler);
+
+// ----------------------------------------------------
+
 let counter1 = 0;
 let counter2 = 0;
 const getData = () => {
@@ -67,30 +122,3 @@ const debounceWithoutSetTimeout = (func, delay) => {
 };
 
 const throttle = throttleHandler(getDataT, 500); // as soon as the 500ms passes it makes the api call
-
-// Q. Diff bw throttling and debouncing is
-
-//Solution :
-// 1. Debouncing makes the a delay in api call whereas throttling ignores all the previous
-//key press that occured
-
-//e.g Debouncing:- Samsung...(api call made)  //when user stops typing then only api call is made
-//Throttling:- Sams..ung... (api call started from ..ung...) //startes api call when the delay is finised
-
-/**
- * New debouncing method (better readability) (updated 2022)
- */
-
-const myDebounce = (functions, delay) => {
-  let timer;
-  return (...args) => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      functions(...args);
-    }, delay);
-  };
-};
-
-const clickNewDebounce = myDebounce(() => {
-  console.log("clicked");
-}, 500);
