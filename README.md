@@ -25,6 +25,8 @@ Here's a brief overview of what you can find in this repository:
 
 - **Code Examples**: Real-world code examples demonstrating best practices and common patterns in front-end development.
 
+Important link for Frontend concepts: https://learnersbucket.com/javascript-sde-cheat-sheet/#javascript-fundamentals
+
 ## Getting Started
 
 To get started with this repository, follow these steps:
