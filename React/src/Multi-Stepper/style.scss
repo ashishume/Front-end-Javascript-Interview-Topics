@@ -1,0 +1,38 @@
+.stepper-container {
+  position: relative;
+  .progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: rgb(223, 196, 42);
+  }
+  .step {
+    .step-number {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgb(223, 196, 42);
+      text-align: center;
+      line-height: 40px;
+    }
+  }
+  .steps-content {
+    display: flex;
+    justify-content: space-evenly;
+    .step-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .progress-bar {
+    position: absolute;
+    top: 22%;
+    left: 0;
+    background-color: yellow;
+    width: 100%;
+    z-index: -1;
+  }
+  .progress {
+    background-color: green;
+    width: 30%;
+  }
+}

@@ -47,6 +47,7 @@ import DynamicForm from "../Dynamic-Input-Form";
 import CalenderMeetings from "../Calender-Meetings(incomplete)";
 import RenderItemComponent from "../RenderItem";
 import NestedCheckboxes from "../Nested-Checkboxes";
+import MultiStepper from "../Multi-Stepper";
 
 
 export const routes: {
@@ -55,6 +56,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/welcome", component: <Welcome /> },
+  { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   { routeName: "/calender", component: <CalenderMeetings /> },
   { routeName: "/render-item", component: <RenderItemComponent /> },
