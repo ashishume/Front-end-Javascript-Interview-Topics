@@ -46,6 +46,7 @@ import NestedCheckbox from "../Checkbox-Nested";
 import DynamicForm from "../Dynamic-Input-Form";
 import CalenderMeetings from "../Calender-Meetings(incomplete)";
 import RenderItemComponent from "../RenderItem";
+import NestedCheckboxes from "../Nested-Checkboxes";
 
 
 export const routes: {
@@ -54,6 +55,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/welcome", component: <Welcome /> },
+  { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   { routeName: "/calender", component: <CalenderMeetings /> },
   { routeName: "/render-item", component: <RenderItemComponent /> },
   { routeName: "/i18next", component: <Languagei18next /> },
