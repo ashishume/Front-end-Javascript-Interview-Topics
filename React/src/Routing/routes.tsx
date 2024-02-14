@@ -48,6 +48,7 @@ import CalenderMeetings from "../Calender-Meetings(incomplete)";
 import RenderItemComponent from "../RenderItem";
 import NestedCheckboxes from "../Nested-Checkboxes";
 import MultiStepper from "../Multi-Stepper";
+import TableWithNestedObjects from "../Table-nested-objects";
 
 
 export const routes: {
@@ -62,6 +63,7 @@ export const routes: {
   { routeName: "/render-item", component: <RenderItemComponent /> },
   { routeName: "/i18next", component: <Languagei18next /> },
   { routeName: "/dynamic-form", component: <DynamicForm /> },
+  { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   { routeName: "/table-with-sorting", component: <TableSorting /> },
   {

@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import React from "react";
 import Routing from "./Routing/Routing";
 import { Provider } from "react-redux";
-import { store } from "./Projects/e-commerce/store";
+// import { store } from "./Projects/e-commerce/store";
 import { createRoot } from "react-dom/client";
 
 const domNode = document.getElementById("root") as HTMLElement;
