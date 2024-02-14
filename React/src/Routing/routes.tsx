@@ -29,7 +29,7 @@ import ParentForm from "../React-hook-form/ParentForm";
 import LazyParentComp from "../CodeSplitting";
 import ParentComponent from "../HOOKS(React)/ForwardRef/ParentComponent";
 import Phone from "../OTP-login";
-import SSRPagination from "../SSR-Table-Pagination";
+import SSRPagination from "../Table-Pagination-SSR";
 import ReduxIndex from "../Redux";
 import { Provider } from "react-redux";
 import reduxStore from "../Redux/store";
