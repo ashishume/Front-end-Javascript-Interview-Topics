@@ -13,20 +13,20 @@ function lodashGet(object, path, defaultValue) {
     return defaultValue;
   }
 
-  const paths = !Array.isArray(path)
+  const keys = !Array.isArray(path)
     ? path.replaceAll("[", ".").replaceAll("]", "").split(".")
     : path;
   let current = object;
 
-  for (let i = 0; i < paths.length; i++) {
+  for (let key of keys) {
     if (current === undefined || current === null) {
       return defaultValue;
     }
-    current = current[paths[i]];
+    current = current[key];
   }
 
   return current;
 }
-lodashGet(obj, "user.phone[0].primary", "Debnath")
-// console.log(lodashGet(obj, "user.phone[0].primary", "Debnath"));
-// console.log(lodashGet(obj, ["user", "phone", "0", "primary"], "Debnath"));
+// lodashGet(obj, "user.phone[0].primary", "Debnath")
+console.log(lodashGet(obj, "user.phone[0].primary", "Debnath"));
+console.log(lodashGet(obj, ["user", "address", "place"], "Debnath"));
