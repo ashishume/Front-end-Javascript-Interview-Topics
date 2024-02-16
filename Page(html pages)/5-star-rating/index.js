@@ -10,12 +10,18 @@ starContainer.addEventListener("mouseover", (e) => {
     const starItem = e.target;
     for (let i = 0; i < childNodesCount; i++) {
       childNodes[i].style.background = highlight;
-      if (childNodes[i].innerText === starItem.innerText) {
+      if (
+        parseInt(childNodes[i].getAttribute("data-value")) ===
+        parseInt(starItem.getAttribute("data-value"))
+      ) {
         break;
       }
     }
     for (let i = childNodesCount - 1; i >= 0; i--) {
-      if (childNodes[i].innerText !== starItem.innerText) {
+      if (
+        parseInt(childNodes[i].getAttribute("data-value")) !==
+        parseInt(starItem.getAttribute("data-value"))
+      ) {
         childNodes[i].style.background = defaultColor;
       } else {
         break;
