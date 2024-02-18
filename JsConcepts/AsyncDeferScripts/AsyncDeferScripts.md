@@ -1,6 +1,7 @@
 <!--  refer link: https://javascript.info/script-async-defer  -->
 
 # Defer: (waits untill html parsing is complete)
+- Scripts with defer always execute when the DOM is ready (but before DOMContentLoaded event).
 
 1.  The defer attribute tells the browser not to wait for the script.
     Instead, the browser will continue to process the HTML, build DOM.
@@ -20,6 +21,7 @@
 ## Async:
 
 # Async is similar to defer, (doesnt wait for html parsing, loads parallel)
+- DOMContentLoaded and async scripts don’t wait for each other
 
 - Major difference is that, they loads independently, doesnt wait for any other scripts/html code,
 - Taking the long.js and small.js example above, probably small.js loads first so it runs first, then long.js runs.
