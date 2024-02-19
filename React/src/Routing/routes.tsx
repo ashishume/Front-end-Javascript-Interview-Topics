@@ -49,6 +49,7 @@ import RenderItemComponent from "../RenderItem";
 import NestedCheckboxes from "../Nested-Checkboxes";
 import MultiStepper from "../Multi-Stepper";
 import TableWithNestedObjects from "../Table-nested-objects";
+import ProgressBar from "../ProgressBar(Dynamic)";
 
 
 export const routes: {
@@ -56,6 +57,7 @@ export const routes: {
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/welcome", component: <Welcome /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
