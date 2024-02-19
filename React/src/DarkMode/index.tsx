@@ -3,8 +3,8 @@ import "./style.scss";
 import { ThemeContext } from "./theme";
 const DarkMode = () => {
   const theme = useContext(ThemeContext);
+  /** theme context is wrapped in router file to make both child context provider */
   return (
-    /** theme context is wrapped in router file to make both child context provider */
     <div className={`dark-mode-container ${theme}`}>
       <div className="dark-mode-content">
         <div className="dark-mode-left-sidebar">

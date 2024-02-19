@@ -1,11 +1,7 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
-import ThemeLayout from "./theme";
+import { Link } from "react-router-dom";
 
 const ModeHome = () => {
-  return (
-      <Link to="/dark-mode">go</Link>
-  );
+  return <Link to="/dark-mode/home">go</Link>
 };
 
 export default ModeHome;

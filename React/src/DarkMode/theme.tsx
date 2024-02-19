@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 export const ThemeContext = createContext("light-mode");
 const ThemeLayout = ({ children }: any) => {
   const [theme, setTheme] = useState(false);
