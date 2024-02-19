@@ -1,0 +1,35 @@
+[data-theme="light-mode"] {
+  --bg-color: #ffffff;
+  --text-color: #000;
+  --heading-color: red;
+}
+[data-theme="dark-mode"] {
+  --bg-color: #000;
+  --text-color: #ffff;
+  --heading-color: green;
+}
+.body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.dark-mode-container {
+  .dark-mode-content {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  button {
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px 1px gray;
+  }
+}
+.dark-mode{
+  background-color: red;
+  color: green;
+}

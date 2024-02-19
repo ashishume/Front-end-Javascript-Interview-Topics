@@ -50,6 +50,8 @@ import NestedCheckboxes from "../Nested-Checkboxes";
 import MultiStepper from "../Multi-Stepper";
 import TableWithNestedObjects from "../Table-nested-objects";
 import ProgressBar from "../ProgressBar(Dynamic)";
+import DarkMode from "../DarkMode";
+import ModeHome from "../DarkMode/home";
 
 
 export const routes: {
@@ -57,6 +59,8 @@ export const routes: {
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/dark-mode", component: <DarkMode /> },
+  { routeName: "/dark-mode-route", component: <ModeHome /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/welcome", component: <Welcome /> },
   { routeName: "/stepper", component: <MultiStepper /> },
