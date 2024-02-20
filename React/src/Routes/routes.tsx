@@ -39,7 +39,6 @@ import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
 import NestedCheckbox from "../Checkbox-Nested";
 import DynamicForm from "../Dynamic-Input-Form";
-import CalenderMeetings from "../Calender-Meetings(incomplete)";
 import RenderItemComponent from "../RenderItem";
 import NestedCheckboxes from "../Nested-Checkboxes";
 import MultiStepper from "../Multi-Stepper";
@@ -67,7 +66,6 @@ export const routes: {
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
-  { routeName: "/calender", component: <CalenderMeetings /> },
   { routeName: "/render-item", component: <RenderItemComponent /> },
   { routeName: "/i18next", component: <Languagei18next /> },
   { routeName: "/dynamic-form", component: <DynamicForm /> },

@@ -1,0 +1,30 @@
+.container {
+  z-index: 1;
+  .modal-content {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 2px 1px gray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    .close-btn {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: normal;
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+}
+.backdrop {
+  z-index: 0;
+  background-color: rgba(133, 139, 139, 0.274);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
