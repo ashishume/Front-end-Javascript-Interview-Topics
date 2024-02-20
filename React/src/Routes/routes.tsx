@@ -48,6 +48,7 @@ import ProgressBar from "../ProgressBar(Dynamic)";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
+import ImageModalParent from "../Image-Modal";
 
 export const routes: {
   routeName: string;
@@ -62,6 +63,7 @@ export const routes: {
       </ThemeLayout>
     ),
   },
+  { routeName: "/image-modal", component: <ImageModalParent /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },

@@ -1,4 +1,4 @@
-import Routing from "./Routing/Routing";
+import Routing from "./Routes/Routing";
 import { createRoot } from "react-dom/client";
 
 const domNode = document.getElementById("root") as HTMLElement;

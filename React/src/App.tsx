@@ -1,6 +1,6 @@
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { routes } from "./Routing/routes";
+import { routes } from "./Routes/routes";
 import { Fragment } from "react";
 const App = () => {
   return (
