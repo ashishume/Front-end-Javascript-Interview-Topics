@@ -49,6 +49,8 @@ import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
 import ImageModalParent from "../Image-Modal";
 import Search from "../SearchWithDebounce";
+import HomePageFeatureFlag from "../FeatureFlag/HomePage";
+import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
 
 export const routes: {
   routeName: string;
@@ -61,6 +63,14 @@ export const routes: {
       <ThemeLayout>
         <DarkModeRoutes />
       </ThemeLayout>
+    ),
+  },
+  {
+    routeName: "/feature-flag",
+    component: (
+      <FeatureFlag>
+        <HomePageFeatureFlag />
+      </FeatureFlag>
     ),
   },
   { routeName: "/search", component: <Search /> },
