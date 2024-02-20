@@ -9,16 +9,12 @@ import Factorial from "../HOOKS(React)/useMemo";
 import UseMemo2 from "../HOOKS(React)/useMemo2";
 import StopWatch from "../HOOKS(React)/useReducer";
 import UseRef from "../HOOKS(React)/useRef";
-import AxiosContainer from "../Axios";
+import AxiosContainer from "../AbortController";
 import FolderComponent from "../FolderStructure(Recursive)/FolderComponent";
 import InfiniteScrolls from "../Infinite-Scroll";
 import Parent from "../HOOKS(React)/UseCallback(2nd example)/Parent";
-import Dashboard from "../e-commerce/components/dashboard";
-import Cart from "../e-commerce/containers/cart";
 import FolderStructure from "../FolderStructure(Recursive)/FolderStructure(Another Example)";
 import Pagination from "../Pagination";
-import Welcome from "../Authentication/welcome";
-import Login from "../Authentication";
 import EMICalculator from "../EMI-Calculator";
 import WhyDidYouUpdateCustomHook from "../HOOKS(React)/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../HOOKS(React)/useCopyHooks";
@@ -52,6 +48,7 @@ import TableWithNestedObjects from "../Table-nested-objects";
 import ProgressBar from "../ProgressBar(Dynamic)";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
+import EcommerceRoutes from "../e-commerce/ecommerce-routes";
 
 export const routes: {
   routeName: string;
@@ -67,7 +64,6 @@ export const routes: {
     ),
   },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
-  { routeName: "/welcome", component: <Welcome /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   { routeName: "/calender", component: <CalenderMeetings /> },
@@ -101,7 +97,6 @@ export const routes: {
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
   { routeName: "/react-hook-form", component: <ParentForm /> },
-  { routeName: "/login", component: <Login /> },
   { routeName: "/use-callback", component: <UseCallbackHook /> },
   {
     routeName: "/nested-folder",
@@ -112,8 +107,7 @@ export const routes: {
   { routeName: "/use-reducer", component: <StopWatch /> },
   { routeName: "/photo-tagging", component: <Photo /> },
   { routeName: "/context-api", component: <UseContext /> },
-  { routeName: "/store", component: <Dashboard /> },
-  { routeName: "/store/cart", component: <Cart /> },
+  { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
   { routeName: "/custom-hooks", component: <Input /> },
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },

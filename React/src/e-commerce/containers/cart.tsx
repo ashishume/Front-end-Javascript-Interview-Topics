@@ -16,7 +16,7 @@ const Cart = () => {
   return (
     <>
       <div className="cart-container">
-        <Link to="/store">back to dashboard</Link>
+        <Link to="/ecommerce">back to dashboard</Link>
         <br />
         {addedToCartItems.map((value: Product) => {
           return (

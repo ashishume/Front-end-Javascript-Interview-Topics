@@ -46,7 +46,7 @@ const Dashboard = () => {
   };
   return (
     <div>
-      <Link to="/store/cart">Go to Cart</Link>
+      <Link to="/ecommerce/cart">Go to Cart</Link>
       <br />
       <br />
       {products.map((value: Product, index: number) => {
