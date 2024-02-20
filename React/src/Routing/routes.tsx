@@ -15,7 +15,6 @@ import InfiniteScrolls from "../Infinite-Scroll";
 import Parent from "../HOOKS(React)/UseCallback(2nd example)/Parent";
 import FolderStructure from "../FolderStructure(Recursive)/FolderStructure(Another Example)";
 import Pagination from "../Pagination";
-import EMICalculator from "../EMI-Calculator";
 import WhyDidYouUpdateCustomHook from "../HOOKS(React)/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../HOOKS(React)/useCopyHooks";
 import InfiniteScroll from "../Infinite-Scroll/infinite.scroll-2";
@@ -113,10 +112,9 @@ export const routes: {
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
   { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
   { routeName: "/rendering", component: <Parent /> },
-  { routeName: "/axios", component: <AxiosContainer /> },
+  { routeName: "/abort-controller", component: <AxiosContainer /> },
   { routeName: "/folder-structure-2", component: <FolderStructure /> },
   { routeName: "/pagination", component: <Pagination /> },
-  { routeName: "/emi-calculator", component: <EMICalculator /> },
   {
     routeName: "/why-did-you-update-custom-hook",
     component: <WhyDidYouUpdateCustomHook />,

@@ -33,11 +33,10 @@ const SlideShow = () => {
         {imageData.data.map(({ imageName, id, imageUrl }, key) => {
           return (
             <img
-              className={`${
-                key === page ? "show image-fade" : "hide image-fade hidden"
-              }`}
+              className={`image-fade ${key === page ? "show" : "hide"}`}
               key={id}
               src={imageUrl}
+              alt={imageName}
             />
           );
         })}

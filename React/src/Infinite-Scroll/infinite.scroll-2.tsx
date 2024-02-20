@@ -32,7 +32,6 @@ const InfiniteScroll = () => {
 
   return (
     <div>
-      {console.log(products) as any}
       {products &&
         products.map((product) => {
           return (
