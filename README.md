@@ -34,7 +34,7 @@ To get started with this repository, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/ashishume/Front-end-Javascript-Programs.git
+   git clone https://github.com/ashishume/Front-end-Javascript-Interview-Topics.git
 
 ## All codes and examples where contributed by (from interview experience)
 
