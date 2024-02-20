@@ -7,7 +7,7 @@ This repository contains a collection of questions and code related to JavaScrip
 - Data structures
 - Design patterns
 - Javascript experience questions
-- JS co concepts
+- JS concepts
 - React questions
 - Design patterns (important ones)
 
