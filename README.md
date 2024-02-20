@@ -1,6 +1,6 @@
 # Frontend Javascript Interview Topics
 
-Welcome to the Front-end JavaScript Programs repository! This repository contains a collection of questions and code related to JavaScript and React which are essential for interviews
+This repository contains a collection of questions and code related to JavaScript and React which are essential for interviews
 
 ## Table of Contents
 
