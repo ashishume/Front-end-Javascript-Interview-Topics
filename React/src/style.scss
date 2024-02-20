@@ -47,3 +47,10 @@ button:active {
   font-weight: 600;
   color: var(--text-color);
 }
+input {
+  padding: 5px;
+  border-radius: 4px;
+  border: solid 1px #80808078;
+  outline: none;
+  margin: 9px 0;
+}
