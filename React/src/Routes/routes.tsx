@@ -51,12 +51,14 @@ import ImageModalParent from "../Image-Modal";
 import Search from "../SearchWithDebounce";
 import HomePageFeatureFlag from "../FeatureFlag/HomePage";
 import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
+import RunningText from "../TypingEffectText";
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/typing-effect-text", component: <RunningText /> },
   {
     routeName: "/dark-mode/*",
     component: (
