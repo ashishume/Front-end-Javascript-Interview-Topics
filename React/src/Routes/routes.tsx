@@ -52,6 +52,7 @@ import Search from "../SearchWithDebounce";
 import HomePageFeatureFlag from "../FeatureFlag/HomePage";
 import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
 import RunningText from "../TypingEffectText";
+import Tabs from "../Tabs";
 
 export const routes: {
   routeName: string;
@@ -59,6 +60,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
+  { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",
     component: (

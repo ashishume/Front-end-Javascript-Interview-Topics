@@ -1,3 +1,17 @@
+/**
+ * PROXY
+NOTE: In JavaScript, a proxy is an object that wraps another object (known as the target) and 
+intercepts operations like property lookup, assignment, function invocation, etc. 
+This interception allows you to customize or control the behavior of these operations.
+
+
+REFLECT
+In JavaScript, Reflect is an object that provides methods for interceptable JavaScript operations. 
+It's essentially a collection of utility functions for working with objects and performing meta-programming tasks. 
+These methods are typically used with proxies to customize or control the behavior of objects.
+
+*/
+
 function createNegativeIndexArray(array) {
     return new Proxy(array, {
       get: function(target, prop, receiver) {
