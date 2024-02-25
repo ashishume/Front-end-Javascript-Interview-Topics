@@ -1,56 +1,49 @@
-const imageArrayList = [
-  {
-    imageLink: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    imageName: "image 1",
-  },
-  {
-    imageLink: "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=600",
-    imageName: "image 2",
-  },
-  {
-    imageLink: "https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=600",
-    imageName: "image 3",
-  },
-  {
-    imageLink: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&w=600",
-    imageName: "image 4",
-  },
-];
+"use strict";
+// Select all slides
+const slides = document.querySelectorAll(".slide");
 
-const imageContainer = document.querySelector(".image-container");
-
-/** add the images into the dom list */
-imageArrayList.forEach((link, i) => {
-  let imageEl = document.createElement("img");
-
-  imageEl.src = link.imageLink;
-  imageEl.className = "image-item";
-  imageEl.id = i;
-
-  imageContainer.appendChild(imageEl);
+// loop through slides and set each slides translateX
+slides.forEach((slide, indx) => {
+  slide.style.transform = `translateX(${indx * 100}%)`;
 });
 
-let index = 0;
+// select next slide button
+const nextSlide = document.querySelector(".btn-next");
 
-/** get all the images list by class names */
-const images = document.getElementsByClassName("image-item");
+// current slide counter
+let curSlide = 0;
+// maximum number of slides
+let maxSlide = slides.length - 1;
 
-/** on load show the first image and others are hidden by default */
-images[index].style.display = "block";
-
-/** indexing method */
-function moveImage(isRight) {
-  /** on click hide the current image first */
-  images[index].style.display = "none";
-  if (isRight) {
-    /** move to next image index */
-    index++;
-    if (index > imageArrayList.length - 1) index = 0;
+// add event listener and navigation functionality
+nextSlide.addEventListener("click", function () {
+  // check if current slide is the last and reset current slide
+  if (curSlide === maxSlide) {
+    curSlide = 0;
   } else {
-    /** move to previous image index */
-    index--;
-    if (index < 0) index = imageArrayList.length - 1;
+    curSlide++;
   }
-  /** after changing the index show the current index image */
-  images[index].style.display = "block";
-}
+
+  //   move slide by -100%
+  slides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+  });
+});
+
+// select next slide button
+const prevSlide = document.querySelector(".btn-prev");
+
+// add event listener and navigation functionality
+prevSlide.addEventListener("click", function () {
+  // check if current slide is the first and reset current slide to last
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  } else {
+    curSlide--;
+  }
+
+  //   move slide by 100%
+  slides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+  });
+});
