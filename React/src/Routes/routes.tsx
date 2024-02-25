@@ -43,7 +43,7 @@ import RenderItemComponent from "../RenderItem";
 import NestedCheckboxes from "../Nested-Checkboxes";
 import MultiStepper from "../Multi-Stepper";
 import TableWithNestedObjects from "../Table-nested-objects";
-import ProgressBar from "../ProgressBar(Dynamic)";
+import ProgressBar from "../ProgressBar-with-Queue";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";

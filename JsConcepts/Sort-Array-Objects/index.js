@@ -1,21 +1,21 @@
-const array = [
-  { name: "John", age: 30 },
-  { name: "Alice", age: 25 },
-  { name: "Bob", age: 35 },
-  { name: "Alice", age: 30 },
-];
-
-function sortArrayObjects(arr) {
-  return arr.sort((a, b) => {
-    //below method if, name and age both are considered for ascending or descending
-    if (a.name !== b.name) {
-      // If names are different, sort by name
-      return a.name.toLowerCase().localeCompare(b.name);
-    } else {
-      // If names are the same, sort by age
-      return a.age - b.age;
-    }
-  });
+const person = {
+  firstName: 'Prashant'
 }
 
-console.log(sortArrayObjects(array));
+const handler = {
+set(target, prop, value) {
+  console.log(target);
+  console.log(prop);
+  console.log(value);
+  // console.log(`${prop} is changed from ${target[prop]} to ${value}`);
+  target[prop] = value;
+},
+};
+
+const proxyPerson = new Proxy(person, handler);
+
+proxyPerson.firstName = "Prashant 2"; 
+// "firstName is changed from Prashant to Prashant 2"
+
+// proxyPerson.blog = "Learnersbucket";
+// "blog is changed from undefined to Learnersbucket"

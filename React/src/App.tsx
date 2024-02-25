@@ -1,11 +1,19 @@
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { routes } from "./Routes/routes";
-import { Fragment, ReactElement, useState } from "react";
+import {
+  Fragment,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 const App = () => {
   const [routeData, setRouteData] = useState(
     routes as { routeName: string; component: ReactElement }[]
   );
+
+  const inputRef = useRef(null as any);
 
   function handleSearch(e: any) {
     const searchData = e.target.value;
@@ -16,10 +24,18 @@ const App = () => {
     setRouteData(res);
   }
 
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
+
   return (
     <div className="container">
       <h1>Interview Concepts</h1>
-      <input placeholder="search topics..." onChange={handleSearch} />
+      <input
+        placeholder="search topics..."
+        ref={inputRef}
+        onChange={handleSearch}
+      />
       <div className="routing-container">
         {routeData.map(({ routeName }) => {
           // remove nested routes
