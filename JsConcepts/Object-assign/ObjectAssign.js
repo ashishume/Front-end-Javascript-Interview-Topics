@@ -13,10 +13,8 @@ const ObjectAssign = function (target, ...sources) {
   let newObj = Object(target);
   for (let i = 0; i < sources.length; i++) {
     let nextSource = sources[i];
-    console.log(nextSource);
     if (nextSource !== null && nextSource !== undefined) {
       for (let nextKey in nextSource) {
-        console.log(nextKey);
         /** loop through source object */
         if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
           newObj[nextKey] = nextSource[nextKey];

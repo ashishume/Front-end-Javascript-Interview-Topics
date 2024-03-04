@@ -1,15 +1,21 @@
 /** polyfill for getElementById */
-document.getCustomElementById = function (id) {
-  const root = [document.documentElement];
-  while (root.length) {
-    const curr = root.shift();
-    if (curr.id === id) {
-      return curr;
+
+document.getElementById = function (id) {
+  // Traverse the DOM tree starting from document.body
+  function traverse(node) {
+    if (node && node.id === id) {
+      return node; // Found the element with the specified ID
     }
-    if (curr.children.length) {
-      root.push(...curr.children);
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const found = traverse(node.childNodes[i]);
+      if (found) {
+        return found; // Return the found element if any
+      }
     }
+    return null; // Element with the specified ID not found in this subtree
   }
+  // Start traversal from document.body
+  return traverse(document.body);
 };
 
 console.log(document.getCustomElementById("content1"));
