@@ -1,0 +1,23 @@
+.container {
+  border: solid 1px lightgray;
+  margin: 5px;
+  padding: 5px;
+  .commentContent {
+  }
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    text-decoration: underline;
+    .reply {
+      cursor: pointer;
+      &:hover {
+        color: rgb(118, 118, 252);
+        text-decoration-color: rgb(118, 118, 252);
+      }
+    }
+    .viewReply {
+      @extend .reply;
+    }
+  }
+}

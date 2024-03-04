@@ -53,6 +53,7 @@ import HomePageFeatureFlag from "../FeatureFlag/HomePage";
 import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
 import RunningText from "../TypingEffectText";
 import Tabs from "../Tabs";
+import CommentsSection from "../CommentsSection(incomplete)";
 
 export const routes: {
   routeName: string;
@@ -78,6 +79,7 @@ export const routes: {
     ),
   },
   { routeName: "/search", component: <Search /> },
+  { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
