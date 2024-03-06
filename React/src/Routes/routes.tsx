@@ -54,6 +54,7 @@ import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
 import RunningText from "../TypingEffectText";
 import Tabs from "../Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
+import SwitchComponent from "../SwitchComponent";
 
 export const routes: {
   routeName: string;
@@ -61,6 +62,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
+  { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",
