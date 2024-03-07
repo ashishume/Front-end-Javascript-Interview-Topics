@@ -56,6 +56,7 @@ import Tabs from "../Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
 import SwitchComponent from "../SwitchComponent";
 import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
+import Walkthrough from "../WalkThrough";
 
 export const routes: {
   routeName: string;
@@ -65,6 +66,7 @@ export const routes: {
   { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
+  { routeName: "/walkthrough", component: <Walkthrough /> },
   { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",
