@@ -55,12 +55,14 @@ import RunningText from "../TypingEffectText";
 import Tabs from "../Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
 import SwitchComponent from "../SwitchComponent";
+import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/tabs", component: <Tabs /> },

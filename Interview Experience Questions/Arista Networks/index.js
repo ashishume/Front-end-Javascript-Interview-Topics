@@ -18,3 +18,8 @@ function permutations(input) {
 }
 
 console.log(permutations(["a", "b", "c", "d"]));
+
+
+// Q2. if i have api getUsers() which returns ids of all the users => [1,2,3,4,5,...n]
+// and we fetch another api getUserData(id) to get each users response then how would we optimise this thing, we anyway have to make each api call one by one can we do something related to parallel api calls
+// solved in react optimiseAPicalls page
