@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const UseThrottle = (callback: any, delay: number) => {
-  const [isThrottled, setIsThrottled] = useState(false);
+const useThrottle = (value: any, interval: number = 500): any => {
+  const [throttledValue, setThrottledValue] = useState<any>(value);
+  const lastExecuted = useRef<number>(Date.now());
+
   useEffect(() => {
-    let timer: any;
-    if (!isThrottled) {
-      // Execute the callback immediately if not throttled
-      callback();
-      setIsThrottled(true);
+    /** check if current date has passed the given (interval + lastexecuted date) only then set the value */
+    if (Date.now() >= lastExecuted.current + interval) {
+      lastExecuted.current = Date.now();
+      setThrottledValue(value);
+    } else {
+      const timerId = setTimeout(() => {
+        lastExecuted.current = Date.now();
+        setThrottledValue(value);
+      }, interval);
 
-      timer = setTimeout(() => {
-        setIsThrottled(true);
-      }, delay);
+      return () => clearTimeout(timerId);
     }
+  }, [value, interval]);
 
-    return () => {
-      clearTimeout(timer);
-      setIsThrottled(false);
-    };
-  }, [callback, delay, isThrottled]);
-
-  return isThrottled;
+  return throttledValue;
 };
-export default UseThrottle;
+export default useThrottle;

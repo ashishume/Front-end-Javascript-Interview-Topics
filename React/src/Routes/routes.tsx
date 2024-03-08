@@ -57,12 +57,14 @@ import CommentsSection from "../CommentsSection(incomplete)";
 import SwitchComponent from "../SwitchComponent";
 import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
 import Walkthrough from "../WalkThrough";
+import ResizeEvent from "../ResizeEvent";
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/resize", component: <ResizeEvent /> },
   { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
