@@ -1,13 +1,16 @@
-/** Refer this link for more details: https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/ */
+ Refer this link for more details: 
+- https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/ 
+- https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path
 
-
+- Below process is called CRP (critical rendering process)
 The rendering process of a web page in a browser involves several steps:
 
 # HTML Parsing:  (DOM content loading)
 - The browser begins by fetching the HTML content of the web page from the server. Once the HTML is received, the browser parses it into a DOM (Document Object Model) tree. The DOM represents the structure of the web page, with each HTML element becoming a node in the tree.
+DOM construction is incremental. (The HTML response turns into tokens which turns into nodes which turn into the DOM Tree. A single DOM node starts with a startTag token and ends with an endTag token. Nodes contain all relevant information about the HTML element)
 
 # CSS Parsing and Styling: (parsing CSSOM)
-- After parsing the HTML, the browser fetches and parses any linked CSS files or inline styles. This process generates a CSSOM (CSS Object Model), which represents the styles applied to each element in the DOM tree. The browser then computes the final styles for each element by resolving conflicts, applying inheritance, and calculating specificity.
+- After parsing the HTML, the browser fetches and parses any linked CSS files or inline styles. The CSSOM contains all the information on how to style the DOM. CSSOM is similar to the DOM, but different. While the DOM construction is incremental, CSSOM is not. CSS is render blocking: the browser blocks page rendering until it receives and processes all the CSS. CSS is render blocking because rules can be overwritten, so the content can't be rendered until the CSSOM is complete.
 
 # Rendering Tree Construction:  (Combining of CSSOM and DOM)
 - Next, the browser combines the DOM tree and CSSOM to create a rendering tree, also known as the render tree. The rendering tree contains only the elements that will be displayed on the screen, along with their styles and layout information. Elements that are hidden or not rendered, such as those inside head or script tags, are excluded from the rendering tree.
