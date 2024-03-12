@@ -1,0 +1,57 @@
+.infinite-scroll-container {
+  display: flex;
+  margin: 10px;
+
+  .scroll-content {
+    flex: 1;
+    .item {
+      margin: 50px 0;
+      background-color: rgb(209, 235, 245);
+      padding: 10px 0;
+      overflow: auto;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .activeItem {
+      border: solid 1px blue;
+    }
+  }
+  .chatbot-container {
+    position: fixed;
+    left: 50%;
+    z-index: 99;
+    background-color: #fff;
+    width: 50%;
+    height: 100vh;
+    flex: 1;
+    border: solid 1px black;
+
+    .chat-content {
+      display: flex;
+      flex-direction: column;
+
+      .chat-bubble {
+        padding: 10px;
+        border: solid 1px rgba(196, 196, 196, 0.534);
+        border-radius: 20px;
+        width: 250px;
+        margin: 10px;
+      }
+      .received-chat {
+        align-self: flex-end;
+      }
+
+      .chat-input-field {
+        position: absolute;
+        bottom: 3px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        input {
+          margin-left: 10px;
+          width: 90%;
+        }
+      }
+    }
+  }
+}

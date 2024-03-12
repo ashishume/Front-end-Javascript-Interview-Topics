@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "text": "Hello there, welcome to my chat bot",
+      "sentBy": "Ashish Debnath",
+      "receivedAt": "12th March 2024, 7:00pm"
+    },
+    {
+      "id": 2,
+      "text": "Hello there, welcome to my world",
+      "sentBy": "Akash Gupta",
+      "receivedAt": "10th March 2024, 6:00pm"
+    },
+    {
+      "id": 3,
+      "text": "Hello there, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed id deleniti minima aperiam rem! Recusandae est?",
+      "sentBy": "Rahul Sharma",
+      "receivedAt": "9th March 2024, 6:00pm"
+    }
+  ]
+}
