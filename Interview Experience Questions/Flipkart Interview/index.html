@@ -8,17 +8,14 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-      <input type="text" onkeyup="searchTableData(event)" class="search" placeholder="Search..." />
-      <div class="table_container">
-      <table class="data-table">
-        <tr class="header-row">
-          <th id="key"></th>
-          <th id="key">Key</th>
-          <th id="value">Value</th>
-          <th id="desc">Description</th>
-        </tr>
-        <tbody class="table-data-container"></tbody>
-      </table>
+    <input
+      type="text"
+      onkeyup="searchTableData(event)"
+      class="search"
+      placeholder="Search..."
+    />
+    <div class="table_container">
+      <table class="data-table"></table>
       <button class="button" onclick="showResult()">Done</button>
     </div>
 

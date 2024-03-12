@@ -1,0 +1,16 @@
+.divider-container {
+  .divider {
+    height: 100vh;
+    width: 20px;
+    background-color: black;
+    cursor: pointer;
+  }
+  display: flex;
+  justify-content: center;
+  .left-panel {
+    width: 100%;
+  }
+  .right-panel {
+    width: 100%;
+  }
+}
