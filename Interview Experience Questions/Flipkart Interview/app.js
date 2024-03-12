@@ -44,6 +44,8 @@ function createTable(data) {
   /** append the tbody to the table tag */
   table.appendChild(tBody);
 
+  table.setAttribute("onchange", `changeValueHandler(event)`);
+
   data.forEach((item) => {
     const tableRow = document.createElement("tr");
     const checkbox = document.createElement("td");
@@ -76,15 +78,9 @@ function createTable(data) {
     valueItem.disabled = !item.selected;
     valueItem.setAttribute("id", item.key);
 
-    /** NOTE: add this on parent */
-    valueItem.setAttribute(
-      "onchange",
-      `changeValueHandler(event,"${item.key}")`
-    );
-
     //appending all the values
     checkbox.appendChild(checkField);
-    // Append this parent not child using event delegation
+    // NOTE: Append this parent not child using event delegation
     checkField.setAttribute(
       "onchange",
       `toggleSelectHandler("${item.key}",event)`
@@ -144,16 +140,18 @@ function toggleSelectHandler(item, e) {
   });
 }
 
-function changeValueHandler(e, key) {
-  const el = document.getElementById(key);
-  el.value = e.target.value;
-  /** update the changed value in original array */
-  sampleData = sampleData.map((val) => {
-    if (val.key === key) {
-      val.field.defaultValue = e.target.value;
-    }
-    return val;
-  });
+function changeValueHandler(event) {
+  if (event.target.type !== "checkbox") {
+    const element = document.getElementById(event.target.id);
+    element.value = event.target.value;
+    /** update the changed value in original array */
+    sampleData = sampleData.map((val) => {
+      if (val.key === event.target.id) {
+        val.field.defaultValue = event.target.value;
+      }
+      return val;
+    });
+  }
 }
 
 let result = [];
