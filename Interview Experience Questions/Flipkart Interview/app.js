@@ -5,6 +5,7 @@ let sampleData = [];
     .then((data) => data.json())
     .then((data) => {
       sampleData = data.config;
+      console.log(sampleData);
       createTable(sampleData);
     });
 })();
@@ -30,21 +31,28 @@ function createCheckField(key) {
 function createOptions(key, value) {
   const option = document.createElement("option");
   //   option.setAttribute("id", key);
-  option.innerHTML = value;
+  option.textContent = value;
   return option;
 }
 
 function createTable(data) {
-  const tableDataContainer = document.querySelector(".table-data-container");
-  data.map((item) => {
+  createTableHeader();
+  const table = document.querySelector(".data-table");
+  const tBody = document.createElement("tbody");
+  tBody.setAttribute("class", "table-data-container");
+
+  /** append the tbody to the table tag */
+  table.appendChild(tBody);
+
+  data.forEach((item) => {
     const tableRow = document.createElement("tr");
     const checkbox = document.createElement("td");
     const label = document.createElement("td");
     const value = document.createElement("td");
     const description = document.createElement("td");
 
-    //input field type
     let valueItem;
+    //input or select field type
     if (item.field.type === "text") {
       valueItem = createInputField();
       valueItem.defaultValue = item.field.defaultValue;
@@ -59,30 +67,57 @@ function createTable(data) {
     //checkbox
     let checkField;
     checkField = createCheckField(item.key);
-    if (item.selected === true) {
-      checkField.setAttribute("checked", "true");
-      valueItem.disabled = false;
-    } else {
-      valueItem.disabled = true;
+
+    /** checked or not checked */
+    if (item?.selected) {
+      checkField.setAttribute("checked", item?.selected);
     }
+    /** disabled based on checked value */
+    valueItem.disabled = !item.selected;
     valueItem.setAttribute("id", item.key);
-    valueItem.setAttribute("onchange", `changeValueHandler(event,"${item.key}")`);
+
+    /** NOTE: add this on parent */
+    valueItem.setAttribute(
+      "onchange",
+      `changeValueHandler(event,"${item.key}")`
+    );
 
     //appending all the values
     checkbox.appendChild(checkField);
-    checkField.setAttribute("onchange", `toggleSelectHandler("${item.key}",event)`);
-    label.innerHTML = item.label;
+    // Append this parent not child using event delegation
+    checkField.setAttribute(
+      "onchange",
+      `toggleSelectHandler("${item.key}",event)`
+    );
+    label.textContent = item.label;
     value.appendChild(valueItem);
-    description.innerHTML = item.description;
+    description.textContent = item.description;
 
     tableRow.appendChild(checkbox);
     tableRow.appendChild(label);
     tableRow.appendChild(value);
     tableRow.appendChild(description);
-    tableDataContainer.appendChild(tableRow);
+    tBody.appendChild(tableRow);
 
     markCheckedData(item);
   });
+}
+
+function createTableHeader() {
+  let headers = ["-", "key", "value", "description"];
+  const tableDiv = document.querySelector(".data-table");
+  const thead = document.createElement("thead");
+  const tableRow = document.createElement("tr");
+
+  headers.forEach((value) => {
+    const newTd = document.createElement("td");
+    newTd.setAttribute("id", value);
+    newTd.textContent = value;
+    tableRow.appendChild(newTd);
+  });
+
+  thead.appendChild(tableRow);
+  tableDiv.appendChild(thead);
 }
 
 function searchTableData(e) {
@@ -112,6 +147,13 @@ function toggleSelectHandler(item, e) {
 function changeValueHandler(e, key) {
   const el = document.getElementById(key);
   el.value = e.target.value;
+  /** update the changed value in original array */
+  sampleData = sampleData.map((val) => {
+    if (val.key === key) {
+      val.field.defaultValue = e.target.value;
+    }
+    return val;
+  });
 }
 
 let result = [];
