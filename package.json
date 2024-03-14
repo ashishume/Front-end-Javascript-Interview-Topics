@@ -1,0 +1,14 @@
+{
+  "name": "front-end-javascript-programs",
+  "version": "1.0.0",
+  "description": "This repository contains a collection of questions and code related to JavaScript and React which are essential for interviews",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd React && npm start\""
+  },
+  "author": "Ashish Debnath",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
