@@ -113,8 +113,8 @@ const throttleHandler = (func, limit) => {
     }
   };
 };
-
-/** throttle method withtout settimeout */
+// ------------------------------------------------------------------------------------
+/** throttle method without settimeout */
 const throttleWithoutSetTimeout = (func, delay) => {
   let lastCalledTimeStamp = 0;
 
@@ -127,7 +127,7 @@ const throttleWithoutSetTimeout = (func, delay) => {
   };
 };
 
-/** throttle method withtout settimeout */
+/** debounce method without settimeout */
 const debounceWithoutSetTimeout = (func, delay) => {
   let lastCalledTimeStamp = 0;
   return (...args) => {
