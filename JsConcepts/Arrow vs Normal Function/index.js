@@ -1,3 +1,7 @@
+// there is a function type called
+// JavaScript immediately invoked function expressions (IIFEs)
+// (function () {})(); 
+
 const arr = [1, 5, 6, 7, 8];
 delete arr[1]; //here "delete" removes the value and key but while printing key doesnt show up.
 //result==>  arr[0]  "empty"  arr[2] arr[3] arr[4]

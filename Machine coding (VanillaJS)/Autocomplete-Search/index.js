@@ -24,11 +24,14 @@ function onChangeData(event) {
     filteredArray.forEach((value) => {
       /** appending each value child to dom tree */
       const div = document.createElement("div");
-      div.innerHTML = value;
+      div.classList.add("search-item");
+      div.textContent = value;
       documentFragment.appendChild(div);
     });
     /** clearing any previous value if present and adding new sugestions to the list */
     searchDiv.innerHTML = "";
+    /** put a event listener at the top, search div */
+    searchDiv.addEventListener("click", handleItemClick);
     searchDiv.appendChild(documentFragment);
   } else {
     /** remove the show-search class when no data is there */
@@ -36,9 +39,17 @@ function onChangeData(event) {
   }
 }
 
+/** get the value which is clicked */
+const handleItemClick = (e) => {
+  console.log(e.target.textContent);
+  searchDiv.classList.remove("show-search");
+};
+
 /** filter the array */
 const myFilter = (value) => {
-  return value !== "" ? list.filter((option) => option.toLowerCase().includes(value)) : [];
+  return value !== ""
+    ? list.filter((option) => option.toLowerCase().includes(value))
+    : [];
 };
 
 /** debounce for some delay */

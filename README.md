@@ -7,6 +7,7 @@ This repository contains a collection of questions and code related to JavaScrip
 - Data structures
 - Design patterns
 - Javascript experience questions
+- Machine coding rounds questions related to VanillaJS
 - JS concepts
 - React questions
 - Design patterns (important ones)
@@ -25,7 +26,11 @@ Here's a brief overview of what you can find in this repository:
 
 - **Code Examples**: Real-world code examples demonstrating best practices and common patterns in front-end development.
 
-Important link for Frontend concepts: https://learnersbucket.com/javascript-sde-cheat-sheet/#javascript-fundamentals
+Some important links for Frontend concepts (questions): 
+- https://learnersbucket.com/javascript-sde-cheat-sheet/#javascript-fundamentals
+- https://bigfrontend.dev/
+- https://jsvault.com/
+- https://github.com/sudheerj/reactjs-interview-questions
 
 ## Getting Started
 

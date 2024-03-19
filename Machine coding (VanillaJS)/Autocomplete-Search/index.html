@@ -7,7 +7,12 @@
     <title>Document</title>
   </head>
   <body>
-    <input placeholder="Search..." id="search" onkeyup="debounceMethod(event)" />
+    <input
+      placeholder="Search..."
+      id="search"
+      onkeyup="debounceMethod(event)"
+      autocomplete="off"
+    />
     <div id="search-results" class="hide-search"></div>
     <script src="./index.js"></script>
     <style>
@@ -21,6 +26,17 @@
       }
       .show-search {
         display: block;
+        padding: 5px;
+        max-width: 300px;
+        box-shadow: 0px 1px 11px #00000070;
+      }
+      .search-item {
+        padding: 10px;
+        border-bottom: solid 1px #00000033;
+      }
+      .search-item:hover {
+        background-color: rgba(128, 128, 128, 0.404);
+        cursor: pointer;
       }
     </style>
   </body>
