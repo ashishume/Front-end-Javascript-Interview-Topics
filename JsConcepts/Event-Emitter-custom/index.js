@@ -5,7 +5,7 @@ class MyCustomEmitter {
 
   on(name, listener) {
     if (!this._events[name]) {
-      this._events = [];
+      this._events[name] = [];
     }
     this._events[name].push(listener);
   }
@@ -27,3 +27,17 @@ class MyCustomEmitter {
     this._events[name].forEach((callback) => callback(data));
   }
 }
+
+const obj = new MyCustomEmitter();
+obj.on("aa", (e) => {
+  console.log(e);
+});
+obj.emit("aa", { data: "Ashish" });
+
+
+/*
+Prints: 
+{
+    "data": "Ashish"
+}
+*/
