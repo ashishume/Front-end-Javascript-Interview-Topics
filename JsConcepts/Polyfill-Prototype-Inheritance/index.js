@@ -1,37 +1,36 @@
-// Polyfill for inheritance using prototype chain
-function inherit(child, parent) {
-  child.prototype = Object.create(parent.prototype);
-  child.prototype.constructor = child;
+// Polyfill for prototype inheritance
+if (!Object.create) {
+  Object.create = function (proto) {
+    function F() {}
+    F.prototype = proto;
+    return new F();
+  };
 }
 
-// Example usage:
-// Parent constructor function
+// Example usage
+// Parent class
 function Animal(name) {
   this.name = name;
 }
 
-// Method defined on the parent prototype
-Animal.prototype.makeSound = function () {
-  console.log(`${this.name} makes a sound`);
+Animal.prototype.sayName = function () {
+  console.log("My name is " + this.name);
 };
 
-// Child constructor function
+// Child class inheriting from Animal
 function Dog(name, breed) {
-  Animal.call(this, name); // Call parent constructor
+  Animal.call(this, name);
   this.breed = breed;
 }
 
-// Inherit from Animal
-inherit(Dog, Animal);
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
 
-// Method specific to Dog
 Dog.prototype.bark = function () {
-  console.log(`${this.name} barks`);
+  console.log("Woof! I am a " + this.breed);
 };
 
-// Creating an instance of Dog
-const myDog = new Dog("Buddy", "Golden Retriever");
-
-// Calling methods
-myDog.makeSound(); // Output: Buddy makes a sound
-myDog.bark(); // Output: Buddy barks
+// Creating instances
+var dog1 = new Dog("Max", "Labrador");
+dog1.sayName(); // Output: My name is Max
+dog1.bark(); // Output: Woof! I am a Labrador
