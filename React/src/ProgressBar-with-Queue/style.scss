@@ -1,10 +1,12 @@
 .progress-bar {
-  width: 200px;
-  height: 20px;
+  width: 400px;
+  margin-top: 20px;
+  height: 30px;
   color: #fff;
-  background: rgb(223, 247, 195);
-  .progress {
-    height: 20px;
-    background: rgb(14, 126, 51);
+  background: rgb(183, 255, 102);
+  border-radius: 4px;
+  .progress-value {
+    height: 30px;
+    background: rgb(22, 102, 50);
   }
 }

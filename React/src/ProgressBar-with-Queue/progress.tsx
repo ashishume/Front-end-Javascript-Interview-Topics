@@ -16,7 +16,7 @@ const Progress = ({
     if (isTriggered) {
       const interval = setInterval(() => {
         setProgressValue((prevValue: number) => {
-          /** if value becomes 100 then return 100 and clear interval */
+          /** if value becomes 100 then return 100 and clear interval, if not then just increment the last value */
           if (prevValue >= 100) {
             clearInterval(interval);
             onComplete();
@@ -25,7 +25,7 @@ const Progress = ({
             return prevValue + 25;
           }
         });
-      }, 1000);
+      }, 500);
 
       return () => clearInterval(interval);
     }
@@ -41,7 +41,7 @@ const Progress = ({
   }, [progressValue, id, setProgress]);
   return (
     <div className="progress-bar">
-      <div className="progress" style={{ width: `${progressValue}%` }}>
+      <div className="progress-value" style={{ width: `${progressValue}%` }}>
         {progressValue}
       </div>
     </div>
