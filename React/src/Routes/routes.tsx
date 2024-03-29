@@ -60,12 +60,14 @@ import Walkthrough from "../WalkThrough";
 import ResizeEvent from "../ResizeEvent";
 import VerticalDivider from "../VerticalDivider";
 import GridLights from "../Grid-lights";
+import SelectableGrid from "../Selectable-Grid";
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/selectable-grid", component: <SelectableGrid /> },
   { routeName: "/grid-light", component: <GridLights /> },
   { routeName: "/vertical-resizer", component: <VerticalDivider /> },
   { routeName: "/resize", component: <ResizeEvent /> },
