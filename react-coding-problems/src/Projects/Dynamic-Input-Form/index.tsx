@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 
 const DynamicForm = () => {
@@ -28,14 +29,14 @@ const DynamicForm = () => {
   }
   return (
     <div>
-      <button
+      <Button
         style={{
           margin: "10px",
         }}
         onClick={addNewInputField}
       >
         Add New Input Field
-      </button>
+      </Button>
       <form onSubmit={submitForm}>
         {Array.from({ length: inputs }, (_, index) => index + 1).map(
           (index) => {
@@ -57,7 +58,7 @@ const DynamicForm = () => {
             margin: "10px",
           }}
         >
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </div>

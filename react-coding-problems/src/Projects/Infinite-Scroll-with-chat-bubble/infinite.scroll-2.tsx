@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "./infinite-scroll-2.scss";
-// import { Spinner } from "react-bootstrap";
 import data from "./chatData.json";
 import { Loader } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const InfiniteScroll = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -128,7 +128,7 @@ const InfiniteScroll = () => {
                   );
                 })
               ) : (
-                <Spinner />
+                <Loader />
               )}
               <div className="chat-input-field">
                 <input
@@ -138,9 +138,9 @@ const InfiniteScroll = () => {
                   placeholder="start typing here..."
                   onChange={handleChange}
                 />
-                <button disabled={!currentChat?.length} onClick={sendChat}>
+                <Button disabled={!currentChat?.length} onClick={sendChat}>
                   Submit
-                </button>
+                </Button>
               </div>
             </div>
           </div>

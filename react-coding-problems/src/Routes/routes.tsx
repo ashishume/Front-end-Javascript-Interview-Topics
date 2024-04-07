@@ -25,6 +25,7 @@ import TableWithNestedObjects from "@/Projects/Table-nested-objects";
 import ParentClassComponent from "@/Projects/React-Class-based-comp";
 import TableSorting from "@/Projects/Table-with-sorting";
 import DynamicFolder from "@/Projects/FolderStructure(Dynamic)/Parent";
+import UseCallbackSecond from "@/Projects/HOOKS(React)/UseCallback(2nd example)/Parent";
 import { FolderData } from "@/Projects/FolderStructure(Recursive)/FolderData";
 import FolderComponent from "@/Projects/FolderStructure(Recursive)/FolderComponent";
 import FolderStructure2 from "@/Projects/FolderStructure(Recursive)/FolderStructure(Another Example)";
@@ -33,7 +34,6 @@ import StopWatchComp from "@/Projects/StopWatch";
 import InfiniteScroll from "@/Projects/Infinite-Scroll-with-chat-bubble/infinite.scroll-2";
 import InfiniteScrolls from "@/Projects/Infinite-Scroll-with-chat-bubble/infinite-with-intersection-observer";
 import AxiosContainer from "@/Projects/AbortController";
-import Parent from "@/Projects/FolderStructure(Dynamic)/Parent";
 import ParentComponent from "@/Projects/HOOKS(React)/ForwardRef/ParentComponent";
 import UseCallbackHook from "@/Projects/HOOKS(React)/UseCallback/useCallback";
 import UseContext from "@/Projects/HOOKS(React)/UseContext";
@@ -46,6 +46,11 @@ import UseMemo2 from "@/Projects/HOOKS(React)/useMemo2";
 import UseRef from "@/Projects/HOOKS(React)/useRef";
 import StopWatch from "@/Projects/StopWatch";
 import WhyDidYouUpdateCustomHook from "@/Projects/HOOKS(React)/useWhyDidYouUpdate-hook";
+import PureClassBasedComponent from "@/Projects/Pure-Components";
+import Phone from "@/Projects/OTP-login";
+import Pagination from "@/Projects/Pagination";
+import LazyParentComp from "@/Projects/CodeSplitting";
+import SSRPagination from "@/Projects/Table-Pagination-SSR";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -86,7 +91,7 @@ export const routes: {
   { routeName: "/i18next", component: <Languagei18next /> },
   { routeName: "/dynamic-form", component: <DynamicForm /> },
   { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
-  // { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
+  { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   { routeName: "/table-with-sorting", component: <TableSorting /> },
   // {
   //   routeName: "/redux",
@@ -107,8 +112,8 @@ export const routes: {
   { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
   { routeName: "/react-class", component: <ParentClassComponent /> },
   { routeName: "/dynamic-folder", component: <DynamicFolder /> },
-  // { routeName: "/pure-component", component: <PureClassBasedComponent /> },
-  // { routeName: "/otp-login", component: <Phone /> },
+  { routeName: "/pure-component", component: <PureClassBasedComponent /> },
+  { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
   // { routeName: "/react-hook-form", component: <ParentForm /> },
@@ -127,10 +132,10 @@ export const routes: {
   { routeName: "/custom-hooks", component: <Input /> },
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
   { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
-  { routeName: "/rendering", component: <Parent /> },
+  { routeName: "/rendering", component: <UseCallbackSecond /> },
   { routeName: "/abort-controller", component: <AxiosContainer /> },
   { routeName: "/folder-structure-2", component: <FolderStructure2 /> },
-  // { routeName: "/pagination", component: <Pagination /> },
+  { routeName: "/pagination", component: <Pagination /> },
   {
     routeName: "/why-did-you-update-custom-hook",
     component: <WhyDidYouUpdateCustomHook />,
@@ -138,6 +143,6 @@ export const routes: {
   { routeName: "/use-copy-custom-hook", component: <UseCopyHook /> },
   { routeName: "/slide-show", component: <SlideShow /> },
   { routeName: "/stop-watch", component: <StopWatchComp /> },
-  // { routeName: "code-splitting", component: <LazyParentComp /> },
-  { routeName: "use-layout-effect", component: <UseLayoutEffectHook /> },
+  { routeName: "/code-splitting", component: <LazyParentComp /> },
+  { routeName: "/use-layout-effect", component: <UseLayoutEffectHook /> },
 ];

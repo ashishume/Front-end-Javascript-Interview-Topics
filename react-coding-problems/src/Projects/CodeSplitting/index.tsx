@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Suspense, lazy, useState } from "react";
 
 function isDelayCheck(callback: any) {
@@ -11,7 +12,7 @@ const LazyParentComp = () => {
 
   return (
     <div>
-      <button
+      <Button
         style={{
           background: "lightgray",
           padding: "3px",
@@ -20,7 +21,7 @@ const LazyParentComp = () => {
         onClick={() => setIsActive(!isActive)}
       >
         Set active button
-      </button>
+      </Button>
 
       {isActive && (
         <Suspense fallback={<>Loading...</>}>

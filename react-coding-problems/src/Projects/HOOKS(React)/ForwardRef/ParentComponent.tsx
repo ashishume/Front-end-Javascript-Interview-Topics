@@ -1,10 +1,10 @@
+import { Button } from "@/components/ui/button";
 import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
-import { Button, FormControl } from "react-bootstrap";
 
 const ParentComponent = () => {
   const childRef = useRef();
@@ -40,9 +40,7 @@ export const ChildComponent = forwardRef((props, ref) => {
     },
   }));
 
-  return (
-    <FormControl ref={childRef} placeholder="Start typing..."></FormControl>
-  );
+  return <input ref={childRef} placeholder="Start typing..." />;
 });
 
 export default ParentComponent;

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React, { useEffect, useRef, useState } from "react";
 
 const DidComponentUpdate = () => {
@@ -17,7 +18,7 @@ const DidComponentUpdate = () => {
     <>
       {counter}
 
-      <button onClick={() => setCounter((prev) => prev + 1)}>Add</button>
+      <Button onClick={() => setCounter((prev) => prev + 1)}>Add</Button>
     </>
   );
 };

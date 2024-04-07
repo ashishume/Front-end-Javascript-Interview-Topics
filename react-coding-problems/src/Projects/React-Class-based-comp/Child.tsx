@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React, { Component } from "react";
 
 class Child extends Component<any, any> {
@@ -18,9 +19,9 @@ class Child extends Component<any, any> {
     } else {
       return (
         <div>
-          <button onClick={this.counter.bind(this)}>
+          <Button onClick={this.counter.bind(this)}>
             Counter{this.state.counter}
-          </button>
+          </Button>
         </div>
       );
     }

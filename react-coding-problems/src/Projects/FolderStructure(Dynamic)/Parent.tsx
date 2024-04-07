@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import FolderComp from "./FolderComp";
 import { useEffect, useState } from "react";
 // Tree component where user can add and delete node at any level
@@ -118,7 +119,7 @@ export default function DynamicFolder() {
             value={fileName}
             onChange={(e) => setFileName(e.target.value)}
           />
-          <button>Submit</button>
+          <Button>Submit</Button>
         </form>
       ) : null}
       {items?.data &&

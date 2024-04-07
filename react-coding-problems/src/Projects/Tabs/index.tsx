@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./styles.module.scss";
+import { Button } from "@/components/ui/button";
 
 const TabConent = ({ children }: any) => {
   return <>{children}</>;
@@ -38,13 +39,13 @@ const CustomTabs = () => {
       <div className="tabs-container">
         {tabs.map(({ title, index, content }) => {
           return (
-            <button
+            <Button
               className={index === activeIndex ? style["active"] : ""}
               key={index}
               onClick={() => handleTabClick(index)}
             >
               {title}
-            </button>
+            </Button>
           );
         })}
 

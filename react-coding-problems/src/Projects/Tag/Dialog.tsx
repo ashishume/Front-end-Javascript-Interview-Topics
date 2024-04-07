@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import "./dialog.scss";
 import InputField from "./InputField";
+import { Button } from "@/components/ui/button";
 
 interface Position {
   top: number;
@@ -24,9 +25,9 @@ const Dialog = (position: Position) => {
             position.setValue(e.target.value)
           }
         />
-        <button className="button" onClick={position.toggle}>
+        <Button className="button" onClick={position.toggle}>
           Done
-        </button>
+        </Button>
       </div>
     </div>
   );

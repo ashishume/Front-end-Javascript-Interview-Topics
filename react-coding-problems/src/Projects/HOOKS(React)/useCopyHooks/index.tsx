@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
 
 const UseCopyHook = () => {
@@ -17,11 +19,11 @@ const UseCopyHook = () => {
 
   return (
     <div>
-      <textarea
+      <Textarea
         value={value}
         onChange={(e) => setValue(e.target.value)}
-      ></textarea>
-      <button onClick={() => useCopy(value)}>Copy text</button>
+      ></Textarea>
+      <Button onClick={() => useCopy(value)}>Copy text</Button>
     </div>
   );
 };

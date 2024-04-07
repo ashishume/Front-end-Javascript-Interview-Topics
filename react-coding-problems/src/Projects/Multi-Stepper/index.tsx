@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./style.scss";
 import tick from './tick.png'
+import { Button } from "@/components/ui/button";
 const CHECKOUT_STEPS = [
   {
     name: "Customer Info",
@@ -68,7 +69,7 @@ const MultiStepper = () => {
               </div>
               <div>
                 {active === index ? (
-                  <button onClick={() => continueStep(value)}>Continue</button>
+                  <Button onClick={() => continueStep(value)}>Continue</Button>
                 ) : null}
               </div>
             </div>

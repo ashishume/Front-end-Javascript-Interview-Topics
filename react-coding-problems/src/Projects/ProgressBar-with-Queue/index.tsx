@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Progress from "./progress";
+import { Button } from "@/components/ui/button";
 const ProgressBar = () => {
   const [currentProgressIndex, setCurrentProgressIndex] = useState(0);
 
@@ -33,7 +34,7 @@ const ProgressBar = () => {
   
   return (
     <div>
-      <button onClick={addProgress}>Add Progress</button>
+      <Button onClick={addProgress}>Add Progress</Button>
       {progress &&
         progress.map(({ key, value }, index) => {
           return (

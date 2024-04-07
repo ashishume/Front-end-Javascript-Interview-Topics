@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const AxiosContainer = () => {
@@ -35,9 +36,9 @@ const AxiosContainer = () => {
 
   return (
     <>
-      <button onClick={() => setId((prev) => prev + 1)}>Change Id 1</button>
-      <button onClick={() => setId((prev) => prev + 2)}>Change Id 2</button>
-      <button onClick={() => setId((prev) => prev + 3)}>Change Id 3</button>
+      <Button onClick={() => setId((prev) => prev + 1)}>Change Id 1</Button>
+      <Button onClick={() => setId((prev) => prev + 2)}>Change Id 2</Button>
+      <Button onClick={() => setId((prev) => prev + 3)}>Change Id 3</Button>
     </>
   );
 };

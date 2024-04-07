@@ -1,0 +1,43 @@
+.phone-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  input {
+    border-radius: 4px;
+    padding: 3px;
+    margin: 3px;
+    border: solid 1px lightgray;
+  }
+
+  /* Style to hide the arrow buttons */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+}
+.otp-container {
+  text-align: center;
+  &--content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .otp-field {
+    display: inline-block;
+    input {
+      height: 50px;
+      width: 50px;
+      margin: 0 10px;
+      text-align: center;
+    }
+  }
+  .otp-btn {
+    margin-top: 10px;
+  }
+}
