@@ -4,7 +4,7 @@
   "description": "This repository contains a collection of questions and code related to JavaScript and React which are essential for interviews",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd React && npm start\""
+    "start": "concurrently \"cd react-coding-problems && npm run dev\""
   },
   "author": "Ashish Debnath",
   "license": "ISC",
