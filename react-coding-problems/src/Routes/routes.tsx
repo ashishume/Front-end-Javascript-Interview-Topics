@@ -8,6 +8,7 @@ import FeatureFlag from "@/Projects/FeatureFlag";
 import HomePageFeatureFlag from "@/Projects/FeatureFlag/HomePage";
 import ResizeEvent from "@/Projects/ResizeEvent";
 import OptimiseMakingApiCalls from "@/Projects/OptimiseMakingApiCalls";
+import Tabs from "@/Projects/Tabs";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -21,7 +22,7 @@ export const routes: {
   // { routeName: "/typing-effect-text", component: <RunningText /> },
   // { routeName: "/switch-component", component: <SwitchComponent /> },
   // { routeName: "/walkthrough", component: <Walkthrough /> },
-  // { routeName: "/tabs", component: <Tabs /> },
+  { routeName: "/tabs", component: <Tabs /> },
   // {
   //   routeName: "/dark-mode/*",
   //   component: (

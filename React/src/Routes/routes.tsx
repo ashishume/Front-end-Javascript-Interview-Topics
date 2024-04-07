@@ -52,7 +52,7 @@ import Search from "../SearchWithDebounce";
 // import HomePageFeatureFlag from "../../../react-coding-problems/src/Projects/FeatureFlag/HomePage";
 // import FeatureFlag, { FeaturesFlagProvider } from "../../../react-coding-problems/src/Projects/FeatureFlag";
 import RunningText from "../TypingEffectText";
-import Tabs from "../Tabs";
+// import Tabs from "../../../react-coding-problems/src/Projects/Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
 import SwitchComponent from "../SwitchComponent";
 import Walkthrough from "../WalkThrough";
@@ -73,7 +73,7 @@ export const routes: {
   { routeName: "/typing-effect-text", component: <RunningText /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/walkthrough", component: <Walkthrough /> },
-  { routeName: "/tabs", component: <Tabs /> },
+  // { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",
     component: (
