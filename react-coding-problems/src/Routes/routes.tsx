@@ -58,6 +58,7 @@ import ReduxIndex from "@/Projects/Redux";
 import store from "@/Projects/Redux/store";
 import ReduxSliceIndex from "@/Projects/Redux-Slices";
 import reduxSliceStore from "@/Projects/Redux-Slices/store";
+import CommentsSection from "@/Projects/CommentsSection(incomplete)";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -89,7 +90,7 @@ export const routes: {
     ),
   },
   { routeName: "/search", component: <Search /> },
-  // { routeName: "/comments-section", component: <CommentsSection /> },
+  { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
