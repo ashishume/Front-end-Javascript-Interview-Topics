@@ -1,16 +1,23 @@
 import { ReactElement } from "react";
 import App from "../App";
-import SelectableGrid from "../Selectable-Grid";
+import SelectableGrid from "../Projects/Selectable-Grid";
+import GridLights from "@/Projects/Grid-lights";
+import VerticalDivider from "@/Projects/VerticalDivider";
+import Photo from "@/Projects/Tag/Photo";
+import FeatureFlag from "@/Projects/FeatureFlag";
+import HomePageFeatureFlag from "@/Projects/FeatureFlag/HomePage";
+import ResizeEvent from "@/Projects/ResizeEvent";
+import OptimiseMakingApiCalls from "@/Projects/OptimiseMakingApiCalls";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/selectable-grid", component: <SelectableGrid /> },
-  // { routeName: "/grid-light", component: <GridLights /> },
-  // { routeName: "/vertical-resizer", component: <VerticalDivider /> },
-  // { routeName: "/resize", component: <ResizeEvent /> },
-  // { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
+  { routeName: "/grid-light", component: <GridLights /> },
+  { routeName: "/vertical-resizer", component: <VerticalDivider /> },
+  { routeName: "/resize", component: <ResizeEvent /> },
+  { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
   // { routeName: "/typing-effect-text", component: <RunningText /> },
   // { routeName: "/switch-component", component: <SwitchComponent /> },
   // { routeName: "/walkthrough", component: <Walkthrough /> },
@@ -23,14 +30,14 @@ export const routes: {
   //     </ThemeLayout>
   //   ),
   // },
-  // {
-  //   routeName: "/feature-flag",
-  //   component: (
-  //     <FeatureFlag>
-  //       <HomePageFeatureFlag />
-  //     </FeatureFlag>
-  //   ),
-  // },
+  {
+    routeName: "/feature-flag",
+    component: (
+      <FeatureFlag>
+        <HomePageFeatureFlag />
+      </FeatureFlag>
+    ),
+  },
   // { routeName: "/search", component: <Search /> },
   // { routeName: "/comments-section", component: <CommentsSection /> },
   // { routeName: "/image-modal", component: <ImageModalParent /> },
@@ -75,7 +82,7 @@ export const routes: {
   // { routeName: "/use-memo", component: <Factorial /> },
   // { routeName: "/use-memo2", component: <UseMemo2 /> },
   // { routeName: "/use-reducer", component: <StopWatch /> },
-  // { routeName: "/photo-tagging", component: <Photo /> },
+  { routeName: "/photo-tagging", component: <Photo /> },  //=====> not working properly
   // { routeName: "/context-api", component: <UseContext /> },
   // { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   // { routeName: "/use-ref", component: <UseRef /> },

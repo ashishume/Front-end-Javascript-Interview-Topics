@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useThrottle from "../HOOKS(React)/UseThrottle";
+import useThrottle from "../../../../React/src/HOOKS(React)/UseThrottle";
 
 const ResizeEvent = () => {
   const [value, setValue] = useState(null as any);

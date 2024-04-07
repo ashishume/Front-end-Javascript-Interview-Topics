@@ -1,6 +1,6 @@
 import { Fragment, MouseEventHandler, useState } from "react";
-import "./photo.scss";
 import Dialog from "../Dialog";
+import photo from "./stock.jpg";
 const Photo = () => {
   /** click handler for dialog box to show at the clicked coordinate */
   const clickEventHandler = (event: MouseEvent) => {
@@ -63,7 +63,7 @@ const Photo = () => {
       <div className="container">
         <img
           onClick={clickEventHandler as any}
-          src={require("./stock.jpg")}
+          src={photo}
           alt="stock"
           style={{ cursor: "pointer" }}
           width="700"

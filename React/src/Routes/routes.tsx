@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import App from "../App";
-import Photo from "../Tag/Photo";
+// import Photo from "../Tag/Photo";
 import { FolderData } from "../FolderStructure(Recursive)/FolderData";
 import Input from "../HOOKS(React)/input";
 import UseCallbackHook from "../HOOKS(React)/UseCallback/useCallback";
@@ -49,29 +49,27 @@ import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
 import ImageModalParent from "../Image-Modal";
 import Search from "../SearchWithDebounce";
-import HomePageFeatureFlag from "../FeatureFlag/HomePage";
-import FeatureFlag, { FeaturesFlagProvider } from "../FeatureFlag";
+// import HomePageFeatureFlag from "../../../react-coding-problems/src/Projects/FeatureFlag/HomePage";
+// import FeatureFlag, { FeaturesFlagProvider } from "../../../react-coding-problems/src/Projects/FeatureFlag";
 import RunningText from "../TypingEffectText";
 import Tabs from "../Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
 import SwitchComponent from "../SwitchComponent";
-import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
 import Walkthrough from "../WalkThrough";
-import ResizeEvent from "../ResizeEvent";
-import VerticalDivider from "../VerticalDivider";
-import GridLights from "../Grid-lights";
-import SelectableGrid from "../../../react-coding-problems/src/Selectable-Grid";
+// import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
+// import ResizeEvent from "../../../react-coding-problems/src/Projects/ResizeEvent";
+// import VerticalDivider from "../../../react-coding-problems/src/Pages/VerticalDivider";
+// import GridLights from "../Grid-lights";
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
-  { routeName: "/selectable-grid", component: <SelectableGrid /> },
-  { routeName: "/grid-light", component: <GridLights /> },
-  { routeName: "/vertical-resizer", component: <VerticalDivider /> },
-  { routeName: "/resize", component: <ResizeEvent /> },
-  { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
+  // { routeName: "/grid-light", component: <GridLights /> },
+  // { routeName: "/vertical-resizer", component: <VerticalDivider /> },
+  // { routeName: "/resize", component: <ResizeEvent /> },
+  // { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
   { routeName: "/typing-effect-text", component: <RunningText /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/walkthrough", component: <Walkthrough /> },
@@ -84,14 +82,14 @@ export const routes: {
       </ThemeLayout>
     ),
   },
-  {
-    routeName: "/feature-flag",
-    component: (
-      <FeatureFlag>
-        <HomePageFeatureFlag />
-      </FeatureFlag>
-    ),
-  },
+  // {
+  //   routeName: "/feature-flag",
+  //   component: (
+  //     <FeatureFlag>
+  //       <HomePageFeatureFlag />
+  //     </FeatureFlag>
+  //   ),
+  // },
   { routeName: "/search", component: <Search /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
@@ -136,7 +134,7 @@ export const routes: {
   { routeName: "/use-memo", component: <Factorial /> },
   { routeName: "/use-memo2", component: <UseMemo2 /> },
   { routeName: "/use-reducer", component: <StopWatch /> },
-  { routeName: "/photo-tagging", component: <Photo /> },
+  // { routeName: "/photo-tagging", component: <Photo /> },
   { routeName: "/context-api", component: <UseContext /> },
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
