@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./style.scss";
-import { Button } from "react-bootstrap";
+import tick from './tick.png'
 const CHECKOUT_STEPS = [
   {
     name: "Customer Info",
@@ -38,7 +38,7 @@ const MultiStepper = () => {
       setProgress(bounds);
     }
     if (active === CHECKOUT_STEPS?.length) {
-      setProgress({ left: "100%" });  // TODO: need to align with left bounds here 100% is a hacky way
+      setProgress({ left: "100%" }); // TODO: need to align with left bounds here 100% is a hacky way
     }
   }, [isCompleted]);
 
@@ -58,7 +58,7 @@ const MultiStepper = () => {
             <div key={value.name} className="step-container">
               <div className="step">
                 {isCompleted[value.name] ? (
-                  <img src={require("./tick.png")} height="40" width="40" />
+                  <img src={tick} height="40" width="40" />
                 ) : (
                   <div className="step-number">{index + 1}</div>
                 )}
@@ -68,13 +68,7 @@ const MultiStepper = () => {
               </div>
               <div>
                 {active === index ? (
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => continueStep(value)}
-                  >
-                    Continue
-                  </Button>
+                  <button onClick={() => continueStep(value)}>Continue</button>
                 ) : null}
               </div>
             </div>

@@ -37,13 +37,9 @@ import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
 import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
-import NestedCheckbox from "../Checkbox-Nested";
 import DynamicForm from "../Dynamic-Input-Form";
 import RenderItemComponent from "../RenderItem";
-import NestedCheckboxes from "../Nested-Checkboxes";
-import MultiStepper from "../Multi-Stepper";
 import TableWithNestedObjects from "../Table-nested-objects";
-import ProgressBar from "../ProgressBar-with-Queue";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
@@ -64,9 +60,6 @@ export const routes: {
     ),
   },
   { routeName: "/comments-section", component: <CommentsSection /> },
-  { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
-  { routeName: "/stepper", component: <MultiStepper /> },
-  { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   { routeName: "/render-item", component: <RenderItemComponent /> },
   { routeName: "/i18next", component: <Languagei18next /> },
   { routeName: "/dynamic-form", component: <DynamicForm /> },
@@ -89,7 +82,6 @@ export const routes: {
       </Provider>
     ),
   },
-  { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
   { routeName: "/react-class", component: <ParentClassComponent /> },
   { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },

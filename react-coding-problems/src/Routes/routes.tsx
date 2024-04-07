@@ -14,6 +14,10 @@ import SwitchComponent from "@/Projects/SwitchComponent";
 import Walkthrough from "@/Projects/WalkThrough";
 import Search from "@/Projects/SearchWithDebounce";
 import ImageModalParent from "@/Projects/Image-Modal";
+import ProgressBar from "@/Projects/ProgressBar-with-Queue";
+import MultiStepper from "@/Projects/Multi-Stepper";
+import NestedCheckboxes from "@/Projects/Nested-Checkboxes";
+import NestedCheckbox from "@/Projects/Checkbox-Nested";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -47,9 +51,9 @@ export const routes: {
   { routeName: "/search", component: <Search /> },
   // { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
-  // { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
-  // { routeName: "/stepper", component: <MultiStepper /> },
-  // { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
+  { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
+  { routeName: "/stepper", component: <MultiStepper /> },
+  { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   // { routeName: "/render-item", component: <RenderItemComponent /> },
   // { routeName: "/i18next", component: <Languagei18next /> },
   // { routeName: "/dynamic-form", component: <DynamicForm /> },
@@ -72,7 +76,7 @@ export const routes: {
   //     </Provider>
   //   ),
   // },
-  // { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
+  { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
   // { routeName: "/react-class", component: <ParentClassComponent /> },
   // { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   // { routeName: "/pure-component", component: <PureClassBasedComponent /> },
