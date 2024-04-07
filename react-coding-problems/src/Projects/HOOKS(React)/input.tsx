@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import useInput from "./inputChangeHook";
 
 const Input = () => {
@@ -7,7 +8,11 @@ const Input = () => {
     <>
       {value}
       <input {...(bind as any)} type="text" />
-      <button onClick={reset}>Reset</button>
+      <button
+        onClick={reset as MouseEventHandler<HTMLButtonElement> | undefined}
+      >
+        Reset
+      </button>
     </>
   );
 };
