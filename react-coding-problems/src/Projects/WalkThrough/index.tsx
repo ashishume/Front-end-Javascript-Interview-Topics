@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
+import { Button } from "@/components/ui/button";
 const Walkthrough = () => {
   const steps = ["3", "header", "8", "12", "footer", "5"];
   const [index, setIndex] = useState(0);
@@ -88,12 +89,12 @@ const Walkthrough = () => {
             }}
           >
             <div className="actions">
-              <button onClick={prevElement}>Prev</button>
+              <Button onClick={prevElement}>Prev</Button>
 
               {index === steps?.length - 1 ? (
-                <button onClick={nextElement}>Finish</button>
+                <Button onClick={nextElement}>Finish</Button>
               ) : (
-                <button onClick={nextElement}>Next</button>
+                <Button onClick={nextElement}>Next</Button>
               )}
             </div>
           </div>
