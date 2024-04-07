@@ -1,11 +1,5 @@
 import { Suspense } from "react";
-import {
-  BrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-  createBrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routes } from "./routes";
 
 export default function Routing() {

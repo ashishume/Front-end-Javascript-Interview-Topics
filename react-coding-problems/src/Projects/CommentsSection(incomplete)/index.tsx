@@ -1,6 +1,6 @@
 import style from "./style.module.scss";
 
-const CommentComp = (props: any) => {
+const CommentComp = () => {
   return (
     <div className={style.container}>
       <div className={style.commentContent}>

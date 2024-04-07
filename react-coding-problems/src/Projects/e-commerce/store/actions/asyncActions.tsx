@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import * as ActionTypes from "../actions/actions";
 export const fetchProducts = () => {

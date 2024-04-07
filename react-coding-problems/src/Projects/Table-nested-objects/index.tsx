@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { data } from "./data";
 const TableWithNestedObjects = () => {
   const [flattenedData, setFlattenedData] = useState([]);

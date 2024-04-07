@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "./styles.module.scss";
 import { Button } from "@/components/ui/button";
 
-const TabConent = ({ children }: any) => {
-  return <>{children}</>;
-};
+// const TabConent = ({ children }: any) => {
+//   return <>{children}</>;
+// };
 
 const CustomTabs = () => {
   const [activeIndex, setActiveIndex] = useState(0);

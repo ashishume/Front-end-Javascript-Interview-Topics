@@ -1,12 +1,10 @@
-import React from "react";
-import styles from "./style.module.scss";
 // import { Button, Form } from "react-bootstrap";
 // import { useForm } from "react-hook-form";
 // import { Button } from "@/components/ui/button";
 const ParentForm = () => {
-  const onFormSubmit = (val: any) => {
-    console.log(val);
-  };
+  // const onFormSubmit = (val: any) => {
+  //   console.log(val);
+  // };
 
   // const {
   //   register,

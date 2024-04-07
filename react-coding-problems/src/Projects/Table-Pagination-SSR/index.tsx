@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TableComp from "./Components/Table";
 import axios from "axios";
 export interface ITableData {
@@ -15,7 +15,7 @@ export interface ITableConfig2 {
 const API_URL = "https://jsonplaceholder.typicode.com/posts";
 const SSRPagination = () => {
   const [pageNo, setPageNo] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
+  const pageSize = 5;
   const [tableData, setTableData] = useState<ITableData[]>([]);
   const [tableConfigData, setTableConfigData] = useState<ITableConfig2[]>([]);
   const [error, setError] = useState<any>(null);
@@ -60,6 +60,9 @@ const SSRPagination = () => {
   function handlePagination(page: number) {
     if (page >= 0) setPageNo(page);
   }
+
+  console.log(error ? error : null);
+
   return (
     <div>
       <TableComp

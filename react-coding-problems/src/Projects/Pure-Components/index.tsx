@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import { PureComponent } from "react";
 /**
  * 
 PureComponent: PureComponent is a class component that automatically implements a 

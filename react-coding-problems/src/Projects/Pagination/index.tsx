@@ -1,14 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./Pagination.scss";
 const Pagination = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-    const pageOptions = [5, 10, 20, 50];
+  const pageOptions = [5, 10, 20, 50];
   //   const [pageOption, setPageOption] = useState(pageOptions[0]);
   const [pageNos, setPageNos] = useState([] as number[]);
   //   const [total, setTotal] = useState(0);
   // const [currentPage, setCurrentPage] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [skip, setSkip] = useState(0);
   useEffect(() => {
     fetchProduts();
@@ -29,11 +30,11 @@ const Pagination = () => {
     });
   };
 
-    const onPageOptionSelect = (event: any) => {
-      // const newPageOption = event.target.value;
-      // setPageOption(newPageOption);
-      // calculatePageNumber(total); //FIXME: UPDATE WITH NEW LIMIT
-    };
+  const onPageOptionSelect = (event: any) => {
+    // const newPageOption = event.target.value;
+    // setPageOption(newPageOption);
+    // calculatePageNumber(total); //FIXME: UPDATE WITH NEW LIMIT
+  };
 
   const calculatePageNumber = () => {
     // const newTotal = total / pageOption;

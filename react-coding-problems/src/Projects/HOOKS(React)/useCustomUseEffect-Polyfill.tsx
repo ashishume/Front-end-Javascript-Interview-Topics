@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 const useCustomUseEffect = (effect: any, deps: any[]) => {
   const isFirstRender = useRef(true);

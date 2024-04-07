@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Progress from "./progress";
 import { Button } from "@/components/ui/button";
 const ProgressBar = () => {

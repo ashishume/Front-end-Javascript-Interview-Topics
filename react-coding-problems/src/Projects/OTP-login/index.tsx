@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import EnterOtp from "./components/enter-otp";
 import EnterPhone from "./components/enter-phone";
 
@@ -9,9 +9,11 @@ const Phone = () => {
     setPhone(e);
   }
   function submitFinalOtp(e: number | null) {
-    window.alert('form submitted')
+    window.alert("form submitted");
     setOtpData(e);
   }
+  console.log(otpData);
+
   return (
     <>
       {!phoneData && <EnterPhone submitPhone={onSubmitPhone} />}

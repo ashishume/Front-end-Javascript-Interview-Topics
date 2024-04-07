@@ -1,4 +1,4 @@
-import React, { Suspense, useDeferredValue } from 'react';
+import { Suspense, useDeferredValue } from 'react';
 
 // A fake asynchronous function that resolves after a given time
 const fetchData = async () => {

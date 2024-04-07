@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.scss";
 import { Button } from "@/components/ui/button";
 const Walkthrough = () => {
@@ -21,7 +21,7 @@ const Walkthrough = () => {
   function showTooltip(el: any) {
     const client = el.getBoundingClientRect();
     highlightElement(client, el);
-    const { x, y, width, height, left, top } = client;
+    const { width, height, left, top } = client;
     setPosition((prev: any) => ({
       ...prev,
       //position around center of the element

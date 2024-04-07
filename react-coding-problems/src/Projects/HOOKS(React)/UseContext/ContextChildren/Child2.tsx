@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ChannelContext, UserContext } from "..";
 const Child2 = () => {
   const user = useContext(UserContext);

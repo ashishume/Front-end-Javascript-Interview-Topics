@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
-import tick from './tick.png'
+import tick from './tick.png';
 import { Button } from "@/components/ui/button";
 const CHECKOUT_STEPS = [
   {

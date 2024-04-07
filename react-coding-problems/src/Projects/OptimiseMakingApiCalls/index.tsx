@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 /** create a batch of api calls and make parallel api calls to reduce the loading time */
 const fetchUserIds = () => {
   return new Promise((resolve, reject) => {

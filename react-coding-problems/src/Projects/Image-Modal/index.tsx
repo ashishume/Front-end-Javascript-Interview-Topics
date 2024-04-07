@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ImageModal from "./Modal";
-import photo from './stock.jpg'
+import photo from './stock.jpg';
 import { Button } from "@/components/ui/button";
 const ImageModalParent = () => {
   const [isOpen, setIsOpen] = useState(false);

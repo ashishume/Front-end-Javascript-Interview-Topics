@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 const Child = ({ count }: { count: number }) => {
   console.log("updating counter child!!");

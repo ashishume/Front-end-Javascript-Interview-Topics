@@ -1,5 +1,3 @@
-import React from "react";
-
 const RenderItemComponent = () => {
   const arr = [
     { id: 1, name: "Ashish" },

@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./style.module.scss";
 const Backdrop = ({ children }: any) => {
   return <div className={style["backdrop"]}>{children}</div>;

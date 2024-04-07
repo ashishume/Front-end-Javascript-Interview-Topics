@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useTranslation, Trans, initReactI18next } from "react-i18next";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./i18n";
 import i18next from "i18next";
 const Languagei18next = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [lang, setNewLang] = useState("en");
   useEffect(() => {

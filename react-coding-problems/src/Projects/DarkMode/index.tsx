@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import "./style.scss";
 import { ThemeContext } from "./theme";
 const DarkMode = () => {

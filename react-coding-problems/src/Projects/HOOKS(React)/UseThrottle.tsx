@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const useThrottle = (value: any, interval: number = 500): any => {
   const [throttledValue, setThrottledValue] = useState<any>(value);

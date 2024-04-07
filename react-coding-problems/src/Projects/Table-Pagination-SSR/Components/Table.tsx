@@ -1,4 +1,3 @@
-import React, { useCallback, useEffect, useState } from "react";
 import { ITableConfig2, ITableData } from "..";
 import {
   Table,
@@ -30,12 +29,12 @@ const TableComp = ({
   isLoading,
   tableConfigData,
 }: ITableConfig) => {
-  const [tableConfig, setTableConfig] = useState<
-    {
-      key: number;
-      value: string;
-    }[]
-  >();
+  // const [tableConfig, setTableConfig] = useState<
+  //   {
+  //     key: number;
+  //     value: string;
+  //   }[]
+  // >();
 
   return (
     <div className="table-container">

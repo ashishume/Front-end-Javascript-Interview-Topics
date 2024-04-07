@@ -32,7 +32,11 @@ const App = () => {
       setItem((prev: any) => ({ ...prev, [id]: "Ashish" }));
     }
   }, [isUpdated, id]);
-  return <>{/* <div>{console.log(item)}</div> */}</>;
+  return (
+    <>
+      <div>{item}</div>
+    </>
+  );
 };
 
 export default App;

@@ -1,4 +1,4 @@
-import { Fragment, MouseEventHandler, useState } from "react";
+import { Fragment, useState } from "react";
 import Dialog from "../Dialog";
 import photo from "./stock.jpg";
 const Photo = () => {

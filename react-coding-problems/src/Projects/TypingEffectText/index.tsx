@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const text = "My name is Ashish Debnath";
 const speed = 50;

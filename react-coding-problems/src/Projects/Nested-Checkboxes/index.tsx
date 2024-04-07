@@ -1,6 +1,4 @@
-import { produce } from "immer";
-import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const NestedCheckboxes = () => {
   const [checkedStateData, setCheckedStateData] = useState<any>([

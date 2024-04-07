@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./style.scss";
 const VerticalDivider = () => {
   const [leftWidth, setLeftWidth] = useState(50);

@@ -6,7 +6,7 @@ import { IInitialState } from "./reducer";
 
 const ReduxIndex = () => {
   const dispatch = useDispatch<Dispatch<ICartDispatch>>();
-  const { cart, isLoading, error } = useSelector(
+  const { cart, isLoading } = useSelector(
     (state: IInitialState) => state?.cart
   );
   useEffect(() => {

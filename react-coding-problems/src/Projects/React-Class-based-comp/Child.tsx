@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import React, { Component } from "react";
+import { Component } from "react";
 
 class Child extends Component<any, any> {
   constructor(props: any) {

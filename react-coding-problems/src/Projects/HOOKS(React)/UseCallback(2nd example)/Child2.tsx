@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 const Child2 = ({ color }: { color: string }) => {
   console.log("updating color child 22!!!");

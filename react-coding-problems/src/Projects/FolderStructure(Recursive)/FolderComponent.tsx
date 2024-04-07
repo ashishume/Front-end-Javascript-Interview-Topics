@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 
 const FolderComponent = ({ explorer }: any) => {
   const [expand, isExpanded] = useState(false);

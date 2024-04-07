@@ -12,6 +12,8 @@ const Factorial = () => {
     setValue(e.target.value);
   };
   const incVal = () => setInc((i) => i + 1);
+  
+  console.log(inc);
 
   return (
     <div>

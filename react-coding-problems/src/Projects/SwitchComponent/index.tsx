@@ -1,5 +1,3 @@
-import React, { Children } from "react";
-
 const CustomSwitch = ({ children, value }: any) => {
   const cases: any = [];
   const defaults: any = [];
