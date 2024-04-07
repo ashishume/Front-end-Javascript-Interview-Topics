@@ -59,6 +59,7 @@ import store from "@/Projects/Redux/store";
 import ReduxSliceIndex from "@/Projects/Redux-Slices";
 import reduxSliceStore from "@/Projects/Redux-Slices/store";
 import CommentsSection from "@/Projects/CommentsSection(incomplete)";
+import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -136,7 +137,7 @@ export const routes: {
   { routeName: "/use-reducer", component: <StopWatch /> },
   { routeName: "/photo-tagging", component: <Photo /> }, //=====> not working properly
   { routeName: "/context-api", component: <UseContext /> },
-  // { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
+  { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
   { routeName: "/custom-hooks", component: <Input /> },
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
