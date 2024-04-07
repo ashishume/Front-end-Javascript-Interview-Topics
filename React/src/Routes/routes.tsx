@@ -51,11 +51,11 @@ import ImageModalParent from "../Image-Modal";
 import Search from "../SearchWithDebounce";
 // import HomePageFeatureFlag from "../../../react-coding-problems/src/Projects/FeatureFlag/HomePage";
 // import FeatureFlag, { FeaturesFlagProvider } from "../../../react-coding-problems/src/Projects/FeatureFlag";
-import RunningText from "../TypingEffectText";
+// import RunningText from "../../../react-coding-problems/src/Projects/TypingEffectText";
 // import Tabs from "../../../react-coding-problems/src/Projects/Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
-import SwitchComponent from "../SwitchComponent";
-import Walkthrough from "../WalkThrough";
+// import SwitchComponent from "../../../react-coding-problems/src/Projects/SwitchComponent";
+// import Walkthrough from "../../../react-coding-problems/src/Projects/WalkThrough";
 // import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
 // import ResizeEvent from "../../../react-coding-problems/src/Projects/ResizeEvent";
 // import VerticalDivider from "../../../react-coding-problems/src/Pages/VerticalDivider";
@@ -70,9 +70,9 @@ export const routes: {
   // { routeName: "/vertical-resizer", component: <VerticalDivider /> },
   // { routeName: "/resize", component: <ResizeEvent /> },
   // { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
-  { routeName: "/typing-effect-text", component: <RunningText /> },
-  { routeName: "/switch-component", component: <SwitchComponent /> },
-  { routeName: "/walkthrough", component: <Walkthrough /> },
+  // { routeName: "/typing-effect-text", component: <RunningText /> },
+  // { routeName: "/switch-component", component: <SwitchComponent /> },
+  // { routeName: "/walkthrough", component: <Walkthrough /> },
   // { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",

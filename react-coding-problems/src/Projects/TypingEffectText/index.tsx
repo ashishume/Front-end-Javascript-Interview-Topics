@@ -4,7 +4,7 @@ const text = "My name is Ashish Debnath";
 const speed = 50;
 const infinite = false;
 
-const Typewriter = () => {
+const TypewriterEffect = () => {
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -28,4 +28,4 @@ const Typewriter = () => {
   return <span>{currentText}</span>;
 };
 
-export default Typewriter;
+export default TypewriterEffect;

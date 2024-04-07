@@ -9,6 +9,9 @@ import HomePageFeatureFlag from "@/Projects/FeatureFlag/HomePage";
 import ResizeEvent from "@/Projects/ResizeEvent";
 import OptimiseMakingApiCalls from "@/Projects/OptimiseMakingApiCalls";
 import Tabs from "@/Projects/Tabs";
+import TypewriterEffect from "@/Projects/TypingEffectText";
+import SwitchComponent from "@/Projects/SwitchComponent";
+import Walkthrough from "@/Projects/WalkThrough";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -19,9 +22,9 @@ export const routes: {
   { routeName: "/vertical-resizer", component: <VerticalDivider /> },
   { routeName: "/resize", component: <ResizeEvent /> },
   { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
-  // { routeName: "/typing-effect-text", component: <RunningText /> },
-  // { routeName: "/switch-component", component: <SwitchComponent /> },
-  // { routeName: "/walkthrough", component: <Walkthrough /> },
+  { routeName: "/typing-effect-text", component: <TypewriterEffect /> },
+  { routeName: "/switch-component", component: <SwitchComponent /> },
+  { routeName: "/walkthrough", component: <Walkthrough /> },
   { routeName: "/tabs", component: <Tabs /> },
   // {
   //   routeName: "/dark-mode/*",
