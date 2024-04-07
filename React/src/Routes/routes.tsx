@@ -11,15 +11,15 @@ import StopWatch from "../HOOKS(React)/useReducer";
 import UseRef from "../HOOKS(React)/useRef";
 import AxiosContainer from "../AbortController";
 import FolderComponent from "../FolderStructure(Recursive)/FolderComponent";
-import InfiniteScrolls from "../Infinite-Scroll-with-chat-bubble/infinite-with-intersection-observer";
+// import InfiniteScrolls from "../../../react-coding-problems/src/Projects/Infinite-Scroll-with-chat-bubble/infinite-with-intersection-observer";
 import Parent from "../HOOKS(React)/UseCallback(2nd example)/Parent";
 import FolderStructure from "../FolderStructure(Recursive)/FolderStructure(Another Example)";
 import Pagination from "../Pagination";
 import WhyDidYouUpdateCustomHook from "../HOOKS(React)/useWhyDidYouUpdate-hook";
 import UseCopyHook from "../HOOKS(React)/useCopyHooks";
-import InfiniteScroll from "../Infinite-Scroll-with-chat-bubble/infinite.scroll-2";
-import SlideShow from "../SlideShow";
-import StopWatchComp from "../StopWatch";
+// import InfiniteScroll from "../../../react-coding-problems/src/Projects/Infinite-Scroll-with-chat-bubble/infinite.scroll-2";
+// import SlideShow from "../../../react-coding-problems/src/Projects/SlideShow";
+// import StopWatchComp from "../../../react-coding-problems/src/Projects/StopWatch";
 import ParentForm from "../React-hook-form/ParentForm";
 import LazyParentComp from "../CodeSplitting";
 import ParentComponent from "../HOOKS(React)/ForwardRef/ParentComponent";
@@ -102,8 +102,8 @@ export const routes: {
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
   { routeName: "/custom-hooks", component: <Input /> },
-  { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
-  { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
+  // { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
+  // { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
   { routeName: "/rendering", component: <Parent /> },
   { routeName: "/abort-controller", component: <AxiosContainer /> },
   { routeName: "/folder-structure-2", component: <FolderStructure /> },
@@ -113,8 +113,8 @@ export const routes: {
     component: <WhyDidYouUpdateCustomHook />,
   },
   { routeName: "/use-copy-custom-hook", component: <UseCopyHook /> },
-  { routeName: "/slide-show", component: <SlideShow /> },
-  { routeName: "/stop-watch", component: <StopWatchComp /> },
+  // { routeName: "/slide-show", component: <SlideShow /> },
+  // { routeName: "/stop-watch", component: <StopWatchComp /> },
   { routeName: "code-splitting", component: <LazyParentComp /> },
   { routeName: "use-layout-effect", component: <UseLayoutEffectHook /> },
 ];

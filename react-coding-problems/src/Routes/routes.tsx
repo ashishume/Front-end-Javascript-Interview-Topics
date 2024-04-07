@@ -25,6 +25,13 @@ import TableWithNestedObjects from "@/Projects/Table-nested-objects";
 import ParentClassComponent from "@/Projects/React-Class-based-comp";
 import TableSorting from "@/Projects/Table-with-sorting";
 import DynamicFolder from "@/Projects/FolderStructure(Dynamic)/Parent";
+import { FolderData } from "@/Projects/FolderStructure(Recursive)/FolderData";
+import FolderComponent from "@/Projects/FolderStructure(Recursive)/FolderComponent";
+import FolderStructure2 from "@/Projects/FolderStructure(Recursive)/FolderStructure(Another Example)";
+import SlideShow from "@/Projects/SlideShow";
+import StopWatchComp from "@/Projects/StopWatch";
+import InfiniteScroll from "@/Projects/Infinite-Scroll-with-chat-bubble/infinite.scroll-2";
+import InfiniteScrolls from "@/Projects/Infinite-Scroll-with-chat-bubble/infinite-with-intersection-observer";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -92,10 +99,10 @@ export const routes: {
   // { routeName: "/forward-ref", component: <ParentComponent /> },
   // { routeName: "/react-hook-form", component: <ParentForm /> },
   // { routeName: "/use-callback", component: <UseCallbackHook /> },
-  // {
-  //   routeName: "/nested-folder",
-  //   component: <FolderComponent explorer={FolderData} />,
-  // },
+  {
+    routeName: "/nested-folder",
+    component: <FolderComponent explorer={FolderData} />,
+  },
   // { routeName: "/use-memo", component: <Factorial /> },
   // { routeName: "/use-memo2", component: <UseMemo2 /> },
   // { routeName: "/use-reducer", component: <StopWatch /> },
@@ -104,19 +111,19 @@ export const routes: {
   // { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   // { routeName: "/use-ref", component: <UseRef /> },
   // { routeName: "/custom-hooks", component: <Input /> },
-  // { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
-  // { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
+  { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
+  { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
   // { routeName: "/rendering", component: <Parent /> },
   // { routeName: "/abort-controller", component: <AxiosContainer /> },
-  // { routeName: "/folder-structure-2", component: <FolderStructure /> },
+  { routeName: "/folder-structure-2", component: <FolderStructure2 /> },
   // { routeName: "/pagination", component: <Pagination /> },
   // {
   //   routeName: "/why-did-you-update-custom-hook",
   //   component: <WhyDidYouUpdateCustomHook />,
   // },
   // { routeName: "/use-copy-custom-hook", component: <UseCopyHook /> },
-  // { routeName: "/slide-show", component: <SlideShow /> },
-  // { routeName: "/stop-watch", component: <StopWatchComp /> },
+  { routeName: "/slide-show", component: <SlideShow /> },
+  { routeName: "/stop-watch", component: <StopWatchComp /> },
   // { routeName: "code-splitting", component: <LazyParentComp /> },
   // { routeName: "use-layout-effect", component: <UseLayoutEffectHook /> },
 ];

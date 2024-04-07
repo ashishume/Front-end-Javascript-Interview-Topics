@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "./infinite-scroll-2.scss";
-import { Spinner } from "react-bootstrap";
+// import { Spinner } from "react-bootstrap";
 import data from "./chatData.json";
+import { Loader } from "lucide-react";
 
 const InfiniteScroll = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -108,7 +109,7 @@ const InfiniteScroll = () => {
                 </div>
               );
             })}
-          <div>{loading ? <Spinner /> : null}</div>
+          <div>{loading ? <Loader /> : null}</div>
         </div>
         {showChat ? (
           <div className="chatbot-container" ref={containerRef}>
