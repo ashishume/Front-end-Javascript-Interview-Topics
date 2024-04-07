@@ -12,6 +12,8 @@ import Tabs from "@/Projects/Tabs";
 import TypewriterEffect from "@/Projects/TypingEffectText";
 import SwitchComponent from "@/Projects/SwitchComponent";
 import Walkthrough from "@/Projects/WalkThrough";
+import Search from "@/Projects/SearchWithDebounce";
+import ImageModalParent from "@/Projects/Image-Modal";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -42,9 +44,9 @@ export const routes: {
       </FeatureFlag>
     ),
   },
-  // { routeName: "/search", component: <Search /> },
+  { routeName: "/search", component: <Search /> },
   // { routeName: "/comments-section", component: <CommentsSection /> },
-  // { routeName: "/image-modal", component: <ImageModalParent /> },
+  { routeName: "/image-modal", component: <ImageModalParent /> },
   // { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   // { routeName: "/stepper", component: <MultiStepper /> },
   // { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },

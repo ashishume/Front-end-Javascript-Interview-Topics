@@ -47,33 +47,14 @@ import ProgressBar from "../ProgressBar-with-Queue";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
-import ImageModalParent from "../Image-Modal";
-import Search from "../SearchWithDebounce";
-// import HomePageFeatureFlag from "../../../react-coding-problems/src/Projects/FeatureFlag/HomePage";
-// import FeatureFlag, { FeaturesFlagProvider } from "../../../react-coding-problems/src/Projects/FeatureFlag";
-// import RunningText from "../../../react-coding-problems/src/Projects/TypingEffectText";
-// import Tabs from "../../../react-coding-problems/src/Projects/Tabs";
 import CommentsSection from "../CommentsSection(incomplete)";
-// import SwitchComponent from "../../../react-coding-problems/src/Projects/SwitchComponent";
-// import Walkthrough from "../../../react-coding-problems/src/Projects/WalkThrough";
-// import OptimiseMakingApiCalls from "../OptimiseMakingApiCalls";
-// import ResizeEvent from "../../../react-coding-problems/src/Projects/ResizeEvent";
-// import VerticalDivider from "../../../react-coding-problems/src/Pages/VerticalDivider";
-// import GridLights from "../Grid-lights";
+
 
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
-  // { routeName: "/grid-light", component: <GridLights /> },
-  // { routeName: "/vertical-resizer", component: <VerticalDivider /> },
-  // { routeName: "/resize", component: <ResizeEvent /> },
-  // { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
-  // { routeName: "/typing-effect-text", component: <RunningText /> },
-  // { routeName: "/switch-component", component: <SwitchComponent /> },
-  // { routeName: "/walkthrough", component: <Walkthrough /> },
-  // { routeName: "/tabs", component: <Tabs /> },
   {
     routeName: "/dark-mode/*",
     component: (
@@ -82,17 +63,7 @@ export const routes: {
       </ThemeLayout>
     ),
   },
-  // {
-  //   routeName: "/feature-flag",
-  //   component: (
-  //     <FeatureFlag>
-  //       <HomePageFeatureFlag />
-  //     </FeatureFlag>
-  //   ),
-  // },
-  { routeName: "/search", component: <Search /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
-  { routeName: "/image-modal", component: <ImageModalParent /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },

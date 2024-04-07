@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ImageModal from "./Modal";
-
+import photo from './stock.jpg'
 const ImageModalParent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +13,7 @@ const ImageModalParent = () => {
         provident optio.
       </p>
       <button onClick={() => setIsOpen(!isOpen)}>Open Modal</button>
-      {isOpen && <ImageModal source={"./stock.jpg"} setIsOpen={setIsOpen} />}
+      {isOpen && <ImageModal source={photo} setIsOpen={setIsOpen} />}
     </div>
   );
 };
