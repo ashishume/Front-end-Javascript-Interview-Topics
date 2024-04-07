@@ -47,7 +47,7 @@ const itemsData = {
     },
   ],
 };
-export default function DyamicFolder() {
+export default function DynamicFolder() {
   const [isInputHidden, setIsInputHidden] = useState(true);
   const [fileData, setFileData] = useState(null);
   const [fileName, setFileName] = useState("");

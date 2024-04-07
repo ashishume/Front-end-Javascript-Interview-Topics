@@ -22,6 +22,9 @@ import RenderItemComponent from "@/Projects/RenderItem";
 import Languagei18next from "@/Projects/i18n-accessiblity";
 import DynamicForm from "@/Projects/Dynamic-Input-Form";
 import TableWithNestedObjects from "@/Projects/Table-nested-objects";
+import ParentClassComponent from "@/Projects/React-Class-based-comp";
+import TableSorting from "@/Projects/Table-with-sorting";
+import DynamicFolder from "@/Projects/FolderStructure(Dynamic)/Parent";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -63,7 +66,7 @@ export const routes: {
   { routeName: "/dynamic-form", component: <DynamicForm /> },
   { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   // { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
-  // { routeName: "/table-with-sorting", component: <TableSorting /> },
+  { routeName: "/table-with-sorting", component: <TableSorting /> },
   // {
   //   routeName: "/redux",
   //   component: (
@@ -81,8 +84,8 @@ export const routes: {
   //   ),
   // },
   { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
-  // { routeName: "/react-class", component: <ParentClassComponent /> },
-  // { routeName: "/dynamic-folder", component: <DyamicFolder /> },
+  { routeName: "/react-class", component: <ParentClassComponent /> },
+  { routeName: "/dynamic-folder", component: <DynamicFolder /> },
   // { routeName: "/pure-component", component: <PureClassBasedComponent /> },
   // { routeName: "/otp-login", component: <Phone /> },
   // { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },

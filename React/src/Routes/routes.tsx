@@ -31,11 +31,11 @@ import reduxStore from "../Redux/store";
 import reduxSliceStore from "../Redux-Slices/store";
 import ReduxSliceIndex from "../Redux-Slices";
 // import Languagei18next from "../../../react-coding-problems/src/Projects/i18n-accessiblity";
-import TableSorting from "../Table-with-sorting";
+// import TableSorting from "../../../react-coding-problems/src/Projects/Table-with-sorting";
 import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
-import ParentClassComponent from "../React-Class-based-comp";
+// import ParentClassComponent from "../../../react-coding-problems/src/Projects/React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
-import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
+// import DyamicFolder from "../../../react-coding-problems/src/Projects/FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
 // import DynamicForm from "../../../react-coding-problems/src/Projects/Dynamic-Input-Form";
 // import RenderItemComponent from "../../../react-coding-problems/src/Projects/RenderItem";
@@ -65,7 +65,7 @@ export const routes: {
   // { routeName: "/dynamic-form", component: <DynamicForm /> },
   // { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
-  { routeName: "/table-with-sorting", component: <TableSorting /> },
+  // { routeName: "/table-with-sorting", component: <TableSorting /> },
   {
     routeName: "/redux",
     component: (
@@ -82,8 +82,8 @@ export const routes: {
       </Provider>
     ),
   },
-  { routeName: "/react-class", component: <ParentClassComponent /> },
-  { routeName: "/dynamic-folder", component: <DyamicFolder /> },
+  // { routeName: "/react-class", component: <ParentClassComponent /> },
+  // { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },
   { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
