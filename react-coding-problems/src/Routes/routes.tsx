@@ -60,6 +60,7 @@ import ReduxSliceIndex from "@/Projects/Redux-Slices";
 import reduxSliceStore from "@/Projects/Redux-Slices/store";
 import CommentsSection from "@/Projects/CommentsSection(incomplete)";
 import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
+// import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -126,7 +127,7 @@ export const routes: {
   { routeName: "/otp-login", component: <Phone /> },
   { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
   { routeName: "/forward-ref", component: <ParentComponent /> },
-  // { routeName: "/react-hook-form", component: <ParentForm /> },
+  // { routeName: "/react-hook-form", component: <ParentForm /> },  // NOTE: not working (reason: bootstrap form)
   { routeName: "/use-callback", component: <UseCallbackHook /> },
   {
     routeName: "/nested-folder",

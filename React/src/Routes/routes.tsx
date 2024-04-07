@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import App from "../App";
 
-import ParentForm from "../React-hook-form/ParentForm";
-import EcommerceRoutes from "../e-commerce/ecommerce-routes";
+// import ParentForm from "../../../react-coding-problems/src/Projects/React-hook-form/ParentForm";
 
 
 export const routes: {
@@ -10,6 +9,5 @@ export const routes: {
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
-  { routeName: "/react-hook-form", component: <ParentForm /> },
-  { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
+  // { routeName: "/react-hook-form", component: <ParentForm /> },
 ];

@@ -1,22 +1,23 @@
 import React from "react";
 import styles from "./style.module.scss";
-import { Button, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+// import { Button, Form } from "react-bootstrap";
+// import { useForm } from "react-hook-form";
+// import { Button } from "@/components/ui/button";
 const ParentForm = () => {
   const onFormSubmit = (val: any) => {
     console.log(val);
   };
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isValid, isDirty },
-  } = useForm<any>();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors, isValid, isDirty },
+  // } = useForm<any>();
   return (
-    <div className={styles.container} onSubmit={handleSubmit(onFormSubmit)}>
-      <form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+    // <div className={styles.container} onSubmit={handleSubmit(onFormSubmit)}>
+      // <form>
+        {/* <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="text"
@@ -62,9 +63,9 @@ const ParentForm = () => {
             {errors.age && <p>error occured</p>}
           </Form.Text>
         </Form.Group>
-        <Button type="submit">Submit</Button>
-      </form>
-    </div>
+        <Button type="submit">Submit</Button> */}
+      // </form>
+    // </div>
   );
 };
 
