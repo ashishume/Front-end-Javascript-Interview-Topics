@@ -51,6 +51,13 @@ import Phone from "@/Projects/OTP-login";
 import Pagination from "@/Projects/Pagination";
 import LazyParentComp from "@/Projects/CodeSplitting";
 import SSRPagination from "@/Projects/Table-Pagination-SSR";
+import ThemeLayout from "@/Projects/DarkMode/theme";
+import DarkModeRoutes from "@/Projects/DarkMode/dark-mode-routes";
+import { Provider } from "react-redux";
+import ReduxIndex from "@/Projects/Redux";
+import store from "@/Projects/Redux/store";
+import ReduxSliceIndex from "@/Projects/Redux-Slices";
+import reduxSliceStore from "@/Projects/Redux-Slices/store";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -65,14 +72,14 @@ export const routes: {
   { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/walkthrough", component: <Walkthrough /> },
   { routeName: "/tabs", component: <Tabs /> },
-  // {
-  //   routeName: "/dark-mode/*",
-  //   component: (
-  //     <ThemeLayout>
-  //       <DarkModeRoutes />
-  //     </ThemeLayout>
-  //   ),
-  // },
+  {
+    routeName: "/dark-mode/*",
+    component: (
+      <ThemeLayout>
+        <DarkModeRoutes />
+      </ThemeLayout>
+    ), //not working
+  },
   {
     routeName: "/feature-flag",
     component: (
@@ -87,29 +94,30 @@ export const routes: {
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
+  { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
   { routeName: "/render-item", component: <RenderItemComponent /> },
   { routeName: "/i18next", component: <Languagei18next /> },
   { routeName: "/dynamic-form", component: <DynamicForm /> },
   { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   { routeName: "/table-with-sorting", component: <TableSorting /> },
-  // {
-  //   routeName: "/redux",
-  //   component: (
-  //     <Provider store={reduxStore}>
-  //       <ReduxIndex />
-  //     </Provider>
-  //   ),
-  // },
-  // {
-  //   routeName: "/redux-slice",
-  //   component: (
-  //     <Provider store={reduxSliceStore}>
-  //       <ReduxSliceIndex />
-  //     </Provider>
-  //   ),
-  // },
-  { routeName: "/nested-checkbox", component: <NestedCheckbox /> },
+  {
+    routeName: "/redux",
+    component: (
+      <Provider store={store}>
+        <ReduxIndex />
+      </Provider>
+    ),
+  },
+  //NOTE: both store cannot function at the same time, comment one of them to get other one to be working
+  {
+    routeName: "/redux-slice",
+    component: (
+      <Provider store={reduxSliceStore}>
+        <ReduxSliceIndex />
+      </Provider>
+    ),
+  },
   { routeName: "/react-class", component: <ParentClassComponent /> },
   { routeName: "/dynamic-folder", component: <DynamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },
@@ -125,7 +133,7 @@ export const routes: {
   { routeName: "/use-memo", component: <Factorial /> },
   { routeName: "/use-memo2", component: <UseMemo2 /> },
   { routeName: "/use-reducer", component: <StopWatch /> },
-  { routeName: "/photo-tagging", component: <Photo /> },  //=====> not working properly
+  { routeName: "/photo-tagging", component: <Photo /> }, //=====> not working properly
   { routeName: "/context-api", component: <UseContext /> },
   // { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
