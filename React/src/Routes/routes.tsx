@@ -1,28 +1,9 @@
 import { ReactElement } from "react";
 import App from "../App";
-// import Photo from "../Tag/Photo";
-import { FolderData } from "../FolderStructure(Recursive)/FolderData";
-import Input from "../HOOKS(React)/input";
-import UseCallbackHook from "../HOOKS(React)/UseCallback/useCallback";
-import UseContext from "../HOOKS(React)/UseContext";
-import Factorial from "../HOOKS(React)/useMemo";
-import UseMemo2 from "../HOOKS(React)/useMemo2";
-import StopWatch from "../HOOKS(React)/useReducer";
-import UseRef from "../HOOKS(React)/useRef";
-import AxiosContainer from "../AbortController";
-import FolderComponent from "../FolderStructure(Recursive)/FolderComponent";
-// import InfiniteScrolls from "../../../react-coding-problems/src/Projects/Infinite-Scroll-with-chat-bubble/infinite-with-intersection-observer";
-import Parent from "../HOOKS(React)/UseCallback(2nd example)/Parent";
-import FolderStructure from "../FolderStructure(Recursive)/FolderStructure(Another Example)";
+
 import Pagination from "../Pagination";
-import WhyDidYouUpdateCustomHook from "../HOOKS(React)/useWhyDidYouUpdate-hook";
-import UseCopyHook from "../HOOKS(React)/useCopyHooks";
-// import InfiniteScroll from "../../../react-coding-problems/src/Projects/Infinite-Scroll-with-chat-bubble/infinite.scroll-2";
-// import SlideShow from "../../../react-coding-problems/src/Projects/SlideShow";
-// import StopWatchComp from "../../../react-coding-problems/src/Projects/StopWatch";
 import ParentForm from "../React-hook-form/ParentForm";
 import LazyParentComp from "../CodeSplitting";
-import ParentComponent from "../HOOKS(React)/ForwardRef/ParentComponent";
 import Phone from "../OTP-login";
 import SSRPagination from "../Table-Pagination-SSR";
 import ReduxIndex from "../Redux";
@@ -30,16 +11,7 @@ import { Provider } from "react-redux";
 import reduxStore from "../Redux/store";
 import reduxSliceStore from "../Redux-Slices/store";
 import ReduxSliceIndex from "../Redux-Slices";
-// import Languagei18next from "../../../react-coding-problems/src/Projects/i18n-accessiblity";
-// import TableSorting from "../../../react-coding-problems/src/Projects/Table-with-sorting";
-import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
-// import ParentClassComponent from "../../../react-coding-problems/src/Projects/React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
-// import DyamicFolder from "../../../react-coding-problems/src/Projects/FolderStructure(Dynamic)/Parent";
-import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
-// import DynamicForm from "../../../react-coding-problems/src/Projects/Dynamic-Input-Form";
-// import RenderItemComponent from "../../../react-coding-problems/src/Projects/RenderItem";
-// import TableWithNestedObjects from "../../../react-coding-problems/src/Projects/Table-nested-objects";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
@@ -60,12 +32,7 @@ export const routes: {
     ),
   },
   { routeName: "/comments-section", component: <CommentsSection /> },
-  // { routeName: "/render-item", component: <RenderItemComponent /> },
-  // { routeName: "/i18next", component: <Languagei18next /> },
-  // { routeName: "/dynamic-form", component: <DynamicForm /> },
-  // { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
-  // { routeName: "/table-with-sorting", component: <TableSorting /> },
   {
     routeName: "/redux",
     component: (
@@ -82,39 +49,10 @@ export const routes: {
       </Provider>
     ),
   },
-  // { routeName: "/react-class", component: <ParentClassComponent /> },
-  // { routeName: "/dynamic-folder", component: <DyamicFolder /> },
   { routeName: "/pure-component", component: <PureClassBasedComponent /> },
   { routeName: "/otp-login", component: <Phone /> },
-  { routeName: "/error-boundary-hook", component: <ErrorBoundaryComponent /> },
-  { routeName: "/forward-ref", component: <ParentComponent /> },
   { routeName: "/react-hook-form", component: <ParentForm /> },
-  { routeName: "/use-callback", component: <UseCallbackHook /> },
-  {
-    routeName: "/nested-folder",
-    component: <FolderComponent explorer={FolderData} />,
-  },
-  { routeName: "/use-memo", component: <Factorial /> },
-  { routeName: "/use-memo2", component: <UseMemo2 /> },
-  { routeName: "/use-reducer", component: <StopWatch /> },
-  // { routeName: "/photo-tagging", component: <Photo /> },
-  { routeName: "/context-api", component: <UseContext /> },
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
-  { routeName: "/use-ref", component: <UseRef /> },
-  { routeName: "/custom-hooks", component: <Input /> },
-  // { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
-  // { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
-  { routeName: "/rendering", component: <Parent /> },
-  { routeName: "/abort-controller", component: <AxiosContainer /> },
-  { routeName: "/folder-structure-2", component: <FolderStructure /> },
   { routeName: "/pagination", component: <Pagination /> },
-  {
-    routeName: "/why-did-you-update-custom-hook",
-    component: <WhyDidYouUpdateCustomHook />,
-  },
-  { routeName: "/use-copy-custom-hook", component: <UseCopyHook /> },
-  // { routeName: "/slide-show", component: <SlideShow /> },
-  // { routeName: "/stop-watch", component: <StopWatchComp /> },
   { routeName: "code-splitting", component: <LazyParentComp /> },
-  { routeName: "use-layout-effect", component: <UseLayoutEffectHook /> },
 ];

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const WhyDidYouUpdateCustomHook = (name: any, props: any) => {
+const useWhyDidYouUpdateCustomHook = (name: any, props: any) => {
   const prevProps = useRef();
 
   let updatedState = {};
@@ -36,7 +36,7 @@ const WhyDidYouUpdateCustomHook = (name: any, props: any) => {
   }, [name, props]);
 };
 
-export const App = () => {
+export const WhyDidYouUpdateCustomHook = () => {
   const [count, setCounter] = useState(0);
 
   return (
@@ -48,8 +48,8 @@ export const App = () => {
 };
 
 const Example = (props: any) => {
-  WhyDidYouUpdateCustomHook("Example", props);
+  useWhyDidYouUpdateCustomHook("Example", props);
   return <>{props.count}</>;
 };
 
-export default App;
+export default WhyDidYouUpdateCustomHook;
