@@ -26,27 +26,27 @@
   border: solid 1px rgba(0, 0, 0, 0.384);
 }
 
-button {
-  border: solid 1px #0000001f;
-  outline: none;
-  padding: 5px;
-  border-radius: 4px;
-  background: #dee2e600;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  font-weight: 600;
-  margin: 2px;
-}
+// button {
+//   border: solid 1px #0000001f;
+//   outline: none;
+//   padding: 5px;
+//   border-radius: 4px;
+//   background: #dee2e600;
+//   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+//   font-weight: 600;
+//   margin: 2px;
+// }
 
-button:active {
-  border: solid 1px #0504041f;
-  outline: none;
-  padding: 5px;
-  border-radius: 4px;
-  background: var(--bg-color);
-  box-shadow: rgba(117, 112, 112, 0.16) 0px 1px 4px;
-  font-weight: 600;
-  color: var(--text-color);
-}
+// button:active {
+//   border: solid 1px #0504041f;
+//   outline: none;
+//   padding: 5px;
+//   border-radius: 4px;
+//   background: var(--bg-color);
+//   box-shadow: rgba(117, 112, 112, 0.16) 0px 1px 4px;
+//   font-weight: 600;
+//   color: var(--text-color);
+// }
 input {
   padding: 5px;
   border-radius: 4px;

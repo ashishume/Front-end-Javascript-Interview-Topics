@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useTranslation, Trans, initReactI18next } from "react-i18next";
 import "./i18n";
 import i18next from "i18next";
-import { Form } from "react-bootstrap";
 const Languagei18next = () => {
   const { t, i18n } = useTranslation();
 
@@ -16,7 +15,7 @@ const Languagei18next = () => {
   return (
     <>
       <h1>{t("Welcome to React")}</h1>
-      <Form.Select
+      <select
         aria-label="Default select example"
         onChange={(e) => setNewLang(e.target.value)}
       >
@@ -25,7 +24,7 @@ const Languagei18next = () => {
         <option value="fr">French</option>
         <option value="hi">Hindi</option>
         <option value="gr">German</option>
-      </Form.Select>
+      </select>
     </>
   );
 };

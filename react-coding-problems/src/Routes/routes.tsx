@@ -18,6 +18,10 @@ import ProgressBar from "@/Projects/ProgressBar-with-Queue";
 import MultiStepper from "@/Projects/Multi-Stepper";
 import NestedCheckboxes from "@/Projects/Nested-Checkboxes";
 import NestedCheckbox from "@/Projects/Checkbox-Nested";
+import RenderItemComponent from "@/Projects/RenderItem";
+import Languagei18next from "@/Projects/i18n-accessiblity";
+import DynamicForm from "@/Projects/Dynamic-Input-Form";
+import TableWithNestedObjects from "@/Projects/Table-nested-objects";
 export const routes: {
   routeName: string;
   component: ReactElement;
@@ -54,10 +58,10 @@ export const routes: {
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
-  // { routeName: "/render-item", component: <RenderItemComponent /> },
-  // { routeName: "/i18next", component: <Languagei18next /> },
-  // { routeName: "/dynamic-form", component: <DynamicForm /> },
-  // { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
+  { routeName: "/render-item", component: <RenderItemComponent /> },
+  { routeName: "/i18next", component: <Languagei18next /> },
+  { routeName: "/dynamic-form", component: <DynamicForm /> },
+  { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   // { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   // { routeName: "/table-with-sorting", component: <TableSorting /> },
   // {

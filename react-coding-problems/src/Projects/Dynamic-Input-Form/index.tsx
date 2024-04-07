@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 
-const DyanmicForm = () => {
+const DynamicForm = () => {
   const [formData, setFormData] = useState({
     name1: "",
   } as any);
@@ -29,16 +28,14 @@ const DyanmicForm = () => {
   }
   return (
     <div>
-      <Button
+      <button
         style={{
           margin: "10px",
         }}
-        variant="secondary"
-        size="sm"
         onClick={addNewInputField}
       >
         Add New Input Field
-      </Button>
+      </button>
       <form onSubmit={submitForm}>
         {Array.from({ length: inputs }, (_, index) => index + 1).map(
           (index) => {
@@ -60,13 +57,11 @@ const DyanmicForm = () => {
             margin: "10px",
           }}
         >
-          <Button size="sm" type="submit">
-            Submit
-          </Button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default DyanmicForm;
+export default DynamicForm;

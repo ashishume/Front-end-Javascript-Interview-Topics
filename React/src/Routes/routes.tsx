@@ -30,16 +30,16 @@ import { Provider } from "react-redux";
 import reduxStore from "../Redux/store";
 import reduxSliceStore from "../Redux-Slices/store";
 import ReduxSliceIndex from "../Redux-Slices";
-import Languagei18next from "../i18n-accessiblity";
+// import Languagei18next from "../../../react-coding-problems/src/Projects/i18n-accessiblity";
 import TableSorting from "../Table-with-sorting";
 import ErrorBoundaryComponent from "../HOOKS(React)/useErrorBoundary";
 import ParentClassComponent from "../React-Class-based-comp";
 import PureClassBasedComponent from "../Pure-Components";
 import DyamicFolder from "../FolderStructure(Dynamic)/Parent";
 import UseLayoutEffectHook from "../HOOKS(React)/UseLayoutEffectHook";
-import DynamicForm from "../Dynamic-Input-Form";
-import RenderItemComponent from "../RenderItem";
-import TableWithNestedObjects from "../Table-nested-objects";
+// import DynamicForm from "../../../react-coding-problems/src/Projects/Dynamic-Input-Form";
+// import RenderItemComponent from "../../../react-coding-problems/src/Projects/RenderItem";
+// import TableWithNestedObjects from "../../../react-coding-problems/src/Projects/Table-nested-objects";
 import DarkModeRoutes from "../DarkMode/dark-mode-routes";
 import ThemeLayout from "../DarkMode/theme";
 import EcommerceRoutes from "../e-commerce/ecommerce-routes";
@@ -60,10 +60,10 @@ export const routes: {
     ),
   },
   { routeName: "/comments-section", component: <CommentsSection /> },
-  { routeName: "/render-item", component: <RenderItemComponent /> },
-  { routeName: "/i18next", component: <Languagei18next /> },
-  { routeName: "/dynamic-form", component: <DynamicForm /> },
-  { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
+  // { routeName: "/render-item", component: <RenderItemComponent /> },
+  // { routeName: "/i18next", component: <Languagei18next /> },
+  // { routeName: "/dynamic-form", component: <DynamicForm /> },
+  // { routeName: "/table-nested-object", component: <TableWithNestedObjects /> },
   { routeName: "/table-ssr-pagination", component: <SSRPagination /> },
   { routeName: "/table-with-sorting", component: <TableSorting /> },
   {
