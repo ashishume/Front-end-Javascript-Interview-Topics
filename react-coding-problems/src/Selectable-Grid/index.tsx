@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.scss";
 const SelectableGrid = () => {
   const [isMouseDown, setMouseDown] = useState(false);
-  const [firstItemSelected, setFirstItemSelected] = useState(null);
+  const [firstItemSelected, setFirstItemSelected] = useState(null as any);
   const maxLength = 200;
   /** fill an array from 1 to 200 */
   const arr = new Array(maxLength)
@@ -10,7 +10,7 @@ const SelectableGrid = () => {
     .map((_, i) => ({ value: i + 1, isFilled: false }));
 
   const [data, setData] = useState(arr);
-  function startDragging(e, item) {
+  function startDragging(e: any, item: any) {
     /** reset previous data */
     setData(arr);
     /** set the first item selected */
@@ -21,18 +21,18 @@ const SelectableGrid = () => {
   }
 
   /** start filling the boxes wherever mouse is hovered */
-  function hoverBox({ value }) {
+  function hoverBox({ value }:any) {
     if (isMouseDown) {
       /** get the min item, from where user starts dragging (it could be top to down or bottom to top) */
       const startValue = Math.min(firstItemSelected, value);
 
       /** get the max value vice versa to the above */
       const endValue = Math.max(firstItemSelected, value);
-      
+
       setData((prev) => {
         return prev.map((prevItem) => {
-            /** if the item is within the range of the min and max then mark the box as filled */
-            if (prevItem.value >= startValue && prevItem.value <= endValue) {
+          /** if the item is within the range of the min and max then mark the box as filled */
+          if (prevItem.value >= startValue && prevItem.value <= endValue) {
             return {
               ...prevItem,
               isFilled: true,

@@ -60,7 +60,7 @@ import Walkthrough from "../WalkThrough";
 import ResizeEvent from "../ResizeEvent";
 import VerticalDivider from "../VerticalDivider";
 import GridLights from "../Grid-lights";
-import SelectableGrid from "../Selectable-Grid";
+import SelectableGrid from "../../../react-coding-problems/src/Selectable-Grid";
 
 export const routes: {
   routeName: string;
