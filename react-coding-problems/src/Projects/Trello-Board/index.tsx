@@ -114,9 +114,7 @@ const TrelloBoard = () => {
                   />
                 );
               })}
-              {draggedItem.fromBoardId !== boardId &&
-              draggedItem.toBoardId === boardId &&
-              itemHeight !== 0 ? (
+              {draggedItem.toBoardId === boardId && itemHeight !== 0 ? (
                 <div
                   className={`${itemHeight !== 0 ? "dummy-task" : ""}`}
                   style={{
