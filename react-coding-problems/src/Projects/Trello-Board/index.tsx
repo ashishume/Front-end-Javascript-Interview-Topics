@@ -1,170 +1,92 @@
 import { useState } from "react";
 import TaskCard from "./TaskCard";
 import "./style.scss";
+import { ITasks, IDraggedItem, ITask } from "./models";
+import { tasksData } from "./data";
 
-export interface ITasks {
-  todo: ITask[];
-  pending: ITask[];
-  completed: ITask[];
-}
-export interface ITask {
-  id: number;
-  title: string;
-  description: string;
-  author: string;
-  createdAt: string;
-}
-export interface IDraggedItem {
-  item: ITask | null;
-  parentContainer: string;
-}
+const dragInitialValue = {
+  item: null,
+  fromBoardId: null,
+  toBoardId: null,
+};
 
-export enum TaskClassNames {
-  pending = "pending-tasks",
-  todo = "todo-tasks",
-  completed = "completed-tasks",
-}
 const TrelloBoard = () => {
-  const tasksData: ITasks = {
-    todo: [
-      {
-        id: 1,
-        title:
-          " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 2,
-        title: "Animi esse voluptatum possimus p",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 3,
-        title: "llum reiciendis ipsam dolorem ",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 10,
-        title: "My self Ashish Debnath",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-    ],
-    pending: [
-      {
-        id: 4,
-        title: " Lorem ipsum, ectetur adipisicing elit. Deserunt",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 5,
-        title: "Animi esse voluptatum possimus p",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 6,
-        title: "llum ripsam dolorem ",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-    ],
-    completed: [
-      {
-        id: 7,
-        title: " Lorem ipsum, dolor dipisicing elit. Deserunt",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 8,
-        title: "Animi esse volupta p",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-      {
-        id: 9,
-        title: "llum reicie dolorem ",
-        description: "",
-        author: "",
-        createdAt: "",
-      },
-    ],
-  };
-
   const [tasks, setTasks] = useState(tasksData);
-  const [draggedItem, setDraggedItem] = useState({
-    item: null,
-    parentContainer: "",
-  } as IDraggedItem);
+  const [draggedItem, setDraggedItem] = useState(
+    dragInitialValue as IDraggedItem
+  );
 
-  function handleDragStart(e: any, item: ITask) {
+  function handleDragStart(item: ITask, fromBoardId: number) {
+    /** store the dragged item */
     setDraggedItem({
       item,
-      parentContainer: e.nativeEvent.target.parentNode.className,
+      fromBoardId,
+      toBoardId: null,
     });
   }
   function handleDragOver(e: any) {
     e.preventDefault();
   }
-  
-  function handleDrop(e: any) {
-    e.preventDefault();
-    if (e.target.className === TaskClassNames.pending && draggedItem.item) {
-      console.log("on drop", draggedItem);
-      setTasks((prevTasks: ITasks) => {
-        if (draggedItem.parentContainer === TaskClassNames.todo) {
-          const newArr = prevTasks.todo.filter(
-            (val) => val.id !== draggedItem.item?.id
-          );
-          prevTasks.todo = newArr;
-          prevTasks.pending.push(draggedItem.item as any);
-        }
-        return prevTasks;
-      });
+
+  async function handleDrop(event: any) {
+    event.preventDefault();
+    const targetBoardId = parseInt(event.target.id);
+    /** if the element is dropped in same board id then cancel the event */
+    if (targetBoardId === draggedItem.fromBoardId) {
       setDraggedItem({
         item: null,
-        parentContainer: "",
+        fromBoardId: null,
+        toBoardId: null,
       });
+      return false;
     }
+
+    const updatedTasks: ITasks[] = tasks.map((taskList) => {
+      // If the current task list is the source board, remove the dragged item
+      if (taskList.boardId === draggedItem.fromBoardId) {
+        return {
+          ...taskList,
+          tasks: taskList.tasks.filter(
+            (task) => task.id !== draggedItem.item?.id
+          ),
+        };
+      }
+      // If the current task list is the target board, add the dragged item
+      if (taskList.boardId === targetBoardId && draggedItem.item) {
+        return {
+          ...taskList,
+          tasks: [...taskList.tasks, draggedItem.item],
+        };
+      }
+      return taskList; // Return unchanged task list if not source or target board
+    });
+
+    // Update state with the modified task list
+    await setTasks(updatedTasks);
+
+    // Reset dragged item state
+    await setDraggedItem(dragInitialValue);
   }
+
   return (
     <div className="trello-board-container">
-      <h1 className="text-xl">Trello Board</h1>
+      <h1 className="text-xl">Trello Board (Clone)</h1>
       <div className="content">
-        {Object.keys(tasks).map((key) => {
+        {tasks.map(({ boardId, tasks }) => {
           return (
             <div
-              className={
-                key === "todo"
-                  ? TaskClassNames.todo
-                  : key === "pending"
-                  ? TaskClassNames.pending
-                  : TaskClassNames.completed
-              }
-              key={key}
+              className="task-board"
+              key={boardId}
+              id={`${boardId}`}
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
-              {tasks[key as keyof ITasks].map((value: ITask) => {
+              {tasks.map((value: ITask) => {
                 return (
                   <TaskCard
                     key={value.id}
                     value={value}
-                    onDragStart={handleDragStart}
+                    onDragStart={() => handleDragStart(value, boardId)}
                     className={`${
                       draggedItem?.item?.id === value.id ? "hide" : ""
                     }`}

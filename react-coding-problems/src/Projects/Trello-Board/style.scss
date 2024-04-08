@@ -1,16 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 .trello-board-container {
-  margin: 10px;
+  padding: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  background: rgb(20, 18, 43);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 43, 1) 0%,
+    rgba(76, 0, 143, 1) 99%
+  );
+  color: #fff;
+  height: 100vh;
   .content {
-    border: solid 1px black;
-    border-radius: 4px;
-    height: 500px;
     width: 100%;
+    border-radius: 4px;
     display: flex;
-    .todo-tasks,
-    .pending-tasks,
-    .completed-tasks {
+    .task-board {
       padding: 5px;
-      border: solid 1px black;
+      border: solid 1px rgba(0, 0, 0, 0.377);
+      margin: 5px;
+      border-radius: 10px;
+      background-color: #101204;
+      padding: 10px;
     }
   }
 }
@@ -18,12 +30,14 @@
 .trello-task-card {
   display: flex;
   flex-direction: column;
-  margin: 5px 0;
-  padding: 5px;
-  border-radius: 4px;
-  font-size: 14px;
-  width: 150px;
-  background-color: aquamarine;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  width: 200px;
+  background-color: #22272b;
+  font-weight: 500;
+  color: #ffffffd1;
   border: solid 1px gray;
   cursor: pointer;
   &:active {
