@@ -23,6 +23,7 @@
       border-radius: 10px;
       background-color: #101204;
       padding: 10px;
+      min-width: 200px;
     }
   }
 }
@@ -46,4 +47,10 @@
 }
 .hide {
   opacity: 0.1;
+}
+
+.dummy-task {
+  width: 200px;
+  border-radius: 10px;
+  background-color: rgb(114, 114, 114);
 }
