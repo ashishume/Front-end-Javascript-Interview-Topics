@@ -1,0 +1,35 @@
+.trello-board-container {
+  margin: 10px;
+  .content {
+    border: solid 1px black;
+    border-radius: 4px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    .todo-tasks,
+    .pending-tasks,
+    .completed-tasks {
+      padding: 5px;
+      border: solid 1px black;
+    }
+  }
+}
+
+.trello-task-card {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 150px;
+  background-color: aquamarine;
+  border: solid 1px gray;
+  cursor: pointer;
+  &:active {
+    transform: scale(1.07);
+  }
+}
+.hide {
+  opacity: 0.1;
+}

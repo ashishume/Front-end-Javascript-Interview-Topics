@@ -60,12 +60,14 @@ import ReduxSliceIndex from "@/Projects/Redux-Slices";
 import reduxSliceStore from "@/Projects/Redux-Slices/store";
 import CommentsSection from "@/Projects/CommentsSection(incomplete)";
 import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
+import TrelloBoard from "@/Projects/Trello-Board";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/trello-board", component: <TrelloBoard /> },
   { routeName: "/selectable-grid", component: <SelectableGrid /> },
   { routeName: "/grid-light", component: <GridLights /> },
   { routeName: "/vertical-resizer", component: <VerticalDivider /> },
