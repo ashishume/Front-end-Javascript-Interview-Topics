@@ -4,6 +4,9 @@ import { ITasks, IDraggedItem, ITask } from "./models";
 import { tasksData } from "./data";
 import TaskCard from "./TaskCard";
 
+/**
+ * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
+ */
 const dragInitialValue = {
   item: null,
   fromBoardId: null,
@@ -58,7 +61,7 @@ const TrelloBoard = () => {
   /**
    * on drop of the dragged element
    * @param event drag event
-   * @returns 
+   * @returns
    */
   async function handleDrop(event: any) {
     event.preventDefault();
