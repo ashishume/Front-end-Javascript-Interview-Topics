@@ -53,5 +53,5 @@
   width: 200px;
   border-radius: 10px;
   background-color: rgb(114, 114, 114);
-  pointer-events: none;
+  pointer-events: none; //important for removing drag glitchy effects
 }

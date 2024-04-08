@@ -28,6 +28,12 @@ const TrelloBoard = () => {
     };
   }, []);
 
+  /**
+   * drag event handler
+   * @param e drag event
+   * @param item dragged item
+   * @param fromBoardId source board id
+   */
   function handleDragStart(e: any, item: ITask, fromBoardId: number) {
     /** store the dragged item */
     setDraggedItem({
@@ -37,13 +43,23 @@ const TrelloBoard = () => {
     });
     setItemHeight(e.target.getBoundingClientRect()?.height);
   }
+
+  /**
+   * handle drag movement
+   * @param e drag event
+   */
   function handleDragOver(e: any) {
     e.preventDefault();
     const el = e.target;
-    console.log(el.id);
+    /** while dragging set the target container */
     setDraggedItem((prev) => ({ ...prev, toBoardId: parseInt(el.id) }));
   }
 
+  /**
+   * on drop of the dragged element
+   * @param event drag event
+   * @returns 
+   */
   async function handleDrop(event: any) {
     event.preventDefault();
     const targetBoardId = parseInt(event.target.id);
