@@ -15,7 +15,7 @@ const TaskCard = ({
       onDragStart={(event) => onDragStart(event, value)}
       className={`trello-task-card ${className}`}
     >
-      {value.id}: {value.title}
+      {value.title}
     </div>
   );
 };

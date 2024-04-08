@@ -3,6 +3,7 @@ import "./style.scss";
 import { ITasks, IDraggedItem, ITask } from "./models";
 import { tasksData } from "./data";
 import TaskCard from "./TaskCard";
+import { Button } from "@/components/ui/button";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -100,13 +101,54 @@ const TrelloBoard = () => {
     await setTasks(updatedTasks);
 
     /** update the latest data to localstorage */
-    const stringified = JSON.stringify(updatedTasks);
-    localStorage.setItem("tasks", stringified);
-
+    updateLocalStorage(updatedTasks);
     // Reset dragged item state
     await setDraggedItem(dragInitialValue);
   }
 
+  function addNewBoard() {
+    setTasks((prev) => {
+      const newObj = {
+        boardName: "Random board", // TODO: add via input field
+        boardId: generateUniqueId(),
+        tasks: [],
+      };
+      const newArr = [...prev, newObj];
+
+      /** update localstorage on addition of new board */
+      updateLocalStorage(newArr);
+
+      return newArr;
+    });
+  }
+
+  function updateLocalStorage(updatedTasks: ITasks[]) {
+    /** update the latest data to localstorage */
+    const stringified = JSON.stringify(updatedTasks);
+    localStorage.setItem("tasks", stringified);
+  }
+
+  function addNewTask(boardId: number) {
+    const newTasks = tasks.map((task) => {
+      if (boardId === task.boardId) {
+        task.tasks.push({
+          id: generateUniqueId(),
+          title:
+            " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt", // TODO: add via input field
+          description: "",
+          author: "",
+          createdAt: "",
+        });
+      }
+      return task;
+    });
+
+    setTasks(newTasks);
+  }
+
+  function generateUniqueId(): number {
+    return Math.floor(Math.random() * 1000000000) + 1;
+  }
   return (
     <div className="trello-board-container">
       <h1 className="text-xl">Trello Board (Clone)</h1>
@@ -142,9 +184,22 @@ const TrelloBoard = () => {
                   }}
                 ></div>
               ) : null}
+                <Button
+                  className="add-task-btn"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => addNewTask(boardId)}  // add pointer events and also make the button work (find another way)
+                >
+                  Add task
+                </Button>
             </div>
           );
         })}
+        <div>
+          <Button variant="outline" size="sm" onClick={addNewBoard}>
+            + Add Board
+          </Button>
+        </div>
       </div>
     </div>
   );
