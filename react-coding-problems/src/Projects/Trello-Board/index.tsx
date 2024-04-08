@@ -69,10 +69,10 @@ const TrelloBoard = () => {
   }
 
   return (
-    <div className="trello-board-container">
+    <div className="trello-board-container" >
       <h1 className="text-xl">Trello Board (Clone)</h1>
-      <div className="content">
-        {tasks.map(({ boardId, tasks }) => {
+      <div className="content font-mono">
+        {tasks.map(({ boardId, boardName, tasks }) => {
           return (
             <div
               className="task-board"
@@ -81,6 +81,7 @@ const TrelloBoard = () => {
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
+              <div className="font-bold">{boardName}</div>
               {tasks.map((value: ITask) => {
                 return (
                   <TaskCard

@@ -1,5 +1,6 @@
 export interface ITasks {
   boardId: number;
+  boardName: string;
   tasks: ITask[];
 }
 export interface ITask {

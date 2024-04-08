@@ -3,6 +3,7 @@ import { ITasks } from "./models";
 export const tasksData: ITasks[] = [
   {
     boardId: 123,
+    boardName:"Todo tasks",
     tasks: [
       {
         id: 1,
@@ -37,6 +38,7 @@ export const tasksData: ITasks[] = [
   },
   {
     boardId: 456,
+    boardName:"Ongoing tasks",
     tasks: [
       {
         id: 5,
@@ -64,6 +66,7 @@ export const tasksData: ITasks[] = [
   },
   {
     boardId: 653,
+    boardName:"Completed tasks",
     tasks: [
       {
         id: 9,
