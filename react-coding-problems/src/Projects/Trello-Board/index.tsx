@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import "./style.scss";
 import { tasksData } from "./mock-data/data";
 import TaskCard from "./components/TaskCard";
-import { Button } from "@/components/ui/button";
 import { IDraggedItem, ITask, ITasks } from "./models/models";
 import { ButtonActions } from "./components/button-actions";
-import InputField from "./components/Input";
+import BoardActions from "./components/board-actions";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -177,7 +176,7 @@ const TrelloBoard = () => {
   async function resetAddTask() {
     await setTaskValue("");
     await setInputActive(null);
-    await setBoardValue('');
+    await setBoardValue("");
   }
 
   /** generate random id  */
@@ -233,35 +232,15 @@ const TrelloBoard = () => {
             </div>
           );
         })}
-        <div className="board-container">
-          {inputActive !== null &&
-          !tasks.filter((v) => v.boardId === inputActive).length ? (
-            <>
-              <InputField
-                placeholder="Add new board"
-                onChange={(e) => setBoardValue(e.target.value)}
-                value={boardValue}
-              />
-              <Button
-                variant="outline"
-                size="sm"
-                className="board-btn"
-                onClick={addNewBoard}
-              >
-                + Add Board
-              </Button>
-            </>
-          ) : (
-            <Button
-              variant="outline"
-              className="board-btn"
-              size="sm"
-              onClick={() => setInputActive(-1)} // add any number to make not null and value shud not be any boardId
-            >
-              + Add More
-            </Button>
-          )}
-        </div>
+        
+        <BoardActions
+          inputActive={inputActive}
+          addNewBoard={addNewBoard}
+          tasks={tasks}
+          boardValue={boardValue}
+          setBoardValue={setBoardValue}
+          setInputActive={setInputActive}
+        />
       </div>
     </div>
   );
