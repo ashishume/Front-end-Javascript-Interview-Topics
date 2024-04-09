@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./style.scss";
-import { ITasks, IDraggedItem, ITask } from "./models";
-import { tasksData } from "./data";
-import TaskCard from "./TaskCard";
+import { tasksData } from "./mock-data/data";
+import TaskCard from "./components/TaskCard";
 import { Button } from "@/components/ui/button";
-import InputField from "./Input";
+import InputField from "./components/Input";
+import { IDraggedItem, ITask, ITasks } from "./models/models";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)

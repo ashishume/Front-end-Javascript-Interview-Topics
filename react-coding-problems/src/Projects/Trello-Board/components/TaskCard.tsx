@@ -1,4 +1,4 @@
-import { ITask } from "./models";
+import { ITask } from "../models/models";
 
 const TaskCard = ({
   value,

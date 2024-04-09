@@ -1,4 +1,4 @@
-import { ITasks } from "./models";
+import { ITasks } from "../models/models";
 
 export const tasksData: ITasks[] = [
   {
