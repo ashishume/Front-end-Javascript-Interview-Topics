@@ -4,6 +4,7 @@ import { ITasks, IDraggedItem, ITask } from "./models";
 import { tasksData } from "./data";
 import TaskCard from "./TaskCard";
 import { Button } from "@/components/ui/button";
+import InputField from "./Input";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -20,6 +21,8 @@ const TrelloBoard = () => {
   const [draggedItem, setDraggedItem] = useState(
     dragInitialValue as IDraggedItem
   );
+  const [inputActive, setInputActive] = useState(null as number | null);
+  const [taskValue, setTaskValue] = useState("");
 
   useEffect(() => {
     /** if any data available in localstorage then fetch */
@@ -128,30 +131,47 @@ const TrelloBoard = () => {
     localStorage.setItem("tasks", stringified);
   }
 
-  function addNewTask(boardId: number) {
-    const newTasks = tasks.map((task) => {
-      if (boardId === task.boardId) {
-        task.tasks.push({
-          id: generateUniqueId(),
-          title:
-            " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt", // TODO: add via input field
-          description: "",
-          author: "",
-          createdAt: "",
-        });
-      }
-      return task;
-    });
+  function addNewCard(boardId: number) {
+    //clear any previous values then show new input field
+    setTaskValue("");
+    setInputActive(boardId);
+  }
 
-    setTasks(newTasks);
+  async function addNewTask(boardId: number) {
+    if (taskValue.trim() !== "") {
+      const newTasks = tasks.map((task) => {
+        if (boardId === task.boardId) {
+          task.tasks.push({
+            id: generateUniqueId(),
+            title: taskValue,
+            description: "",
+            author: "Ashish",
+            createdAt: new Date().toLocaleDateString(),
+          });
+        }
+        return task;
+      });
+
+      await setTasks(newTasks);
+      await resetAddTask();
+    }
+  }
+
+
+  async function resetAddTask() {
+    await setTaskValue("");
+    await setInputActive(null);
   }
 
   function generateUniqueId(): number {
     return Math.floor(Math.random() * 1000000000) + 1;
   }
+  function updateTaskValue(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    setTaskValue(e.target.value);
+  }
   return (
     <div className="trello-board-container">
-      <h1 className="text-xl">Trello Board (Clone)</h1>
+      <h1 className="text-xl text-white">Trello Board (Clone)</h1>
       <div className="content font-mono">
         {tasks.map(({ boardId, boardName, tasks }) => {
           return (
@@ -162,7 +182,7 @@ const TrelloBoard = () => {
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
-              <div className="font-bold">{boardName}</div>
+              <div className="font-bold text-white">{boardName}</div>
               {tasks.map((value: ITask) => {
                 return (
                   <TaskCard
@@ -184,14 +204,39 @@ const TrelloBoard = () => {
                   }}
                 ></div>
               ) : null}
+              {inputActive === boardId ? (
+                <InputField onChange={updateTaskValue} value={taskValue} />
+              ) : null}
+              {inputActive !== null && inputActive === boardId ? (
+                <>
+                  <Button
+                    className="add-task-btn"
+                    variant="secondary"
+                    size="sm"
+                    disabled={!taskValue.trim()}
+                    onClick={() => addNewTask(boardId)} // add pointer events and also make the button work (find another way)
+                  >
+                    Add task
+                  </Button>
+                  <Button
+                    className="add-task-btn"
+                    variant="destructive"
+                    size="sm"
+                    onClick={resetAddTask}
+                  >
+                    Cancel
+                  </Button>
+                </>
+              ) : (
                 <Button
                   className="add-task-btn"
                   variant="secondary"
                   size="sm"
-                  onClick={() => addNewTask(boardId)}  // add pointer events and also make the button work (find another way)
+                  onClick={() => addNewCard(boardId)}
                 >
-                  Add task
+                  Add Card
                 </Button>
+              )}
             </div>
           );
         })}

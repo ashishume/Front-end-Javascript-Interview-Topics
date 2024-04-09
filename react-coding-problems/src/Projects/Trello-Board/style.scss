@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+$card-width: 230px;
 .trello-board-container {
   padding: 10px;
   background: rgb(20, 18, 43);
@@ -14,7 +16,7 @@
     border-radius: 4px;
     display: flex;
     .task-board {
-      color: #fff;
+      // color: #fff;
       height: 90vh;
       padding: 5px;
       border: solid 1px rgba(0, 0, 0, 0.377);
@@ -22,9 +24,11 @@
       border-radius: 10px;
       background-color: #10120480;
       padding: 10px;
-      min-width: 200px;
+      min-width: $card-width;
       .add-task-btn {
         // pointer-events: none;
+        margin-top: 5px;
+        margin-right: 5px;
         position: relative;
         display: block;
       }
@@ -39,7 +43,7 @@
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
-  width: 200px;
+  width: $card-width;
   background-color: #22272b;
   font-weight: 500;
   color: #ffffffd1;
@@ -53,7 +57,7 @@
 }
 
 .dummy-task {
-  width: 200px;
+  width: $card-width;
   border-radius: 10px;
   background-color: rgb(114, 114, 114);
   pointer-events: none; //important for removing drag glitchy effects
