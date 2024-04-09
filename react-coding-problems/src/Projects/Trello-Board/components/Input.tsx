@@ -4,9 +4,11 @@ import { useEffect, useRef } from "react";
 const InputField = ({
   value,
   onChange,
+  placeholder = "Type anything...",
 }: {
   value: string;
   onChange: (e: any) => void;
+  placeholder?: string;
 }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
@@ -17,7 +19,10 @@ const InputField = ({
 
   return (
     <Textarea
-      placeholder="Type anything..."
+      style={{
+        marginTop: "5px",
+      }}
+      placeholder={placeholder}
       value={value}
       ref={inputRef}
       onChange={onChange}

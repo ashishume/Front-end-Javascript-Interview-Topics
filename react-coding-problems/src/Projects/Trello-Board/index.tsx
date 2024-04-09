@@ -3,8 +3,9 @@ import "./style.scss";
 import { tasksData } from "./mock-data/data";
 import TaskCard from "./components/TaskCard";
 import { Button } from "@/components/ui/button";
-import InputField from "./components/Input";
 import { IDraggedItem, ITask, ITasks } from "./models/models";
+import { ButtonActions } from "./components/button-actions";
+import InputField from "./components/Input";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -23,6 +24,7 @@ const TrelloBoard = () => {
   );
   const [inputActive, setInputActive] = useState(null as number | null);
   const [taskValue, setTaskValue] = useState("");
+  const [boardValue, setBoardValue] = useState("");
 
   useEffect(() => {
     /** if any data available in localstorage then fetch */
@@ -109,34 +111,48 @@ const TrelloBoard = () => {
     await setDraggedItem(dragInitialValue);
   }
 
-  function addNewBoard() {
-    setTasks((prev) => {
-      const newObj = {
-        boardName: "Random board", // TODO: add via input field
-        boardId: generateUniqueId(),
-        tasks: [],
-      };
-      const newArr = [...prev, newObj];
+  /** create new board */
+  async function addNewBoard() {
+    if (boardValue.trim() !== "") {
+      await setTasks((prev) => {
+        const newObj = {
+          boardName: boardValue,
+          boardId: generateUniqueId(),
+          tasks: [],
+        };
+        const newArr = [...prev, newObj];
 
-      /** update localstorage on addition of new board */
-      updateLocalStorage(newArr);
+        /** update localstorage on addition of new board */
+        updateLocalStorage(newArr);
 
-      return newArr;
-    });
+        return newArr;
+      });
+
+      await resetAddTask();
+    }
   }
 
+  /** update localstorage with new data */
   function updateLocalStorage(updatedTasks: ITasks[]) {
     /** update the latest data to localstorage */
     const stringified = JSON.stringify(updatedTasks);
     localStorage.setItem("tasks", stringified);
   }
 
+  /**
+   * add new card in the board
+   * @param boardId
+   */
   function addNewCard(boardId: number) {
     //clear any previous values then show new input field
     setTaskValue("");
     setInputActive(boardId);
   }
 
+  /**
+   * add new task with title value
+   * @param boardId
+   */
   async function addNewTask(boardId: number) {
     if (taskValue.trim() !== "") {
       const newTasks = tasks.map((task) => {
@@ -157,21 +173,21 @@ const TrelloBoard = () => {
     }
   }
 
-
+  /** reset after adding new task or board name */
   async function resetAddTask() {
     await setTaskValue("");
     await setInputActive(null);
+    await setBoardValue('');
   }
 
+  /** generate random id  */
   function generateUniqueId(): number {
     return Math.floor(Math.random() * 1000000000) + 1;
   }
-  function updateTaskValue(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    setTaskValue(e.target.value);
-  }
+
   return (
     <div className="trello-board-container">
-      <h1 className="text-xl text-white">Trello Board (Clone)</h1>
+      <h1 className="text-xl text-white">Axpo board</h1>
       <div className="content font-mono">
         {tasks.map(({ boardId, boardName, tasks }) => {
           return (
@@ -204,46 +220,47 @@ const TrelloBoard = () => {
                   }}
                 ></div>
               ) : null}
-              {inputActive === boardId ? (
-                <InputField onChange={updateTaskValue} value={taskValue} />
-              ) : null}
-              {inputActive !== null && inputActive === boardId ? (
-                <>
-                  <Button
-                    className="add-task-btn"
-                    variant="secondary"
-                    size="sm"
-                    disabled={!taskValue.trim()}
-                    onClick={() => addNewTask(boardId)} // add pointer events and also make the button work (find another way)
-                  >
-                    Add task
-                  </Button>
-                  <Button
-                    className="add-task-btn"
-                    variant="destructive"
-                    size="sm"
-                    onClick={resetAddTask}
-                  >
-                    Cancel
-                  </Button>
-                </>
-              ) : (
-                <Button
-                  className="add-task-btn"
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => addNewCard(boardId)}
-                >
-                  Add Card
-                </Button>
-              )}
+
+              <ButtonActions
+                inputActive={inputActive}
+                boardId={boardId}
+                updateTaskValue={(e) => setTaskValue(e.target.value)}
+                taskValue={taskValue}
+                addNewTask={addNewTask}
+                resetAddTask={resetAddTask}
+                addNewCard={addNewCard}
+              />
             </div>
           );
         })}
-        <div>
-          <Button variant="outline" size="sm" onClick={addNewBoard}>
-            + Add Board
-          </Button>
+        <div className="board-container">
+          {inputActive !== null &&
+          !tasks.filter((v) => v.boardId === inputActive).length ? (
+            <>
+              <InputField
+                placeholder="Add new board"
+                onChange={(e) => setBoardValue(e.target.value)}
+                value={boardValue}
+              />
+              <Button
+                variant="outline"
+                size="sm"
+                className="board-btn"
+                onClick={addNewBoard}
+              >
+                + Add Board
+              </Button>
+            </>
+          ) : (
+            <Button
+              variant="outline"
+              className="board-btn"
+              size="sm"
+              onClick={() => setInputActive(-1)} // add any number to make not null and value shud not be any boardId
+            >
+              + Add More
+            </Button>
+          )}
         </div>
       </div>
     </div>

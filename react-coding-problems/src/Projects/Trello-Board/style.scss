@@ -32,33 +32,41 @@ $card-width: 230px;
         position: relative;
         display: block;
       }
+
+      .trello-task-card {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        width: $card-width;
+        background-color: #22272b;
+        font-weight: 500;
+        color: #ffffffd1;
+        cursor: pointer;
+        &:active {
+          transform: scale(1.07);
+        }
+      }
+      .hide {
+        opacity: 0.1;
+      }
+    }
+    .board-container {
+      .board-btn {
+        margin-top: 5px;
+        margin-right: 5px;
+        position: relative;
+        display: block;
+      }
+    }
+
+    .dummy-task {
+      width: $card-width;
+      border-radius: 10px;
+      background-color: rgb(114, 114, 114);
+      pointer-events: none; //important for removing drag glitchy effects
     }
   }
-}
-
-.trello-task-card {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  width: $card-width;
-  background-color: #22272b;
-  font-weight: 500;
-  color: #ffffffd1;
-  cursor: pointer;
-  &:active {
-    transform: scale(1.07);
-  }
-}
-.hide {
-  opacity: 0.1;
-}
-
-.dummy-task {
-  width: $card-width;
-  border-radius: 10px;
-  background-color: rgb(114, 114, 114);
-  pointer-events: none; //important for removing drag glitchy effects
 }
