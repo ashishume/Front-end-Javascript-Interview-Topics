@@ -44,7 +44,7 @@ const TrelloBoard = () => {
    * @param fromBoardId source board id
    */
   function handleDragStart(e: any, item: ITask, fromBoardId: number) {
-    setIsPointerEventsDisabled(true)
+    setIsPointerEventsDisabled(true);
     /** store the dragged item */
     setDraggedItem({
       item,
@@ -71,7 +71,7 @@ const TrelloBoard = () => {
    * @returns
    */
   async function handleDrop(event: any) {
-    setIsPointerEventsDisabled(false)
+    setIsPointerEventsDisabled(false);
 
     event.preventDefault();
     const targetBoardId = parseInt(event.target.id);
@@ -205,6 +205,7 @@ const TrelloBoard = () => {
               {tasks.map((value: ITask) => {
                 return (
                   <TaskCard
+                    isPointerEventsDisabled={isPointerEventsDisabled}
                     key={value.id}
                     value={value}
                     onDragStart={(e) => handleDragStart(e, value, boardId)}

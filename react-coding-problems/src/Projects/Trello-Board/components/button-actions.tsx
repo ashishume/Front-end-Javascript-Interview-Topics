@@ -21,18 +21,25 @@ export const ButtonActions = ({
   resetAddTask: () => void;
   addNewCard: (boardId: number) => void;
 }) => {
+  /** disable pointer events so that drag event doesnt get hindered */
+  const btnStyles = {
+    pointerEvents: isPointerEventsDisabled ? "none" : "auto",
+    display: isPointerEventsDisabled ? "block" : "inline-block",
+  };
+
   return (
     <>
       {inputActive === boardId ? (
-        <InputField onChange={updateTaskValue} value={taskValue} />
+        <InputField
+          isPointerEventsDisabled={isPointerEventsDisabled}
+          onChange={updateTaskValue}
+          value={taskValue}
+        />
       ) : null}
       {inputActive !== null && inputActive === boardId ? (
         <>
           <Button
-            style={{
-              pointerEvents: isPointerEventsDisabled ? "none" : "auto",
-              display: isPointerEventsDisabled ? "block" : "inline-block",
-            }}
+            style={btnStyles as any}
             className="add-task-btn"
             variant="secondary"
             size="sm"
@@ -42,10 +49,7 @@ export const ButtonActions = ({
             Add task
           </Button>
           <Button
-            style={{
-              pointerEvents: isPointerEventsDisabled ? "none" : "auto",
-              display: isPointerEventsDisabled ? "block" : "inline-block",
-            }}
+            style={btnStyles as any}
             className="add-task-btn"
             variant="destructive"
             size="sm"
@@ -56,10 +60,7 @@ export const ButtonActions = ({
         </>
       ) : (
         <Button
-          style={{
-            width: "100%",
-            pointerEvents: isPointerEventsDisabled ? "none" : "auto",
-          }}
+          style={{ width: "100", ...(btnStyles as any) }}
           className="add-task-btn"
           variant="secondary"
           size="sm"

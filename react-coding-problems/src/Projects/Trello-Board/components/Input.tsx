@@ -5,10 +5,12 @@ const InputField = ({
   value,
   onChange,
   placeholder = "Type anything...",
+  isPointerEventsDisabled,
 }: {
   value: string;
   onChange: (e: any) => void;
   placeholder?: string;
+  isPointerEventsDisabled: boolean;
 }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
@@ -20,6 +22,7 @@ const InputField = ({
   return (
     <Textarea
       style={{
+        pointerEvents: isPointerEventsDisabled ? "none" : "auto",
         marginTop: "5px",
       }}
       placeholder={placeholder}

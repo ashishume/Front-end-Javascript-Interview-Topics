@@ -4,7 +4,9 @@ const TaskCard = ({
   value,
   onDragStart,
   className,
+  isPointerEventsDisabled,
 }: {
+  isPointerEventsDisabled: boolean;
   value: ITask;
   onDragStart: (event: any, item: ITask) => void;
   className: string;
