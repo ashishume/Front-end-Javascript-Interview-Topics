@@ -303,7 +303,9 @@ const TrelloBoard = () => {
           setBoardValue={setBoardValue}
           setInputActive={setInputActive}
         />
+
       </div>
+        <div className="text-sm text-white pl-1">Note: Double click on the task cards to edit</div>
     </div>
   );
 };
