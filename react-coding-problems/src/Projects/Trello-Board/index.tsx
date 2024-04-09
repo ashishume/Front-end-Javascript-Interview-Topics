@@ -18,6 +18,7 @@ const dragInitialValue = {
 const TrelloBoard = () => {
   const [tasks, setTasks] = useState(tasksData);
   const [itemHeight, setItemHeight] = useState(0);
+  const [isPointerEventsDisabled, setIsPointerEventsDisabled] = useState(false);
   const [draggedItem, setDraggedItem] = useState(
     dragInitialValue as IDraggedItem
   );
@@ -43,6 +44,7 @@ const TrelloBoard = () => {
    * @param fromBoardId source board id
    */
   function handleDragStart(e: any, item: ITask, fromBoardId: number) {
+    setIsPointerEventsDisabled(true)
     /** store the dragged item */
     setDraggedItem({
       item,
@@ -69,6 +71,8 @@ const TrelloBoard = () => {
    * @returns
    */
   async function handleDrop(event: any) {
+    setIsPointerEventsDisabled(false)
+
     event.preventDefault();
     const targetBoardId = parseInt(event.target.id);
     /** if the element is dropped in same board id or there is no target id then cancel the event */
@@ -221,6 +225,7 @@ const TrelloBoard = () => {
               ) : null}
 
               <ButtonActions
+                isPointerEventsDisabled={isPointerEventsDisabled}
                 inputActive={inputActive}
                 boardId={boardId}
                 updateTaskValue={(e) => setTaskValue(e.target.value)}
@@ -232,7 +237,7 @@ const TrelloBoard = () => {
             </div>
           );
         })}
-        
+
         <BoardActions
           inputActive={inputActive}
           addNewBoard={addNewBoard}

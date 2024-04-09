@@ -3,6 +3,7 @@ import InputField from "./Input";
 import { ChangeEvent } from "react";
 
 export const ButtonActions = ({
+  isPointerEventsDisabled,
   inputActive,
   boardId,
   updateTaskValue,
@@ -11,6 +12,7 @@ export const ButtonActions = ({
   resetAddTask,
   addNewCard,
 }: {
+  isPointerEventsDisabled: boolean;
   inputActive: number | null;
   boardId: number;
   updateTaskValue: (e: ChangeEvent<HTMLTextAreaElement>) => void;
@@ -27,6 +29,10 @@ export const ButtonActions = ({
       {inputActive !== null && inputActive === boardId ? (
         <>
           <Button
+            style={{
+              pointerEvents: isPointerEventsDisabled ? "none" : "auto",
+              display: isPointerEventsDisabled ? "block" : "inline-block",
+            }}
             className="add-task-btn"
             variant="secondary"
             size="sm"
@@ -36,6 +42,10 @@ export const ButtonActions = ({
             Add task
           </Button>
           <Button
+            style={{
+              pointerEvents: isPointerEventsDisabled ? "none" : "auto",
+              display: isPointerEventsDisabled ? "block" : "inline-block",
+            }}
             className="add-task-btn"
             variant="destructive"
             size="sm"
@@ -46,6 +56,10 @@ export const ButtonActions = ({
         </>
       ) : (
         <Button
+          style={{
+            width: "100%",
+            pointerEvents: isPointerEventsDisabled ? "none" : "auto",
+          }}
           className="add-task-btn"
           variant="secondary"
           size="sm"
