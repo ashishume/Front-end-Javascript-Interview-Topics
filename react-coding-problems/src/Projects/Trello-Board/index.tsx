@@ -5,6 +5,8 @@ import TaskCard from "./components/TaskCard";
 import { IDraggedItem, ITask, ITasks } from "./models/models";
 import { ButtonActions } from "./components/button-actions";
 import BoardActions from "./components/board-actions";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { grey } from "@mui/material/colors";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -217,6 +219,16 @@ const TrelloBoard = () => {
     await updateLocalStorage(updatedTasks);
     await resetAddTask();
   }
+
+  /** delete the board with confirmation */
+  async function removeBoardHandler(boardId: number) {
+    const shouldDelete = confirm("Are you sure you want to delete the board?");
+    if (shouldDelete) {
+      const updatedTasks = tasks.filter((val) => val.boardId !== boardId);
+      await setTasks(updatedTasks);
+      await updateLocalStorage(updatedTasks);
+    }
+  }
   return (
     <div className="trello-board-container">
       <h1 className="text-xl text-white">Axpo board</h1>
@@ -230,7 +242,15 @@ const TrelloBoard = () => {
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
-              <div className="font-bold text-white">{boardName}</div>
+              <div className="flex justify-between">
+                <div className="font-bold text-white">{boardName}</div>
+                <div className="">
+                  <DeleteIcon
+                    sx={{ color: grey[500] }}
+                    onClick={() => removeBoardHandler(boardId)}
+                  />
+                </div>
+              </div>
               {tasks.map((value: ITask) => {
                 return (
                   <Fragment key={value.id}>
@@ -303,9 +323,10 @@ const TrelloBoard = () => {
           setBoardValue={setBoardValue}
           setInputActive={setInputActive}
         />
-
       </div>
-        <div className="text-sm text-white pl-1">Note: Double click on the task cards to edit</div>
+      <div className="text-sm text-white pl-1">
+        Note: Double click on the task cards to edit
+      </div>
     </div>
   );
 };
