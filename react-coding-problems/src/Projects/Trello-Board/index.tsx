@@ -7,6 +7,7 @@ import { ButtonActions } from "./components/button-actions";
 import BoardActions from "./components/board-actions";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { grey } from "@mui/material/colors";
+import InfoIcon from "@mui/icons-material/Info";
 
 /**
  * TODO: tasks should be able to add at the middle of the board (currently can only be added at the bottom)
@@ -325,7 +326,12 @@ const TrelloBoard = () => {
         />
       </div>
       <div className="text-sm text-white pl-1">
-        Note: Double click on the task cards to edit
+        <InfoIcon
+          style={{
+            verticalAlign: "-7px",
+          }}
+        />{" "}
+        Double click on the task cards to edit
       </div>
     </div>
   );
