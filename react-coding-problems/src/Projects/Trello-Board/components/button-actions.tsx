@@ -7,17 +7,21 @@ export const ButtonActions = ({
   inputActive,
   boardId,
   updateTaskValue,
+  editCardId,
   taskValue,
   addNewTask,
   resetAddTask,
   addNewCard,
+  editTaskHandler,
 }: {
   isPointerEventsDisabled: boolean;
   inputActive: number | null;
   boardId: number;
   updateTaskValue: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  editCardId: number | null;
   taskValue: string;
   addNewTask: (boardId: number) => void;
+  editTaskHandler: (boardId: number) => void;
   resetAddTask: () => void;
   addNewCard: (boardId: number) => void;
 }) => {
@@ -26,7 +30,6 @@ export const ButtonActions = ({
     pointerEvents: isPointerEventsDisabled ? "none" : "auto",
     display: isPointerEventsDisabled ? "block" : "inline-block",
   };
-
   return (
     <>
       {inputActive === boardId ? (
@@ -44,9 +47,11 @@ export const ButtonActions = ({
             variant="secondary"
             size="sm"
             disabled={!taskValue.trim()}
-            onClick={() => addNewTask(boardId)} // add pointer events and also make the button work (find another way)
+            onClick={() =>
+              editCardId !== null ? editTaskHandler(boardId) : addNewTask(boardId)
+            } // add pointer events and also make the button work (find another way)
           >
-            Add task
+            {editCardId !== null ? "Edit Task" : "Add Task"}
           </Button>
           <Button
             style={btnStyles as any}

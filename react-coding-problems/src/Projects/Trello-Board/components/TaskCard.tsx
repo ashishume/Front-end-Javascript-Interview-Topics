@@ -4,9 +4,9 @@ const TaskCard = ({
   value,
   onDragStart,
   className,
-  isPointerEventsDisabled,
+  handleDoubleClick,
 }: {
-  isPointerEventsDisabled: boolean;
+  handleDoubleClick: () => void;
   value: ITask;
   onDragStart: (event: any, item: ITask) => void;
   className: string;
@@ -14,6 +14,7 @@ const TaskCard = ({
   return (
     <div
       draggable
+      onDoubleClick={handleDoubleClick}
       onDragStart={(event) => onDragStart(event, value)}
       className={`trello-task-card ${className}`}
     >

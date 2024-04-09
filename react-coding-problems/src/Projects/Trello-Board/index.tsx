@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./style.scss";
 import { tasksData } from "./mock-data/data";
 import TaskCard from "./components/TaskCard";
@@ -19,6 +19,7 @@ const TrelloBoard = () => {
   const [tasks, setTasks] = useState(tasksData);
   const [itemHeight, setItemHeight] = useState(0);
   const [isPointerEventsDisabled, setIsPointerEventsDisabled] = useState(false);
+  const [editCardId, setEditCardId] = useState(null as number | null);
   const [draggedItem, setDraggedItem] = useState(
     dragInitialValue as IDraggedItem
   );
@@ -109,7 +110,7 @@ const TrelloBoard = () => {
     await setTasks(updatedTasks);
 
     /** update the latest data to localstorage */
-    updateLocalStorage(updatedTasks);
+    await updateLocalStorage(updatedTasks);
     // Reset dragged item state
     await setDraggedItem(dragInitialValue);
   }
@@ -172,15 +173,17 @@ const TrelloBoard = () => {
       });
 
       await setTasks(newTasks);
+      await updateLocalStorage(newTasks);
       await resetAddTask();
     }
   }
 
-  /** reset after adding new task or board name */
+  /** reset after adding/editing new task or board name */
   async function resetAddTask() {
     await setTaskValue("");
     await setInputActive(null);
     await setBoardValue("");
+    await setEditCardId(null);
   }
 
   /** generate random id  */
@@ -188,6 +191,32 @@ const TrelloBoard = () => {
     return Math.floor(Math.random() * 1000000000) + 1;
   }
 
+  /** open edit task input field */
+  function handleEdit(cardData: ITask, boardId: number) {
+    setEditCardId(cardData.id);
+    setInputActive(boardId);
+    setTaskValue(cardData.title);
+  }
+
+  /**
+   * edit task value field and submit
+   */
+  async function editTaskHandler(boardId: number) {
+    const updatedTasks = tasks.map((boardTask) => {
+      if (boardTask.boardId === boardId) {
+        boardTask.tasks.map((val) => {
+          if (val.id === editCardId) {
+            val.title = taskValue;
+          }
+          return val;
+        });
+      }
+      return boardTask;
+    });
+    await setTasks(updatedTasks);
+    await updateLocalStorage(updatedTasks);
+    await resetAddTask();
+  }
   return (
     <div className="trello-board-container">
       <h1 className="text-xl text-white">Axpo board</h1>
@@ -204,17 +233,38 @@ const TrelloBoard = () => {
               <div className="font-bold text-white">{boardName}</div>
               {tasks.map((value: ITask) => {
                 return (
-                  <TaskCard
-                    isPointerEventsDisabled={isPointerEventsDisabled}
-                    key={value.id}
-                    value={value}
-                    onDragStart={(e) => handleDragStart(e, value, boardId)}
-                    className={`${
-                      draggedItem?.item?.id === value.id ? "hide" : ""
-                    }`}
-                  />
+                  <Fragment key={value.id}>
+                    {/* show this actions button when task card is double clicked (on edit) */}
+                    {editCardId !== null && editCardId === value.id ? (
+                      <ButtonActions
+                        editTaskHandler={editTaskHandler}
+                        isPointerEventsDisabled={isPointerEventsDisabled}
+                        inputActive={inputActive}
+                        boardId={boardId}
+                        editCardId={editCardId}
+                        updateTaskValue={(e) => setTaskValue(e.target.value)}
+                        taskValue={taskValue}
+                        addNewTask={addNewTask}
+                        resetAddTask={resetAddTask}
+                        addNewCard={addNewCard}
+                      />
+                    ) : (
+                      // show default task cards
+                      <TaskCard
+                        handleDoubleClick={() => handleEdit(value, boardId)}
+                        key={value.id}
+                        value={value}
+                        onDragStart={(e) => handleDragStart(e, value, boardId)}
+                        className={`${
+                          draggedItem?.item?.id === value.id ? "hide" : ""
+                        }`}
+                      />
+                    )}
+                  </Fragment>
                 );
               })}
+
+              {/* this is a dummy mask card highlight shows up while dragging is active */}
               {draggedItem.toBoardId === boardId && itemHeight !== 0 ? (
                 <div
                   className={`${itemHeight !== 0 ? "dummy-task" : ""}`}
@@ -225,20 +275,26 @@ const TrelloBoard = () => {
                 ></div>
               ) : null}
 
-              <ButtonActions
-                isPointerEventsDisabled={isPointerEventsDisabled}
-                inputActive={inputActive}
-                boardId={boardId}
-                updateTaskValue={(e) => setTaskValue(e.target.value)}
-                taskValue={taskValue}
-                addNewTask={addNewTask}
-                resetAddTask={resetAddTask}
-                addNewCard={addNewCard}
-              />
+              {/* open this input field only for add task not for edit task */}
+              {editCardId === null ? (
+                <ButtonActions
+                  isPointerEventsDisabled={isPointerEventsDisabled}
+                  inputActive={inputActive}
+                  boardId={boardId}
+                  editCardId={editCardId}
+                  updateTaskValue={(e) => setTaskValue(e.target.value)}
+                  taskValue={taskValue}
+                  editTaskHandler={() => {}}
+                  addNewTask={addNewTask}
+                  resetAddTask={resetAddTask}
+                  addNewCard={addNewCard}
+                />
+              ) : null}
             </div>
           );
         })}
 
+        {/* add board cards  */}
         <BoardActions
           inputActive={inputActive}
           addNewBoard={addNewBoard}

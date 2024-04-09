@@ -5,12 +5,12 @@ const InputField = ({
   value,
   onChange,
   placeholder = "Type anything...",
-  isPointerEventsDisabled,
+  isPointerEventsDisabled = false,
 }: {
   value: string;
   onChange: (e: any) => void;
   placeholder?: string;
-  isPointerEventsDisabled: boolean;
+  isPointerEventsDisabled?: boolean;
 }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
