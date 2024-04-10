@@ -1,6 +1,6 @@
 /** polyfill for getElementById */
 
-document.getElementById = function (id) {
+document.getCustomElementById = function (id) {
   // Traverse the DOM tree starting from document.body
   function traverse(node) {
     if (node && node.id === id) {
