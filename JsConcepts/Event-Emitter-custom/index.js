@@ -29,10 +29,10 @@ class MyCustomEmitter {
 }
 
 const obj = new MyCustomEmitter();
-obj.on("aa", (e) => {
+obj.on("eventName", (e) => {
   console.log(e);
 });
-obj.emit("aa", { data: "Ashish" });
+obj.emit("eventName", { data: "Ashish" });
 
 
 /*

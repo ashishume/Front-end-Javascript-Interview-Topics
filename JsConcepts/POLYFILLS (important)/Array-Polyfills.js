@@ -1,3 +1,23 @@
+// Polyfill for Array.concat()
+
+Array.prototype.customConcat = function () {
+  var newArray = [];
+  for (var i = 0; i < this.length; i++) {
+    newArray.push(this[i]);
+  }
+  for (var j = 0; j < arguments.length; j++) {
+    if (Array.isArray(arguments[j])) {
+      for (var k = 0; k < arguments[j].length; k++) {
+        newArray.push(arguments[j][k]);
+      }
+    } else {
+      newArray.push(arguments[j]);
+    }
+  }
+  return newArray;
+};
+console.log([1, 2, 3].concat(5, 6, 7)); //output 1,2,3,5,6,7
+
 const items = [1, 2, 3, 4, 5, 6];
 
 /** For each polyfill */
