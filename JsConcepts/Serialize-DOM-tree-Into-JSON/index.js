@@ -47,9 +47,9 @@ console.log(serializeDOMTree(document.body));
   </div> 
   */
 
-  /**
+/**
    * OUTPUT:
-   * {
+  {
     "tag": "body",
     "attributes": {},
     "children": [
@@ -59,14 +59,14 @@ console.log(serializeDOMTree(document.body));
                 "class": "parent"
             },
             "children": [
-                "This is sample tree",
+                "This is sample dom element structure",
                 {
                     "tag": "span",
                     "attributes": {
                         "id": "randomId"
                     },
                     "children": [
-                        "Again find a word is difficult"
+                        "Nested span tag with random attribute"
                     ]
                 },
                 {
@@ -75,14 +75,14 @@ console.log(serializeDOMTree(document.body));
                         "class": "content"
                     },
                     "children": [
-                        "my self ashish, find the sample tree here",
+                        "my self ashish, this again a nested section tag element",
                         {
                             "tag": "span",
                             "attributes": {
                                 "id": "nested"
                             },
                             "children": [
-                                "sample word here"
+                                "Span tag is inserted here"
                             ]
                         }
                     ]
@@ -97,7 +97,6 @@ console.log(serializeDOMTree(document.body));
             "children": []
         }
     ]
-}
-   * 
-   */
+} 
 
+   */
