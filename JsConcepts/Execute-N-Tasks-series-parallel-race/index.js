@@ -20,6 +20,28 @@ function executeTasksInSeries(tasks) {
     });
   }, Promise.resolve([]));
 }
+
+
+
+//API call in series (same as above using async await)
+const apiCalls = [apiCall1, apiCall2, apiCall3, apiCall4, apiCall5];
+
+async function makeSequentialAPICalls() {
+    try {
+        await apiCalls.reduce(async (previousPromise, apiCall) => {
+            await previousPromise;
+            const result = await apiCall();
+            console.log('API call result:', result);
+        }, Promise.resolve());
+        console.log('All API calls completed successfully');
+    } catch (error) {
+        console.error('Error making API calls:', error);
+    }
+}
+
+// makeSequentialAPICalls();
+
+
 // -------------------------------------------------------------------
 // 2. Execute N tasks in parallel
 // @param: tasks: [task1,task2,task3]
