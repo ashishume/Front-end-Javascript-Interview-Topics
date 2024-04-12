@@ -32,8 +32,12 @@ function serializeDOMTree(node) {
   return nodeData;
 }
 
+console.log(serializeDOMTree(document.body));
+
 /**
-  <div class="parent">
+ HTML document:
+ 
+ <div class="parent">
         This is sample tree
         <span id="randomId">Again find a word is difficult</span>
         <section class="content">
@@ -43,4 +47,57 @@ function serializeDOMTree(node) {
   </div> 
   */
 
-console.log(serializeDOMTree(document.body));
+  /**
+   * OUTPUT:
+   * {
+    "tag": "body",
+    "attributes": {},
+    "children": [
+        {
+            "tag": "div",
+            "attributes": {
+                "class": "parent"
+            },
+            "children": [
+                "This is sample tree",
+                {
+                    "tag": "span",
+                    "attributes": {
+                        "id": "randomId"
+                    },
+                    "children": [
+                        "Again find a word is difficult"
+                    ]
+                },
+                {
+                    "tag": "section",
+                    "attributes": {
+                        "class": "content"
+                    },
+                    "children": [
+                        "my self ashish, find the sample tree here",
+                        {
+                            "tag": "span",
+                            "attributes": {
+                                "id": "nested"
+                            },
+                            "children": [
+                                "sample word here"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "script",
+            "attributes": {
+                "src": "./index.js"
+            },
+            "children": []
+        }
+    ]
+}
+   * 
+   */
+
