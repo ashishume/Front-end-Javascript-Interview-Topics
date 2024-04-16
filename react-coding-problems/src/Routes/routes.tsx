@@ -3,7 +3,7 @@ import App from "../App";
 import SelectableGrid from "../Projects/Selectable-Grid";
 import GridLights from "@/Projects/Grid-lights";
 import VerticalDivider from "@/Projects/VerticalDivider";
-import Photo from "@/Projects/Tag/Photo";
+import Photo from "@/Projects/Tag";
 import FeatureFlag from "@/Projects/FeatureFlag";
 import HomePageFeatureFlag from "@/Projects/FeatureFlag/HomePage";
 import ResizeEvent from "@/Projects/ResizeEvent";

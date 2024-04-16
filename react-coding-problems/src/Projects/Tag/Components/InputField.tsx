@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, forwardRef } from "react";
 
-const InputField = ({ setValue }: any) => {
+const InputField = forwardRef(({ setValue, value }: any, ref: any) => {
   return (
     <Fragment>
       <input
@@ -15,9 +15,11 @@ const InputField = ({ setValue }: any) => {
           border: "solid 1px gray",
         }}
         onChange={setValue}
+        ref={ref}
+        value={value}
       />
     </Fragment>
   );
-};
+});
 
 export default InputField;
