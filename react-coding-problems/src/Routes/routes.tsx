@@ -138,7 +138,7 @@ export const routes: {
   { routeName: "/use-memo", component: <Factorial /> },
   { routeName: "/use-memo2", component: <UseMemo2 /> },
   { routeName: "/use-reducer", component: <StopWatch /> },
-  { routeName: "/photo-tagging", component: <Photo /> }, //=====> not working properly
+  { routeName: "/photo-tagging", component: <Photo /> },
   { routeName: "/context-api", component: <UseContext /> },
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
