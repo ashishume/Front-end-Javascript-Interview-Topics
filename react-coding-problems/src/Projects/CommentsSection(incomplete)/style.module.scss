@@ -1,23 +1,33 @@
 .container {
-  border: solid 1px lightgray;
   margin: 5px;
-  padding: 5px;
-  .commentContent {
-  }
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: black;
+  background-color: rgb(153 178 255 / 17%);
   .actions {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    text-decoration: underline;
     .reply {
+      color: #737373;
       cursor: pointer;
       &:hover {
-        color: rgb(118, 118, 252);
-        text-decoration-color: rgb(118, 118, 252);
+        color: rgb(137, 137, 247);
       }
     }
     .viewReply {
       @extend .reply;
     }
+  }
+}
+.input-field-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  .input-field {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
   }
 }
