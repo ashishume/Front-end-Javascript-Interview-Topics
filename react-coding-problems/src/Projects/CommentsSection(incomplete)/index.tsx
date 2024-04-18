@@ -10,12 +10,6 @@ const commentListData = [
       {
         id: "2",
         message: "my name is ashish",
-        children: [
-          {
-            id: "3",
-            message: "my name is deb",
-          },
-        ],
       },
     ],
   },
@@ -65,19 +59,23 @@ const CommentComp = () => {
     });
     setCommentsData(updatedComments);
   };
+
   const onSubmitHandler = async (id: string) => {
     await setShowCommentField(!showCommentField);
     await findAndUpdateCommentWithId(commentsData, id);
     await setComment("");
   };
+
   const showReplyInputField = (id: string) => {
     setShowCommentField((prev) => !prev);
     setActiveCommentId(id);
   };
+
   const renderNestedComments = (commentsRenderData: any) => {
     return commentsRenderData.map(({ id, message, children }: any) => {
       return (
         <div key={id}>
+          {children && children.length > 0 ? "@" : null}
           <CommentBox
             id={id}
             toggleCommentField={() => showReplyInputField(id)}
@@ -87,6 +85,7 @@ const CommentComp = () => {
             activeCommentId={activeCommentId}
             onChange={onCommentHandler}
             onSubmitHandler={() => onSubmitHandler(id)}
+            onCancelHandler={() => setShowCommentField(!showCommentField)}
           />
           <div style={{ marginLeft: "30px" }}>
             {children && renderNestedComments(children)}

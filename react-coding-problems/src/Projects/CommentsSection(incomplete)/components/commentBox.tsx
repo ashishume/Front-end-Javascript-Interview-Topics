@@ -9,6 +9,7 @@ const CommentBox = ({
   onSubmitHandler,
   commentMessage,
   activeCommentId,
+  onCancelHandler,
   id,
 }: any) => {
   return (
@@ -25,6 +26,7 @@ const CommentBox = ({
           value={value}
           onChange={onChange}
           onSubmitHandler={onSubmitHandler}
+          onCancelHandler={onCancelHandler}
         />
       ) : null}
     </div>

@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import style from "../style.module.scss";
 import { useEffect, useRef } from "react";
-const CommentActionField = ({ value, onChange, onSubmitHandler }: any) => {
+const CommentActionField = ({
+  value,
+  onChange,
+  onSubmitHandler,
+  onCancelHandler,
+}: any) => {
   const inputRef = useRef(null as any);
   useEffect(() => {
     inputRef.current.focus();
@@ -23,6 +28,9 @@ const CommentActionField = ({ value, onChange, onSubmitHandler }: any) => {
       />
       <Button size="sm" onClick={onSubmitHandler} disabled={!value}>
         Submit
+      </Button>
+      <Button size="sm" variant="outline" onClick={onCancelHandler}>
+        Cancel
       </Button>
     </div>
   );
