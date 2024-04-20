@@ -21,18 +21,18 @@ const InfiniteScrolls = () => {
   // Define a callback function to be used as a ref for the last item in the list
   const lastItemRef = useCallback((node: any) => {
     // Disconnect the previous observer if it exists
-    if (observer.current) observer.current.disconnect();   
+    if (observer.current) observer.current.disconnect();
     // Create a new IntersectionObserver instance
     observer.current = new IntersectionObserver((entries) => {
       // Check if the observed element is intersecting with the viewport
-      if (entries[0].isIntersecting) {      
+      if (entries[0].isIntersecting) {
         // Increment the page number when the last item becomes visible
         setPageNumber((prev) => prev + 1);
       }
     });
 
     // Start observing the last item in the list
-    if (node) observer.current.observe(node);  
+    if (node) observer.current.observe(node);
   }, []);
 
   // Fetch data when the page number changes
@@ -48,8 +48,7 @@ const InfiniteScrolls = () => {
         // Update the products state with the fetched data
         setProducts((prevData: any) => {
           // Concatenate the previous data with the new data
-          const updatedData = [...prevData, ...data];
-          return updatedData;
+          return [...prevData, ...data];
         });
       });
   };
