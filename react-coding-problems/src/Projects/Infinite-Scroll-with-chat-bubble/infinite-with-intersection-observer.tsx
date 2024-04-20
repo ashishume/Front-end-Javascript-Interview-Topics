@@ -15,36 +15,51 @@ const InfiniteScrolls = () => {
   const [products, setProducts] = useState<any>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
 
+  // Create a ref to hold the IntersectionObserver instance
   const observer: React.MutableRefObject<any> = useRef();
+
+  // Define a callback function to be used as a ref for the last item in the list
   const lastItemRef = useCallback((node: any) => {
-    if (observer.current) observer.current.disconnect();
+    // Disconnect the previous observer if it exists
+    if (observer.current) observer.current.disconnect();   
+    // Create a new IntersectionObserver instance
     observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
+      // Check if the observed element is intersecting with the viewport
+      if (entries[0].isIntersecting) {      
+        // Increment the page number when the last item becomes visible
         setPageNumber((prev) => prev + 1);
       }
     });
 
-    if (node) observer.current.observe(node);
+    // Start observing the last item in the list
+    if (node) observer.current.observe(node);  
   }, []);
 
+  // Fetch data when the page number changes
   useEffect(() => {
     fetchData(pageNumber);
   }, [pageNumber]);
 
+  // Function to fetch data from an API
   const fetchData = (pageNumber: number = 1, size: number = 30) => {
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${pageNumber}`)
       .then((d) => d.json())
       .then((data: any) => {
+        // Update the products state with the fetched data
         setProducts((prevData: any) => {
-          const first = [...prevData, ...data];
-          return first;
+          // Concatenate the previous data with the new data
+          const updatedData = [...prevData, ...data];
+          return updatedData;
         });
       });
   };
+
   return (
     <div>
+      {/* Map over the products array to render each product */}
       {products.map((value: Product, index: number) => {
         return products?.length === index + 1 ? (
+          // Attach the lastItemRef callback to the last item in the list
           <div
             ref={lastItemRef}
             key={index}

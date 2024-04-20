@@ -75,7 +75,7 @@ const CommentComp = () => {
     return commentsRenderData.map(({ id, message, children }: any) => {
       return (
         <div key={id}>
-          {children && children.length > 0 ? "@" : null}
+          {/* {children && children.length > 0 ? "@" : null} */}
           <CommentBox
             id={id}
             toggleCommentField={() => showReplyInputField(id)}
