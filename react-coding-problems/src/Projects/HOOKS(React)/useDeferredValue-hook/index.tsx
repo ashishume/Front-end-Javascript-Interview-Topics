@@ -1,32 +1,43 @@
-import { Suspense, useDeferredValue } from 'react';
+import { useState, useDeferredValue, useMemo } from "react";
 
-// A fake asynchronous function that resolves after a given time
-const fetchData = async () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('Data fetched!');
-    }, 2000);
-  });
-};
+const SearchComponent = () => {
+  const [query, setQuery] = useState("");
 
-// A component that fetches and displays data
-const DataFetcher = () => {
-  // Using useDeferredValue to delay rendering until data is ready
-  const deferredData = useDeferredValue(fetchData());
+  const handleInputChange = (event: any) => {
+    setQuery(event.target.value);
+  };
 
   return (
     <div>
-      {/* Suspense is used to wait for the data */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <DataDisplay data={deferredData} />
-      </Suspense>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={query}
+        onChange={handleInputChange}
+      />
+      <SearchParent input={query} />
     </div>
   );
 };
 
-// Another component to display the fetched data
-const DataDisplay = ({ data }:any) => {
-  return <div>{data}</div>;
+const SearchParent = ({ input }: any) => {
+  const inputData = useDeferredValue(input);
+  const list = useMemo(() => {
+    const l = [];
+    for (let i = 0; i < 20000; i++) {
+      l.push(<div>{inputData}</div>);
+    }
+
+    return l;
+  }, [inputData]);
+
+  return (
+    <>
+      {list.map((value, index) => {
+        return <div key={index}>{value}</div>;
+      })}
+    </>
+  );
 };
 
-export default DataFetcher;
+export default SearchComponent;

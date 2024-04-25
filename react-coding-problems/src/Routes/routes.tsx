@@ -61,6 +61,7 @@ import reduxSliceStore from "@/Projects/Redux-Slices/store";
 import CommentsSection from "@/Projects/CommentsSection";
 import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
 import TrelloBoard from "@/Projects/Trello-Board";
+import UseDeferredValueHook from "@/Projects/HOOKS(React)/useDeferredValue-hook";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -143,6 +144,7 @@ export const routes: {
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
   { routeName: "/custom-hooks", component: <Input /> },
+  { routeName: "/use-deferred-value", component: <UseDeferredValueHook /> },
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
   { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
   { routeName: "/rendering", component: <UseCallbackSecond /> },
