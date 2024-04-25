@@ -1,14 +1,18 @@
 import { useState } from "react";
 
 const TreeItem = ({ item }: any) => {
+  /** create a state for opening and closing the folder */
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       <div onClick={() => setIsOpen(!isOpen)}>
+        {/* if children is present show + and - icons */}
         {item.children ? (isOpen ? "[-] " : "[+] ") : ""}
         {item.label}
       </div>
+
+      {/* based on the children availability make a recursive call to itself for more data */}
       {item.children && isOpen && (
         <div style={{ marginLeft: "20px" }}>
           {item.children.map((child: any) => (
@@ -23,6 +27,7 @@ const TreeItem = ({ item }: any) => {
 export default function FolderStructure2() {
   return (
     <div className="App">
+      {/* loop through each data */}
       {data.data.map((item: any) => {
         return <TreeItem key={item.id} item={item} />;
       })}
