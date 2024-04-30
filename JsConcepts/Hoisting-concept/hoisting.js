@@ -3,8 +3,12 @@ a = "Ashish";
 
 var a;
 
-// In hoisting the Js puts all the variable declarations at the top of
-//the file and checks for assgined value before printing
+/**
+
+Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. However, this doesn't mean that the actual declarations are physically moved in the code.
+
+ */
+
 //NOTE: We need to assign value before printing (Even though the declarations is done after printing
 //(example above))
 
@@ -25,17 +29,20 @@ b = "Dev";
 
 let b;
 
+// console.log(x); // reference error even if its a global scoped variable
+// x = 1;
+
 /**
  * Hoisting is for var where it assigns undefined to the var
  * let and const works differently
  * let throws error if assigned value before declaration
  * const should be assigned value at the time of declaration
- * 
- * 
- * Note: Variables declared with let and const are hoisted but not initialized 
+ *
+ *
+ * Note: Variables declared with let and const are hoisted but not initialized
  * with a default value. Accessing a let or const variable before it's declared
  *  will result in a ReferenceError:
- * 
- * 
+ *
+ *
  * functions are hoisted first then variables are hoisted
  */

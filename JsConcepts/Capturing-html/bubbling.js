@@ -3,9 +3,8 @@
 //but true will make the capturing  occur
 
 
-//false is default
-//true ==capturing
-//false ==bubbling
+//true == capturing
+//false == bubbling (default)
 //capturing if true is present (top to bottom)
 //bubling if false is present (bottom to top)
 

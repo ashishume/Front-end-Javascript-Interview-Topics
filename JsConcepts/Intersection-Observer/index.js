@@ -32,7 +32,6 @@ const lastCardObserver = new IntersectionObserver((entries) => {
   observeLastCard(); // after loading new cards now the last card is changed, so again find the last card and obeserve
 });
 
-observeLastCard();
 
 function loadNewCards() {
   for (let i = 1; i <= 10; i++) {
@@ -47,6 +46,8 @@ function loadNewCards() {
 function observeLastCard() {
   lastCardObserver.observe(document.querySelector(".card:last-child"));
 }
+
+observeLastCard();
 
 /** looping through all the divs to check whether it intersects with the viewport or not */
 cards.forEach((card) => {
