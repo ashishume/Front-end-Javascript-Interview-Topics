@@ -1,5 +1,8 @@
 Array.prototype.insert = function (index, element) {
-  this.splice(index, 0, element);
+  this.splice(index, 0, element);   
+  /* when we add 0 so it means that delete 0 elements 
+  but we have a 3rd params which adds the new element without deleting any 
+  element which acts as an insert method */
   return this;
 };
 
