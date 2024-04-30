@@ -11,6 +11,9 @@
         display: grid;
         background-color: bisque;
         grid-template-columns: 1fr 1fr 1fr; /** fr means fraction, this defines 3 columns with each having equal distribution */
+        /* same above approach in other way */
+        /* grid-template-columns: repeat(3, 1fr); */
+
         grid-auto-columns: 200px; /** this defines the default size of column   */
         grid-template-rows: 100px 100px 100px 100px; /** this defines 3 rows with each having equal distribution, 
                                                           even if there no more child the parent will extend beyond and 

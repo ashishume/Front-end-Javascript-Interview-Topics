@@ -12,9 +12,12 @@
         flex-wrap: wrap;
       }
       .container > div {
-        /* flex-grow: 1; */
-        width: 200px;
-        /* margin: auto; */
+        /* fill the remaing spaces left on the either sides */
+        flex-grow: 1;
+        width: 600px;
+        height: 200px;
+        /* to center the elements when shifts to new line  */
+        margin: auto;
         border: solid 1px black;
       }
       .child1 {
