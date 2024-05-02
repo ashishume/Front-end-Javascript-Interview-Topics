@@ -1,6 +1,10 @@
 // console.log(age);
 // console.log(showAge);
-// This zone is TEMPORAL DEAD ZONE (var is accessible (but shows undefined) before assigning and let shows reference error)
+/**
+ *  
+This zone is TEMPORAL DEAD ZONE (var is accessible (but shows undefined) before assigning and let shows reference error)
+In case of const and let, they are also hoisted but they remain uninitialized, due to which reference error occurs.
+* */ 
 
 // let age = 1;
 // var showAge = 2;

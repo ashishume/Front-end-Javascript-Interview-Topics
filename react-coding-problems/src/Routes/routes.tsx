@@ -62,12 +62,14 @@ import CommentsSection from "@/Projects/CommentsSection";
 import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
 import TrelloBoard from "@/Projects/Trello-Board";
 import UseDeferredValueHook from "@/Projects/HOOKS(React)/useDeferredValue-hook";
+import ReactPortal from "@/Projects/React-Portals";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/react-portal", component: <ReactPortal /> },
   { routeName: "/trello-board", component: <TrelloBoard /> },
   { routeName: "/selectable-grid", component: <SelectableGrid /> },
   { routeName: "/grid-light", component: <GridLights /> },
