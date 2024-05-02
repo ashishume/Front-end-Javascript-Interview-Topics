@@ -14,6 +14,8 @@ function sum(...args) {
 }
 */
 
+// _________________________________________________________________________________
+
 /**
  * 
 Q2. write a program 
@@ -33,6 +35,7 @@ output :[
     [7, 8],
 ];
 */
+// _________________________________________________________________________________
 
 //Q3. Output based
 // function a() {
@@ -48,11 +51,12 @@ output :[
 // async function c() {
 //   const res = await fetch("https://jsonplaceholder.typicode.com/todos");
 //   console.log("in c");
-//   //   return b();
+//   // return b();
 // }
 
-// a()
+// a();
 // console.log("outside");
+
 // OUTPUT:
 // in b
 // in a
@@ -99,6 +103,7 @@ output :[
 
 // console.log(name, fullname); //A , AB
 // console.log(names, allNames);  // ['A','B']   , ['A','B']
+// _________________________________________________________________________________
 
 // print 8
 // const p1 = {
@@ -113,27 +118,23 @@ output :[
 // const obj = p1.getValue.bind(p2);
 // obj();
 
-/*
-function sum() {
-    console.log(this);
-  }
-  // sum()
-  function sum() {
-    console.log(this);
-  }
-  
-  const numbers = {
-    sum,
-  };
-  
-  const nsum = numbers.sum;
-  
-  nsum();
-  numbers.sum();
-  sum();
+// _________________________________________________________________________________
 
-  print output
-   * window object
-   * object context (prototype sum function etc)
-   * window object
-*/
+// function sum() {
+//   console.log(this);
+// }
+// // sum()
+// function sum() {
+//   console.log(this);
+// }
+
+// const numbers = {
+//   sum,
+// };
+
+// const nsum = numbers.sum;
+
+// nsum();   // prints window object
+// numbers.sum();   //prints numbers object itself
+// sum();   // prints window object
+
