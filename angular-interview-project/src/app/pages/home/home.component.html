@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="container">
+  <div class="comp1">
+    <ng-container *ngTemplateOutlet="template1">
+      This text is not displayed
+    </ng-container>
+  </div>
+  <div class="comp2">
+    <ng-container *ngTemplateOutlet="template2">
+      This text is not displayed
+    </ng-container>
+  </div>
+
+  <div class="comp3">
+    <ng-container *ngFor="let item of arr">
+      <div class="child">
+        {{ item }}
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #template1>
+  <div blueBackground>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
+    ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
+    totam! Suscipit reprehenderit vel esse fugit obcaecati.
+  </div>
+</ng-template>
+<ng-template #template2>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
+  ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
+  totam! Suscipit reprehenderit vel esse fugit obcaecati. Lorem ipsum dolor sit
+  amet consectetur adipisicing elit. Nemo tempora omnis ducimus neque illo
+  dolore cum adipisci sunt, nisi, quaerat expedita quos hic totam! Suscipit
+  reprehenderit vel esse fugit obcaecati. Lorem ipsum dolor sit amet consectetur
+  adipisicing elit. Nemo tempora omnis ducimus neque illo dolore cum adipisci
+  sunt, nisi, quaerat expedita quos hic totam! Suscipit reprehenderit vel esse
+  fugit obcaecati.
+</ng-template>
