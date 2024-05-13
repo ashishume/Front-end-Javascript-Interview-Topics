@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, SimpleChanges, ViewChild } from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
 
 @Component({
@@ -7,15 +7,23 @@ import { SharedModule } from '../../shared/modules/shared.module';
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [CommonModule,SharedModule],
+  imports: [CommonModule, SharedModule],
   // encapsulation: ViewEncapsulation.ShadowDom,  default is Emulated
 })
 export class HomeComponent {
+  @ViewChild('containerTemp') containerTemp!: ElementRef<HTMLDivElement>;
+
   arr = ['ashish', 'debnath', 'is', 'a', 'Software', 'Developer'];
+
+  ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    //triggers on changes detection with previous and current value
+  }
 
   ngDoCheck() {
     //trigggers on every change detection we can implement our own change detection logic which angular cant detect
-    console.log('called');
+    // console.log('called');
   }
   ngAfterContentInit() {
     //triggers when ng-content is initialised and we want to operate inside the ng-content data
