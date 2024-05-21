@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
 
 @Component({
@@ -12,12 +12,19 @@ import { SharedModule } from '../../shared/modules/shared.module';
 })
 export class HomeComponent {
   @ViewChild('containerTemp') containerTemp!: ElementRef<HTMLDivElement>;
+  @Input() name: string = '';
 
   arr = ['ashish', 'debnath', 'is', 'a', 'Software', 'Developer'];
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('on init', this.name);
+  }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    
+    console.log('on changes', this.name);
+
     //triggers on changes detection with previous and current value
   }
 
@@ -33,6 +40,8 @@ export class HomeComponent {
   }
 
   ngAfterViewInit() {
+    console.log('view init', this.name);
+
     //when the components view and child views are initialised
   }
   ngAfterViewChecked() {

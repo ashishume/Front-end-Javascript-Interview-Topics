@@ -1,0 +1,7 @@
+<!-- two way bind passed to the child -->
+<app-child [(childValue)]="parentValue"></app-child>
+<!-- This syntax is shorthand for [childValue]="parentValue" (childValueChange)="parentValue = $event". -->
+<!-- parent value is being printed to get the updated response from child comp -->
+<h1>
+  {{ parentValue }}
+</h1>

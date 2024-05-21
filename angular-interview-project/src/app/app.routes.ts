@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RxjsOperatorsComponent } from './pages/rxjs-operators/rxjs-operators.component';
+import { ParentComponent } from './pages/two-way-binding/parent/parent.component';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,10 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'parent',
+    component: ParentComponent,
   },
   {
     path: 'user',
