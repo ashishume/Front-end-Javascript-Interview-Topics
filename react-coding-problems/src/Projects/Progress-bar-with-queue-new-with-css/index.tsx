@@ -1,5 +1,6 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
+const CONCURRENCY_LIMIT = 3;
 
 export default function ProgressBarWithQueue() {
   const [bars, setBars] = useState(0);
@@ -16,6 +17,7 @@ export default function ProgressBarWithQueue() {
              * meaning, the previous bars has not finished yet
              */
             isEmpty={index > numFilledUpBars}
+            // isEmpty={index >= numFilledUpBars + CONCURRENCY_LIMIT} // to put a limit of 3, when all 3 gets completed then start the fourth progress bar
             onCompleted={() => setNumFilledUpBars((prev) => prev + 1)}
           />
         );
