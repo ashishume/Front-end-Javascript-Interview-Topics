@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  border: solid 1px black;
+}
+
+.progress {
+  width: 100%;
+  height: 30px;
+  background-color: green;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition-duration: 2000ms;
+  transition-property: transform;
+  transition-timing-function: linear;
+}
+
+.filled {
+  transform: scaleX(1);
+}

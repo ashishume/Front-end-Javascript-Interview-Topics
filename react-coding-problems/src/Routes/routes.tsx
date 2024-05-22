@@ -64,6 +64,7 @@ import TrelloBoard from "@/Projects/Trello-Board";
 import UseDeferredValueHook from "@/Projects/HOOKS(React)/useDeferredValue-hook";
 import ReactPortal from "@/Projects/React-Portals";
 import SimpleProgressBarComp from "@/Projects/Progress-bar-with-css-(no queue)";
+import ProgressBarWithQueue from "@/Projects/Progress-bar-with-queue-new-with-css";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -100,6 +101,7 @@ export const routes: {
   { routeName: "/search", component: <Search /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
+  { routeName: "/progress-bar-with-queue-new", component: <ProgressBarWithQueue /> },
   { routeName: "/progress-bar-simple", component: <SimpleProgressBarComp /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },
