@@ -1,6 +1,6 @@
 <div class="container" #containerTemp>
   <div class="comp1">
-    <ng-container *ngTemplateOutlet="template1">
+    <ng-container *ngTemplateOutlet="template1; context: { data: contextExp }">
       This text is not displayed
     </ng-container>
   </div>
@@ -19,8 +19,11 @@
   </div>
 </div>
 
-<ng-template #template1>
+<ng-template #template1 let-data="data">
   <div blueBackground>
+    <b>
+      {{ data }}
+    </b>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
     ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
     totam! Suscipit reprehenderit vel esse fugit obcaecati.

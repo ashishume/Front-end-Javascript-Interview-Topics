@@ -1,1 +1,13 @@
-<p>{{ str |  uppercase }}</p>
+<p>{{ str | uppercase }}</p>
+
+<!-- ngForm -->
+<form #userForm="ngForm" (ngSubmit)="onSubmit()">
+  <input
+    name="firstName"
+    required
+    #firstName="ngModel"
+    [(ngModel)]="user.firstName"
+  />
+  <input name="lastName" required="ngModel" [(ngModel)]="user.lastName" />
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>

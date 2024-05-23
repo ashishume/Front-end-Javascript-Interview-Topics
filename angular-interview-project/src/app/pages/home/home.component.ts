@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
 
 @Component({
@@ -13,7 +19,7 @@ import { SharedModule } from '../../shared/modules/shared.module';
 export class HomeComponent {
   @ViewChild('containerTemp') containerTemp!: ElementRef<HTMLDivElement>;
   @Input() name: string = '';
-
+  contextExp = 'Ashish Debnath';
   arr = ['ashish', 'debnath', 'is', 'a', 'Software', 'Developer'];
 
   ngOnInit() {
@@ -22,7 +28,7 @@ export class HomeComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-    
+
     console.log('on changes', this.name);
 
     //triggers on changes detection with previous and current value
