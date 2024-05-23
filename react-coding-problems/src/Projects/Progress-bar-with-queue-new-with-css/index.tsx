@@ -1,6 +1,6 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
-const CONCURRENCY_LIMIT = 3;
+// const CONCURRENCY_LIMIT = 3;
 
 export default function ProgressBarWithQueue() {
   const [bars, setBars] = useState(0);
