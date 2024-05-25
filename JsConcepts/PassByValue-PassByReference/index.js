@@ -23,6 +23,8 @@ In pass by reference, a reference to the variable is passed to the function. Thi
 
 function modifyArray(arr) {
   arr.push(4);
+
+  //arr=[] if we do this it will still be original array as old array still holds the old reference
   console.log("Inside function:", arr); // Output: [1, 2, 3, 4]
 }
 
