@@ -1,0 +1,5 @@
+<cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
+  <div *cdkVirtualFor="let item of logData">
+    <h1>{{ item?.body }}</h1>
+  </div>
+</cdk-virtual-scroll-viewport>

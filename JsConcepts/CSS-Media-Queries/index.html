@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      .content1,
+      .content2 {
+        margin: 10px;
+        padding: 10px;
+        width: 800px;
+        border: solid 1px black;
+        font-size: 20px;
+      }
+
+      /**
+max-width: Styles are applied if the viewport width is less than or equal to the specified value.
+
+min-width: Styles are applied if the viewport width is greater than or equal to the specified value.
+**/
+      /* @media (max-width: 600px) {
+        .content1,
+        .content2 {
+          background-color: lightblue;
+        }
+      }
+
+      @media (min-width: 600px) and (max-width: 1200px) {
+        body {
+          background-color: lightgreen;
+        }
+      } */
+
+      /* screen: This media type targets all screen devices.
+      only screen: This media type prevents older browsers that do not support media queries from applying the styles. It ensures that the styles are applied only if the media query is fully supported.
+
+      */
+      /* @media only screen and (max-width: 600px) {
+        body {
+          background-color: lightblue;
+        }
+      } */
+
+      .some-content {
+        box-sizing: border-box;
+        /* border-box: The width and height properties include the content, padding, and border. This means the total width and height will be exactly as specified. */
+
+        box-sizing: content-box;
+        /* content-box: This is the default value. The width and height properties include only the content, and the padding and border are added outside of this width and height. */
+        background-color: red;
+        height: 200px;
+        width: 200px;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+    <!-- <div class="container">
+      <div class="content1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+        ab. Odio, eveniet dicta? Reprehenderit quo quibusdam dignissimos
+        consequatur magni nostrum ven Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Necessitatibus, ab. Odio, eveniet dicta? Reconsequatur
+        magni nostrum ven Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Necessitatibus, ab. Odio, eveniet dicta? Reprehenderit quo
+        quibusdam dignissimos consequatur magni nostrum ven Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Necessitatibus, ab. Odio, eveniet
+        dicta? Reprehenderit quo quibusdam dignissimos consequatur magni nostrum
+        ven Lorem ipsumprehenderit quo quibusdam dignissimos dolor sit amet
+        consectetur adipisicing elit. Necessitatibus, ab. Odio, eveniet dicta?
+        Reprehenderit quo quibusdam dignissimos consequatur magni nostrum veniam
+        autem sit qui, vitae assumenda eligendi vel necessitatibus culpa?
+      </div>
+      <div class="content2">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam delectus
+        sint earum impedit, nisi ducimus rem, mollitia provident modi at
+        voluptatibus eveniet laudantium ipsum unde sapiente doloremque?
+        Eligendi, natus quas.consequatur magni nostrum ven Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Necessitatibus, ab. Odio, eveniet
+        dicta? Reprehenderit quo quibusdam dignissimos consequatur magni nostrum
+        ven Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Necessitatibus, ab. Odio, eveniet dicta? Reprehenderit quo quibusdam
+        dignissimos consequatur magni nostrum ven Lorem ipsum
+      </div>
+    </div> -->
+
+    <div class="some-content">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque blanditiis
+      repudiandae ipsa? Consectetur a numquam tempora distinctio, rerum atque
+      corrupti. Voluptate minus necessitatibus sint quibusdam dolorum? Vel
+      incidunt optio quidem?
+    </div>
+  </body>
+</html>
