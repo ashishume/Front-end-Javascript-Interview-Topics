@@ -1,0 +1,24 @@
+.transfer-list-container {
+  .content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    .tranfer-item {
+      //   color: rgb(11, 80, 198);
+      //   cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      .shift-btn {
+        margin: 5px;
+        padding: 5px;
+        // border: solid 1px black;
+      }
+    }
+    .from-list {
+    }
+
+    .to-list {
+    }
+  }
+}
