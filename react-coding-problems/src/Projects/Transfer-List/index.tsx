@@ -5,6 +5,7 @@ export interface IItem {
   id: number;
   label: string;
   checked: boolean;
+  disabled: boolean;
   isLeftList?: boolean;
 }
 const TransferList = () => {
@@ -13,21 +14,25 @@ const TransferList = () => {
       id: 5,
       label: "HTML",
       checked: false,
+      disabled: false,
     },
     {
       id: 6,
       label: "Javascript",
       checked: false,
+      disabled: false,
     },
     {
       id: 7,
       label: "CSS",
       checked: false,
+      disabled: false,
     },
     {
       id: 8,
       label: "Typescript",
       checked: false,
+      disabled: false,
     },
   ]);
   const [rightList, setRightList] = useState<IItem[]>([
@@ -35,104 +40,114 @@ const TransferList = () => {
       id: 1,
       label: "React",
       checked: false,
+      disabled: false,
     },
     {
       id: 2,
       label: "Angular",
       checked: false,
+      disabled: false,
     },
     {
       id: 3,
       label: "Vue",
       checked: false,
+      disabled: false,
     },
     {
       id: 4,
       label: "Preact",
       checked: false,
+      disabled: false,
     },
   ]);
 
-  const [leftItemsToTransfer, setLeftTransferList] = useState<IItem[]>([]);
-  const [rightItemsToTransfer, setRightTransferList] = useState<IItem[]>([]);
-
+  /**
+   * shift items among left and right list
+   * @param shiftType
+   */
   async function shiftHandler(shiftType: string) {
     switch (shiftType) {
       case "leftAll": {
-        if (rightList?.length) {
+        if (rightList.every((val) => !val.disabled)) {
+          //transfer all the right items to left
           await setLeftList((prev) => [...prev, ...rightList]);
-          await setRightList([]);
-          await setLeftList((prev) =>
-            prev.map((val) => {
-              val.checked = false;
-              return val;
-            })
-          );
-        }
-        break;
-      }
-      case "leftSelected": {
-        if (rightItemsToTransfer?.length) {
-          await setLeftList((prev) => [...prev, ...rightItemsToTransfer]);
-          await setRightList((prev) =>
-            prev.filter(
-              (val) => !rightItemsToTransfer.some((item) => item.id === val.id)
-            )
-          );
 
+          //make right list empty
+          await setRightList([]);
+
+          //mark all the previously checked items as false
           await setLeftList((prev) =>
-            prev.map((val) => {
-              val.checked = false;
-              return val;
-            })
+            prev.map((val) => ({ ...val, checked: false, disabled: false }))
           );
         }
         break;
       }
+      case "leftSelected":
+        {
+          //find all the checked items
+          const rightCheckedItems = rightList.filter((val) => val.checked);
+          if (rightCheckedItems?.length) {
+            //copy the checked items
+            await setLeftList((prev) => [...prev, ...rightCheckedItems]);
+
+            // remove the items which have already been copied
+            await setRightList((prev) =>
+              prev.filter(
+                (val) => !rightCheckedItems.some((item) => item.id === val.id)
+              )
+            );
+
+            // mark the already checked items as false
+            await setLeftList((prev) =>
+              prev.map((val) => ({ ...val, checked: false, disabled: false }))
+            );
+          }
+        }
+        break;
       case "rightAll": {
-        if (leftList?.length) {
+        // same proces as leftAll (just vice versa)
+        if (leftList.every((val) => !val.disabled)) {
           await setRightList((prev) => [...prev, ...leftList]);
           await setLeftList([]);
           await setRightList((prev) =>
-            prev.map((val) => {
-              val.checked = false;
-              return val;
-            })
+            prev.map((val) => ({ ...val, checked: false, disabled: false }))
           );
         }
         break;
       }
       case "rightSelected": {
-        if (leftItemsToTransfer?.length) {
-          await setRightList((prev) => [...prev, ...leftItemsToTransfer]);
+        // same proces as leftSelected (just vice versa)
+        const leftCheckedItems = leftList.filter((val) => val.checked);
+        if (leftCheckedItems?.length) {
+          await setRightList((prev) => [...prev, ...leftCheckedItems]);
           await setLeftList((prev) =>
             prev.filter(
-              (val) => !leftItemsToTransfer.some((item) => item.id === val.id)
+              (val) => !leftCheckedItems.some((item) => item.id === val.id)
             )
           );
           await setRightList((prev) =>
-            prev.map((val) => {
-              val.checked = false;
-              return val;
-            })
+            prev.map((val) => ({ ...val, checked: false, disabled: false }))
           );
+          break;
         }
-        break;
       }
     }
-
-    //empty the list after operation is completed
-    await setLeftTransferList([]);
-    await setRightTransferList([]);
   }
 
-
-  
+  /**
+   * mark checkbox of each list item
+   * @param isLeftList
+   * @param event
+   * @param item
+   */
   function onListSelect(
     isLeftList: boolean = false,
     event: React.ChangeEvent<HTMLInputElement>,
     item: IItem
   ) {
+    setDisableOrEnableCheckbox(isLeftList, event.target.checked);
+
     const list = isLeftList ? leftList : rightList;
     const tempArr = list.map((value) => {
       if (value.id === item.id) {
@@ -142,21 +157,23 @@ const TransferList = () => {
     });
 
     isLeftList ? setLeftList(tempArr) : setRightList(tempArr);
-
-    if (isLeftList) {
-      if (event.target.checked) {
-        setLeftTransferList((prev) => [...prev, item]);
-      } else {
-        setLeftTransferList((prev) => prev.filter((v) => v.id !== item.id));
-      }
-    } else {
-      if (event.target.checked) {
-        setRightTransferList((prev) => [...prev, item]);
-      } else {
-        setRightTransferList((prev) => prev.filter((v) => v.id !== item.id));
-      }
-    }
   }
+
+  /**
+   * if left list item is checked then disable all the right items (vice versa)
+   * @param isLeftList
+   * @param isChecked
+   */
+  function setDisableOrEnableCheckbox(isLeftList: boolean, isChecked: boolean) {
+    isLeftList
+      ? setRightList((rightList) =>
+          rightList.map((val) => ({ ...val, disabled: isChecked }))
+        )
+      : setLeftList((leftList) =>
+          leftList.map((val) => ({ ...val, disabled: isChecked }))
+        );
+  }
+
   return (
     <div className="transfer-list-container">
       <h2>Transfer list</h2>
@@ -167,6 +184,7 @@ const TransferList = () => {
               <li key={item?.id}>
                 <input
                   type="checkbox"
+                  disabled={item?.disabled}
                   checked={item?.checked}
                   onChange={(e) => onListSelect(true, e, item)}
                 />
@@ -205,6 +223,7 @@ const TransferList = () => {
                 <input
                   type="checkbox"
                   checked={item?.checked}
+                  disabled={item?.disabled}
                   onChange={(e) => onListSelect(false, e, item)}
                 />
                 {item?.label}
