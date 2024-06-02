@@ -55,27 +55,79 @@ const TransferList = () => {
 
   const [leftItemsToTransfer, setLeftTransferList] = useState<IItem[]>([]);
   const [rightItemsToTransfer, setRightTransferList] = useState<IItem[]>([]);
-  
-  function shiftHandler(shiftType: string) {
+
+  async function shiftHandler(shiftType: string) {
     switch (shiftType) {
       case "leftAll": {
-
+        if (rightList?.length) {
+          await setLeftList((prev) => [...prev, ...rightList]);
+          await setRightList([]);
+          await setLeftList((prev) =>
+            prev.map((val) => {
+              val.checked = false;
+              return val;
+            })
+          );
+        }
         break;
       }
       case "leftSelected": {
+        if (rightItemsToTransfer?.length) {
+          await setLeftList((prev) => [...prev, ...rightItemsToTransfer]);
+          await setRightList((prev) =>
+            prev.filter(
+              (val) => !rightItemsToTransfer.some((item) => item.id === val.id)
+            )
+          );
 
+          await setLeftList((prev) =>
+            prev.map((val) => {
+              val.checked = false;
+              return val;
+            })
+          );
+        }
         break;
       }
       case "rightAll": {
-        
+        if (leftList?.length) {
+          await setRightList((prev) => [...prev, ...leftList]);
+          await setLeftList([]);
+          await setRightList((prev) =>
+            prev.map((val) => {
+              val.checked = false;
+              return val;
+            })
+          );
+        }
         break;
       }
       case "rightSelected": {
-       
+        if (leftItemsToTransfer?.length) {
+          await setRightList((prev) => [...prev, ...leftItemsToTransfer]);
+          await setLeftList((prev) =>
+            prev.filter(
+              (val) => !leftItemsToTransfer.some((item) => item.id === val.id)
+            )
+          );
+          await setRightList((prev) =>
+            prev.map((val) => {
+              val.checked = false;
+              return val;
+            })
+          );
+        }
         break;
       }
     }
+
+    //empty the list after operation is completed
+    await setLeftTransferList([]);
+    await setRightTransferList([]);
   }
+
+
+  
   function onListSelect(
     isLeftList: boolean = false,
     event: React.ChangeEvent<HTMLInputElement>,
@@ -127,18 +179,22 @@ const TransferList = () => {
         <div className="tranfer-item">
           <button
             className="shift-btn"
+            title="leftAll"
             onClick={() => shiftHandler("leftAll")}
           >{`<<`}</button>
           <button
             className="shift-btn"
+            title="leftSelected"
             onClick={() => shiftHandler("leftSelected")}
           >{`<`}</button>
           <button
             className="shift-btn"
+            title="rightSelected"
             onClick={() => shiftHandler("rightSelected")}
           >{`>`}</button>
           <button
             className="shift-btn"
+            title="rightAll"
             onClick={() => shiftHandler("rightAll")}
           >{`>>`}</button>
         </div>
