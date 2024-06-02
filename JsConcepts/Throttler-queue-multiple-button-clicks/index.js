@@ -35,7 +35,7 @@ const throttler = (arr, limit, callback, delay) => {
   let queue = [...arr];
   return function () {
     if (flag) {
-      const tasks = queue.splice(0, limit);
+      const tasks = queue.splice(0, limit); //this method can be replaced with any callback method as per the use case
       callback(tasks);
       flag = false;
       setTimeout(() => {
