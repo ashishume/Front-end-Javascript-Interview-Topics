@@ -1,5 +1,42 @@
-// Polyfill for Array.concat()
+/** polyfill for fill() */
+Array.prototype.customFill = function (value, start, end) {
+  // Check if `this` is null or undefined
+  if (this == null) {
+    throw new TypeError("this is null or not defined");
+  }
+  // Convert `this` to an object
+  var obj = Object(this);
+  // Convert `obj.length` to an integer
+  var len = obj.length >>> 0;
+  // Convert start to an integer, if not provided default to 0
+  var relativeStart = start >> 0;
+  // If start is negative, calculate it from the end of the array
+  var k =
+    relativeStart < 0
+      ? Math.max(len + relativeStart, 0)
+      : Math.min(relativeStart, len);
+  // Convert end to an integer, if not provided default to length of the array
+  var relativeEnd = end === undefined ? len : end >> 0;
+  // If end is negative, calculate it from the end of the array
+  var final =
+    relativeEnd < 0
+      ? Math.max(len + relativeEnd, 0)
+      : Math.min(relativeEnd, len);
+  // Fill the array with the provided value
+  while (k < final) {
+    obj[k] = value;
+    k++;
+  }
+  // Return the modified array
+  return O;
+};
 
+// Example usage:
+var arr = [1, 2, 3, 4, 5];
+console.log(arr.customFill(0, 2, 4)); // Output: [1, 2, 0, 0, 5]
+console.log(arr.customFill(6)); // Output: [6, 6, 6, 6, 6]
+
+// Polyfill for Array.concat()
 Array.prototype.customConcat = function () {
   var newArray = [];
   for (var i = 0; i < this.length; i++) {
