@@ -65,7 +65,7 @@ import UseDeferredValueHook from "@/Projects/HOOKS(React)/useDeferredValue-hook"
 import ReactPortal from "@/Projects/React-Portals";
 import SimpleProgressBarComp from "@/Projects/Progress-bar-with-css-(no queue)";
 import ProgressBarWithQueue from "@/Projects/Progress-bar-with-queue-new-with-css";
-import TransferList from "@/Projects/Transfer-List(incomplete)";
+import TransferList from "@/Projects/Transfer-List";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
