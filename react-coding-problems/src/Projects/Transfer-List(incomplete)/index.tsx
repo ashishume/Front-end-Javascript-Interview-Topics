@@ -55,10 +55,27 @@ const TransferList = () => {
 
   const [leftItemsToTransfer, setLeftTransferList] = useState<IItem[]>([]);
   const [rightItemsToTransfer, setRightTransferList] = useState<IItem[]>([]);
-  function shiftAllLeftHandler() {}
-  function shiftSelectedLeftHandler() {}
-  function shiftAllRightHandler() {}
-  function shiftSelectedRightHandler() {}
+  
+  function shiftHandler(shiftType: string) {
+    switch (shiftType) {
+      case "leftAll": {
+
+        break;
+      }
+      case "leftSelected": {
+
+        break;
+      }
+      case "rightAll": {
+        
+        break;
+      }
+      case "rightSelected": {
+       
+        break;
+      }
+    }
+  }
   function onListSelect(
     isLeftList: boolean = false,
     event: React.ChangeEvent<HTMLInputElement>,
@@ -110,19 +127,19 @@ const TransferList = () => {
         <div className="tranfer-item">
           <button
             className="shift-btn"
-            onClick={shiftAllLeftHandler}
+            onClick={() => shiftHandler("leftAll")}
           >{`<<`}</button>
           <button
             className="shift-btn"
-            onClick={shiftSelectedLeftHandler}
+            onClick={() => shiftHandler("leftSelected")}
           >{`<`}</button>
           <button
             className="shift-btn"
-            onClick={shiftSelectedRightHandler}
+            onClick={() => shiftHandler("rightSelected")}
           >{`>`}</button>
           <button
             className="shift-btn"
-            onClick={shiftAllRightHandler}
+            onClick={() => shiftHandler("rightAll")}
           >{`>>`}</button>
         </div>
         <ul className="to-list">
