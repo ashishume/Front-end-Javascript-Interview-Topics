@@ -9,6 +9,7 @@
   "author": "Ashish Debnath",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "redux-saga": "^1.3.0"
   }
 }
