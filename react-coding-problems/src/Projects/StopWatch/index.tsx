@@ -26,9 +26,20 @@ const StopWatchComp = () => {
     ref.current = setInterval(() => setTimer((prev) => prev + 1), 1000);
   }
 
+  function formatTime(time:number){
+    const getSeconds = `0${time % 60}`.slice(-2);
+    const minutes = Math.floor(time / 60);
+    const getMinutes = `0${minutes % 60}`.slice(-2);
+    const getHours = `0${Math.floor(time / 3600)}`.slice(-2);
+    return `${getHours} : ${getMinutes} : ${getSeconds}`;
+  }
+
+
   return (
     <>
-      <h1>{timer}</h1>
+      <h1>
+        {/* format time is optional if we need to convert it into minute, hour, seconds */}
+        {formatTime(timer)}</h1>
 
       <button
         className="stopwatch-btns"
