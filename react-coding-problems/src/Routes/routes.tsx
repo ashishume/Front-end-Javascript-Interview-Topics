@@ -67,6 +67,7 @@ import SimpleProgressBarComp from "@/Projects/Progress-bar-with-css-(no queue)";
 import ProgressBarWithQueue from "@/Projects/Progress-bar-with-queue-new-with-css";
 import TransferList from "@/Projects/Transfer-List";
 import Accordion from "@/Projects/Accordion";
+import TrafficLights from "@/Projects/Traffic-Lights";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -74,6 +75,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/transfer-list", component: <TransferList /> },
+  { routeName: "/traffic-light", component: <TrafficLights /> },
   { routeName: "/react-portal", component: <ReactPortal /> },
   { routeName: "/trello-board", component: <TrelloBoard /> },
   { routeName: "/selectable-grid", component: <SelectableGrid /> },

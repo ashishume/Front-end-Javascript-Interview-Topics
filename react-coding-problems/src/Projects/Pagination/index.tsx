@@ -49,7 +49,7 @@ const Pagination = () => {
 
   return (
     <React.Fragment>
-      <div className="container">
+      <div className="pagination-container">
         <div className="product-container">
           <div className="product-container__content">
             {state.products.map((value: ProductObject) => {
