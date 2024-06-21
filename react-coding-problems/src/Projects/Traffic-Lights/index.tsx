@@ -1,26 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-
+import "./style.scss";
 export interface Config {
   [key: string]: { duration: number; nextColor: string };
 }
 
 const TrafficLights = () => {
   const config: Config = {
-    "bg-green-500": {
+    green: {
       duration: 3000,
-      nextColor: "bg-yellow-500",
+      nextColor: "yellow",
     },
-    "bg-yellow-500": {
+    yellow: {
       duration: 500,
-      nextColor: "bg-red-500",
+      nextColor: "red",
     },
-    "bg-red-500": {
+    red: {
       duration: 4000,
-      nextColor: "bg-green-500",
+      nextColor: "green",
     },
   };
 
-  const [currentColor, setCurrentColor] = useState<string>("bg-green-500");
+  const [currentColor, setCurrentColor] = useState<string>("green");
   let ref = useRef(null as any);
   useEffect(() => {
     const { duration, nextColor } = config[currentColor];
@@ -33,15 +33,15 @@ const TrafficLights = () => {
     };
   }, [currentColor]);
   return (
-    <div className="container flex justify-center items-center mt-5">
-      <div className="flex flex-col justify-center gap-5 items-center w-48 py-10 rounded bg-gray-700	">
+    <div className="traffic-light-container">
+      <div className="content">
         {Object.keys(config).map((light) => {
           return (
             <div
               key={light}
-              className={`${
-                currentColor === light ? currentColor : "bg-gray-400"
-              } w-36 h-36 rounded-full`}
+              className={`lights ${
+                currentColor === light ? currentColor : "default"
+              }`}
             ></div>
           );
         })}
