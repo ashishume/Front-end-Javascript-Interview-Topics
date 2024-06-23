@@ -1,35 +1,74 @@
-class Person {
-  constructor(name, age, gender) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+class College {
+  constructor(name) {
+      this.name = name;
+      this.departments = {};
   }
 
-  getDetails() {
-    return this.name + " " + this.age + " " + this.gender;
+  addDepartment(departmentName) {
+      if (!this.departments[departmentName]) {
+          this.departments[departmentName] = {
+              subjects: {},
+              teachers: []
+          };
+      } else {
+          console.log(`Department ${departmentName} already exists.`);
+      }
+  }
+
+  addSubject(departmentName, subjectName) {
+      if (this.departments[departmentName]) {
+          this.departments[departmentName].subjects[subjectName] = [];
+      } else {
+          console.log(`Department ${departmentName} does not exist.`);
+      }
+  }
+
+  addTeacher(departmentName, teacherName) {
+      if (this.departments[departmentName]) {
+          this.departments[departmentName].teachers.push(teacherName);
+      } else {
+          console.log(`Department ${departmentName} does not exist.`);
+      }
   }
 }
-class Employee extends Person {
-  /**
-   * We need to delete the derived class constructor to execute the base class constructor.
-   * When we pass data using Employee object we get to see the details in Person class
-     constructor() {
-         super();
-        }
-*/
 
-  getEmpDetails() {
-    /** base class method */
-    return super.getDetails();
+class Student extends College {
+  constructor(collegeName, studentName) {
+      super(collegeName);
+      this.studentName = studentName;
+      this.department = '';
+      this.subjects = [];
+  }
+
+  enrollDepartment(departmentName) {
+      if (this.departments[departmentName]) {
+          this.department = departmentName;
+      } else {
+          console.log(`Department ${departmentName} does not exist.`);
+      }
+  }
+
+  enrollSubject(subjectName) {
+      if (this.department && this.departments[this.department].subjects[subjectName]) {
+          this.subjects.push(subjectName);
+      } else {
+          console.log(`Subject ${subjectName} does not exist in department ${this.department}.`);
+      }
   }
 }
 
-// const person = new Person("Ashish", 24, "Male");
+// Example usage:
+const myCollege = new College('My College');
+myCollege.addDepartment('Computer Science');
+myCollege.addSubject('Computer Science', 'Algorithms');
+myCollege.addTeacher('Computer Science', 'Prof. John Doe');
 
-/** we pass the name age and emp No. using employee class object but we print the data in base
- * class method via getEmpDetails(), inside it we have called the base method
- */
-const emp = new Employee("Dev", 26, "ABC122");
+const student1 = new Student('My College', 'Alice');
+student1.addDepartment('Computer Science');
+student1.addSubject('Computer Science', 'Algorithms');
+student1.addTeacher('Computer Science', 'Prof. John Doe');
 
-// console.log(person.getDetails());
-console.log(emp.getEmpDetails());
+student1.enrollDepartment('Computer Science');
+student1.enrollSubject('Algorithms');
+
+console.log(student1);

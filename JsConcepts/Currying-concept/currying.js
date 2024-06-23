@@ -1,5 +1,29 @@
 //Follow this link: https://theanubhav.com/2019/02/03/js-currying-in-interview/
 
+// this func takes max 2 args at one time without braces
+function addWithoutExtraParams(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    }
+
+    return (arg) =>
+      arg === undefined
+        ? curried.apply(this, args)
+        : curried.apply(this, [...args, arg]);
+  };
+}
+function add(a, b) {
+  return a + b;
+}
+
+const curriedAdd = addWithoutExtraParams(add);
+curriedAdd(3)(4); // 7
+
+const alreadyAddedThree = curriedAdd(3);
+console.log(alreadyAddedThree(4)); // 7
+
+// ------------------------------------------------------------------------
 
 /** below functions handles unlimited arguments using recursion */
 function sum(a) {
