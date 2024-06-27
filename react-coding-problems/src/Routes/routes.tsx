@@ -69,12 +69,14 @@ import TransferList from "@/Projects/Transfer-List";
 import Accordion from "@/Projects/Accordion";
 import TrafficLights from "@/Projects/Traffic-Lights";
 import StarRating from "@/Projects/Star-Rating";
+import DelayApiCall from "@/Projects/Delay-API-call-using-use-throttler";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/api-cancel-with-throttler", component: <DelayApiCall /> },
   { routeName: "/star-rating", component: <StarRating /> },
   { routeName: "/transfer-list", component: <TransferList /> },
   { routeName: "/traffic-light", component: <TrafficLights /> },
