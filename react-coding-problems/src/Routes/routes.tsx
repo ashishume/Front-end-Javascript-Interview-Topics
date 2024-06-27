@@ -70,6 +70,8 @@ import Accordion from "@/Projects/Accordion";
 import TrafficLights from "@/Projects/Traffic-Lights";
 import StarRating from "@/Projects/Star-Rating";
 import DelayApiCall from "@/Projects/Delay-API-call-using-use-throttler";
+import AutoComplete from "@/Projects/AutoComplete";
+import { MouseCapture } from "@/Projects/Mouse-Position-Capture-With-Click";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -108,7 +110,9 @@ export const routes: {
       </FeatureFlag>
     ),
   },
+  { routeName: "/mouse-capture", component: <MouseCapture /> },
   { routeName: "/search", component: <Search /> },
+  { routeName: "/auto-complete", component: <AutoComplete /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
   { routeName: "/progress-bar-with-queue-new", component: <ProgressBarWithQueue /> },

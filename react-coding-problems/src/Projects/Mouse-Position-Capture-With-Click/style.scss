@@ -1,0 +1,11 @@
+.mouse-click-container {
+  position: relative;
+  .dots {
+    position: absolute;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+  }
+}

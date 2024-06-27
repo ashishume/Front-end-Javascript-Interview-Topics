@@ -1,4 +1,4 @@
-/** polyfill for fill() */
+/** polyfill for Array.fill() */
 Array.prototype.customFill = function (value, start, end) {
   // Check if `this` is null or undefined
   if (this == null) {
