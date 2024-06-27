@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import tick from './tick.png';
+import tick from "./tick.png";
 import { Button } from "@/components/ui/button";
 const CHECKOUT_STEPS = [
   {
@@ -69,7 +69,15 @@ const MultiStepper = () => {
               </div>
               <div>
                 {active === index ? (
-                  <Button onClick={() => continueStep(value)}>Continue</Button>
+                  <>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quia necessitatibus atque dolores nostrum? Accusantium vero
+                    non, necessitatibus reiciendis, expedita aliquam voluptate
+                    rem saepe nostrum eum aperiam in laboriosam odio explicabo?
+                    <Button onClick={() => continueStep(value)}>
+                      Continue
+                    </Button>
+                  </>
                 ) : null}
               </div>
             </div>

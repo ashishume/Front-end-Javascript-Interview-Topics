@@ -15,7 +15,7 @@ import Walkthrough from "@/Projects/WalkThrough";
 import Search from "@/Projects/SearchWithDebounce";
 import ImageModalParent from "@/Projects/Image-Modal";
 import ProgressBar from "@/Projects/ProgressBar-with-Queue";
-import MultiStepper from "@/Projects/Multi-Stepper";
+import MultiStepper from "@/Projects/Multi-Stepper/multi-stepper";
 import NestedCheckboxes from "@/Projects/Nested-Checkboxes";
 import NestedCheckbox from "@/Projects/Checkbox-Nested";
 import RenderItemComponent from "@/Projects/RenderItem";
