@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import tick from "./tick.png";
 import "./style.scss";
 import { Button } from "@mui/material";
 const MultiStepper = () => {
+  const ref = useRef([] as any);
   const stepper = [
     {
       stepName: "Customer Info",
@@ -55,19 +56,18 @@ const MultiStepper = () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
             optio error deserunt eum delectus nam incidunt recusandae dicta
             mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
+            totam adipisci velit itaque quos? Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Fugiat, optio error deserunt eum
+            delectus nam incidunt recusandae dicta mollitia minus adipisci.
+            Perspiciatis aperiam tenetur necessitatibus totam adipisci velit
+            itaque quos? Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Fugiat, optio error deserunt eum delectus nam incidunt
+            recusandae dicta mollitia minus adipisci. Perspiciatis aperiam
+            tenetur necessitatibus totam adipisci velit itaque quos? Lorem ipsum
+            dolor, sit amet consectetur adipisicing elit. Fugiat, optio error
+            deserunt eum delectus nam incidunt recusandae dicta mollitia minus
+            adipisci. Perspiciatis aperiam tenetur necessitatibus totam adipisci
+            velit itaque quos?
             <div>
               <Button variant="contained" onClick={() => continueStep()}>
                 Continue
@@ -82,31 +82,29 @@ const MultiStepper = () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
             optio error deserunt eum delectus nam incidunt recusandae dicta
             mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
+            totam adipisci velit itaque quos? Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Fugiat, optio error deserunt eum
+            delectus nam incidunt recusandae dicta mollitia minus adipisci.
+            Perspiciatis aperiam tenetur necessitatibus totam adipisci velit
+            itaque quos? Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Fugiat, optio error deserunt eum delectus nam incidunt
+            recusandae dicta mollitia minus adipisci. Perspiciatis aperiam
+            tenetur necessitatibus totam adipisci velit itaque quos? Lorem ipsum
+            dolor, sit amet consectetur adipisicing elit. Fugiat, optio error
+            deserunt eum delectus nam incidunt recusandae dicta mollitia minus
+            adipisci. Perspiciatis aperiam tenetur necessitatibus totam adipisci
+            velit itaque quos? Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Fugiat, optio error deserunt eum delectus nam
+            incidunt recusandae dicta mollitia minus adipisci. Perspiciatis
+            aperiam tenetur necessitatibus totam adipisci velit itaque quos?
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
             optio error deserunt eum delectus nam incidunt recusandae dicta
             mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
+            totam adipisci velit itaque quos? Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Fugiat, optio error deserunt eum
+            delectus nam incidunt recusandae dicta mollitia minus adipisci.
+            Perspiciatis aperiam tenetur necessitatibus totam adipisci velit
+            itaque quos?
             <div>
               <Button variant="contained" onClick={() => continueStep()}>
                 Continue
@@ -121,39 +119,36 @@ const MultiStepper = () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
             optio error deserunt eum delectus nam incidunt recusandae dicta
             mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
+            totam adipisci velit itaque quos? Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Fugiat, optio error deserunt eum
+            delectus nam incidunt recusandae dicta mollitia minus adipisci.
+            Perspiciatis aperiam tenetur necessitatibus totam adipisci velit
+            itaque quos? Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Fugiat, optio error deserunt eum delectus nam incidunt
+            recusandae dicta mollitia minus adipisci. Perspiciatis aperiam
+            tenetur necessitatibus totam adipisci velit itaque quos? Lorem ipsum
+            dolor, sit amet consectetur adipisicing elit. Fugiat, optio error
+            deserunt eum delectus nam incidunt recusandae dicta mollitia minus
+            adipisci. Perspiciatis aperiam tenetur necessitatibus totam adipisci
+            velit itaque quos? Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Fugiat, optio error deserunt eum delectus nam
+            incidunt recusandae dicta mollitia minus adipisci. Perspiciatis
+            aperiam tenetur necessitatibus totam adipisci velit itaque quos?
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
             optio error deserunt eum delectus nam incidunt recusandae dicta
             mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
-            optio error deserunt eum delectus nam incidunt recusandae dicta
-            mollitia minus adipisci. Perspiciatis aperiam tenetur necessitatibus
-            totam adipisci velit itaque quos?
+            totam adipisci velit itaque quos? Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Fugiat, optio error deserunt eum
+            delectus nam incidunt recusandae dicta mollitia minus adipisci.
+            Perspiciatis aperiam tenetur necessitatibus totam adipisci velit
+            itaque quos? Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Fugiat, optio error deserunt eum delectus nam incidunt
+            recusandae dicta mollitia minus adipisci. Perspiciatis aperiam
+            tenetur necessitatibus totam adipisci velit itaque quos? Lorem ipsum
+            dolor, sit amet consectetur adipisicing elit. Fugiat, optio error
+            deserunt eum delectus nam incidunt recusandae dicta mollitia minus
+            adipisci. Perspiciatis aperiam tenetur necessitatibus totam adipisci
+            velit itaque quos?
             <div>
               <Button variant="contained" onClick={() => continueStep()}>
                 Continue
@@ -165,13 +160,23 @@ const MultiStepper = () => {
     }
   };
 
+  useEffect(() => {
+    const currElementBounds = ref.current[activeIndex]?.getBoundingClientRect();
+    console.log(currElementBounds);
+  }, [ref.current, activeIndex]);
+
+  
   return (
     <div className="container">
       <div className="w-screen h-1 bg-slate-700 absolute top-5 z-0"></div>
       <div className="flex justify-between">
         {stepper.map(({ stepName, index }) => {
           return (
-            <div className="flex flex-col items-center gap-1 z-[1]" key={index}>
+            <div
+              className="flex flex-col items-center gap-1 z-[1]"
+              key={index}
+              ref={(element) => (ref.current[index] = element)}
+            >
               <div className="rounded-full w-[50px] h-[50px] bg-slate-400">
                 {activeIndex === index ? <img src={tick} /> : null}
               </div>
