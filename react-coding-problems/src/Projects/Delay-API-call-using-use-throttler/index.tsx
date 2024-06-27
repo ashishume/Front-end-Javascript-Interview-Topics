@@ -4,7 +4,7 @@ import { useThrottler } from "./useThrottler";
 const DelayApiCall = () => {
   const [value, setValue] = useState("");
 
-  const [throttledValue, setThrottledValue] = useThrottler(value, 800);
+  const [throttledValue] = useThrottler(value, 800);
 
   const handleTypeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
