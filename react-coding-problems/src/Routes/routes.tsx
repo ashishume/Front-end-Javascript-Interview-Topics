@@ -74,12 +74,14 @@ import AutoComplete from "@/Projects/AutoComplete";
 import { MouseCapture } from "@/Projects/Mouse-Position-Capture-With-Click";
 import BreadcrumbsComponent from "@/Projects/Breadcrumbs";
 import TemperatureConvertor from "@/Projects/Temperature-Convertor";
+import MemoryGame from "@/Projects/Memory-Game(incomplete)";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/memory-game", component: <MemoryGame /> },
   { routeName: "/breadcrumbs", component: <BreadcrumbsComponent /> },
   { routeName: "/temperature-convertor", component: <TemperatureConvertor /> },
   { routeName: "/api-cancel-with-throttler", component: <DelayApiCall /> },
