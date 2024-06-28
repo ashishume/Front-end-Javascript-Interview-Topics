@@ -1,4 +1,4 @@
-.container {
+.multi-stepper-container {
   .content {
     border: solid 1px black;
     width: 100%;
@@ -6,7 +6,7 @@
     height: 100%;
   }
   .horizontal-bar {
-    width: 20%;
+    width: 50%;
     height: 4px;
     background-color: black;
     position: absolute;
