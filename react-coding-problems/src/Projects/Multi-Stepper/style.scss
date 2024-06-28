@@ -5,4 +5,11 @@
     padding: 10px;
     height: 100%;
   }
+  .horizontal-bar {
+    width: 20%;
+    height: 4px;
+    background-color: black;
+    position: absolute;
+    top: 25px;
+  }
 }

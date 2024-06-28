@@ -168,7 +168,7 @@ const MultiStepper = () => {
   
   return (
     <div className="container">
-      <div className="w-screen h-1 bg-slate-700 absolute top-5 z-0"></div>
+      <div className="horizontal-bar"></div>
       <div className="flex justify-between">
         {stepper.map(({ stepName, index }) => {
           return (
