@@ -1,34 +1,33 @@
 import { useEffect, useState } from "react";
 export interface Emoji {
   key: number;
-  isMatch: boolean;
   isVisible: boolean;
   text: string;
 }
 const emojis: Emoji[][] = [
   [
-    { key: 1, isVisible: false, isMatch: false, text: "🐵" },
-    { key: 2, isVisible: false, isMatch: false, text: "🐶" },
-    { key: 3, isVisible: false, isMatch: false, text: "🦊" },
-    { key: 4, isVisible: false, isMatch: false, text: "🐱" },
+    { key: 1, isVisible: false, text: "🐵" },
+    { key: 2, isVisible: false, text: "🐶" },
+    { key: 3, isVisible: false, text: "🦊" },
+    { key: 4, isVisible: false, text: "🐱" },
   ],
   [
-    { key: 5, isVisible: false, isMatch: false, text: "🦁" },
-    { key: 6, isVisible: false, isMatch: false, text: "🐯" },
-    { key: 7, isVisible: false, isMatch: false, text: "🐴" },
-    { key: 8, isVisible: false, isMatch: false, text: "🦄" },
+    { key: 5, isVisible: false, text: "🐭" },
+    { key: 6, isVisible: false, text: "🐯" },
+    { key: 7, isVisible: false, text: "🐴" },
+    { key: 8, isVisible: false, text: "🦄" },
   ],
   [
-    { key: 9, isVisible: false, isMatch: false, text: "🐵" },
-    { key: 10, isVisible: false, isMatch: false, text: "🐶" },
-    { key: 11, isVisible: false, isMatch: false, text: "🦊" },
-    { key: 12, isVisible: false, isMatch: false, text: "🐱" },
+    { key: 9, isVisible: false, text: "🐵" },
+    { key: 10, isVisible: false, text: "🐶" },
+    { key: 11, isVisible: false, text: "🦊" },
+    { key: 12, isVisible: false, text: "🐱" },
   ],
   [
-    { key: 13, isVisible: false, isMatch: false, text: "🦁" },
-    { key: 14, isVisible: false, isMatch: false, text: "🐯" },
-    { key: 15, isVisible: false, isMatch: false, text: "🐴" },
-    { key: 16, isVisible: false, isMatch: false, text: "🦄" },
+    { key: 13, isVisible: false, text: "🐭" },
+    { key: 14, isVisible: false, text: "🐯" },
+    { key: 15, isVisible: false, text: "🐴" },
+    { key: 16, isVisible: false, text: "🦄" },
   ],
 ];
 
@@ -58,44 +57,21 @@ const MemoryGame = () => {
   const findMatchBetweenItems = () => {
     const [item1, item2] = activeItems;
     if (activeItems.length === 2) {
-      if (item1.text === item2.text) {
-        // const newItems = items.map((row) => {
-        //   return row.map((col) => {
-        //     if (col.key === item1.key || col.key === item2.key) {
-        //       col.isMatch = true;
-        //     }
-        //     return col;
-        //   });
-        // });
-        // const newItems = _toggleMatchOrVisible(item1, item2, "isMatch");
-        // setItems(newItems);
-        // setActiveItems([]);
-      } else {
+      if (item1.text !== item2.text) {
         setTimeout(() => {
-          // const resetItems = items.map((row) => {
-          //   return row.map((col) => {
-          //     if (col.key === item1.key || col.key === item2.key) {
-          //       col.isVisible = false;
-          //     }
-          //     return col;
-          //   });
-          // });
-          const newItems = _toggleMatchOrVisible(item1, item2, "isVisible");
+          const newItems = items.map((row) => {
+            return row.map((col) => {
+              if (col.key === item1.key || col.key === item2.key) {
+                col.isVisible = false;
+              }
+              return col;
+            });
+          });
           setItems(newItems);
         }, 700);
       }
       setActiveItems([]);
     }
-  };
-  const _toggleMatchOrVisible = (item1: Emoji, item2: Emoji, key: any) => {
-    return items.map((row) => {
-      return row.map((col) => {
-        if (col.key === item1.key || col.key === item2.key) {
-          col[key as "isMatch" | "isVisible"] = false;
-        }
-        return col;
-      });
-    });
   };
 
   return (
@@ -106,7 +82,7 @@ const MemoryGame = () => {
           {items.map((row, index) => {
             return (
               <div key={index} className="flex justify-center gap-0.5">
-                {row.map(({ isMatch, text, key, isVisible }) => {
+                {row.map(({ text, key, isVisible }) => {
                   return (
                     <div
                       key={key}
@@ -114,12 +90,12 @@ const MemoryGame = () => {
                       className={`border border-3 
                       rounded-md inline-block m-2 p-5 h-4 w-5 
                       flex justify-center items-center ${
-                        isMatch || isVisible
+                        isVisible
                           ? "pointer-events-none"
                           : "hover:bg-slate-300 bg-slate-100 "
                       }`}
                     >
-                      {isMatch || isVisible ? text : ""}
+                      {isVisible ? text : ""}
                     </div>
                   );
                 })}
