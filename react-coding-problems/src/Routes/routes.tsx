@@ -75,6 +75,7 @@ import { MouseCapture } from "@/Projects/Mouse-Position-Capture-With-Click";
 import BreadcrumbsComponent from "@/Projects/Breadcrumbs";
 import TemperatureConvertor from "@/Projects/Temperature-Convertor";
 import MemoryGame from "@/Projects/Memory-Game";
+import UseAsyncApiCallSample from "@/Projects/HOOKS/useAsync";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -170,6 +171,7 @@ export const routes: {
   { routeName: "/ecommerce/*", component: <EcommerceRoutes /> },
   { routeName: "/use-ref", component: <UseRef /> },
   { routeName: "/custom-hooks", component: <Input /> },
+  { routeName: "/use-async-hook", component: <UseAsyncApiCallSample /> },
   { routeName: "/use-deferred-value", component: <UseDeferredValueHook /> },
   { routeName: "/infinite-scroll", component: <InfiniteScrolls /> },
   { routeName: "/infinite-scroll-2", component: <InfiniteScroll /> },
