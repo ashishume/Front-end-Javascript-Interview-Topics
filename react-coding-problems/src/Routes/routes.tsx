@@ -70,7 +70,7 @@ import Accordion from "@/Projects/Accordion";
 import TrafficLights from "@/Projects/Traffic-Lights";
 import StarRating from "@/Projects/Star-Rating";
 import DelayApiCall from "@/Projects/Delay-API-call-using-use-throttler";
-import AutoComplete from "@/Projects/AutoComplete";
+import AutoComplete from "@/Projects/AutoComplete-with-highlight";
 import { MouseCapture } from "@/Projects/Mouse-Position-Capture-With-Click";
 import BreadcrumbsComponent from "@/Projects/Breadcrumbs";
 import TemperatureConvertor from "@/Projects/Temperature-Convertor";
