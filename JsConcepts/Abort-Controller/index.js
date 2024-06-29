@@ -6,6 +6,11 @@
  * below in the second event listener.
  */
 
+/**
+ NOTE: we can user abort controller to handle race conditions for 
+ avoid multiple api calls, so that new data doesnt overlap with last api call
+ */
+
 let controller;
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 
