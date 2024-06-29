@@ -46,7 +46,7 @@ To get started with this repository, follow these steps:
    ```bash
    git clone https://github.com/ashishume/Front-end-Javascript-Interview-Topics.git
 
-## All codes and examples where contributed by (from interview experience)
+## All codes and examples where contributed by
 
 - Ashish Debnath (ashishume@gmail.com)
 
