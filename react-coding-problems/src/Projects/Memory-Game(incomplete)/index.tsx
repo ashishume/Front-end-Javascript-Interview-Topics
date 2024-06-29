@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 export interface Emoji {
   key: number;
@@ -36,12 +37,11 @@ const MemoryGame = () => {
   const [activeItems, setActiveItems] = useState<Emoji[]>([]);
 
   useEffect(() => {
-    if (activeItems.length <= 2) {
-      findMatchBetweenItems();
-    }
+    findMatchBetweenItems();
   }, [activeItems]);
 
   const handleMatch = (key: number) => {
+    /** more than 2 items should not be allowed to click */
     if (activeItems.length < 2) {
       items.forEach((row) => {
         row.forEach((col) => {
@@ -56,7 +56,10 @@ const MemoryGame = () => {
 
   const findMatchBetweenItems = () => {
     const [item1, item2] = activeItems;
-    if (activeItems.length === 2) {
+    /** only 2 items should be allowed for matching */
+    if (activeItems.length <= 2 && activeItems.length === 2) {
+      /** if items doesnt match then set the visible to false,
+       * else keep it visible as done previously */
       if (item1.text !== item2.text) {
         setTimeout(() => {
           const newItems = items.map((row) => {
@@ -74,11 +77,26 @@ const MemoryGame = () => {
     }
   };
 
+  const checkIfGameIsCompleted = (): boolean => {
+    return items.every((row) => row.every((col) => col.isVisible));
+  };
+
+  const playAgain = () => {
+    setActiveItems([]);
+    const newItems = items.map((row) =>
+      row.map((col) => {
+        col.isVisible = false;
+        return col;
+      })
+    );
+    setItems(newItems);
+  };
+
   return (
     <div className="container">
       <div className="flex flex-col justify-center items-center">
         <div className="text-2xl bold">Memory game</div>
-        <div className="border inline-block rounded-md p-2">
+        <div className="border-2 inline-block rounded-md p-2">
           {items.map((row, index) => {
             return (
               <div key={index} className="flex justify-center gap-0.5">
@@ -87,12 +105,12 @@ const MemoryGame = () => {
                     <div
                       key={key}
                       onClick={() => handleMatch(key)}
-                      className={`border border-3 
+                      className={`border border-2 border-slate-500
                       rounded-md inline-block m-2 p-5 h-4 w-5 
                       flex justify-center items-center ${
                         isVisible
                           ? "pointer-events-none"
-                          : "hover:bg-slate-300 bg-slate-100 "
+                          : "hover:bg-slate-300 bg-slate-200"
                       }`}
                     >
                       {isVisible ? text : ""}
@@ -103,6 +121,19 @@ const MemoryGame = () => {
             );
           })}
         </div>
+
+        {checkIfGameIsCompleted() ? (
+          <div className="m-4">
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={playAgain}
+              size="small"
+            >
+              Play Again
+            </Button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
