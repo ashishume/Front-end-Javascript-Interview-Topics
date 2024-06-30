@@ -1,3 +1,5 @@
+// Object.ObjectAssign()
+
 const tar = {
   a: 1,
   b: "targetValue",

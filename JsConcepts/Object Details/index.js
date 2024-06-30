@@ -1,3 +1,5 @@
+// Object.getOwnPropertyDescriptor()
+
 const obj = {
   a: "sample value",
   b: 1,
