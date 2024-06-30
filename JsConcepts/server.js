@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-
+const marked = require("marked");
 const app = express();
-const PORT = 3000;
+const PORT = 7100;
 
 // Base folder where feature folders are located
 const baseFolder = path.join(__dirname);
@@ -20,6 +20,7 @@ const addRoutes = (baseFolder) => {
       const folderPath = path.join(baseFolder, folder);
       const indexPathHtml = path.join(folderPath, "index.html");
       const indexPathJs = path.join(folderPath, "index.js");
+      const indexPathMd = path.join(folderPath, "index.md");
 
       if (fs.existsSync(indexPathHtml)) {
         app.get(`/${encodeURIComponent(folder)}`, (req, res) => {
@@ -30,6 +31,35 @@ const addRoutes = (baseFolder) => {
       if (fs.existsSync(indexPathJs)) {
         app.get(`/${encodeURIComponent(folder)}/script`, (req, res) => {
           res.sendFile(indexPathJs);
+        });
+      }
+
+      if (fs.existsSync(indexPathMd)) {
+        // Added code to handle .md files
+        app.get(`/${encodeURIComponent(folder)}`, (req, res) => {
+          fs.readFile(indexPathMd, "utf8", (err, data) => {
+            if (err) {
+              res.status(500).send("Error reading Markdown file");
+              return;
+            }
+            const htmlContent = marked.parse(data);
+            const html = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>${folder}</title>
+                        <script src="https://cdn.tailwindcss.com"></script>
+                    </head>
+                    <body class="bg-gray-100 text-gray-900">
+                        <div class="container mx-auto p-10">
+                            <h1 class="text-3xl font-bold mb-5">${folder}</h1>
+                            <div class="prose">${htmlContent}</div>
+                        </div>
+                    </body>
+                    </html>
+                `;
+            res.send(html);
+          });
         });
       }
     });
@@ -50,7 +80,7 @@ const addRoutes = (baseFolder) => {
                     <title>Javascript Concepts</title>
                     <script src="https://cdn.tailwindcss.com"></script>
                 </head>
-                <body class="bg-gray-100 text-gray-900">
+                <body class="bg-gray-100 text-gray-900 mx-5">
                     <div class="container mx-auto py-10">
                         <h1 class="text-3xl font-bold mb-5">Javscript Concepts</h1>
                         <div class='text-sm'>The following links contains the output in console, head on to the github repo for code details
