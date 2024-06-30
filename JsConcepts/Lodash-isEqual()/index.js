@@ -1,4 +1,5 @@
 /**
+ * lodash insert()
  * Simpler version for interview purpose.
  */
 

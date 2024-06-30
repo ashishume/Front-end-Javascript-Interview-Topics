@@ -1,3 +1,5 @@
+/** lodash has() */
+
 function LodashHas(object, pathArr) {
   const keys = Array.isArray(pathArr)
     ? pathArr

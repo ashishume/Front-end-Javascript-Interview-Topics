@@ -1,4 +1,6 @@
-/** clonedeep or deepclone polyfill */
+/**
+ * lodash deepclone() 
+ * clonedeep or deepclone polyfill */
 function cloneDeep(obj) {
   if (obj === null || typeof obj !== "object") {
     return obj;

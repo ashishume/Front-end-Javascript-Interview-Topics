@@ -1,4 +1,6 @@
-/** Create a new object by picking some keys  */
+/** 
+ * lodash pick()
+ * Create a new object by picking some keys  */
 
 function LodashPick(object, keys) {
   if (!object || typeof object !== "object") {

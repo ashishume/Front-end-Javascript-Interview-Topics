@@ -1,4 +1,4 @@
-/** polyfill for once()  in lodash
+/** polyfill for lodash once()  in lodash
  * Even if call a function multiple times it should be called only once
  */
 function once(func, context) {

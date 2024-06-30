@@ -1,7 +1,4 @@
-const pathArr = "a[0].b.c";
-const val = 4;
-
-const obj = {};
+/** lodash insert() or lodash set() */
 
 // expected output :
 // const x = {
@@ -16,7 +13,9 @@ const obj = {};
 
 function setObj(obj, path, val) {
   /* remove all the brackets and  replace them with dot(.) */
-  const pathArr = path.replaceAll("[", ".").replaceAll("]", "").split("."); // ["a","0","b","c"]
+  const pathArr = !Array.isArray(path)
+    ? path.replaceAll("[", ".").replaceAll("]", "").split(".")
+    : path; // ["a","0","b","c"]
   return helper(obj, pathArr, val);
 }
 
@@ -44,4 +43,10 @@ function helper(obj, pathArr, val) {
   // console.log(obj);
   return obj;
 }
-console.log(setObj(obj, pathArr, val));
+
+const pathArr = "a[0].b.c";
+const val = 4;
+
+const obj = {};
+// console.log(setObj({obj}, pathArr, val));
+console.log(setObj({}, ["x", "0", "y"], val));
