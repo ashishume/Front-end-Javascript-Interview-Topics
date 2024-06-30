@@ -32,6 +32,33 @@ const addRoutes = (baseFolder) => {
         });
       }
     });
+
+    // Serve the list of folders as HTML
+    app.get("/", (req, res) => {
+      const folderLinks = folders
+        .map((folder) => {
+          return `<li><a href="/${encodeURIComponent(
+            folder
+          )}">${folder}</a></li>`;
+        })
+        .join("");
+      const html = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>JsConcepts Server</title>
+                    <script src="https://cdn.tailwindcss.com"></script>
+                </head>
+                <body>
+                    <h1>JsConcepts Folders</h1>
+                    <ul>
+                        ${folderLinks}
+                    </ul>
+                </body>
+                </html>
+            `;
+      res.send(html);
+    });
   });
 };
 
@@ -40,11 +67,6 @@ app.use(express.static(baseFolder));
 
 // Add dynamic routes
 addRoutes(baseFolder);
-
-// Default route
-app.get("/", (req, res) => {
-  res.send("Welcome to the JsConcepts server!");
-});
 
 // Start the server
 app.listen(PORT, () => {
