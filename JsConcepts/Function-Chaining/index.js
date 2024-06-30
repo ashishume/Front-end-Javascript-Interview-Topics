@@ -20,7 +20,7 @@ const operations = function () {
 };
 const obj = new operations();
 const b = obj.add(10).mul(2).div(2).add(2);
-// console.log(b.result);
+console.log(b.result);
 // -------------------------------------------------------------------------
 
 function add(a) {
@@ -34,8 +34,40 @@ function div(a) {
 }
 function funcList(functions) {
   return (args) => {
-    return functions.reduce((currentValue, currentFunction) => currentFunction(currentValue), args);
+    return functions.reduce(
+      (currentValue, currentFunction) => currentFunction(currentValue),
+      args
+    );
   };
 }
 const a = funcList([add, mul, div])(2);
-// console.log(a);
+console.log(a);
+// -----------------------------------------------------------------------------------------------
+
+const ComputeFunc = function () {
+  return {
+    value: 0,
+    add: function (val) {
+      this.value += val;
+      return this;
+    },
+
+    sub: function (val) {
+      this.value -= val;
+      return this;
+    },
+
+    mul: function (val) {
+      this.value *= val;
+      return this;
+    },
+
+    div: function (val) {
+      this.value /= val;
+      return this;
+    },
+  };
+};
+
+const amount = ComputeFunc().add(6).sub(1).mul(2).div(5);
+console.log(amount.value);
