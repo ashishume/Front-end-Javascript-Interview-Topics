@@ -1,5 +1,55 @@
 //Follow this link: https://theanubhav.com/2019/02/03/js-currying-in-interview/
 
+//-----------------------------------------------------------------------------------------------
+/** this method takes max 4 (can be changed) arguments to execute the methods without extra ()  */
+const MAX_ARGS = 4;
+const sumCurry = (...args) => {
+  //spread the arguments in storage array
+  const storage = [...args];
+  
+  //base case
+  //if we have reached the limit
+  if(storage.length === MAX_ARGS){
+    return storage.reduce((a, b) => a + b, 0);
+  }
+  //other wise return a function
+  else{
+     //create an inner function
+     const temp = function(...args2){
+      //get the arguments of inner function
+      //merge them in existing storage
+      storage.push(...args2);
+
+      //if we have reached the limit 
+      //return the value
+      if(storage.length === MAX_ARGS){
+         return storage.reduce((a, b) => a + b, 0);
+      }
+      //else return the same function again
+      else{
+         return temp;
+      }
+    }
+    
+    //return the function
+    return temp;
+  }
+}
+// Input:
+// below methods works only mentioned args (more or less will return function)
+const res = sumCurry(1, 2, 3, 4);
+const res2 = sumCurry(1)(2)(3)(4);
+const res3 = sumCurry(1, 2)(3, 4);
+const res4 = sumCurry(1, 2, 3)(4);
+const res5 = sumCurry(1)(2, 3, 4);
+
+console.log(res, res2, res3, res4, res5);
+
+// Output:
+// 10 10 10 10 10
+
+//---------------------------------------------------------------------------------------
+
 // this func takes max 2 args at one time without braces
 function addWithoutExtraParams(func) {
   return function curried(...args) {
@@ -34,7 +84,6 @@ function sum(a) {
 }
 const a = sum(1)(2)(3)(4)(5)(6);
 console.log(a()); //21  // with extra ()
-
 
 // ---------------------------------------------------
 function sumWithoutExtraBraces(a) {
