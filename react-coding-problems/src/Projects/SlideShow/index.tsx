@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./style.scss";
 import imageData from "./images.json";
+import arrowImage from "./next.png";
+
 const SlideShow = () => {
   const [page, setPage] = useState(0);
 
@@ -25,7 +27,7 @@ const SlideShow = () => {
       <div className="image-content">
         <div className="left-slider">
           <img
-            src={require("./next.png")}
+            src={arrowImage}
             onClick={() => showMoreImages("left")}
             className="left-arrow"
           />
@@ -44,7 +46,7 @@ const SlideShow = () => {
           <img
             className="right-arrow"
             onClick={() => showMoreImages("right")}
-            src={require("./next.png")}
+            src={arrowImage}
           />
         </div>
       </div>
