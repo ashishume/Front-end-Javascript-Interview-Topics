@@ -47,9 +47,9 @@ const WhackAMole = () => {
     setScore(0);
     /** start interval */
     moleRef.current = setInterval(async () => {
-      // TODO: generate 2 different random numbers from 0 to 16
-      const randomNumber1 = Math.floor(Math.random() * 16);
-      const randomNumber2 = Math.floor(Math.random() * 16);
+      // generate 2 different random numbers from 0 to 16
+      const randomNumber1 = Math.floor(Math.random() * 6); // 0 to 5
+      const randomNumber2 = Math.floor(Math.random() * 6) + 6; // 6 to 11
       await changeVisibility(randomNumber1, true, randomNumber2);
     }, MOLE_DELAY);
 
@@ -138,7 +138,7 @@ const WhackAMole = () => {
           return (
             <div
               key={index}
-              className="flex flex-row gap-30 justify-between h-40"
+              className="flex flex-row gap-10 justify-center h-40"
             >
               {row.map(({ value, isVisible }) => {
                 return (
