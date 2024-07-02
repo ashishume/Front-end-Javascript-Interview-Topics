@@ -30,20 +30,22 @@ const arr = [
   ],
 ];
 const WhackAMole = () => {
+  const SECONDS = 1000; //1s
+  const MOLE_DELAY = 1500; //1.5s
+  const TIMER = 15;  //15s
+
   const [holeData, setHoleData] = useState<IHole[][]>(arr);
   const [score, setScore] = useState<number>(0);
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(TIMER);
   const moleRef = useRef<any>(null);
   const timerRef = useRef<any>(null);
 
-  const SECONDS = 1000;
-  const MOLE_DELAY = 2000;
 
   /**
    * start game
    */
   const startGame = () => {
-    setTimer(15);
+    setTimer(TIMER);
     setScore(0);
     /** start interval */
     moleRef.current = setInterval(async () => {
