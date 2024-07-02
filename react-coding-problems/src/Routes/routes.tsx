@@ -76,6 +76,7 @@ import BreadcrumbsComponent from "@/Projects/Breadcrumbs";
 import TemperatureConvertor from "@/Projects/Temperature-Convertor";
 import MemoryGame from "@/Projects/Memory-Game";
 import UseAsyncApiCallSample from "@/Projects/HOOKS/useAsync";
+import WhackAMole from "@/Projects/Whack-A-Mole";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -117,6 +118,7 @@ export const routes: {
       </FeatureFlag>
     ),
   },
+  { routeName: "/whack-a-mole", component: <WhackAMole /> },
   { routeName: "/mouse-capture", component: <MouseCapture /> },
   { routeName: "/search", component: <Search /> },
   { routeName: "/auto-complete", component: <AutoComplete /> },

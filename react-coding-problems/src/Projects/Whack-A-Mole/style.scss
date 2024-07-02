@@ -1,0 +1,14 @@
+.container {
+  .hole {
+    position: relative; 
+    .mole {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      display: none;
+    }
+    .show-mole {
+      display: inline-block;
+    }
+  }
+}
