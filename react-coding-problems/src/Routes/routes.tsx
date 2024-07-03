@@ -7,7 +7,7 @@ import Photo from "@/Projects/Tag";
 import FeatureFlag from "@/Projects/FeatureFlag";
 import HomePageFeatureFlag from "@/Projects/FeatureFlag/HomePage";
 import ResizeEvent from "@/Projects/ResizeEvent-with-throttler";
-import OptimiseMakingApiCalls from "@/Projects/Make-API-calls-in-chunk";
+import MakeApiCallsInChunk from "@/Projects/Make-API-calls-in-chunk";
 import Tabs from "@/Projects/Tabs";
 import TypewriterEffect from "@/Projects/TypingEffectText";
 import SwitchComponent from "@/Projects/SwitchComponent";
@@ -96,7 +96,7 @@ export const routes: {
   { routeName: "/grid-light", component: <GridLights /> },
   { routeName: "/vertical-resizer", component: <VerticalDivider /> },
   { routeName: "/resize", component: <ResizeEvent /> },
-  { routeName: "/optimise-api-calls", component: <OptimiseMakingApiCalls /> },
+  { routeName: "/make-api-calls-in-chunk", component: <MakeApiCallsInChunk /> },
   { routeName: "/typing-effect-text", component: <TypewriterEffect /> },
   { routeName: "/switch-component", component: <SwitchComponent /> },
   { routeName: "/walkthrough", component: <Walkthrough /> },
@@ -124,7 +124,10 @@ export const routes: {
   { routeName: "/auto-complete", component: <AutoComplete /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
-  { routeName: "/progress-bar-with-queue-new", component: <ProgressBarWithQueue /> },
+  {
+    routeName: "/progress-bar-with-queue-new",
+    component: <ProgressBarWithQueue />,
+  },
   { routeName: "/progress-bar-simple", component: <SimpleProgressBarComp /> },
   { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
   { routeName: "/stepper", component: <MultiStepper /> },

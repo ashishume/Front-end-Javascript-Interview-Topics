@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+
 /** create a batch of api calls and make parallel api calls to reduce the loading time */
-const fetchUserIds = () => {
-  return new Promise((resolve, reject) => {
-    /**mocking a delayed api call to get the ids of the users */
+const fetchUserIds = (): Promise<{ users: number[] }> => {
+  return new Promise((resolve) => {
+    /** mocking a delayed api call to get the ids of the users */
     setTimeout(() => {
       resolve({
         users: [
@@ -13,41 +14,53 @@ const fetchUserIds = () => {
   });
 };
 
-const OptimiseMakingApiCalls = () => {
-  /** state to store the fetched data */
-  const [data, setData] = useState([] as any);
+const fetchUserData = async (id: number): Promise<any> => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  );
+  if (!response.ok) {
+    throw new Error(`Failed to fetch data for user id: ${id}`);
+  }
+  return response.json();
+};
+
+const MakeApiCallsInChunk = () => {
+  const [data, setData] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const batchSize = 10;
-    fetchUserIds().then(async (res: any) => {
-      /** fetching the users data in batches and making parallel calls using Promise.all() */
-      for (let i = 0; i < res.users.length; i += batchSize) {
-        /** slicing through each batch ids and making concurrent api calls */
-        const users = res.users.slice(i, i + batchSize);
-
-        /** promise.all ensures parallel api calls */
-        await Promise.all(users.map((val: number) => fetchUserData(val)));
+    const batchSize = 5;
+    const fetchData = async () => {
+      try {
+        const res = await fetchUserIds();
+        /** fetching the users data in batches and making parallel calls using Promise.all() */
+        for (let i = 0; i < res.users.length; i += batchSize) {
+          /** slicing through each batch ids and making concurrent api calls */
+          const users = res.users.slice(i, i + batchSize);
+          const userPromises = users.map(fetchUserData);
+          const userData = await Promise.all(userPromises);
+          setData((prev) => [...prev, ...userData]);
+        }
+      } catch (err) {
+        setError((err as Error).message);
       }
-    });
+    };
+
+    fetchData();
   }, []);
 
-  /** fetch each user data based on id */
-  const fetchUserData = (id: number): any => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((data) => data.json())
-      .then((data) => {
-        /** concatinating each users data into a state */
-        setData((prev: any) => [...prev, data]);
-      });
-  };
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       {/* Print the loaded data */}
-      {data?.map((value: any) => {
-        return <div key={value.id}>{value.title}</div>;
-      })}
+      {data.map((value) => (
+        <div key={value.id}>{value.title}</div>
+      ))}
     </div>
   );
 };
 
-export default OptimiseMakingApiCalls;
+export default MakeApiCallsInChunk;
