@@ -4,19 +4,21 @@ import { createRectangle } from "./Shapes/rectangle";
 import { v4 as uuid } from "uuid";
 import { ShapeColors, Shapes } from "./constants";
 import { createCircle } from "./Shapes/circle";
-
+import Crop32Icon from "@mui/icons-material/Crop32";
+import TouchAppIcon from "@mui/icons-material/TouchApp";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 const CanvasDrawing = () => {
+  const toolbarShapes = [Shapes.circle, Shapes.rectangle, Shapes.cursor];
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [initialPos, setInitialPos] = useState<IPosition>({ x: 0, y: 0 });
   const [client, setClient] = useState<IPosition>({ x: 0, y: 0 });
   const [isMouseDown, setMouseDown] = useState(false);
   const [data, setData] = useState<IPayload[]>([]);
   const [payload, setPayload] = useState<IPayload | null>(null);
-  const [currentShape, setCurrentShape] = useState(Shapes.circle);
+  const [currentShape, setCurrentShape] = useState(Shapes.cursor);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-
     if (canvas) {
       // Set the actual drawing dimensions of the canvas to match the window dimensions
       canvas.width = window.innerWidth;
@@ -32,27 +34,27 @@ const CanvasDrawing = () => {
           canvas.getContext("2d");
         if (context) {
           context.clearRect(0, 0, canvas.width, canvas.height);
-
-          await renderShapes(context);
-
-          await createNewShapes(context);
+          renderShapes(context);
+          createNewShapes(context);
         }
       }
     })();
   }, [client.x, client.y]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    setMouseDown(true);
-    setInitialPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
+    if (currentShape !== Shapes.cursor) {
+      setMouseDown(true);
+      setInitialPos({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    }
   };
+
   const handleMouseUp = () => {
     setMouseDown(false);
     if (payload) {
       setData((prev) => [...prev, payload]);
-      // await setPayload(null);
     }
   };
 
@@ -68,9 +70,10 @@ const CanvasDrawing = () => {
   const createNewShapes = (context: CanvasRenderingContext2D) => {
     const width = client.x - initialPos.x;
     const height = client.y - initialPos.y;
+    let node = null;
     switch (currentShape) {
       case Shapes.rectangle: {
-        const rectNodeData = createRectangle(
+        node = createRectangle(
           context,
           client,
           initialPos,
@@ -81,22 +84,12 @@ const CanvasDrawing = () => {
           2,
           false
         );
-        const payloadData: IPayload = {
-          x: initialPos.x,
-          y: initialPos.y,
-          height,
-          width,
-          ...rectNodeData,
-          id: uuid(),
-        };
-        setPayload(payloadData);
         break;
       }
-
       case Shapes.circle: {
         const centerX = initialPos.x + width / 2;
         const centerY = initialPos.y + height / 2;
-        const node = createCircle(
+        node = createCircle(
           context,
           centerX,
           centerY,
@@ -106,19 +99,19 @@ const CanvasDrawing = () => {
           ShapeColors.blue,
           2
         );
-
-        const payloadData: IPayload = {
-          x: initialPos.x,
-          y: initialPos.y,
-          height,
-          width,
-          ...node,
-          id: uuid(),
-        };
-        setPayload(payloadData);
         break;
       }
     }
+
+    const payloadData: IPayload = {
+      x: initialPos.x,
+      y: initialPos.y,
+      height,
+      width,
+      ...(node as { shape: string; fillStyle: string; strokeStyle: string }),
+      id: uuid(),
+    };
+    setPayload(payloadData);
   };
 
   const renderShapes = (context: CanvasRenderingContext2D) => {
@@ -153,28 +146,52 @@ const CanvasDrawing = () => {
             2,
             true
           );
-
           break;
         }
       }
     });
   };
 
+  const insertIcons = (shape: string) => {
+    switch (shape) {
+      case Shapes.circle: {
+        return <RadioButtonUncheckedIcon />;
+      }
+      case Shapes.rectangle: {
+        return <Crop32Icon />;
+      }
+      case Shapes.cursor: {
+        return <TouchAppIcon />;
+      }
+    }
+  };
+
   return (
     <div>
-      <ul>
-        {[Shapes.circle, Shapes.rectangle].map((shape, index) => {
-          return (
-            <li
-              key={index}
-              className={shape === currentShape ? "bg-slate-300" : ""}
-              onClick={() => setCurrentShape(shape)}
-            >
-              {shape}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="relative">
+        <div
+          className="absolute top-0 left-[40%] w-72 
+        text-center shadow-md rounded-md"
+        >
+          {toolbarShapes.map((shape, index) => {
+            return (
+              <div
+                key={index}
+                className={`${
+                  shape === currentShape ? "bg-slate-300" : null
+                } inline-block m-1 p-1 rounded-md hover:bg-slate-100`}
+                onClick={() => setCurrentShape(shape)}
+              >
+                <div className="cursor-pointer">
+                  {insertIcons(shape)}
+                  <div className="text-xs">{shape}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <canvas
         ref={canvasRef}
         onMouseMove={handleMouseMove}
