@@ -12,7 +12,7 @@ const CanvasDrawing = () => {
   const [isMouseDown, setMouseDown] = useState(false);
   const [data, setData] = useState<IPayload[]>([]);
   const [payload, setPayload] = useState<IPayload | null>(null);
-  const [currentShape, setCurrentShape] = useState("");
+  const [currentShape, setCurrentShape] = useState(Shapes.circle);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,17 +25,20 @@ const CanvasDrawing = () => {
   }, [canvasRef]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
-      if (context) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+    (async () => {
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const context: CanvasRenderingContext2D | null =
+          canvas.getContext("2d");
+        if (context) {
+          context.clearRect(0, 0, canvas.width, canvas.height);
 
-        renderShapes(context);
+          await renderShapes(context);
 
-        createNewShapes(context);
+          await createNewShapes(context);
+        }
       }
-    }
+    })();
   }, [client.x, client.y]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -45,10 +48,11 @@ const CanvasDrawing = () => {
       y: e.clientY,
     });
   };
-  const handleMouseUp = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseUp = () => {
     setMouseDown(false);
     if (payload) {
       setData((prev) => [...prev, payload]);
+      // await setPayload(null);
     }
   };
 
@@ -90,15 +94,14 @@ const CanvasDrawing = () => {
       }
 
       case Shapes.circle: {
-        //FIXME: not able to handle negative circles
         const centerX = initialPos.x + width / 2;
         const centerY = initialPos.y + height / 2;
         const node = createCircle(
           context,
           centerX,
           centerY,
-          width / 2,
-          height / 2,
+          Math.abs(width / 2),
+          Math.abs(height / 2),
           ShapeColors.lightBlue,
           ShapeColors.blue,
           2
@@ -136,26 +139,29 @@ const CanvasDrawing = () => {
           break;
         }
         case Shapes.circle: {
-          // const centerX = x + width / 2;
-          // const centerY = y + height / 2;
-          // createCircle(
-          //   context,
-          //   centerX,
-          //   centerY,
-          //   width / 2,
-          //   height / 2,
-          //   fillStyle,
-          //   strokeStyle,
-          //   2,
-          //   true
-          // );
+          const centerX = x + width / 2;
+          const centerY = y + height / 2;
+
+          createCircle(
+            context,
+            centerX,
+            centerY,
+            Math.abs(width / 2),
+            Math.abs(height / 2),
+            fillStyle,
+            strokeStyle,
+            2,
+            true
+          );
+
+          break;
         }
       }
     });
   };
 
   return (
-    <div className="container">
+    <div>
       <ul>
         {[Shapes.circle, Shapes.rectangle].map((shape, index) => {
           return (
