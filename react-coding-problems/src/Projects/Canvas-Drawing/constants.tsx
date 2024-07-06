@@ -7,4 +7,5 @@ export const Shapes = {
   rectangle: "rectangle",
   circle: "circle",
   cursor: "cursor",
+  title: "title",
 };

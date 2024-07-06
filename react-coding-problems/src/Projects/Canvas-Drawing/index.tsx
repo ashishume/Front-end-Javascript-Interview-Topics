@@ -6,8 +6,14 @@ import TouchAppIcon from "@mui/icons-material/TouchApp";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { renderShapes } from "./RenderShapes";
 import { createNewShapes } from "./CreateShape";
+import TitleIcon from "@mui/icons-material/Title";
 const CanvasDrawing = () => {
-  const toolbarShapes = [Shapes.circle, Shapes.rectangle, Shapes.cursor];
+  const toolbarShapes = [
+    Shapes.circle,
+    Shapes.rectangle,
+    Shapes.cursor,
+    Shapes.title,
+  ];
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [initialPos, setInitialPos] = useState<IPosition>({ x: 0, y: 0 });
   const [client, setClient] = useState<IPosition>({ x: 0, y: 0 });
@@ -83,6 +89,9 @@ const CanvasDrawing = () => {
       case Shapes.cursor: {
         return <TouchAppIcon />;
       }
+      case Shapes.title: {
+        return <TitleIcon />;
+      }
     }
   };
 
@@ -90,7 +99,7 @@ const CanvasDrawing = () => {
     <div>
       <div className="relative">
         <div
-          className="absolute top-0 left-[40%] w-72 
+          className="absolute top-0 left-[40%] w-96 
         text-center shadow-md rounded-md"
         >
           {toolbarShapes.map((shape, index) => {
@@ -99,7 +108,7 @@ const CanvasDrawing = () => {
                 key={index}
                 className={`${
                   shape === currentShape ? "bg-slate-300" : null
-                } inline-block m-1 p-1 rounded-md hover:bg-slate-100`}
+                } inline-block m-1 p-1 w-[70px] rounded-md hover:bg-slate-100`}
                 onClick={() => setCurrentShape(shape)}
               >
                 <div className="cursor-pointer">
