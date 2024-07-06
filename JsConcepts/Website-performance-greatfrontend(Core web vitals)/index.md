@@ -13,3 +13,9 @@
 ## First contentful paint (FCP): Time until assets start being displayed on the webpage, whether it be text, images, or even backgrounds.
 
 ## Time to above-the-fold load: Time until the topmost content on the page finishes loading, showing the user completed content without scrolling down.
+
+## Largest Contentful Paint (LCP): The render time of the largest image or text block visible within the viewport, relative to when the page first started loading.
+
+## First Input Delay (FID): Measures load responsiveness because it quantifies the experience users feel when trying to interact with unresponsive pages. A low FID helps ensure that the page is usable.
+
+## Cumulative Layout Shift (CLS): Measures visual stability because it helps quantify how often users experience unexpected layout shifts. A low CLS helps ensure that the page is delightful.

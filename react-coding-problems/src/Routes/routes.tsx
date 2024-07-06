@@ -79,12 +79,14 @@ import UseAsyncApiCallSample from "@/Projects/HOOKS/useAsync";
 import WhackAMole from "@/Projects/Whack-A-Mole";
 import PollManager from "@/Projects/Poll-between-2-choices";
 import LikeButton from "@/Projects/LikeButton";
+import CanvasDrawing from "@/Projects/Canvas-Drawing";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/canvas-drawing", component: <CanvasDrawing /> },
   { routeName: "/like-button", component: <LikeButton /> },
   { routeName: "/polling-booth", component: <PollManager /> },
   { routeName: "/memory-game", component: <MemoryGame /> },
