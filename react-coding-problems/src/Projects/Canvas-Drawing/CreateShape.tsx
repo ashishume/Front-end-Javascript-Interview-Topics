@@ -44,6 +44,12 @@ export const createNewShapes = (
       );
       break;
     }
+    case Shapes.title: {
+      context.font = "16px Arial";
+      context.fillStyle = ShapeColors.black;
+      context.fillText("Ashish", initialPos.x, initialPos.y);
+      break;
+    }
   }
 
   const payloadData: IPayload = {
