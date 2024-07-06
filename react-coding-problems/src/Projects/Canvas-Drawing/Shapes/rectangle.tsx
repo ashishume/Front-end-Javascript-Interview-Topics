@@ -12,6 +12,10 @@ export const createRectangle = (
   lineWidth: number,
   isRendering = false
 ) => {
+  context.fillStyle = fillStyle;
+  context.strokeStyle = strokeStyle;
+  context.lineWidth = lineWidth;
+
   if (isRendering) {
     context.fillRect(client.x, client.y, width, height);
     context.strokeRect(client.x, client.y, width, height);
@@ -19,9 +23,7 @@ export const createRectangle = (
     context.fillRect(initialPos.x, initialPos.y, width, height);
     context.strokeRect(initialPos.x, initialPos.y, width, height);
   }
-  context.fillStyle = fillStyle;
-  context.strokeStyle = strokeStyle;
-  context.lineWidth = lineWidth;
+
   return {
     shape: Shapes.rectangle,
     fillStyle,

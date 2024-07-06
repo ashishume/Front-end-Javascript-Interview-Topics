@@ -40,6 +40,12 @@ export const renderShapes = (
         );
         break;
       }
+      case Shapes.title: {
+        break;
+      }
+      default: {
+        break;
+      }
     }
   });
 };
