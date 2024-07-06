@@ -7,6 +7,7 @@ import { createCircle } from "./Shapes/circle";
 import Crop32Icon from "@mui/icons-material/Crop32";
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import { renderShapes } from "./RenderShapes";
 const CanvasDrawing = () => {
   const toolbarShapes = [Shapes.circle, Shapes.rectangle, Shapes.cursor];
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -34,7 +35,7 @@ const CanvasDrawing = () => {
           canvas.getContext("2d");
         if (context) {
           context.clearRect(0, 0, canvas.width, canvas.height);
-          renderShapes(context);
+          renderShapes(data, context);
           createNewShapes(context);
         }
       }
@@ -112,44 +113,6 @@ const CanvasDrawing = () => {
       id: uuid(),
     };
     setPayload(payloadData);
-  };
-
-  const renderShapes = (context: CanvasRenderingContext2D) => {
-    data.map(({ x, y, height, width, id, shape, fillStyle, strokeStyle }) => {
-      switch (shape) {
-        case Shapes.rectangle: {
-          createRectangle(
-            context,
-            { x, y },
-            { x: 0, y: 0 },
-            width,
-            height,
-            fillStyle,
-            strokeStyle,
-            2,
-            true
-          );
-          break;
-        }
-        case Shapes.circle: {
-          const centerX = x + width / 2;
-          const centerY = y + height / 2;
-
-          createCircle(
-            context,
-            centerX,
-            centerY,
-            Math.abs(width / 2),
-            Math.abs(height / 2),
-            fillStyle,
-            strokeStyle,
-            2,
-            true
-          );
-          break;
-        }
-      }
-    });
   };
 
   const insertIcons = (shape: string) => {
