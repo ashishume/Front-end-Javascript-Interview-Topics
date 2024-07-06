@@ -5,4 +5,5 @@ export const ShapeColors = {
 
 export const Shapes = {
   rectangle: "rectangle",
+  circle: "circle",
 };

@@ -1,3 +1,4 @@
+import { Shapes } from "../constants";
 import { IPosition } from "../model";
 
 export const createRectangle = (
@@ -11,7 +12,6 @@ export const createRectangle = (
   lineWidth: number,
   isRendering = false
 ) => {
-    
   if (isRendering) {
     context.fillRect(client.x, client.y, width, height);
     context.strokeRect(client.x, client.y, width, height);
@@ -23,8 +23,8 @@ export const createRectangle = (
   context.strokeStyle = strokeStyle;
   context.lineWidth = lineWidth;
   return {
-    shape: "rectangle",
-    fillStyle: "lightblue",
-    strokeStyle: "blue",
+    shape: Shapes.rectangle,
+    fillStyle,
+    strokeStyle,
   };
 };
