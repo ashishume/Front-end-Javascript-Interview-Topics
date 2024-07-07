@@ -187,7 +187,7 @@ const CanvasDrawing = () => {
       <div className="relative">
         <div
           className="absolute top-0 left-[40%] w-96 
-        text-center shadow-md rounded-md"
+        text-center shadow-md rounded-md bg-white"
         >
           {toolbarShapes.map((shape, index) => {
             return (
@@ -217,6 +217,7 @@ const CanvasDrawing = () => {
         style={{
           height: "100vh",
           width: "100vw",
+          background:"#def4fd"
         }}
       ></canvas>
     </div>
