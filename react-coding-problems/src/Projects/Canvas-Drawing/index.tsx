@@ -84,8 +84,8 @@ const CanvasDrawing = () => {
         id: uuid(),
         shape: Shapes.pencil,
         points: pencilPath,
-        fillStyle: ShapeColors.lightBlue,
-        strokeStyle: ShapeColors.blue,
+        fillStyle: ShapeColors.fillStyle,
+        strokeStyle: ShapeColors.border,
       };
       setData((prev: any) => [...prev, newPayload]);
       setPencilPath([]);

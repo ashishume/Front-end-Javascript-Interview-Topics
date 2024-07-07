@@ -1,7 +1,7 @@
 export const ShapeColors = {
-  lightBlue: "lightblue",
-  blue: "blue",
-  black: "black",
+  fillStyle: "#CDDCFF",
+  border: "#0E2761",
+  text: "#000000",
 };
 
 export const Shapes = {

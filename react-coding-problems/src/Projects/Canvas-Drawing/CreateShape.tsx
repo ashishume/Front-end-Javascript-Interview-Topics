@@ -24,8 +24,8 @@ export const createNewShapes = (
         initialPos,
         width,
         height,
-        ShapeColors.lightBlue,
-        ShapeColors.blue,
+        ShapeColors.fillStyle,
+        ShapeColors.border,
         2,
         false
       );
@@ -40,8 +40,8 @@ export const createNewShapes = (
         centerY,
         Math.abs(width / 2),
         Math.abs(height / 2),
-        ShapeColors.lightBlue,
-        ShapeColors.blue,
+        ShapeColors.fillStyle,
+        ShapeColors.border,
         2
       );
       break;
@@ -55,7 +55,7 @@ export const createNewShapes = (
 
     case Shapes.pencil: {
       if (points.length > 0) {
-        drawPencilPath(context, points, ShapeColors.blue, 2);
+        drawPencilPath(context, points, ShapeColors.border, 2);
       }
       break;
     }
