@@ -7,18 +7,19 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { renderShapes } from "./RenderShapes";
 import { createNewShapes } from "./CreateShape";
 import TitleIcon from "@mui/icons-material/Title";
+import EditIcon from "@mui/icons-material/Edit";
+
+import {
+  isPointInCircle,
+  isPointInRectangle,
+} from "./ShapeExists/PointsExists";
 const CanvasDrawing = () => {
-  const toolbarShapes = [
-    Shapes.circle,
-    Shapes.rectangle,
-    Shapes.cursor,
-    Shapes.title,
-  ];
+  const toolbarShapes = [...Object.keys(Shapes)];
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [initialPos, setInitialPos] = useState<IPosition>({ x: 0, y: 0 });
   const [client, setClient] = useState<IPosition>({ x: 0, y: 0 });
   const [isMouseDown, setMouseDown] = useState(false);
-  const [data, setData] = useState<IPayload[]>([]);
+  const [data, setData] = useState<any>([]);
   const [payload, setPayload] = useState<IPayload | null>(null);
   const [currentShape, setCurrentShape] = useState(Shapes.cursor);
 
@@ -65,7 +66,7 @@ const CanvasDrawing = () => {
   const handleMouseUp = () => {
     setMouseDown(false);
     if (payload) {
-      setData((prev) => [...prev, payload]);
+      setData((prev: any) => [...prev, payload]);
 
       //clear last item
       setPayload(null);
@@ -95,40 +96,11 @@ const CanvasDrawing = () => {
       case Shapes.title: {
         return <TitleIcon />;
       }
+      case Shapes.pencil: {
+        return <EditIcon />;
+      }
     }
   };
-
-  const isPointInRectangle = (x: number, y: number, element: IPayload) => {
-    return (
-      x >= element.x &&
-      x <= element.x + element.width &&
-      y >= element.y &&
-      y <= element.y + element.height
-    );
-  };
-
-  const isPointInCircle = (x: number, y: number, element: IPayload) => {
-    const centerX = element.x + element.width / 2;
-    const centerY = element.y + element.height / 2;
-    const radiusX = element.width / 2;
-    const radiusY = element.height / 2;
-    const normalizedX = (x - centerX) / radiusX;
-    const normalizedY = (y - centerY) / radiusY;
-    return normalizedX * normalizedX + normalizedY * normalizedY <= 1;
-  };
-
-  // const isPointInText = (x: number, y: number, text: any) => {
-  //   // Approximate text bounding box
-  //   const textWidth = text.text.length * 10; // Approximate width per character
-  //   const textHeight = 16; // Approximate height of the text
-
-  //   return (
-  //     x >= text.x &&
-  //     x <= text.x + textWidth &&
-  //     y >= text.y - textHeight &&
-  //     y <= text.y
-  //   );
-  // };
 
   const findElementAtPosition = (x: number, y: number, data: IPayload[]) => {
     for (let el of data) {
@@ -170,7 +142,7 @@ const CanvasDrawing = () => {
 
       const foundElement = findElementAtPosition(x, y, data);
       if (foundElement) {
-        const newData = data.map((value) => {
+        const newData = data.map((value: IPayload) => {
           if (value.id === foundElement.id) {
             value.strokeStyle = "red";
             value.fillStyle = "orange";

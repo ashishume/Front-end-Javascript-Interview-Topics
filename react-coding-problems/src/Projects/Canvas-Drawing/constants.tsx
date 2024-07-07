@@ -9,4 +9,5 @@ export const Shapes = {
   circle: "circle",
   cursor: "cursor",
   title: "title",
+  pencil: "pencil",
 };

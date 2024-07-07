@@ -8,6 +8,14 @@ export interface IPayload {
   fillStyle: string;
   strokeStyle: string;
 }
+
+export interface IPencilPayload {
+  id: string;
+  path: IPosition[];
+  shape: string;
+  fillStyle: string;
+  strokeStyle: string;
+}
 export interface IPosition {
   x: number;
   y: number;
