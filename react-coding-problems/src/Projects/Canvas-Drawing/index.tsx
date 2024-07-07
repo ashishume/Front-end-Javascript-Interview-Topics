@@ -42,23 +42,13 @@ const CanvasDrawing = () => {
         if (context) {
           context.clearRect(0, 0, canvas.width, canvas.height);
           renderShapes(data, context);
-
-          if (currentShape === Shapes.pencil && pencilPath.length > 0) {
-            context.strokeStyle = ShapeColors.blue;
-            context.lineWidth = 2;
-            context.beginPath();
-            context.moveTo(pencilPath[0].x, pencilPath[0].y);
-            for (let i = 1; i < pencilPath.length; i++) {
-              context.lineTo(pencilPath[i].x, pencilPath[i].y);
-            }
-            context.stroke();
-          }
           createNewShapes(
             client,
             currentShape,
             initialPos,
             context,
-            setPayload
+            setPayload,
+            pencilPath
           );
         }
       }

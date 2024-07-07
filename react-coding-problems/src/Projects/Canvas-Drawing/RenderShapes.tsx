@@ -1,11 +1,12 @@
 import { Shapes } from "./constants";
 import { IPayload } from "./model";
 import { createCircle } from "./Shapes/circle";
+import { drawPencilPath } from "./Shapes/Pencil";
 import { createRectangle } from "./Shapes/rectangle";
 
 export const renderShapes = (
   data: IPayload[],
-  context: CanvasRenderingContext2D,
+  context: CanvasRenderingContext2D
 ) => {
   data.map(
     ({ x, y, height, width, id, shape, fillStyle, strokeStyle, points }) => {
@@ -47,14 +48,7 @@ export const renderShapes = (
 
         case Shapes.pencil: {
           if (points && points.length > 0) {
-            context.strokeStyle = strokeStyle;
-            context.lineWidth = 2;
-            context.beginPath();
-            context.moveTo(points[0].x, points[0].y);
-            for (let i = 1; i < points.length; i++) {
-              context.lineTo(points[i].x, points[i].y);
-            }
-            context.stroke();
+            drawPencilPath(context, points, strokeStyle, 2);
           }
           break;
         }
