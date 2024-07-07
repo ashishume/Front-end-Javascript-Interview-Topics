@@ -7,6 +7,7 @@ export interface IPayload {
   shape: string;
   fillStyle: string;
   strokeStyle: string;
+  points?:IPosition[]
 }
 
 export interface IPencilPayload {

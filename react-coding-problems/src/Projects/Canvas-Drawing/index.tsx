@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IPayload, IPosition } from "./model";
-import { Shapes } from "./constants";
+import { ShapeColors, Shapes } from "./constants";
 import Crop32Icon from "@mui/icons-material/Crop32";
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
@@ -8,7 +8,7 @@ import { renderShapes } from "./RenderShapes";
 import { createNewShapes } from "./CreateShape";
 import TitleIcon from "@mui/icons-material/Title";
 import EditIcon from "@mui/icons-material/Edit";
-
+import { v4 as uuid } from "uuid";
 import {
   isPointInCircle,
   isPointInRectangle,
@@ -22,6 +22,7 @@ const CanvasDrawing = () => {
   const [data, setData] = useState<any>([]);
   const [payload, setPayload] = useState<IPayload | null>(null);
   const [currentShape, setCurrentShape] = useState(Shapes.cursor);
+  const [pencilPath, setPencilPath] = useState<IPosition[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -60,6 +61,10 @@ const CanvasDrawing = () => {
         x: e.clientX,
         y: e.clientY,
       });
+      // Start a new pencil path
+      if (currentShape === Shapes.pencil) {
+        setPencilPath([{ x: e.clientX, y: e.clientY }]);
+      }
     }
   };
 
@@ -71,6 +76,19 @@ const CanvasDrawing = () => {
       //clear last item
       setPayload(null);
     }
+
+    // Save the pencil path as a shape
+    if (currentShape === Shapes.pencil && pencilPath.length > 0) {
+      const newPayload: any = {
+        id: uuid(),
+        shape: Shapes.pencil,
+        points: pencilPath,
+        fillStyle: ShapeColors.lightBlue,
+        strokeStyle: ShapeColors.blue,
+      };
+      setData((prev: any) => [...prev, newPayload]);
+      setPencilPath([]);
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -79,6 +97,11 @@ const CanvasDrawing = () => {
         x: e.clientX,
         y: e.clientY,
       });
+
+      // Update the pencil path as the user draws
+      if (currentShape === Shapes.pencil) {
+        setPencilPath((prev) => [...prev, { x: e.clientX, y: e.clientY }]);
+      }
     }
   };
 
@@ -157,6 +180,7 @@ const CanvasDrawing = () => {
       }
     }
   };
+
   return (
     <div>
       <div className="relative">
