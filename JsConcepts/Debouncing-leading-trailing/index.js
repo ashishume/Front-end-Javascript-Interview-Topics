@@ -1,5 +1,0 @@
-/** Trailing debounce */
-function trailingDebounce() {
-
-    
-}
