@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const CountryData = {
+const CountryData: { [country: string]: string } = {
   India: "New Delhi",
   Russia: "Moscow",
   China: "Beijing",
@@ -47,29 +47,22 @@ const MatchCountryCapitals = () => {
   useEffect(() => {
     if (match.length === 2) {
       const [item1, item2] = match;
+
+      // Ensure items are not of the same type
       if (item1.isKey !== item2.isKey) {
-        for (let [key, value] of Object.entries(CountryData)) {
-          if (item1.isKey) {
-            if (key === item1.value && value === item2.value) {
-              return setFinished(true);
-            } else {
-              setMatch([]);
-              setFinished(false);
-            }
-          } else {
-            if (key === item2.value && value === item1.value) {
-              return setFinished(true);
-            } else {
-              setMatch([]);
-              setFinished(false);
-            }
-          }
+        const keyItem = item1.isKey ? item1 : item2;
+        const valueItem = item1.isKey ? item2 : item1;
+
+        // Check if the key-value pair exists in CountryData
+        if (CountryData[keyItem.value] === valueItem.value) {
+          setFinished(true);
+          return;
         }
-      } else {
-        setMatch([]);
-        setFinished(false);
-        return;
       }
+
+      // If the items are of the same type or the key-value pair doesn't match
+      setMatch([]);
+      setFinished(false);
     }
   }, [match]);
 

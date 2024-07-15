@@ -81,7 +81,7 @@ import PollManager from "@/Projects/Poll-between-2-choices";
 import LikeButton from "@/Projects/LikeButton";
 import CanvasDrawing from "@/Projects/Canvas-Drawing";
 import ProductListing from "@/Projects/Product-Listing-Page";
-import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game(incomplete)";
+import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
