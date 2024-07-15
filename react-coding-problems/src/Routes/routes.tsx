@@ -81,12 +81,14 @@ import PollManager from "@/Projects/Poll-between-2-choices";
 import LikeButton from "@/Projects/LikeButton";
 import CanvasDrawing from "@/Projects/Canvas-Drawing";
 import ProductListing from "@/Projects/Product-Listing-Page";
+import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/match-country-capitals", component: <MatchCountryCapitals /> },
   { routeName: "/product-listing", component: <ProductListing /> },
   { routeName: "/canvas-drawing", component: <CanvasDrawing /> },
   { routeName: "/like-button", component: <LikeButton /> },
