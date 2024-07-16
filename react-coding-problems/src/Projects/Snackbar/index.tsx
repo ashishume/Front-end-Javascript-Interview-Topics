@@ -3,6 +3,7 @@ import SnackbarComponent from "./snackbarComponent";
 import { useState } from "react";
 
 const SnackbarHome = () => {
+  /** u can write these methods from line 7 to line 18 into separate hook method and import from there to re use in different components */
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
 
