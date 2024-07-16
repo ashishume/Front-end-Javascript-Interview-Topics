@@ -83,12 +83,14 @@ import CanvasDrawing from "@/Projects/Canvas-Drawing";
 import ProductListing from "@/Projects/Product-Listing-Page";
 import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 import SnackbarHome from "@/Projects/Snackbar";
+import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/expense-generator", component: <ExpenseGenerator /> },
   { routeName: "/snackbar", component: <SnackbarHome /> },
   { routeName: "/match-country-capitals", component: <MatchCountryCapitals /> },
   { routeName: "/product-listing", component: <ProductListing /> },
