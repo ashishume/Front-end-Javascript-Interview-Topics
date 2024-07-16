@@ -48,13 +48,13 @@ const ExpenseGenerator = () => {
     setMonthlyTransactions(monthlyTransactions.filter((v) => v.id !== id));
   };
 
-  const onAddItem = (id: number) => {};
+  // const onAddItem = (id: number) => {};
 
-  const incomeList = transactions.filter((v) => v.type === "income");
-  const expenseList = transactions.filter((v) => v.type === "expense");
+  // const incomeList = transactions.filter((v) => v.type === "income");
+  // const expenseList = transactions.filter((v) => v.type === "expense");
 
-  const income = sum(incomeList.map((v) => v.value));
-  const expense = sum(expenseList.map((v) => v.value));
+  // const income = sum(incomeList.map((v) => v.value));
+  // const expense = sum(expenseList.map((v) => v.value));
 
   const onSubmit = (e: IExpenses) => {
     console.log(e);
