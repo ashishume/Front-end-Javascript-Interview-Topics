@@ -5,7 +5,12 @@ const ExpenseDisplay = ({
   income: number;
   expense: number;
 }) => {
-  return <div>ExpenseDisplay</div>;
+  return (
+    <div>
+      <h1>Expenses: - ₹{Math.abs(expense)}</h1>
+      <h1>Income: ₹{income}</h1>
+    </div>
+  );
 };
 
 export default ExpenseDisplay;
