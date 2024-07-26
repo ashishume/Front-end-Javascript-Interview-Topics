@@ -62,7 +62,7 @@ const ExpenseGenerator = () => {
     setExpense(expense);
   }, [transactions]);
 
-  const onAddItem = (id: number) => {};
+  // const onAddItem = (id: number) => {};
 
   const onSubmit = (e: IExpenses) => {
     setMonthlyTransactions(monthlyTransactions.concat(e));
