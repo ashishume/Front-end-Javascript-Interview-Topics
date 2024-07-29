@@ -4,93 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
-  <style>
-    body {
-      height: 100vh;
-      display: grid;
-      place-items: center;
-    }
-
-    .slider {
-      width: 100%;
-      max-width: 800px;
-      height: 350px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slide {
-      width: 100%;
-      max-width: 800px;
-      height: 350px;
-      position: absolute;
-      transition: all 0.5s;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .btn {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      padding: 10px;
-      border: none;
-      border-radius: 50%;
-      z-index: 10px;
-      cursor: pointer;
-      background-color: #fff;
-      font-size: 18px;
-    }
-
-    .btn:active {
-      transform: scale(1.1);
-    }
-
-    .btn-prev {
-      top: 45%;
-      left: 2%;
-    }
-
-    .btn-next {
-      top: 45%;
-      right: 2%;
-    }
-  </style>
   <body>
     <!-- slider container -->
     <div class="slider">
       <!-- slide 1 -->
       <div class="slide">
         <img
-          src="https://source.unsplash.com/random?landscape,mountain"
+          src="https://images.craigslist.org/00g0g_fHXECPqfdzC_0ae07S_600x450.jpg"
+          alt=""
+        />
+      </div>
+      <!-- slide 2 -->
+      <div class="slide">
+        <img
+          src="https://images.craigslist.org/00b0b_bPnXlOCGV3N_0CI0t2_600x450.jpg"
+          alt=""
+        />
+      </div>
+      <!-- slide 3 -->
+      <div class="slide">
+        <img
+          src="https://images.craigslist.org/00O0O_dzWj246IunI_0CI0t2_600x450.jpg"
+          alt=""
+        />
+      </div>
+      <!-- slide 4 -->
+      <div class="slide">
+        <img
+          src="https://images.craigslist.org/00b0b_2Wt30YE4YUn_0CI0t2_600x450.jpg"
           alt=""
         />
       </div>
 
-      <!-- slide 2 -->
-      <div class="slide">
-        <img src="https://source.unsplash.com/random?landscape,cars" alt="" />
-      </div>
-
-      <!-- slide 3 -->
-      <div class="slide">
-        <img src="https://source.unsplash.com/random?landscape,night" alt="" />
-      </div>
-
-      <!-- slide 4 -->
-      <div class="slide">
-        <img src="https://source.unsplash.com/random?landscape,city" alt="" />
-      </div>
-
       <!-- Control buttons -->
-      <button class="btn btn-next">></button>
-      <button class="btn btn-prev"></button>
+      <button class="btn btn-next">Prev</button>
+      <button class="btn btn-prev">Next</button>
     </div>
     <script src="./index.js"></script>
   </body>
