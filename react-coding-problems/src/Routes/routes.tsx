@@ -84,6 +84,7 @@ import ProductListing from "@/Projects/Product-Listing-Page";
 import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 import SnackbarHome from "@/Projects/Snackbar";
 import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
+import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -102,6 +103,7 @@ export const routes: {
   { routeName: "/temperature-convertor", component: <TemperatureConvertor /> },
   { routeName: "/api-cancel-with-throttler", component: <DelayApiCall /> },
   { routeName: "/star-rating", component: <StarRating /> },
+  { routeName: "/star-rating-advanced", component: <StarRatingAdvanced /> },
   { routeName: "/transfer-list", component: <TransferList /> },
   { routeName: "/traffic-light", component: <TrafficLights /> },
   { routeName: "/react-portal", component: <ReactPortal /> },
