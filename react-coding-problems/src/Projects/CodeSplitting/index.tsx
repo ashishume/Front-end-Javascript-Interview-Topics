@@ -24,6 +24,7 @@ const LazyParentComp = () => {
       </Button>
 
       {isActive && (
+        //suspense is used for handling async operations and gets a fallback prop to show meanwhile its being loaded
         <Suspense fallback={<>Loading...</>}>
           <LazyComp />
         </Suspense>
