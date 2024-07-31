@@ -36,6 +36,7 @@ import InfiniteScrolls from "@/Projects/Infinite-Scroll-with-chat-bubble/infinit
 import AxiosContainer from "@/Projects/AbortController";
 import ParentComponent from "@/Projects/HOOKS/ForwardRef/ParentComponent";
 import UseCallbackHook from "@/Projects/HOOKS/UseCallback/useCallback";
+import UseCallbackHook2 from "@/Projects/HOOKS/UseCallback(2nd example)/Parent";
 import UseContext from "@/Projects/HOOKS/UseContext";
 import UseLayoutEffectHook from "@/Projects/HOOKS/UseLayoutEffectHook";
 import Input from "@/Projects/HOOKS/input";
@@ -180,6 +181,7 @@ export const routes: {
   { routeName: "/forward-ref", component: <ParentComponent /> },
   // { routeName: "/react-hook-form", component: <ParentForm /> },  // NOTE: not working (reason: bootstrap form)
   { routeName: "/use-callback", component: <UseCallbackHook /> },
+  { routeName: "/use-callback-2", component: <UseCallbackHook2 /> },
   {
     routeName: "/nested-folder",
     component: <FolderComponent explorer={FolderData} />,

@@ -26,6 +26,9 @@ const ParentComponent = () => {
 export const ChildComponent = forwardRef((props, ref) => {
   const childRef = useRef(null);
 
+  /** This hook is typically used when you want to expose 
+   * some imperative methods or properties to parent components,
+   *  bypassing the default ref behavior. */
   useImperativeHandle(ref, () => ({
     focusChild: () => {
       (childRef.current as any).focus();

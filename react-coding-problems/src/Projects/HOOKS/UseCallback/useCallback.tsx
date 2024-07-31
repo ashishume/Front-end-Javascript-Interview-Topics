@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import ButtonHandler from "./buttonHandler";
-import Count from "./Count";
+import React from "react";
+
 const UseCallbackHook = () => {
   const [age, ageHandler] = useState(10);
   const [salary, salaryHandler] = useState(1000);
@@ -10,6 +10,8 @@ const UseCallbackHook = () => {
     console.log("age increment");
     ageHandler(age + 1);
   }, [age]);
+
+
   const salaryInc = useCallback(() => {
     console.log("salary increment");
     salaryHandler(salary + 1000);
@@ -26,5 +28,21 @@ const UseCallbackHook = () => {
     </>
   );
 };
+
+
+const ButtonHandler = React.memo(({ buttonMethod, name }: any) => {
+  console.log(name, "==> button handler");
+  return (
+    <>
+      <button onClick={buttonMethod}>{name}</button>
+    </>
+  );
+});
+
+
+const Count = React.memo(({ count, text }: any) => {
+  console.log(text);
+  return <>{count}</>;
+});
 
 export default UseCallbackHook;

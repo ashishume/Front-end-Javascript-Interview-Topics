@@ -21,6 +21,10 @@ const SearchComponent = () => {
 };
 
 const SearchParent = ({ input }: any) => {
+  /**  This is particularly useful for optimizing rendering during 
+   * heavy computations or when dealing with large data sets. 
+   * it delays the update until the browser has more idle time to process it
+   * */
   const inputData = useDeferredValue(input);
   const list = useMemo(() => {
     const l = [];
