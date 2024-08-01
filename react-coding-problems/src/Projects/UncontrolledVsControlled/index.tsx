@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const ControlledComp = () => {
   const [input, setInput] = useState("");
@@ -15,20 +15,20 @@ const ControlledComp = () => {
   );
 };
 
-const UnControlledComp = () => {
-  let inputValue = useRef<any>(null);
-  let handleSubmit = (e: any) => {
-    alert(`Input value: ${inputValue.current.value}`);
-    e.preventDefault();
-  };
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" ref={inputValue} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-};
+// const UnControlledComp = () => {
+//   let inputValue = useRef<any>(null);
+//   let handleSubmit = (e: any) => {
+//     alert(`Input value: ${inputValue.current.value}`);
+//     e.preventDefault();
+//   };
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+//         <input type="text" ref={inputValue} />
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// };
 
 export default ControlledComp;
