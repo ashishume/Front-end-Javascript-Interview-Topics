@@ -86,6 +86,7 @@ import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 import SnackbarHome from "@/Projects/Snackbar";
 import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
 import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
+import UnControlledComp from "@/Projects/UncontrolledVsControlled";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -93,6 +94,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/expense-generator", component: <ExpenseGenerator /> },
+  { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
   { routeName: "/snackbar", component: <SnackbarHome /> },
   { routeName: "/match-country-capitals", component: <MatchCountryCapitals /> },
   { routeName: "/product-listing", component: <ProductListing /> },
