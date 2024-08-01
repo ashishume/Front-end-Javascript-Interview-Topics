@@ -17,7 +17,6 @@ function asyncFn() {
 async function wrapperFn(callback, retryCount) {
   let attempts = 0;
   while (attempts < retryCount) {
-    console.log('called');
     try {
       return await callback();
     } catch (e) {
