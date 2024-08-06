@@ -7,13 +7,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
+import { UppercasePipe } from '../../shared/pipes/uppercase.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, UppercasePipe],
   // encapsulation: ViewEncapsulation.ShadowDom,  default is Emulated
 })
 export class HomeComponent {
@@ -21,6 +22,8 @@ export class HomeComponent {
   @Input() name: string = '';
   contextExp = 'Ashish Debnath';
   arr = ['ashish', 'debnath', 'is', 'a', 'Software', 'Developer'];
+
+  //head to the elements tab in browser --> select the selector --> ng.getComponent($0) // browser console to get the instance of angular component
 
   ngOnInit() {
     console.log('on init', this.name);

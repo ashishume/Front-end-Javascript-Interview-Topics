@@ -22,7 +22,7 @@
 <ng-template #template1 let-data="data">
   <div blueBackground>
     <b>
-      {{ data }}
+      {{ data | custom }}   <!-- this pipe converts to uppercase -->
     </b>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
     ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
