@@ -1,3 +1,5 @@
+## Async and Defer
+
 <!--  refer link: https://javascript.info/script-async-defer  -->
 
 # Defer: (waits untill html parsing is complete)

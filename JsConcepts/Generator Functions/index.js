@@ -1,5 +1,9 @@
 /** follow video link: https://youtu.be/Qkcwveti-lE?list=PL0b6OzIxLPbzvz4j1N4J8zCY8mu3l29MG */
 
+/** generator functions
+ * 
+ * Application: Used in redux-saga to handle async operations like apis etc
+ */
 function* generator(i) {
   yield i;
   console.log("hello");

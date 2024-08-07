@@ -1,3 +1,5 @@
+/** caching memoization with value */
+
 /** Function whih renders for approx 60ms */
 function renderItems(x, y) {
   for (let i = 0; i < 99999999; i++) {}

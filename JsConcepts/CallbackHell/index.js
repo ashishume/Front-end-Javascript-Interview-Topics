@@ -1,3 +1,5 @@
+/** callback hell */
+
 function sum(s, callback) {
   callback(s + 1);
 }

@@ -1,3 +1,5 @@
+/** convert json to dom tree */
+
 const domTreeElements = {
   tag: "div",
   attributes: {

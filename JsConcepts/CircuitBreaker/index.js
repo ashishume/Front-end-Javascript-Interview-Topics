@@ -1,3 +1,5 @@
+/** circuit breaker method */
+
 const circuitBreaker = (fn, maxAttempts, thresholdTimeLimit) => {
   let failedAttempts = 0;
   let isClosed = false;

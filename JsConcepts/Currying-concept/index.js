@@ -1,3 +1,5 @@
+/** currying methods */
+
 //Follow this link: https://theanubhav.com/2019/02/03/js-currying-in-interview/
 
 //-----------------------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+/** cancel api call after timeout */
 async function fetchDataWithTimeout(url, timeout) {
   const controller = new AbortController();
   const { signal } = controller;

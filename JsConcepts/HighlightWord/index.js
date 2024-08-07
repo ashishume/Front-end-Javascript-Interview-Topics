@@ -1,3 +1,5 @@
+/** highlight word */
+
 const str = "Ultimate Javascript / FrontEnd Guide";
 const words = ["End", "Javascript"];
 const div = document.getElementById("root");

@@ -41,7 +41,7 @@ import UseContext from "@/Projects/HOOKS/UseContext";
 import UseLayoutEffectHook from "@/Projects/HOOKS/UseLayoutEffectHook";
 import Input from "@/Projects/HOOKS/input";
 import UseCopyHook from "@/Projects/HOOKS/useCopyHooks";
-import ErrorBoundaryComponent from "@/Projects/HOOKS/useErrorBoundary";
+import ErrorBoundaryComponent from "@/Projects/HOOKS/useErrorBoundary/app";
 import Factorial from "@/Projects/HOOKS/useMemo";
 import UseMemo2 from "@/Projects/HOOKS/useMemo2";
 import UseRef from "@/Projects/HOOKS/useRef";

@@ -1,3 +1,5 @@
+/** arrow function and normal function */
+
 // there is a function type called
 // JavaScript immediately invoked function expressions (IIFEs)
 // (function () {})(); 

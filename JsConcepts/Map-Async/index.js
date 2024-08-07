@@ -1,3 +1,5 @@
+/** create map async */
+
 // 1st way
 async function mapAsync1(iterable, callbackFn) {
   const results = [];

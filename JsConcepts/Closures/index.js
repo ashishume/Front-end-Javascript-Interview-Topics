@@ -1,3 +1,5 @@
+/** closures */
+
 function x() {
   var a = 9;
   function y() {

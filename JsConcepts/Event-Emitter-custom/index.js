@@ -1,3 +1,5 @@
+/** Event emitter concept */
+
 class MyCustomEmitter {
   constructor() {
     this._events = {};

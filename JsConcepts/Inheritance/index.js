@@ -1,3 +1,4 @@
+/** inheritance example */
 class College {
   constructor(name) {
       this.name = name;

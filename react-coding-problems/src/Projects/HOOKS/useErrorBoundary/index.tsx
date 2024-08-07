@@ -1,16 +1,30 @@
-import { Button } from "@/components/ui/button";
+import React, { useState, ReactNode } from "react";
 
-const ErrorBoundaryComponent = () => {
-  function throwCustomError() {
-    try {
-      throw new Error("some went wrong 2");
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        console.error(e.message);
-      }
+interface ErrorBoundaryProps {
+  children: ReactNode;
+  fallback: ReactNode;
+}
+
+const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({
+  children,
+  fallback,
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
+    console.error("ErrorBoundary caught an error", error, errorInfo);
+    setHasError(true);
+  };
+
+  try {
+    if (hasError) {
+      return fallback;
     }
+    return children;
+  } catch (error) {
+    handleError(error as Error, { componentStack: "" });
+    return fallback;
   }
-  return <Button onClick={throwCustomError}>throw error</Button>;
 };
 
-export default ErrorBoundaryComponent;
+export default ErrorBoundary;

@@ -1,5 +1,5 @@
 /**
- * Life cycle methods based on order of execution
+ * Life cycle methods of angular based on order of execution
  */
 
 /*

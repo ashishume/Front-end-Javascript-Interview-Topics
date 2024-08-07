@@ -1,3 +1,5 @@
+/** Event loop concept */
+
 // Refer article for more about event loop
 /*
 https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd

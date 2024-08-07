@@ -1,3 +1,5 @@
+/** create a custom cookie */
+
 /** Follow url: https://learnersbucket.com/examples/interview/create-custom-cookie-in-javascript/
  * for more details
  */

@@ -1,3 +1,5 @@
+/** call vs bind vs apply */
+
 const obj1 = {
   name: "Ashish",
   age: 1,

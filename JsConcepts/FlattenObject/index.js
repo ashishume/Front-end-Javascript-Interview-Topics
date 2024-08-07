@@ -1,3 +1,4 @@
+/** flatten object */
 let obj = {
   Company: "GeeksforGeeks",
   Address: "Noida",

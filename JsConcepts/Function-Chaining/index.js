@@ -1,3 +1,5 @@
+/** function chaining */
+
 const operations = function () {
   this.result = 0;
   this.add = function (a) {

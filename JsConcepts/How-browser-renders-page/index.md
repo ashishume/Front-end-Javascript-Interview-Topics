@@ -1,3 +1,5 @@
+## How Browser renders page from start to finish
+
  Refer this link for more details: 
 - https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/ 
 - https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path

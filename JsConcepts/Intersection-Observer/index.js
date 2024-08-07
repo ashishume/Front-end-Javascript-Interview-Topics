@@ -1,3 +1,5 @@
+/** intersection observer */
+
 const cardContainer = document.querySelector(".container");
 const cards = document.querySelectorAll(".card");
 

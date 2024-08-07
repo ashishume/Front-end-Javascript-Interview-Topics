@@ -1,4 +1,4 @@
-Here are some popular alternatives:
+Here are some popular alternatives of redux:
 
 # React Context API:
 
