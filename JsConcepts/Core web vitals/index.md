@@ -1,4 +1,4 @@
-# Here are some key metrics you need to start using:
+# Core web vitals
 
 ## Page size: The total file size of all the code, assets, and everything else needed on the page.
 
