@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
 import { UppercasePipe } from '../../shared/pipes/uppercase.pipe';
-
+// re usable Component library
+// test your code
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -25,38 +26,46 @@ export class HomeComponent {
 
   //head to the elements tab in browser --> select the selector --> ng.getComponent($0) // browser console to get the instance of angular component
 
+  //Order 1
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    console.log('on changes', this.name);
+    //triggers on changes detection with previous and current value
+  }
+
+  //Order 2
   ngOnInit() {
     console.log('on init', this.name);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-
-    console.log('on changes', this.name);
-
-    //triggers on changes detection with previous and current value
-  }
-
+  //Order 3
   ngDoCheck() {
     //trigggers on every change detection we can implement our own change detection logic which angular cant detect
     // console.log('called');
   }
+
+  //Order 4
   ngAfterContentInit() {
     //triggers when ng-content is initialised and we want to operate inside the ng-content data
   }
+
+  //Order 5
   ngAfterContentChecked() {
     //when ng-content is checked for changes, we can operate operations on them
   }
 
+  //Order 6
   ngAfterViewInit() {
     console.log('view init', this.name);
-
     //when the components view and child views are initialised
   }
+
+  //Order 7
   ngAfterViewChecked() {
     //when the components view and child views are checked for initialised, we can operate update oeprations when they are loaded
   }
 
+  //on component destroy
   ngOnDestroy() {
     // to destroy subscriptions
   }

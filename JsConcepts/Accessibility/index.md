@@ -6,6 +6,12 @@
 - Improves the overall user experience for everyone,
 - Many accessibility practices also benefit search engine optimization.
 
+## Talk about tabindex
+
+- This attribute controls the order and focusability of elements when navigating through a webpage using the keyboard.
+- tabindex="0" means natural tab order, tabindex='positive number' it goes in order.
+- tabindex="-1" Makes the element focusable only programmatically (e.g., via JavaScript), but not via keyboard navigation.
+
 ## Areas of Accessibility
 
 - Using semantic html tags (header, main, nav, footer)
@@ -30,7 +36,7 @@
 
 - Contrast and Color (Ensure sufficient contrast between text and background colors.)
 
-Examples: 
+Examples:
 this button is Accessible
 Accessible Button: Adding an aria-label provides additional context to screen readers.
 
