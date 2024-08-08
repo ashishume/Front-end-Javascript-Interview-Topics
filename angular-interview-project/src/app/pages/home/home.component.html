@@ -19,10 +19,18 @@
   </div>
 </div>
 
+<!-- *ngFor / *ngIf are called structural directives * (astrisk means it creates a ng-template to wrap around it) -->
+<div *ngFor="let item of items">
+  <div
+    class="item"
+    >{{ item }}</div>
+</div>
+
 <ng-template #template1 let-data="data">
   <div blueBackground>
     <b>
-      {{ data | custom }}   <!-- this pipe converts to uppercase -->
+      {{ data | custom }}
+      <!-- this pipe converts to uppercase -->
     </b>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
     ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
@@ -33,10 +41,5 @@
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tempora omnis
   ducimus neque illo dolore cum adipisci sunt, nisi, quaerat expedita quos hic
   totam! Suscipit reprehenderit vel esse fugit obcaecati. Lorem ipsum dolor sit
-  amet consectetur adipisicing elit. Nemo tempora omnis ducimus neque illo
-  dolore cum adipisci sunt, nisi, quaerat expedita quos hic totam! Suscipit
-  reprehenderit vel esse fugit obcaecati. Lorem ipsum dolor sit amet consectetur
-  adipisicing elit. Nemo tempora omnis ducimus neque illo dolore cum adipisci
-  sunt, nisi, quaerat expedita quos hic totam! Suscipit reprehenderit vel esse
   fugit obcaecati.
 </ng-template>

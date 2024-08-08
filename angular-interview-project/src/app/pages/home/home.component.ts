@@ -8,21 +8,23 @@ import {
 } from '@angular/core';
 import { SharedModule } from '../../shared/modules/shared.module';
 import { UppercasePipe } from '../../shared/pipes/uppercase.pipe';
-// re usable Component library
-// test your code
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   imports: [CommonModule, SharedModule, UppercasePipe],
+  // changeDetection:ChangeDetectionStrategy.OnPush  default is ChangeDetectionStrategy.Default
   // encapsulation: ViewEncapsulation.ShadowDom,  default is Emulated
 })
 export class HomeComponent {
+  /** reusable components mean using input output decorators */
+
   @ViewChild('containerTemp') containerTemp!: ElementRef<HTMLDivElement>;
   @Input() name: string = '';
   contextExp = 'Ashish Debnath';
   arr = ['ashish', 'debnath', 'is', 'a', 'Software', 'Developer'];
+  items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   //head to the elements tab in browser --> select the selector --> ng.getComponent($0) // browser console to get the instance of angular component
 
