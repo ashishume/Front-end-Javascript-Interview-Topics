@@ -44,6 +44,9 @@ Accessible Button: Adding an aria-label provides additional context to screen re
 <button aria-label="Submit Form">Click Me</button>
 ```
 
+
+## ARIA (Accessible Rich Internet Applications): Provides a way to make web applications more accessible to people with disabilities by defining a way to make dynamic content more accessible.
+
 ## Some technologies
 
 - Screen readers

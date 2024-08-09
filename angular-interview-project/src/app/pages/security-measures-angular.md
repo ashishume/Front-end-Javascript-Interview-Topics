@@ -1,0 +1,13 @@
+# Summary
+- Sanitize Inputs: Use Angular's built-in sanitization.
+- Use Angular Security Features: Rely on Angular’s protections for XSS and CSRF.
+- Secure Authentication and Authorization: Implement strong authentication methods and role-based access.
+- Use HTTPS: Encrypt data with HTTPS.
+- Secure Data Storage: Avoid storing sensitive data in local storage.
+- Implement Security Headers: Configure security headers like CSP.
+- Handle Errors Securely: Avoid exposing sensitive information in error messages.
+- Secure Dependency Management: Keep dependencies updated and audit for vulnerabilities.
+- Use Angular’s Strict Mode: Enable strict mode for better error checking.
+- Secure Build Process: Ensure sensitive information is not exposed in build artifacts.
+- Rate Limiting: Implement rate limiting to prevent abuse.
+- Avoid Client-Side Validation Alone: Always validate on the server side.

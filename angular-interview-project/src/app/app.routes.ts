@@ -29,8 +29,9 @@ export const routes: Routes = [
     component: ParentComponent,
   },
   {
+    //lazy loading
     path: 'user',
     loadChildren: () =>
-      import('./pages/user/user.routes').then((m) => m.userRoutes),
+      import('./pages/user/user.routes').then((m) => m.userRoutes), // m.userModule for non-standalone 
   },
 ];
