@@ -6,6 +6,7 @@ import { VirtualScrollComponent } from './pages/virtual-scroll/virtual-scroll.co
 import { NgZoneComponent } from './pages/ng-zone/ng-zone.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { DynamicTestInputComponent } from './pages/dynamic-test-input/dynamic-test-input.component';
+import { ToggleContainerComponent } from './pages/toggle-container/toggle-container.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,11 @@ export const routes: Routes = [
   {
     path: 'dynamic-text-input',
     component: DynamicTestInputComponent,
+    canActivate: [],
+  },
+  {
+    path: 'custom-toggle',
+    component: ToggleContainerComponent,
     canActivate: [],
   },
   {
@@ -38,6 +44,6 @@ export const routes: Routes = [
     //lazy loading
     path: 'user',
     loadChildren: () =>
-      import('./pages/user/user.routes').then((m) => m.userRoutes), // m.userModule for non-standalone 
+      import('./pages/user/user.routes').then((m) => m.userRoutes), // m.userModule for non-standalone
   },
 ];

@@ -1,0 +1,10 @@
+<div
+  class="toggle-container"
+  tabindex="0"
+  (click)="toggle()"
+  (keydown.space)="toggle()"
+  role="checkbox"
+  [attr.aria-checked]="checked"
+>
+  <div class="toggle-button" [class.checked]="checked"></div>
+</div>

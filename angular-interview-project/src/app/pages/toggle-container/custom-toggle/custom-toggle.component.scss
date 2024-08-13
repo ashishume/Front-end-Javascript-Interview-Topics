@@ -1,0 +1,29 @@
+.toggle-container {
+  width: 3em;
+  height: 1.5em;
+  background-color: lightgrey;
+  border-radius: 0.75em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-button {
+  width: 1em;
+  height: 1em;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.toggle-button.checked {
+  transform: translateX(2em);
+  background-color: deepskyblue;
+}
+
+.toggle-container:focus {
+  box-shadow: 0 0 0 2px deepskyblue;
+}
