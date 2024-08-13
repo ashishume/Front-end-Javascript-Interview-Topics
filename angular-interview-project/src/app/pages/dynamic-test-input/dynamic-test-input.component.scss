@@ -1,0 +1,6 @@
+input {
+    font-size: 1.5rem;
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: content-box; /* Ensure padding doesn't affect width calculation */
+  }
+  

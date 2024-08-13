@@ -5,11 +5,17 @@ import { ParentComponent } from './pages/two-way-binding/parent/parent.component
 import { VirtualScrollComponent } from './pages/virtual-scroll/virtual-scroll.component';
 import { NgZoneComponent } from './pages/ng-zone/ng-zone.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { DynamicTestInputComponent } from './pages/dynamic-test-input/dynamic-test-input.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: RxjsOperatorsComponent,
+  },
+  {
+    path: 'dynamic-text-input',
+    component: DynamicTestInputComponent,
+    canActivate: [],
   },
   {
     path: 'virtual-scroll',

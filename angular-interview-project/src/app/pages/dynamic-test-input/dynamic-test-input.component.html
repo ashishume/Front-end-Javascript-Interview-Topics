@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup">
+  <app-custom-input
+    id="customInput"
+    formControlName="customInput"
+    type="text"
+    placeholder="custom input"
+  />
+  <input
+    id="customInput"
+    placeholder="directive input"
+    formControlName="customInput"
+    appAutoResize
+    type="text"
+  />
+</form>
