@@ -15,7 +15,7 @@ function FlattenMultiLevelArray(arr, depth = 1) {
   return result;
 }
 const levelArr = [1, 2, 3, [5, 7, 8, [4, 8, 5, [1, 2]]]];
-const res = FlattenMultiLevelArray(levelArr, 4);
+const res = FlattenMultiLevelArray(levelArr, 4);  // Infinity to add N no. of flatten
 //depth is optional the function can work even without depth(just remove the depth, or provide Infinity to the args)
 
 // console.log(res);

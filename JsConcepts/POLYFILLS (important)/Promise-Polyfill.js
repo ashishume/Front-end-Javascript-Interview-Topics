@@ -33,6 +33,8 @@ const samplePromise2 = new Promise((res, rej) => {
 //   console.log(d);
 // });
 
+// ------------------------------------------------------------------------------
+
 /** independent promise.allSettled()  */
 function PromiseAllSettled(promises) {
   return new Promise((resolve, reject) => {
@@ -65,6 +67,8 @@ function PromiseAllSettled(promises) {
 //     console.log(e);
 //   });
 
+// ------------------------------------------------------------------------------
+
 /** Promise.any()  polyfill */
 function PromiseAny(promises) {
   return new Promise((resolve, reject) => {
@@ -79,7 +83,8 @@ function PromiseAny(promises) {
         .catch((reason) => {
           rejectedCount++;
           errors[index] = errors;
-          if (rejectedCount === promises.length) reject(new AggregateError("all rejected"));
+          if (rejectedCount === promises.length)
+            reject(new AggregateError("all rejected"));
         });
     });
   });
@@ -92,6 +97,8 @@ function PromiseAny(promises) {
 //   .catch((e) => {
 //     console.log(e);
 //   });
+
+// ------------------------------------------------------------------------------
 
 /** Promise.race()  polyfill */
 function PromiseRace(promises) {
