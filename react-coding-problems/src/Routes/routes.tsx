@@ -87,6 +87,7 @@ import SnackbarHome from "@/Projects/Snackbar";
 import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
 import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
 import UnControlledComp from "@/Projects/UncontrolledVsControlled";
+import ZustandDemo from "../Projects/Zustand-demo";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -121,6 +122,7 @@ export const routes: {
   { routeName: "/walkthrough", component: <Walkthrough /> },
   { routeName: "/tabs", component: <Tabs /> },
   { routeName: "/accordion", component: <Accordion /> },
+  { routeName: "/zustand-demo", component: <ZustandDemo /> },
   {
     routeName: "/dark-mode/*",
     component: (
