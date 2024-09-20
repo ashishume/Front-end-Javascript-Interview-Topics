@@ -1,9 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 
 const HomeReactQuerySample = () => {
-  const [title, setTitle] = useState<string>("");
-  const [body, setBody] = useState<string>("");
 
   const queryClient = useQueryClient();
 
