@@ -88,6 +88,7 @@ import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
 import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
 import UnControlledComp from "@/Projects/UncontrolledVsControlled";
 import ZustandDemo from "../Projects/Zustand-demo";
+import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -95,6 +96,7 @@ export const routes: {
 }[] = [
   { routeName: "/", component: <App /> },
   { routeName: "/expense-generator", component: <ExpenseGenerator /> },
+  { routeName: "/react-query", component: <ReactQueryLibrary /> },
   { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
   { routeName: "/snackbar", component: <SnackbarHome /> },
   { routeName: "/match-country-capitals", component: <MatchCountryCapitals /> },
