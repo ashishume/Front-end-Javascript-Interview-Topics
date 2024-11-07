@@ -1,6 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 const FindDomMethodViaClick = () => {
+  let prevListItem: any = null;
+  // Store the previously clicked element
+  let previousElement: any = null;
+
   const [domStore, setDomStore] = useState(new Set());
   // DOM path finder function
   function getDomPath(element: any) {
@@ -39,50 +43,56 @@ const FindDomMethodViaClick = () => {
 
     return path;
   }
-  // Store the previously clicked element
-  let previousElement: any = null;
 
-  // let domPathStore = new Set();
   // Add a click event listener to the document
   document.addEventListener("click", function (event) {
-    const path = getDomPath(event.target); // Get the DOM path of the clicked element
+    if ((event as any)?.target?.id !== "non-selectable") {
+      const path = getDomPath(event.target); // Get the DOM path of the clicked element
 
-    // add new unique item to the store
-    setDomStore((prevSet) => {
-      // Convert Set to Array to check for duplicate paths
-      const existingPaths = Array.from(prevSet).map((item: any) => item.path);
-      // Only add if path does not already exist
-      if (!existingPaths.includes(path)) {
-        const newSet = new Set(prevSet);
-        newSet.add({ uuid: uuidv4(), path });
-        return newSet;
+      // add new unique item to the store
+      setDomStore((prevSet) => {
+        // Convert Set to Array to check for duplicate paths
+        const existingPaths = Array.from(prevSet).map((item: any) => item.path);
+        // Only add if path does not already exist
+        if (!existingPaths.includes(path)) {
+          const newSet = new Set(prevSet);
+          newSet.add({ uuid: uuidv4(), path });
+          return newSet;
+        }
+        // If path exists, return previous Set without modification
+        return prevSet;
+      });
+
+      // Remove the highlight from the previous element
+      if (previousElement) {
+        previousElement.style.outline = "";
       }
-      // If path exists, return previous Set without modification
-      return prevSet;
-    });
 
-    // Remove the highlight from the previous element
-    if (previousElement) {
-      previousElement.style.outline = "";
+      // Highlight the clicked element with a border
+      (event as any).target.style.outline = "2px solid red";
+      // Store the current element as the previous one for the next click
+      previousElement = event.target;
     }
-    // Highlight the clicked element with a border
-    (event as any).target.style.outline = "2px solid red";
-    // Store the current element as the previous one for the next click
-    previousElement = event.target;
   });
 
-  let prevEl: any = null;
+  //FIXME: red highlight for last element should be removed.
+  
   const handleUuid = (e: any, uuid: string) => {
     const a: any = Array.from(domStore).find((item: any) => item.uuid === uuid);
     const element = document.querySelector(a.path); // Use the path to find the element
 
-    if (prevEl) {
-      prevEl.style.outline = "";
+    if (prevListItem) {
+      prevListItem.style.outline = "";
     }
-    element.style.outline = "2px solid red";
 
-    prevEl = element;
+    //highlight the element
+    element.style.outline = "2px solid blue";
+
+    prevListItem = element;
   };
+
+  console.log(domStore);
+  
 
   return (
     <div className="container" id="page-container">
@@ -133,14 +143,14 @@ const FindDomMethodViaClick = () => {
                 <span>Nested Box 2</span>
 
                 <button type="button" style={{ backgroundColor: "gray" }}>
-                  <span>
+                  <div>
                     Submit
                     <img
                       width="50"
                       height="50"
                       src="https://static.vecteezy.com/system/resources/thumbnails/009/652/218/small/magnifying-glass-icon-isolated-on-white-background-search-illustration-vector.jpg"
                     />
-                  </span>
+                  </div>
                 </button>
               </div>
             </div>
@@ -190,7 +200,11 @@ const FindDomMethodViaClick = () => {
       <ul>
         {Array.from(domStore).map((value: any) => {
           return (
-            <li key={value.uuid} onClick={(e) => handleUuid(e, value.uuid)}>
+            <li
+              id="non-selectable"
+              key={value.uuid}
+              onClick={(e) => handleUuid(e, value.uuid)}
+            >
               {value.uuid}
             </li>
           );
