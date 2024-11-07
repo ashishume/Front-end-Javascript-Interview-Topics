@@ -89,12 +89,14 @@ import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
 import UnControlledComp from "@/Projects/UncontrolledVsControlled";
 import ZustandDemo from "../Projects/Zustand-demo";
 import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
+import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
+  { routeName: "/find-dom-el-via-click", component: <FindDomElementViaClick /> },
   { routeName: "/expense-generator", component: <ExpenseGenerator /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
   { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
