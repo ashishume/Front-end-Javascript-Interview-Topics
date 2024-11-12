@@ -1,10 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FindDomMethodViaClick = () => {
   const [comments, setComments] = useState<{ [key: string]: string }>({});
-
   const [domStore, setDomStore] = useState<any[]>([]);
 
   // DOM path finder function
@@ -57,39 +56,71 @@ const FindDomMethodViaClick = () => {
   };
 
   // Add a click event listener to the document
-  document.addEventListener("click", function (event) {
-    const { target, clientX, clientY } = event;
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const { target, clientX, clientY } = event;
+      const path = getDomPath(target);
+      const rect = (target as HTMLElement).getBoundingClientRect();
+      const relativeX = clientX - rect.left;
+      const relativeY = clientY - rect.top;
 
-    // Calculate path and element position
-    const path = getDomPath(target);
-    const rect = (target as HTMLElement).getBoundingClientRect();
-    const relativeX = clientX - rect.left;
-    const relativeY = clientY - rect.top;
+      setDomStore((prevArray) => {
+        const existingPaths = prevArray.map((item) => item.path);
+        if (!existingPaths.includes(path)) {
+          return [
+            ...prevArray,
+            {
+              uuid: uuidv4(),
+              path,
+              position: { x: relativeX, y: relativeY },
+              elementRect: { top: rect.top, left: rect.left }, // Store the element's bounding box for recalculation
+            },
+          ];
+        }
+        return prevArray;
+      });
+    };
 
-    // Add unique item to domStore if it doesn't already exist
-    setDomStore((prevArray) => {
-      const existingPaths = prevArray.map((item) => item.path);
-      if (!existingPaths.includes(path)) {
-        return [
-          ...prevArray,
-          {
-            uuid: uuidv4(),
-            path,
-            position: { x: relativeX, y: relativeY },
-            elementRect: { top: rect.top, left: rect.left }, // Store the element's bounding box for recalculation
-          },
-        ];
-      }
-      return prevArray;
-    });
-  });
+    document.addEventListener("click", handleClick);
+
+    // Recalculate bubble positions on resize
+    const recalculateBubblePositions = debounce(() => {
+      setDomStore((prevArray) =>
+        prevArray.map((item) => {
+          const element = document.querySelector(item.path);
+          if (element) {
+            const rect = (element as HTMLElement).getBoundingClientRect();
+            // Adjust the bubble position based on the new element's position and original offsets
+            return {
+              ...item,
+              position: {
+                x: rect.left + item.position.x - item.elementRect.left,
+                y: rect.top + item.position.y - item.elementRect.top,
+              },
+              elementRect: { top: rect.top, left: rect.left }, // Update the element's rect
+            };
+          }
+          return item;
+        })
+      );
+    }, 100);
+
+    window.addEventListener("resize", recalculateBubblePositions);
+
+    // Initial recalculation on load
+    recalculateBubblePositions();
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+      window.removeEventListener("resize", recalculateBubblePositions);
+    };
+  }, [debounce]);
 
   console.log(domStore);
 
   // Function to handle comment submission
   const handleCommentSubmit = (uuid: string) => {
     console.log(`Comment for ${uuid}: ${comments[uuid]}`);
-    // You can add logic to save or process the comment here
   };
 
   return (
@@ -115,12 +146,12 @@ const FindDomMethodViaClick = () => {
         <Button>Contact Us</Button>
       </ButtonGroup>
 
-      {[...domStore].map((item: any) => (
+      {domStore.map((item: any) => (
         <Bubble
           key={item.uuid}
           style={{
-            top: item.position.y + item.elementRect.top,
-            left: item.position.x + item.elementRect.left,
+            top: item.position.y + item.elementRect.top, // Correct the top position based on element's rect
+            left: item.position.x + item.elementRect.left, // Correct the left position based on element's rect
           }}
           data-path={item.path}
         >
@@ -186,10 +217,6 @@ const Thumbnail = styled.div`
     display: block;
     transition: transform 0.3s ease;
   }
-
-  &:hover img {
-    transform: scale(1.05);
-  }
 `;
 
 const ButtonGroup = styled.div`
@@ -221,14 +248,15 @@ const Bubble = styled.div`
   border-radius: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  pointer-events: auto;
 
+  /* Optional: Hover state for showing comment box */
   &:hover > div {
     opacity: 1;
     visibility: visible;
   }
 `;
 
-// CommentBox styled component
 const CommentBox = styled.div`
   position: absolute;
   top: -60px;
