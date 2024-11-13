@@ -90,14 +90,24 @@ const FindDomMethodViaClick = () => {
           const element = document.querySelector(item.path);
           if (element) {
             const rect = (element as HTMLElement).getBoundingClientRect();
-            // Adjust the bubble position based on the new element's position and original offsets
+            const relativeX = item.position.x; // Use original relativeX
+            const relativeY = item.position.y; // Use original relativeY
+
+            // Calculate new absolute position based on original relative offsets and current element rect
+            const newTop = rect.top + relativeY;
+            const newLeft = rect.left + relativeX;
+
             return {
               ...item,
               position: {
-                x: rect.left + item.position.x - item.elementRect.left,
-                y: rect.top + item.position.y - item.elementRect.top,
+                x: relativeX, // Keep relativeX as it's offset from the element
+                y: relativeY, // Keep relativeY as it's offset from the element
               },
-              elementRect: { top: rect.top, left: rect.left }, // Update the element's rect
+              elementRect: { top: rect.top, left: rect.left }, // Update elementRect
+              style: {
+                top: `${newTop}px`, // Set absolute top position with new calculation
+                left: `${newLeft}px`, // Set absolute left position with new calculation
+              },
             };
           }
           return item;
@@ -107,16 +117,33 @@ const FindDomMethodViaClick = () => {
 
     window.addEventListener("resize", recalculateBubblePositions);
 
+    // Add orientation change listener for mobile adjustments
+    window.addEventListener("orientationchange", recalculateBubblePositions);
+
+    // Mutation observer to track layout changes (e.g., dev tools mobile view switching)
+    const observer = new MutationObserver(recalculateBubblePositions);
+    observer.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+
     // Initial recalculation on load
     recalculateBubblePositions();
 
     return () => {
       document.removeEventListener("click", handleClick);
       window.removeEventListener("resize", recalculateBubblePositions);
+      // window.removeEventListener("resize", recalculateBubblePositions);
+      window.removeEventListener(
+        "orientationchange",
+        recalculateBubblePositions
+      );
+      observer.disconnect();
     };
   }, [debounce]);
 
-  console.log(domStore);
+  // console.log(domStore);
 
   // Function to handle comment submission
   const handleCommentSubmit = (uuid: string) => {
@@ -147,14 +174,7 @@ const FindDomMethodViaClick = () => {
       </ButtonGroup>
 
       {domStore.map((item: any) => (
-        <Bubble
-          key={item.uuid}
-          style={{
-            top: item.position.y + item.elementRect.top, // Correct the top position based on element's rect
-            left: item.position.x + item.elementRect.left, // Correct the left position based on element's rect
-          }}
-          data-path={item.path}
-        >
+        <Bubble key={item.uuid} style={item.style} data-path={item.path}>
           <CommentBox>
             <input
               type="text"
