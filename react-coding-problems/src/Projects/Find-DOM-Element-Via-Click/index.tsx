@@ -61,8 +61,8 @@ const FindDomMethodViaClick = () => {
       const { target, clientX, clientY } = event;
       const path = getDomPath(target);
       const rect = (target as HTMLElement).getBoundingClientRect();
-      const relativeX = clientX - rect.left;
-      const relativeY = clientY - rect.top;
+      const relativeX = clientX - rect.left; //relative path from viewport
+      const relativeY = clientY - rect.top; //relative top path from viewport
 
       setDomStore((prevArray) => {
         const existingPaths = prevArray.map((item) => item.path);
@@ -73,7 +73,6 @@ const FindDomMethodViaClick = () => {
               uuid: uuidv4(),
               path,
               position: { x: relativeX, y: relativeY },
-              elementRect: { top: rect.top, left: rect.left }, // Store the element's bounding box for recalculation
             },
           ];
         }
@@ -103,7 +102,6 @@ const FindDomMethodViaClick = () => {
                 x: relativeX, // Keep relativeX as it's offset from the element
                 y: relativeY, // Keep relativeY as it's offset from the element
               },
-              elementRect: { top: rect.top, left: rect.left }, // Update elementRect
               style: {
                 top: `${newTop}px`, // Set absolute top position with new calculation
                 left: `${newLeft}px`, // Set absolute left position with new calculation
