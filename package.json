@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"cd react-coding-problems && npm run dev\"",
-    "dev": "\"cd JsConcepts && npm run dev\""
+    "dev": "concurrently \"cd JsConcepts && npm run dev\""
   },
   "author": "Ashish Debnath",
   "license": "ISC",
