@@ -45,8 +45,8 @@ const FindDomMethodViaClick = () => {
     relativeY: number
   ) {
     const rect = element.getBoundingClientRect();
-    const scrollX = window.scrollX || window.pageXOffset;
-    const scrollY = window.scrollY || window.pageYOffset;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
 
     return {
       left: rect.left + relativeX + scrollX,
@@ -57,7 +57,10 @@ const FindDomMethodViaClick = () => {
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if ((event.target as HTMLElement).closest(".comment-sidebar")) {
-        return; // Ignore clicks within the sidebar
+        return;
+      }
+      if ((event.target as HTMLElement).closest(".bubble-container")) {
+        return;
       }
 
       const target = event.target as HTMLElement;
@@ -170,7 +173,7 @@ const FindDomMethodViaClick = () => {
 
   return (
     <MainContainer>
-      <ContentContainer isSidebarOpen={!!selectedBubble}>
+      <ContentContainer>
         <Container>
           <Header>
             <h1>Thumbnail Gallery</h1>
@@ -197,6 +200,7 @@ const FindDomMethodViaClick = () => {
 
           {domStore.map((item) => (
             <BubbleContainer
+              className="bubble-container"
               key={item.uuid}
               style={item.style}
               data-path={item.path}
@@ -248,10 +252,9 @@ const MainContainer = styled.div`
   position: relative;
 `;
 
-const ContentContainer = styled.div<{ isSidebarOpen: boolean }>`
+const ContentContainer = styled.div`
   flex: 1;
   transition: margin-right 0.3s ease;
-  margin-right: ${(props) => (props.isSidebarOpen ? "300px" : "0")};
 `;
 
 const Container = styled.div`
@@ -408,11 +411,6 @@ const Thumbnail = styled.div`
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
   img {
     width: 100%;
     height: auto;
