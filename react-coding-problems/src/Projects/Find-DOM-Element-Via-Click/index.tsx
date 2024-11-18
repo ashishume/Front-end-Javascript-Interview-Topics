@@ -9,25 +9,17 @@ const FindDomMethodViaClick = () => {
   // DOM path finder function
   function getDomPath(element: any) {
     if (!element) return "";
-
     let path = "";
-
     while (element.nodeType === Node.ELEMENT_NODE) {
       let selector = element.nodeName.toLowerCase();
-
-      // If the element has an ID, use it and stop traversal
       if (element.id) {
         selector += `#${element.id}`;
         path = `${selector} ${path}`.trim();
         break;
       }
-
-      // Add classes if any
       if (element.className) {
         selector += "." + Array.from(element.classList).join(".");
       }
-
-      // Add nth-child if it's not the only child
       let sibling = element;
       let nth = 1;
       while ((sibling = sibling.previousElementSibling) != null) {
@@ -36,33 +28,43 @@ const FindDomMethodViaClick = () => {
       if (nth > 1) {
         selector += `:nth-of-type(${nth})`;
       }
-
       path = `${selector} ${path}`.trim();
       element = element.parentNode;
     }
-
     return path;
   }
 
-  // Debounce function to limit resize event handling
-  const debounce = (func: () => void, delay: number) => {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(func, delay);
-    };
-  };
+  function calculateBubblePosition(
+    element: Element,
+    relativeX: number,
+    relativeY: number
+  ) {
+    const rect = element.getBoundingClientRect();
+    const scrollX = window.scrollX || window.pageXOffset;
+    const scrollY = window.scrollY || window.pageYOffset;
 
-  // Add a click event listener to the document
+    return {
+      left: rect.left + relativeX + scrollX,
+      top: rect.top + relativeY + scrollY,
+    };
+  }
+
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
-      const { target, clientX, clientY } = event;
+      const target = event.target as HTMLElement;
       const path = getDomPath(target);
-      const rect = (target as HTMLElement).getBoundingClientRect();
-      const relativeX = clientX - rect.left; //relative path from viewport
-      const relativeY = clientY - rect.top; //relative top path from viewport
+      const rect = target.getBoundingClientRect();
+
+      // Calculate relative position within the clicked element
+      const relativeX = event.clientX - rect.left;
+      const relativeY = event.clientY - rect.top;
+
+      // Calculate initial absolute position
+      const initialPosition = calculateBubblePosition(
+        target,
+        relativeX,
+        relativeY
+      );
 
       setDomStore((prevArray) => {
         const existingPaths = prevArray.map((item) => item.path);
@@ -72,7 +74,12 @@ const FindDomMethodViaClick = () => {
             {
               uuid: uuidv4(),
               path,
-              position: { x: relativeX, y: relativeY },
+              relativePosition: { x: relativeX, y: relativeY },
+              style: {
+                position: "absolute",
+                left: `${initialPosition.left}px`,
+                top: `${initialPosition.top}px`,
+              },
             },
           ];
         }
@@ -80,70 +87,65 @@ const FindDomMethodViaClick = () => {
       });
     };
 
-    document.addEventListener("click", handleClick);
-
-    // Recalculate bubble positions on resize
-    const recalculateBubblePositions = debounce(() => {
+    const updateBubblePositions = () => {
       setDomStore((prevArray) =>
         prevArray.map((item) => {
           const element = document.querySelector(item.path);
           if (element) {
-            const rect = (element as HTMLElement).getBoundingClientRect();
-            const relativeX = item.position.x; // Use original relativeX
-            const relativeY = item.position.y; // Use original relativeY
-
-            // Calculate new absolute position based on original relative offsets and current element rect
-            const newTop = rect.top + relativeY;
-            const newLeft = rect.left + relativeX;
+            const newPosition = calculateBubblePosition(
+              element,
+              item.relativePosition.x,
+              item.relativePosition.y
+            );
 
             return {
               ...item,
-              position: {
-                x: relativeX, // Keep relativeX as it's offset from the element
-                y: relativeY, // Keep relativeY as it's offset from the element
-              },
               style: {
-                top: `${newTop}px`, // Set absolute top position with new calculation
-                left: `${newLeft}px`, // Set absolute left position with new calculation
+                position: "absolute",
+                left: `${newPosition.left}px`,
+                top: `${newPosition.top}px`,
               },
             };
           }
           return item;
         })
       );
-    }, 100);
+    };
 
-    window.addEventListener("resize", recalculateBubblePositions);
+    // Debounced resize handler
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateBubblePositions, 100);
+    };
 
-    // Add orientation change listener for mobile adjustments
-    window.addEventListener("orientationchange", recalculateBubblePositions);
+    // Event listeners
+    document.addEventListener("click", handleClick);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", updateBubblePositions);
+    window.addEventListener("orientationchange", updateBubblePositions);
 
-    // Mutation observer to track layout changes (e.g., dev tools mobile view switching)
-    const observer = new MutationObserver(recalculateBubblePositions);
+    // Mutation observer for DOM changes
+    const observer = new MutationObserver(updateBubblePositions);
     observer.observe(document.body, {
       attributes: true,
       childList: true,
       subtree: true,
     });
 
-    // Initial recalculation on load
-    recalculateBubblePositions();
+    // Initial position calculation
+    updateBubblePositions();
 
     return () => {
       document.removeEventListener("click", handleClick);
-      window.removeEventListener("resize", recalculateBubblePositions);
-      // window.removeEventListener("resize", recalculateBubblePositions);
-      window.removeEventListener(
-        "orientationchange",
-        recalculateBubblePositions
-      );
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", updateBubblePositions);
+      window.removeEventListener("orientationchange", updateBubblePositions);
       observer.disconnect();
+      clearTimeout(resizeTimeout);
     };
-  }, [debounce]);
+  }, []);
 
-  // console.log(domStore);
-
-  // Function to handle comment submission
   const handleCommentSubmit = (uuid: string) => {
     console.log(`Comment for ${uuid}: ${comments[uuid]}`);
   };
@@ -171,33 +173,38 @@ const FindDomMethodViaClick = () => {
         <Button>Contact Us</Button>
       </ButtonGroup>
 
-      {domStore.map((item: any) => (
-        <Bubble key={item.uuid} style={item.style} data-path={item.path}>
+      {domStore.map((item) => (
+        <BubbleContainer
+          key={item.uuid}
+          style={item.style}
+          data-path={item.path}
+        >
           <CommentBox>
-            <input
+            <Input
               type="text"
               value={comments[item.uuid] || ""}
               onChange={(e) =>
-                setComments((prevComments) => ({
-                  ...prevComments,
+                setComments((prev) => ({
+                  ...prev,
                   [item.uuid]: e.target.value,
                 }))
               }
               placeholder="Add a comment"
             />
-            <button onClick={() => handleCommentSubmit(item.uuid)}>Send</button>
+            <CommentButton onClick={() => handleCommentSubmit(item.uuid)}>
+              Send
+            </CommentButton>
           </CommentBox>
-        </Bubble>
+        </BubbleContainer>
       ))}
     </Container>
   );
 };
 
-// Styled components
 const Container = styled.div`
   max-width: 1000px;
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -207,7 +214,6 @@ const Container = styled.div`
 
 const Header = styled.header`
   margin-bottom: 20px;
-
   h1 {
     font-size: 2rem;
     color: #333;
@@ -258,61 +264,65 @@ const Button = styled.button`
   }
 `;
 
-const Bubble = styled.div`
-  position: absolute;
+const BubbleContainer = styled.div`
   width: 20px;
   height: 20px;
   background-color: #25a5d9;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
-  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1000;
 
-  /* Optional: Hover state for showing comment box */
-  &:hover > div {
-    opacity: 1;
-    visibility: visible;
+  &:hover {
+    > div {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
   }
 `;
 
 const CommentBox = styled.div`
   position: absolute;
-  top: -60px;
-  left: 0;
+  top: -65px;
+  left: 50%;
   transform: translateX(-50%);
-  padding: 8px;
   background-color: black;
-  color: white;
-  font-size: 12px;
+  padding: 8px;
   border-radius: 4px;
-  white-space: nowrap;
+  width: 150px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
   pointer-events: none;
-  z-index: 100;
-  width: 150px;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   gap: 4px;
+`;
 
-  input {
-    padding: 4px;
-    font-size: 12px;
-    color: black;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-  }
+const Input = styled.input`
+  padding: 4px;
+  font-size: 12px;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  outline: none;
+`;
 
-  button {
-    padding: 4px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
+const CommentButton = styled.button`
+  padding: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3;
   }
 `;
 
