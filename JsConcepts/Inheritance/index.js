@@ -1,75 +1,90 @@
-/** inheritance example */
-class College {
-  constructor(name) {
-      this.name = name;
-      this.departments = {};
+/** Inheritance example using Animal Kingdom */
+class Animal {
+  constructor(name, species) {
+    this.name = name;
+    this.species = species;
+    this.health = 100;
+    this.energy = 100;
   }
 
-  addDepartment(departmentName) {
-      if (!this.departments[departmentName]) {
-          this.departments[departmentName] = {
-              subjects: {},
-              teachers: []
-          };
-      } else {
-          console.log(`Department ${departmentName} already exists.`);
-      }
+  eat() {
+    this.energy += 10;
+    console.log(`${this.name} is eating. Energy: ${this.energy}`);
   }
 
-  addSubject(departmentName, subjectName) {
-      if (this.departments[departmentName]) {
-          this.departments[departmentName].subjects[subjectName] = [];
-      } else {
-          console.log(`Department ${departmentName} does not exist.`);
-      }
+  sleep() {
+    this.health += 10;
+    console.log(`${this.name} is sleeping. Health: ${this.health}`);
   }
 
-  addTeacher(departmentName, teacherName) {
-      if (this.departments[departmentName]) {
-          this.departments[departmentName].teachers.push(teacherName);
-      } else {
-          console.log(`Department ${departmentName} does not exist.`);
-      }
+  makeSound() {
+    console.log(`${this.name} makes a generic sound.`);
   }
 }
 
-class Student extends College {
-  constructor(collegeName, studentName) {
-      super(collegeName);
-      this.studentName = studentName;
-      this.department = '';
-      this.subjects = [];
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name, "Canis");
+    this.breed = breed;
+    this.loyalty = 0;
   }
 
-  enrollDepartment(departmentName) {
-      if (this.departments[departmentName]) {
-          this.department = departmentName;
-      } else {
-          console.log(`Department ${departmentName} does not exist.`);
-      }
+  bark() {
+    console.log(`${this.name} barks: Woof! Woof!`);
   }
 
-  enrollSubject(subjectName) {
-      if (this.department && this.departments[this.department].subjects[subjectName]) {
-          this.subjects.push(subjectName);
-      } else {
-          console.log(`Subject ${subjectName} does not exist in department ${this.department}.`);
-      }
+  play() {
+    this.loyalty += 5;
+    this.energy -= 10;
+    console.log(`${this.name} is playing. Loyalty: ${this.loyalty}`);
+  }
+
+  makeSound() {
+    this.bark();
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, color) {
+    super(name, "Felis");
+    this.color = color;
+    this.independence = 100;
+  }
+
+  meow() {
+    console.log(`${this.name} meows: Meow! Meow!`);
+  }
+
+  hunt() {
+    this.independence += 5;
+    this.energy -= 15;
+    console.log(`${this.name} is hunting. Independence: ${this.independence}`);
+  }
+
+  makeSound() {
+    this.meow();
   }
 }
 
 // Example usage:
-const myCollege = new College('My College');
-myCollege.addDepartment('Computer Science');
-myCollege.addSubject('Computer Science', 'Algorithms');
-myCollege.addTeacher('Computer Science', 'Prof. John Doe');
+const dog = new Dog("Buddy", "Golden Retriever");
+const cat = new Cat("Whiskers", "Orange");
 
-const student1 = new Student('My College', 'Alice');
-student1.addDepartment('Computer Science');
-student1.addSubject('Computer Science', 'Algorithms');
-student1.addTeacher('Computer Science', 'Prof. John Doe');
+console.log("Dog Example:");
+dog.eat(); // Inherited method
+dog.sleep(); // Inherited method
+dog.bark(); // Dog-specific method
+dog.play(); // Dog-specific method
+dog.makeSound(); // Overridden method
 
-student1.enrollDepartment('Computer Science');
-student1.enrollSubject('Algorithms');
+console.log("\nCat Example:");
+cat.eat(); // Inherited method
+cat.sleep(); // Inherited method
+cat.meow(); // Cat-specific method
+cat.hunt(); // Cat-specific method
+cat.makeSound(); // Overridden method
 
-console.log(student1);
+// Demonstrate inheritance
+console.log("\nInheritance Check:");
+console.log(dog instanceof Animal); // true
+console.log(cat instanceof Animal); // true

@@ -2,7 +2,6 @@
 // by default useCapture callback is false which means bubbling event is occured
 //but true will make the capturing  occur
 
-
 //true == capturing
 //false == bubbling (default)
 //capturing if true is present (top to bottom)
@@ -32,5 +31,5 @@ document.querySelector("#child").addEventListener(
   () => {
     console.log("child");
   },
-  { capture: false }  //shorthand false and passed as callback
+  { capture: false } //shorthand false and passed as callback
 );

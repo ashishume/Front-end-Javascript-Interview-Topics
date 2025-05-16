@@ -1,9 +1,10 @@
-/** intersection observer */
-
+/**
+ * Intersection Observer Implementation
+ *
+ * Selects the container and card elements for intersection observation
+ */
 const cardContainer = document.querySelector(".container");
 const cards = document.querySelectorAll(".card");
-
-
 const callbackMethod = (entries) => {
   /** looping through all the objects which has been called with .observe() */
   entries.forEach((value) => {
@@ -15,7 +16,6 @@ const callbackMethod = (entries) => {
   });
 };
 
-
 /** all the contents shown dom (default is root)
  * creating an intersection object where all the divs will be
  * looped and passed to this object.
@@ -25,7 +25,6 @@ let observer = new IntersectionObserver(callbackMethod, {
   rootMargin: "100px", //defines the viewport area where intersecion is detected (like margin in html)
 });
 
-
 const lastCardObserver = new IntersectionObserver((entries) => {
   const lastCard = entries[0]; //when only last child is passed to this, so only 1 element is required to check
   if (!lastCard.isIntersecting) return; //if last element not reached, then dnt trigger this observer
@@ -33,7 +32,6 @@ const lastCardObserver = new IntersectionObserver((entries) => {
   lastCardObserver.unobserve(lastCard.target); // unobserve the last child
   observeLastCard(); // after loading new cards now the last card is changed, so again find the last card and obeserve
 });
-
 
 function loadNewCards() {
   for (let i = 1; i <= 10; i++) {

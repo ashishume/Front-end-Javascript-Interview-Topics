@@ -1,30 +1,72 @@
-## How Browser renders page from start to finish
+# How Browser Renders a Page
 
- Refer this link for more details: 
-- https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/ 
-- https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path
+## Critical Rendering Path (CRP)
 
-- Below process is called CRP (critical rendering process)
-The rendering process of a web page in a browser involves several steps:
+The browser follows a specific sequence of steps to render a webpage, known as the Critical Rendering Path. This process transforms HTML, CSS, and JavaScript into pixels on the screen.
 
-# HTML Parsing:  (DOM content loading)
-- The browser begins by fetching the HTML content of the web page from the server. Once the HTML is received, the browser parses it into a DOM (Document Object Model) tree. The DOM represents the structure of the web page, with each HTML element becoming a node in the tree.
-DOM construction is incremental. (The HTML response turns into tokens which turns into nodes which turn into the DOM Tree. A single DOM node starts with a startTag token and ends with an endTag token. Nodes contain all relevant information about the HTML element)
+## Step 1: HTML Parsing & DOM Construction
 
-# CSS Parsing and Styling: (parsing CSSOM)
-- After parsing the HTML, the browser fetches and parses any linked CSS files or inline styles. The CSSOM contains all the information on how to style the DOM. CSSOM is similar to the DOM, but different. While the DOM construction is incremental, CSSOM is not. CSS is render blocking: the browser blocks page rendering until it receives and processes all the CSS. CSS is render blocking because rules can be overwritten, so the content can't be rendered until the CSSOM is complete.
+- Browser fetches and parses HTML into a Document Object Model (DOM) tree
+- DOM construction is incremental:
+  1. HTML → Tokens
+  2. Tokens → Nodes
+  3. Nodes → DOM Tree
+- Each DOM node represents an HTML element with its properties
 
-# Rendering Tree Construction:  (Combining of CSSOM and DOM)
-- Next, the browser combines the DOM tree and CSSOM to create a rendering tree, also known as the render tree. The rendering tree contains only the elements that will be displayed on the screen, along with their styles and layout information. Elements that are hidden or not rendered, such as those inside head or script tags, are excluded from the rendering tree.
+## Step 2: CSS Parsing & CSSOM Creation
 
+- Browser fetches and parses CSS files and inline styles
+- Creates CSS Object Model (CSSOM)
+- Key differences from DOM:
+  - CSSOM is not incremental
+  - CSS is render-blocking
+  - All CSS must be processed before rendering
+  - Rules can be overwritten, requiring complete CSSOM
 
-# Layout (Reflow): (forms Layout and browser makes calculation of each element)
-- With the rendering tree constructed, the browser calculates the layout or geometry of each element on the page. This process, also called reflow or layout, determines the size and position of each element relative to the viewport. Changes to the layout of one element may trigger reflows of other elements, impacting performance.
+## Step 3: Render Tree Construction
 
-# Painting: (browser starts painting the on the screen)
-- Once the layout is computed, the browser proceeds to paint the content of the rendering tree onto the screen. This involves drawing pixels for each visible element, applying styles, colors, borders, backgrounds, and other visual properties. The painting process is typically optimized for speed to ensure smooth rendering performance.
+- Combines DOM and CSSOM into a render tree
+- Only includes visible elements
+- Excludes hidden elements (display: none, head, script tags)
+- Contains styling and layout information
 
-# Compositing: (browser finally presents visual of webpage)
-- In the final stage, the browser combines the painted layers to create the complete visual representation of the web page. This process, known as compositing, involves stacking and blending the layers to produce the final image displayed to the user. Modern browsers often use hardware acceleration and GPU (Graphics Processing Unit) rendering to optimize compositing performance.
+## Step 4: Layout (Reflow)
 
-- Throughout this rendering process, browsers may employ various optimizations, such as caching, lazy loading, and incremental rendering, to improve the speed and efficiency of page rendering. Additionally, browser extensions, plugins, and user preferences can also influence the rendering behavior and appearance of web pages.
+- Calculates exact size and position of each element
+- Determines viewport-relative positioning
+- Performance impact: Changes can trigger cascading reflows
+
+## Step 5: Paint
+
+- Converts render tree into pixels
+- Applies visual properties:
+  - Colors
+  - Borders
+  - Backgrounds
+  - Other visual styles
+- Optimized for rendering speed
+
+## Step 6: Compositing
+
+- Combines painted layers into final display
+- Uses hardware acceleration and GPU rendering
+- Handles layer stacking and blending
+
+## Performance Optimizations
+
+- Caching
+- Lazy loading
+- Incremental rendering
+- Hardware acceleration
+
+## Additional Factors
+
+- Browser extensions
+- Plugins
+- User preferences
+- Device capabilities
+
+For more detailed information, refer to:
+
+- [How a Web Page is Rendered in Browser](https://learnersbucket.com/examples/web/how-a-web-page-is-rendered-in-browser/)
+- [Critical Rendering Path](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path)

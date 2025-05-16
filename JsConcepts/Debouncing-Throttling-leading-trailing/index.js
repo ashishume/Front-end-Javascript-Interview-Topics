@@ -1,12 +1,25 @@
 // Q. Diff bw throttling and debouncing is
 /**
- *
- * Throttling ensures that a function is only called at most once in a specified period. It controls the rate at which the function executes by guaranteeing that it will only be called once within a given time frame, regardless of how many times the event is triggered.
+/**
+ * Throttling:
+ * - Limits the rate at which a function can be called
+ * - Ensures a function is called at most once in a specified time period
+ * - Useful for events that fire frequently like scrolling, resizing
+ * - Example: If throttled to 1000ms, function will execute at most once per second
  * 
+ * Debouncing:
+ * - Delays the execution of a function until after a specified wait time
+ * - Resets the timer every time the function is called
+ * - Only executes after the event has stopped firing for the specified delay
+ * - Useful for search inputs, form submissions
+ * - Example: If debounced to 1000ms, function will only execute after 1 second of no calls
  * 
- * Debouncing ensures that a function is only called once after a specified period of inactivity. It delays the execution of the function until after the event has stopped being triggered for a certain period.
-
+ * Key Differences:
+ * 1. Timing: Throttling guarantees execution at regular intervals, while debouncing waits for a pause
+ * 2. Use Cases: Throttling is better for continuous events, debouncing for discrete events
+ * 3. Execution: Throttling may execute multiple times, debouncing executes only once after delay
  */
+
 /** Leading debounce (initial call) */
 function debounceLeading(func, delay) {
   let timeoutId;

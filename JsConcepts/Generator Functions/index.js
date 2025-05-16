@@ -1,37 +1,39 @@
-/** follow video link: https://youtu.be/Qkcwveti-lE?list=PL0b6OzIxLPbzvz4j1N4J8zCY8mu3l29MG */
-
-/** generator functions
- * 
- * Application: Used in redux-saga to handle async operations like apis etc
+/**
+ * Generator Functions in JavaScript
+ *
+ * Key concepts:
+ * - Functions that can pause and resume execution
+ * - Use yield keyword to pause execution and return values
+ * - Commonly used in Redux-Saga for handling async operations
+ * - Helps solve callback hell and inversion of control problems
  */
-function* generator(i) {
-  yield i;
-  console.log("hello");
-  yield i + 10;
+
+// Example 1: Basic generator with numeric values
+function* numberGenerator(initialValue) {
+  yield initialValue;
+  console.log("Processing...");
+  yield initialValue + 10;
 }
 
-const gen = generator(10);
+const numberGen = numberGenerator(10);
 
-//When the done becomes true, the generator stops and won’t generate any more values.
-
-// console.log(gen.next().value); /* Calling next() indicates whether the generator has yielded its last value, as a boolean  */
-// expected output: 10
-
-// console.log(gen.next().value); //if we do not execute this line function prints upto line 2, below that it doesnt print
-// expected output: 20
-
-/**
- * Generator functions solves the problem of Inversion of control and callback hell (http://callbackhell.com/)
- */
-
-function* test() {
+// Example 2: Generator with string values
+function* stringSequence() {
   yield "First";
   yield "Second";
   yield "Third";
 }
 
-const obj = test();
-console.log(obj.next());
-console.log(obj.next());
-console.log(obj.next());
-console.log(obj.next());
+const stringGen = stringSequence();
+
+// Demonstrate generator execution
+console.log("Number Generator:");
+console.log(numberGen.next()); // { value: 10, done: false }
+console.log(numberGen.next()); // { value: 20, done: false }
+console.log(numberGen.next()); // { value: undefined, done: true }
+
+console.log("\nString Generator:");
+console.log(stringGen.next()); // { value: "First", done: false }
+console.log(stringGen.next()); // { value: "Second", done: false }
+console.log(stringGen.next()); // { value: "Third", done: false }
+console.log(stringGen.next()); // { value: undefined, done: true }

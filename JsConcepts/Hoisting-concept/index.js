@@ -1,50 +1,39 @@
-console.log(a);
+// Example 1: var hoisting
+console.log(a); // undefined
 a = "Ashish";
-
 var a;
 
-/**
-
-Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top 
-of their containing scope during the compilation phase. However, this doesn't mean that the actual
-declarations are physically moved in the code.
-
- */
-
-//NOTE: We need to assign value before printing (Even though the declarations is done after printing
-//(example above))
-
-//similar example we defined the function later and printed first even then also the funcion gets
-//executed successfully
-
-//function getName() {}====> is treated as function property in call stack
-
-// const getName=()=>{}  ====> is treated as variable and declared as undefined when global context is introduced
-
+// Example 2: Function hoisting
+console.log(func()); // 10
 const func = function () {
-  //anonymous functions
   return 10;
 };
-console.log(func());
 
-b = "Dev";
-
+// Example 3: let hoisting
+b = "Dev"; // ReferenceError: Cannot access 'b' before initialization
 let b;
 
-// console.log(x); // reference error even if its a global scoped variable
-// x = 1;
-
 /**
- * Hoisting is for var where it assigns undefined to the var
- * let and const works differently
- * let throws error if assigned value before declaration
- * const should be assigned value at the time of declaration
+ * Hoisting Behavior in JavaScript:
  *
+ * 1. var declarations:
+ *    - Hoisted to top of scope
+ *    - Initialized with undefined
+ *    - Can be accessed before declaration
  *
- * Note: Variables declared with let and const are hoisted but not initialized
- * with a default value. Accessing a let or const variable before it's declared
- *  will result in a ReferenceError:
+ * 2. let/const declarations:
+ *    - Hoisted but not initialized
+ *    - Cannot be accessed before declaration
+ *    - Results in ReferenceError if accessed early
  *
+ * 3. Function declarations:
+ *    - Fully hoisted (declaration + definition)
+ *    - Can be called before declaration
  *
- * functions are hoisted first then variables are hoisted
+ * 4. Function expressions:
+ *    - Follow variable hoisting rules
+ *    - Cannot be called before declaration
+ *
+ * Note: Hoisting is a compile-time behavior where declarations are processed
+ * before code execution, but the actual code remains in place.
  */

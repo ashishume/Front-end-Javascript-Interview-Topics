@@ -1,10 +1,30 @@
-# https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+# DOMContentLoaded Event
 
-- The DOMContentLoaded event fires when the HTML document has been completely parsed, and all deferred scripts /script defer src="…"/ and /script type='module'/ have downloaded and executed. It doesn't wait for other things like images, subframes, and async scripts to finish loading.
+The statements are mostly correct, but let me clarify a few points:
 
-- DOMContentLoaded does not wait for stylesheets to load, however deferred scripts do wait for stylesheets, and the DOMContentLoaded event is queued after deferred scripts. Also, scripts which aren't deferred or async e.g. script will wait for already-parsed stylesheets to load.
+- The DOMContentLoaded event fires when:
 
-- A different event, load, should be used only to detect a fully-loaded page. It is a common mistake to use load where DOMContentLoaded would be more appropriate.
+  1. The initial HTML document has been completely parsed
+  2. All deferred scripts (`<script defer src="...">`) and module scripts (`<script type="module">`) have downloaded and executed
+  3. It does NOT wait for:
+     - Images
+     - Subframes
+     - Async scripts
+     - Stylesheets
 
-- Diagramatically shown
- # HTML parsing + defer script tag > DomContentLoaded (fires even before stylesheet, images is loaded) > onload (when whole page is loaded including images, stylesheets etc)
+- Important notes about stylesheets:
+
+  - DOMContentLoaded itself doesn't wait for stylesheets
+  - However, deferred scripts DO wait for stylesheets to load
+  - Regular scripts (non-deferred, non-async) wait for already-parsed stylesheets
+
+- The load event vs DOMContentLoaded:
+
+  - Use load event only when you need to detect a fully-loaded page (including all resources)
+  - Use DOMContentLoaded when you just need the DOM to be ready
+  - It's a common mistake to use load when DOMContentLoaded would be more appropriate
+
+- The sequence of events is:
+  1. HTML parsing + deferred scripts execution
+  2. DOMContentLoaded fires (before stylesheets and images load)
+  3. load event fires (after everything is loaded)

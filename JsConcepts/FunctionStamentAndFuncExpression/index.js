@@ -1,35 +1,41 @@
-// Diff bw function statement and func expression
+/**
+ * Function Statement vs Function Expression
+ *
+ * Function Statement (Declaration):
+ * - Hoisted to the top of their scope
+ * - Can be called before declaration
+ * - Syntax: function name() {}
+ *
+ * Function Expression:
+ * - Not hoisted
+ * - Cannot be called before declaration
+ * - Syntax: const name = function() {}
+ */
 
-func1("Arguments"); //when we pass through function those are called args
-// func2(); //shows refrence error as it is a func expression
+// Function Statement Example
+function greet(name) {
+  console.log("Hello", name);
+}
+greet("John"); // Works - function is hoisted
 
-//Function statement where functions can be accessed even before writing it. (Function declaration)
-function func1(Parameters) {
-  //when we receive from func those are called params
-  console.log("func1", Parameters);
+// Function Expression Example
+const sayHello = function (name) {
+  console.log("Hi", name);
+};
+// sayHello("Jane"); // Would throw ReferenceError if called before declaration
+
+// Named Function Expression
+const calculate = function mathOperation(x, y) {
+  console.log("Calculating...");
+  return x + y;
+};
+
+// First Class Function Example
+function processFunction(fn) {
+  console.log("Processing function...");
+  fn();
 }
 
-//Function Expression cannot be accessed before declaring the functions
-const func2 = function () {
-  console.log("func2");
-};
-//Named Function Expression
-const namedFunc = function xyz() {
-  console.log("namedFunc");
-};
-
-//Anonymous function are used as values when we need to assign the functions to some variable we use this type of functions
-// function(){
-// }
-
-
-
-//First class function
-//passsing function in arguments inside a function is called first class function
-function funcSample(params) {
-  console.log(params);
-}
-
-funcSample(function () {
-  console.log("passsed as args");
+processFunction(function () {
+  console.log("I am a function passed as an argument");
 });
