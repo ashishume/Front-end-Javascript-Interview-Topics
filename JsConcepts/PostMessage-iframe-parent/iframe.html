@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iframe Window</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 8px 16px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      #messageLog {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        min-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Iframe Window</h2>
+      <div class="controls">
+        <button
+          onclick="iframeWindow.sendToParent({type: 'DATA_UPDATE', data: {message: 'Hello from iframe!'}})"
+        >
+          Send Message to Parent
+        </button>
+      </div>
+      <div id="messageLog"></div>
+    </div>
+    <script>
+      // Add message logging functionality
+      const messageLog = document.getElementById("messageLog");
+      const originalConsoleLog = console.log;
+      console.log = function () {
+        const message = Array.from(arguments).join(" ");
+        messageLog.innerHTML += `<div>${message}</div>`;
+        originalConsoleLog.apply(console, arguments);
+      };
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

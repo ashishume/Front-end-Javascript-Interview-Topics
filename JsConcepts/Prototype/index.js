@@ -1,124 +1,112 @@
-// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
-
-const human = {
-  age: 12,
-};
-
-const another = Object.create(human);
-// another.age = 15;
-
-// console.log(another.age); // human object will be inside [[Prototype]]
-/** technically if age is consoled, then first it will try to find in the main object, if not found
- * then it will keep searching inside prototype object, when found it prints,
- * else it prints undefined
- */
-
-/** Example of prototype using class */
-
-class Human {
-  constructor() {}
-  getAge() {
-    return "21";
-  }
-}
-class Student extends Human {
-  constructor() {
-    super();
-  }
-  getAge() {
-    return "30";
-  }
-}
-
-const h = new Student();
-// console.log(h); //prints the base(human) class in the [[Prototype]] object
-
-// ---------------------------------------------------------------------------------------
-
-function Person() {
-  //function
-  this.name = "Ashish";
-}
-
-const person = new Person(); //constructor functions
-
-console.log(person.__proto__); //undefined, it should be __proto__
-console.log(Person.prototype); //prints constructor of function
-console.log(person.__proto__ === Person.prototype);
-
-console.log(Object.getPrototypeOf({ a: "Ashish" }));
 /**
- * __proto__ is the actual object that is used in the lookup chain to
- * resolve methods, etc. prototype is the object that is used to build __proto__
- * when you create an object with new:
- */
-
-/** Other definition:
- * __proto__ is a property of every object/method/array thats pointing to the parent object
- * that its inheriting from.
- * Prototype is a property on the constructor function that contains all the stuff that will
- * be inhertited by its instance.
- */
-
-// ---------------------------------------------
-/** Object created using object literal, then we are accessing the object prototype
- * using __proto__ and adding new properties to the object
+ * JavaScript Prototypes Explained
  *
+ * Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+ * Every object in JavaScript has a built-in property called its prototype.
  */
-const obj = {
-  name: "Ashish",
-  age: 24,
-  city: "WB",
+
+// Example 1: Basic Prototype Inheritance
+const animal = {
+  makeSound() {
+    return "Some sound";
+  },
 };
 
-obj.__proto__.setName = (name) => {
-  this.name = name;
-};
-obj.__proto__.getName = () => {
-  return this.name;
+const dog = Object.create(animal);
+dog.makeSound = function () {
+  return "Woof!";
 };
 
-obj.__proto__.setName("Akash");
-const a = obj.__proto__.getName();
-// console.log(obj, a);
+console.log(dog.makeSound()); // "Woof!"
+console.log(Object.getPrototypeOf(dog) === animal); // true
 
-function newFunc(name) {
+// Example 2: Prototype Chain
+const mammal = {
+  isWarmBlooded: true,
+};
+
+const dog2 = Object.create(mammal);
+dog2.legs = 4;
+
+console.log(dog2.isWarmBlooded); // true (inherited from mammal)
+console.log(dog2.legs); // 4 (own property)
+
+// Example 3: Constructor Functions and Prototypes
+function Vehicle(type) {
+  this.type = type;
+}
+
+Vehicle.prototype.start = function () {
+  return `${this.type} is starting`;
+};
+
+const car = new Vehicle("Car");
+console.log(car.start()); // "Car is starting"
+console.log(car.__proto__ === Vehicle.prototype); // true
+
+// Example 4: Class-based Prototype Inheritance
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    return `${this.name} makes a sound`;
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    return `${this.name} barks`;
+  }
+}
+
+const rex = new Dog("Rex");
+console.log(rex.speak()); // "Rex barks"
+
+// Example 5: Checking Properties
+const person = {
+  name: "John",
+  age: 30,
+};
+
+// Adding a property to the prototype
+Object.getPrototypeOf(person).country = "USA";
+
+console.log(person.hasOwnProperty("name")); // true
+console.log(person.hasOwnProperty("country")); // false
+console.log("country" in person); // true
+
+// Example 6: Modifying Prototypes
+function Person(name) {
   this.name = name;
 }
 
-/** prototype is used when it is directly accessed and __proto__ is
- * accessed via the instance created from the object or function
- * */
-
-const obj2 = new newFunc("Rahul");
-
-newFunc.prototype.setName = (name) => {
-  this.name = name;
-};
-newFunc.prototype.getName = () => {
-  return this.name;
+Person.prototype.greet = function () {
+  return `Hello, I'm ${this.name}`;
 };
 
-newFunc.prototype.setName("Soro");
+const john = new Person("John");
+console.log(john.greet()); // "Hello, I'm John"
 
-// console.log(newFunc.prototype.getName());
-//********************************************************** */
+// Example 7: Prototype vs __proto__
+function Car(model) {
+  this.model = model;
+}
 
-// to find the properties form an object
+const tesla = new Car("Model 3");
 
-const sample = {
-  name: "Ashish",
-  age: 24,
-};
-
-sample.__proto__.city = "Coochbehar";
-
-//it prints true as it finds the property in the object
-// console.log(sample.hasOwnProperty("name"));
+console.log(Car.prototype); // Contains constructor and prototype methods
+console.log(tesla.__proto__); // Points to Car.prototype
+console.log(tesla.__proto__ === Car.prototype); // true
 
 /**
- * it prints false as it doesnt finds the property in the object directly
- * as hasOwnProperty does not take prototype into consideration
+ * Key Points:
+ * 1. __proto__ is the actual object used in the lookup chain
+ * 2. prototype is the object used to build __proto__ when using new
+ * 3. Object.create() creates a new object with the specified prototype
+ * 4. hasOwnProperty() checks only own properties, not prototype chain
+ * 5. The 'in' operator checks both own and prototype properties
  */
 // console.log(sample.hasOwnProperty("city"));
 
