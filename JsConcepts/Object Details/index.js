@@ -1,64 +1,76 @@
-// Object.getOwnPropertyDescriptor()
+/**
+ * Demonstrates Object property descriptors and their configuration
+ * Shows how to define and inspect property attributes
+ */
 
+// Create a sample object
 const obj = {
   a: "sample value",
   b: 1,
   c: 4,
 };
 
-// define one property
+// Configure single property
 Object.defineProperty(obj, "a", {
-  enumerable: false,
+  enumerable: false, // Property won't show up in for...in loops
 });
 
-// define multiple property
+// Configure multiple properties
 Object.defineProperties(obj, {
   b: {
-    enumerable: false, //doesnt let print anywhere or loop through
+    enumerable: false, // Property won't show up in for...in loops
   },
   c: {
     enumerable: true,
-    configurable: false, //since its false, when we try to delete the property a line 23, it fails
+    configurable: false, // Property cannot be deleted or reconfigured
   },
 });
 
-// console.log(delete obj.c);  //delete property, but fails
-// console.log(obj);  //prints {c:4}
+// Example of property deletion (commented out)
+// console.log(delete obj.c); // Returns false due to configurable: false
+// console.log(obj); // {c: 4}
 
-/**
-  for (let key in obj) {
-  console.log("==>", obj[key]); //prints only 4, i.e. "c"
+// Example of property enumeration (commented out)
+/*
+for (let key in obj) {
+  console.log("==>", obj[key]); // Only prints 4 (property 'c')
 }
- 
 */
 
-/** takes 1st arg as object and 2nd arg as the key property */
+// Get descriptor for a single property
+/*
+console.log(Object.getOwnPropertyDescriptor(obj, "a"));
+Output:
+{
+  value: 'sample value',
+  writable: true,     // Can be modified
+  enumerable: false,  // Won't show in loops
+  configurable: true  // Can be reconfigured
+}
+*/
 
-/**
- * 
- console.log(Object.getOwnPropertyDescriptor(obj, "a"));
- output:
- {
-     value: 'sample value',
-     writable: true,  //readonly or not
-     enumerable: true, //iterable or not (for in loop)
-     configurable: true  // the property cannot be removed nor any attribute can be changed, except its value.
-    }
-    
-    */
-
-// console.log(Object.getOwnPropertyDescriptors(obj));
-/** output:
-  {
+// Get descriptors for all properties
+/*
+console.log(Object.getOwnPropertyDescriptors(obj));
+Output:
+{
   a: {
     value: 'sample value',
     writable: true,
     enumerable: false,
     configurable: true
   },
-  b: { value: 1, writable: true, enumerable: false, configurable: true },
-  c: { value: 4, writable: true, enumerable: true, configurable: false }
+  b: {
+    value: 1,
+    writable: true,
+    enumerable: false,
+    configurable: true
+  },
+  c: {
+    value: 4,
+    writable: true,
+    enumerable: true,
+    configurable: false
+  }
 }
-
- * 
- */
+*/

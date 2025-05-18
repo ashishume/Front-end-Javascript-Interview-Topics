@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FindDomMethodViaClick = () => {
-  const [comments, setComments] = useState<{ [key: string]: string }>({});
+  // const [comments, setComments] = useState<{ [key: string]: string }>({});
   const [domStore, setDomStore] = useState<any[]>([]);
   const [selectedBubble, setSelectedBubble] = useState<string | null>(null);
   const [commentHistory, setCommentHistory] = useState<{

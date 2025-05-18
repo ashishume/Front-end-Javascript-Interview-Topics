@@ -1,50 +1,65 @@
-/* Differences between Observables and Promises */
-let promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("Resolved!");
-  }, 1000);
-});
+/**
+ * Demonstrates key differences between Promises and Observables
+ */
 
-promise.then((value) => console.log(value)); // Logs "Resolved!" after 1 second
-// ---------------------------------------------------------------------
+// Promise Example
+const promiseExample = () => {
+  const promise = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise resolved!"), 1000);
+  });
 
-/** observable code example */
-const { Observable } = require('rxjs');
-let observable = new Observable(subscriber => {
+  promise.then(console.log);
+};
+
+// Observable Example
+const observableExample = () => {
+  const { Observable } = require("rxjs");
+
+  const observable = new Observable((subscriber) => {
     let count = 0;
     const intervalId = setInterval(() => {
-        subscriber.next(count++);
+      subscriber.next(`Observable value: ${count++}`);
     }, 1000);
 
-    return () => {
-        clearInterval(intervalId);
-    };
-});
-const subscription = observable.subscribe(value => console.log(value)); 
-setTimeout(() => subscription.unsubscribe(), 5000);  
+    // Cleanup function
+    return () => clearInterval(intervalId);
+  });
+
+  const subscription = observable.subscribe(console.log);
+
+  // Unsubscribe after 5 seconds
+  setTimeout(() => {
+    subscription.unsubscribe();
+    console.log("Observable unsubscribed");
+  }, 5000);
+};
+
+// Run examples
+promiseExample();
+observableExample();
 
 /**
- * 
-1. Promise: Represents a single value that may be available now, or in the future, or never. Once a promise resolves or rejects, it cannot change.
-
-Observable: Can emit multiple values over time. It can emit zero or more values and may continue indefinitely.
-
-
-2. Promise: Starts executing immediately upon creation.
-   
-Observable: Does not start emitting values until it is subscribed to.
-
-
-3. Promise: Once started, a promise cannot be cancelled.
-   
-Observable: Subscriptions to an observable can be cancelled, allowing for cleanup and prevention of memory leaks.
-
-4. Promise: Limited in terms of chaining and transformation. You can chain .then()   and .catch() but it’s not as powerful as RxJS operators.   
-    
-Observable: RxJS provides a rich set of operators for transforming, filtering, and composing observables.
-
-
-Q. why angular chose observables over promises?
-Angular embraces reactive programming principles, where you can work with streams of data and events. Observables are a core part of reactive programming, offering powerful operators for handling complex data flows.
-
-*/
+ * Key Differences:
+ *
+ * 1. Value Emission
+ *    - Promise: Single value, one-time resolution
+ *    - Observable: Multiple values over time, continuous emission possible
+ *
+ * 2. Execution Timing
+ *    - Promise: Executes immediately on creation
+ *    - Observable: Lazy execution, starts only on subscription
+ *
+ * 3. Cancellation
+ *    - Promise: Cannot be cancelled once started
+ *    - Observable: Supports cancellation via unsubscribe()
+ *
+ * 4. Transformation Capabilities
+ *    - Promise: Basic chaining with .then() and .catch()
+ *    - Observable: Rich operator ecosystem (map, filter, merge, etc.)
+ *
+ * Why Angular Uses Observables:
+ * - Better suited for reactive programming patterns
+ * - Handles complex data streams and events
+ * - Provides powerful operators for data transformation
+ * - Supports cancellation and cleanup
+ */
