@@ -1,43 +1,43 @@
-// console.log(age);
-// console.log(showAge);
 /**
- *  
-This zone is TEMPORAL DEAD ZONE (var is accessible (but shows undefined) before assigning and let shows reference error)
-In case of const and let, they are also hoisted but they remain uninitialized, due to which reference error occurs.
-* */ 
+ * Temporal Dead Zone (TDZ) Demonstration
+ *
+ * TDZ is the period between entering scope and variable declaration where variables
+ * cannot be accessed. This affects let and const declarations.
+ */
 
-// let age = 1;
-// var showAge = 2;
-// const constAge;
+// Example 1: TDZ with different variable declarations
+console.log(showAge); // undefined (var is hoisted)
+// console.log(age); // ReferenceError (let is in TDZ)
+// console.log(constAge); // ReferenceError (const is in TDZ)
 
-// constAge=5;
-// console.log(constAge);
+let age = 1;
+var showAge = 2;
+const constAge = 5;
 
-// following code is written inside a blocked scope
-// {
-//   var a = 1;
-//   const b = 2;
-//   let c = 3;
-
-//   console.log(a); //prints
-//   console.log(b); //prints
-//   console.log(c); //prints
-// }
-
-// if we redeclare "a" then "a" var will get shadowed (meaning override)
-
-// console.log(a); //prints
-// console.log(b); //does not print
-// console.log(c); //does not print
-
-const a = 20;
+// Example 2: Block scope demonstration
 {
-  const a = 100;
+  var blockVar = 1; // Function scoped
+  const blockConst = 2; // Block scoped
+  let blockLet = 3; // Block scoped
+
+  console.log(blockVar); // 1
+  console.log(blockConst); // 2
+  console.log(blockLet); // 3
+}
+
+console.log(blockVar); // 1 (accessible outside block)
+// console.log(blockConst); // ReferenceError (not accessible)
+// console.log(blockLet);  // ReferenceError (not accessible)
+
+// Example 3: Variable shadowing
+const globalA = 20;
+{
+  const globalA = 100; // Shadows outer scope
   {
-    const a = 200;
+    const globalA = 200; // Shadows middle scope
     {
-      const a = 400;
-      console.log(a);
+      const globalA = 400; // Shadows inner scope
+      console.log(globalA); // 400 (innermost scope)
     }
   }
 }

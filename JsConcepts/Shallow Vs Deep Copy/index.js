@@ -1,7 +1,9 @@
-/*
-Refer for more
- https://www.javascripttutorial.net/object/3-ways-to-copy-objects-in-javascript/
-*/
+/**
+ * Demonstrates different ways to copy objects in JavaScript and their implications
+ * Reference: https://www.javascripttutorial.net/object/3-ways-to-copy-objects-in-javascript/
+ */
+
+// Original object with nested structure
 const person = {
   firstName: "John",
   lastName: "Doe",
@@ -11,38 +13,45 @@ const person = {
     country: "India",
   },
 };
-// using spread ...
-let p1 = {
-  ...person,
-};
-// using  Object.assign() method
-let copiedData = Object.assign({}, person);
-// console.log(p2);
-// using JSON
-let p3 = JSON.parse(JSON.stringify(person));
-// console.log(p3);
 
-//Both spread (...) and Object.assign() perform a shallow copy while the JSON methods carry a deep copy.
+// Method 1: Shallow copy using spread operator
+const shallowCopy1 = { ...person };
 
-/*
-Deep copy vs shallow copy
+// Method 2: Shallow copy using Object.assign()
+const shallowCopy2 = Object.assign({}, person);
 
-A deep copying means that value of the new variable is disconnected from the original 
-variable 
+// Method 3: Deep copy using JSON methods
+const deepCopy = JSON.parse(JSON.stringify(person));
 
- Shallow copy means that "some" values are still connected to the original variable.
- in other words: in shallow copy nested objects are still connected;
+/**
+ * Key differences between shallow and deep copy:
+ *
+ * Shallow copy:
+ * - Creates a new object with references to the same nested objects
+ * - Changes to nested objects affect both copies
+ * - Methods: spread operator, Object.assign()
+ *
+ * Deep copy:
+ * - Creates completely independent copies of all nested objects
+ * - Changes to nested objects only affect the copy
+ * - Methods: JSON.parse(JSON.stringify()), structuredClone(), lodash.cloneDeep()
+ *
+ * Note: JSON methods have limitations:
+ * - Cannot handle circular references
+ * - Cannot copy functions, undefined, or other non-JSON-serializable values
+ * - For complex cases, consider using structuredClone() or lodash.cloneDeep()
+ */
 
-*/
+// Demonstrating shallow copy behavior
+shallowCopy2.address.state = "Karnataka";
+console.log("Original person:", person.address.state); // "Karnataka"
+console.log("Shallow copy:", shallowCopy2.address.state); // "Karnataka"
 
-// one more key difference why cloneDeep is superior over JSON.parse(JSON.stringify(object)) is that
-// it handles circular references or non-JSON-serializable values like functions or undefined.
+// Demonstrating deep copy behavior
+deepCopy.address.state = "Delhi";
+console.log("Original person:", person.address.state); // "Karnataka"
+console.log("Deep copy:", deepCopy.address.state); // "Delhi"
 
-copiedData.address.state = "Karnataka"; //original gets modified because of shallow copy
-
-const animal = {
-  name: "Dog",
-};
+// Example of prototype inheritance
+const animal = { name: "Dog" };
 person.__proto__ = animal;
-
-// console.log(person);
