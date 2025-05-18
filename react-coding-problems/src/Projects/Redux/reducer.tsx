@@ -36,7 +36,7 @@ const cartReducer = (
     case FETCH_FROM_CART:
       return produce(state, (draft) => {
         draft.isLoading = true;
-        draft.error = {};
+        (draft as any).error = {};
       });
     case FETCH_FROM_CART_SUCESS:
       return produce(state, (draft) => {

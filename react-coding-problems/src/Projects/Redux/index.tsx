@@ -17,7 +17,7 @@ const ReduxIndex = () => {
     <div>
       <h1>Redux cart</h1>
       {isLoading && <div>loading...</div>}
-      {!isLoading && cart?.title}
+      {!isLoading && (cart as any)?.title}
     </div>
   );
 };
