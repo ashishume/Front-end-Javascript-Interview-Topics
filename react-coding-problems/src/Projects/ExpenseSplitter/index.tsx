@@ -459,7 +459,7 @@ const ExpenseSplittingApp = () => {
                   <tr key={expense.id} className="border-t">
                     <td className="px-4 py-2">{expense.description}</td>
                     <td className="px-4 py-2">{expense.paidByName}</td>
-                    <td className="px-4 py-2">${expense.amount.toFixed(2)}</td>
+                    <td className="px-4 py-2">₹{expense.amount.toFixed(2)}</td>
                     <td className="px-4 py-2">{expense.date}</td>
                     <td className="px-4 py-2">
                       <button
@@ -489,7 +489,7 @@ const ExpenseSplittingApp = () => {
                   <span className="text-red-500">{settlement.fromName}</span>{" "}
                   owes{" "}
                   <span className="text-green-500">{settlement.toName}</span>{" "}
-                  <span className="font-bold">${settlement.amount}</span>
+                  <span className="font-bold">₹{settlement.amount}</span>
                 </p>
               </div>
             ))}
