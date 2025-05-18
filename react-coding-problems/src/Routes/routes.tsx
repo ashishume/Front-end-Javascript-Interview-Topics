@@ -90,15 +90,20 @@ import UnControlledComp from "@/Projects/UncontrolledVsControlled";
 import ZustandDemo from "../Projects/Zustand-demo";
 import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
 import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
+import ExpenseSplitter from "@/Projects/ExpenseSplitter";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
   component: ReactElement;
 }[] = [
   { routeName: "/", component: <App /> },
-  { routeName: "/find-dom-el-via-click", component: <FindDomElementViaClick /> },
+  {
+    routeName: "/find-dom-el-via-click",
+    component: <FindDomElementViaClick />,
+  },
   { routeName: "/expense-generator", component: <ExpenseGenerator /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
+  { routeName: "/expense-splitter", component: <ExpenseSplitter /> },
   { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
   { routeName: "/snackbar", component: <SnackbarHome /> },
   { routeName: "/match-country-capitals", component: <MatchCountryCapitals /> },

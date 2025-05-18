@@ -21,9 +21,12 @@ const SearchComponent = () => {
 };
 
 const SearchParent = ({ input }: any) => {
-  /**  This is particularly useful for optimizing rendering during 
-   * heavy computations or when dealing with large data sets. 
-   * it delays the update until the browser has more idle time to process it
+  /**  This is particularly useful for optimizing rendering during
+   * useDeferredValue is a React Hook that lets you defer updating a part of the UI.
+   * It's useful for:
+   * - Optimizing performance during expensive computations
+   * - Handling large data sets without blocking the main thread
+   * - Deferring updates until the browser is idle
    * */
   const inputData = useDeferredValue(input);
   const list = useMemo(() => {

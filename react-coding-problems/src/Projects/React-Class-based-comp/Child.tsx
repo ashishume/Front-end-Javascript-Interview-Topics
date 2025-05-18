@@ -1,15 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Component } from "react";
 
-class Child extends Component<any, any> {
-  constructor(props: any) {
+interface ChildProps {
+  // Add any props if needed
+}
+
+interface ChildState {
+  counter: number;
+}
+
+class Child extends Component<ChildProps, ChildState> {
+  constructor(props: ChildProps) {
     super(props);
     this.state = {
       counter: 0,
     };
   }
   counter() {
-    this.setState((prevState: any) => ({
+    this.setState((prevState: ChildState) => ({
       counter: prevState.counter + 1,
     }));
   }

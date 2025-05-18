@@ -9,16 +9,25 @@ export interface IInitialState {
   cart: ICartState;
 }
 
-export interface ICartState {
-  cart: any;
-  isLoading: boolean;
-  error: any;
+export interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
 }
+
+export interface ICartState {
+  cart: CartItem[];
+  isLoading: boolean;
+  error: string | null;
+}
+
 const initialState: ICartState = {
-  cart: null,
+  cart: [],
   isLoading: false,
   error: null,
 };
+
 const cartReducer = (
   state = initialState,
   action: { type: string; payload: any }
