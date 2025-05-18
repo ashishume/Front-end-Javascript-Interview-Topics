@@ -1,53 +1,52 @@
-/*
-
-Pass by Value:
-In pass by value, a copy of the variable's value is passed to the function. This means that changes made to the parameter within the function do not affect the original variable outside of the function.
-
-*/
-
-function modifyValue(value) {
-  value = 10;
-  console.log("Inside function:", value); // Output: 10
-}
-
-let num = 5;
-modifyValue(num);
-console.log("Outside function:", num); // Output: 5
-
-//here num is passed to the function then value is being changed inside function but the original value remains intact
-
 /**
- Pass by Reference:
-In pass by reference, a reference to the variable is passed to the function. This means that changes made to the parameter within the function affect the original variable outside of the function.
+ * JavaScript Pass by Value vs Pass by Reference
+ *
+ * JavaScript is always pass by value, but for objects and arrays,
+ * the value being passed is a reference to the object/array.
  */
 
+// Example 1: Pass by Value (Primitive Types)
+function modifyPrimitive(value) {
+  value = 10;
+  console.log("Inside function:", value); // 10
+}
+
+let number = 5;
+modifyPrimitive(number);
+console.log("Outside function:", number); // 5
+
+// Example 2: Pass by Value of Reference (Arrays)
 function modifyArray(arr) {
   arr.push(4);
+  console.log("Inside function:", arr); // [1, 2, 3, 4]
 
-  //arr=[] if we do this it will still be original array as old array still holds the old reference
-  console.log("Inside function:", arr); // Output: [1, 2, 3, 4]
+  // Reassignment doesn't affect original array
+  arr = [];
+  console.log("After reassignment:", arr); // []
 }
 
-let myArray = [1, 2, 3];
-modifyArray(myArray);
-console.log("Outside function:", myArray); // Output: [1, 2, 3, 4]
+let numbers = [1, 2, 3];
+modifyArray(numbers);
+console.log("Outside function:", numbers); // [1, 2, 3, 4]
 
-/********************************************************************** */
-function modifyObj(obj) {
-  obj.age = 10;
-  console.log("Inside function obj:", obj);
-  //output:   {
-  //     "name": "Ashish",
-  //     "age": 10
-  // }
+// Example 3: Pass by Value of Reference (Objects)
+function modifyObject(obj) {
+  obj.age = 25;
+  console.log("Inside function:", obj); // { name: "John", age: 25 }
+
+  // Reassignment doesn't affect original object
+  obj = { name: "Jane" };
+  console.log("After reassignment:", obj); // { name: "Jane" }
 }
 
-let myObj = { name: "Ashish" };
-modifyObj(myObj);
-console.log("Outside function obj:", myObj);
-//output:   {
-//     "name": "Ashish",
-//     "age": 10
-// }
+let person = { name: "John" };
+modifyObject(person);
+console.log("Outside function:", person); // { name: "John", age: 25 }
 
-//here copy of array/object is being modified, and hence original also gets modified so its passed by reference.
+/**
+ * Key Points:
+ * 1. JavaScript always passes by value
+ * 2. For objects/arrays, the value is a reference
+ * 3. Modifying properties of passed objects affects the original
+ * 4. Reassigning the parameter doesn't affect the original
+ */

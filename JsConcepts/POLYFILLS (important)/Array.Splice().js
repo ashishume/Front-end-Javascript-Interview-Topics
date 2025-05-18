@@ -39,3 +39,4 @@ const months = ["Jan", "March", "April", "June"];
 months.mySplice(1, 1, "Feb");
 
 console.log(months);
+//Output: ["Jan", "Feb", "March", "April", "June"]
