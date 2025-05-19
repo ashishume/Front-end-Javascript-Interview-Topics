@@ -91,6 +91,7 @@ import ZustandDemo from "../Projects/Zustand-demo";
 import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
 import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
 import ExpenseSplitter from "@/Projects/ExpenseSplitter";
+import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -110,6 +111,7 @@ export const routes: {
   { routeName: "/product-listing", component: <ProductListing /> },
   { routeName: "/canvas-drawing", component: <CanvasDrawing /> },
   { routeName: "/like-button", component: <LikeButton /> },
+  { routeName: "/google-drive", component: <GoogleDriveFileSystem /> },
   { routeName: "/polling-booth", component: <PollManager /> },
   { routeName: "/memory-game", component: <MemoryGame /> },
   { routeName: "/breadcrumbs", component: <BreadcrumbsComponent /> },
