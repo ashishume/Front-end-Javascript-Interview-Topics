@@ -7,7 +7,6 @@ interface FileItem {
   name: string;
   type: "file" | "folder";
   children?: FileItem[];
-  path: string;
 }
 
 const GoogleDriveFileSystem = () => {
@@ -16,19 +15,16 @@ const GoogleDriveFileSystem = () => {
       id: "1",
       name: "Documents",
       type: "folder",
-      path: "/Documents",
       children: [
         {
           id: "2",
           name: "Work",
           type: "folder",
-          path: "/Documents/Work",
           children: [
             {
               id: "3",
               name: "Project1.docx",
               type: "file",
-              path: "/Documents/Work/Project1.docx",
             },
           ],
         },
@@ -36,7 +32,6 @@ const GoogleDriveFileSystem = () => {
           id: "4",
           name: "Personal",
           type: "folder",
-          path: "/Documents/Personal",
           children: [],
         },
       ],
@@ -45,13 +40,11 @@ const GoogleDriveFileSystem = () => {
       id: "5",
       name: "Images",
       type: "folder",
-      path: "/Images",
       children: [
         {
           id: "6",
           name: "vacation.jpg",
           type: "file",
-          path: "/Images/vacation.jpg",
         },
       ],
     },
@@ -62,12 +55,37 @@ const GoogleDriveFileSystem = () => {
   const [currentPath, setCurrentPath] = useState("/");
   const [currentFolder, setCurrentFolder] = useState<FileItem[]>(fileSystem);
 
+  const getItemPath = (item: FileItem, items: FileItem[]): string | null => {
+    const findPath = (
+      currentItems: FileItem[],
+      targetId: string,
+      currentPath: string = ""
+    ): string | null => {
+      for (const currentItem of currentItems) {
+        const itemPath = currentPath + "/" + currentItem.name;
+        if (currentItem.id === targetId) {
+          return itemPath;
+        }
+        if (currentItem.children) {
+          const foundPath = findPath(currentItem.children, targetId, itemPath);
+          if (foundPath) return foundPath;
+        }
+      }
+      return null;
+    };
+    return findPath(items, item.id);
+  };
+
   const findItemByPath = (path: string): FileItem | null => {
-    const findInArray = (items: FileItem[]): FileItem | null => {
+    const findInArray = (
+      items: FileItem[],
+      currentPath: string = ""
+    ): FileItem | null => {
       for (const item of items) {
-        if (item.path === path) return item;
+        const itemPath = currentPath + "/" + item.name;
+        if (itemPath === path) return item;
         if (item.children) {
-          const found = findInArray(item.children);
+          const found = findInArray(item.children, itemPath);
           if (found) return found;
         }
       }
@@ -78,8 +96,11 @@ const GoogleDriveFileSystem = () => {
 
   const navigateToFolder = (folder: FileItem) => {
     if (folder.type === "folder") {
-      setCurrentPath(folder.path);
-      setCurrentFolder(folder.children || []);
+      const path = getItemPath(folder, fileSystem);
+      if (path) {
+        setCurrentPath(path);
+        setCurrentFolder(folder.children || []);
+      }
     }
   };
 
@@ -106,16 +127,24 @@ const GoogleDriveFileSystem = () => {
       id: Date.now().toString(),
       name: "New File",
       type: "file",
-      path: `${parentPath}/New File`,
     };
 
+    // Create updated children array immediately
+    const updatedChildren = [...(parent.children || []), newFile];
+
+    // Update currentFolder first if we're in the correct folder
+    if (currentPath === parentPath) {
+      setCurrentFolder(updatedChildren);
+    }
+
+    // Then update the file system
     setFileSystem((prev) => {
       const updateChildren = (items: FileItem[]): FileItem[] => {
         return items.map((item) => {
-          if (item.path === parentPath) {
+          if (getItemPath(item, prev) === parentPath) {
             return {
               ...item,
-              children: [...(item.children || []), newFile],
+              children: updatedChildren,
             };
           }
           if (item.children) {
@@ -142,13 +171,10 @@ const GoogleDriveFileSystem = () => {
     setFileSystem((prev) => {
       const updateName = (items: FileItem[]): FileItem[] => {
         return items.map((item) => {
-          if (item.path === itemPath) {
-            const newPath =
-              itemPath.substring(0, itemPath.lastIndexOf("/") + 1) + newName;
+          if (getItemPath(item, prev) === itemPath) {
             return {
               ...item,
               name: newName,
-              path: newPath,
             };
           }
           if (item.children) {
@@ -160,7 +186,19 @@ const GoogleDriveFileSystem = () => {
           return item;
         });
       };
-      return updateName(prev);
+      const updatedSystem = updateName(prev);
+
+      // Update currentFolder if we're in a subfolder
+      if (currentPath !== "/") {
+        const parent = findItemByPath(currentPath);
+        if (parent) {
+          setCurrentFolder(parent.children || []);
+        }
+      } else {
+        setCurrentFolder(updatedSystem);
+      }
+
+      return updatedSystem;
     });
 
     setEditingItem(null);
@@ -177,7 +215,10 @@ const GoogleDriveFileSystem = () => {
               onChange={(e) => setNewName(e.target.value)}
               className="h-6"
             />
-            <Button size="sm" onClick={() => saveEdit(item.path)}>
+            <Button
+              size="sm"
+              onClick={() => saveEdit(getItemPath(item, fileSystem) || "")}
+            >
               Save
             </Button>
           </div>
@@ -200,13 +241,58 @@ const GoogleDriveFileSystem = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => addNewFile(item.path)}
+                onClick={() => addNewFile(getItemPath(item, fileSystem) || "")}
               >
                 +
               </Button>
             )}
           </div>
         )}
+      </div>
+    );
+  };
+
+  const navigateToPath = (path: string) => {
+    if (path === "/") {
+      setCurrentPath("/");
+      setCurrentFolder(fileSystem);
+      return;
+    }
+
+    const targetFolder = findItemByPath(path);
+    if (targetFolder && targetFolder.type === "folder") {
+      setCurrentPath(path);
+      setCurrentFolder(targetFolder.children || []);
+    }
+  };
+
+  const Breadcrumbs = () => {
+    const pathSegments = currentPath.split("/").filter(Boolean);
+
+    return (
+      <div className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          onClick={() => navigateToPath("/")}
+          className="px-2"
+        >
+          Root
+        </Button>
+        {pathSegments.map((segment, index) => {
+          const path = "/" + pathSegments.slice(0, index + 1).join("/");
+          return (
+            <div key={path} className="flex items-center">
+              <span className="mx-2">/</span>
+              <Button
+                variant="ghost"
+                onClick={() => navigateToPath(path)}
+                className="px-2"
+              >
+                {segment}
+              </Button>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -220,7 +306,7 @@ const GoogleDriveFileSystem = () => {
             ↑
           </Button>
           <span className="font-semibold">Current Path: </span>
-          {currentPath}
+          <Breadcrumbs />
         </div>
         {currentFolder.map((item) => renderFileItem(item))}
       </div>
