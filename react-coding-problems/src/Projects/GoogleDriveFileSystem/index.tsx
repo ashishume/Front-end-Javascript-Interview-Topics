@@ -1,317 +1,375 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState, useEffect } from "react";
+import {
+  FolderOpen,
+  File,
+  Trash2,
+  Edit,
+  Search,
+  ChevronRight,
+  Home,
+} from "lucide-react";
 
-interface FileItem {
+// Define types for our file system
+type FileType = "file" | "folder";
+
+interface FileSystemItem {
   id: string;
   name: string;
-  type: "file" | "folder";
-  children?: FileItem[];
+  type: FileType;
+  parentId: string | null;
 }
 
-const GoogleDriveFileSystem = () => {
-  const [fileSystem, setFileSystem] = useState<FileItem[]>([
-    {
-      id: "1",
-      name: "Documents",
-      type: "folder",
-      children: [
-        {
-          id: "2",
-          name: "Work",
-          type: "folder",
-          children: [
-            {
-              id: "3",
-              name: "Project1.docx",
-              type: "file",
-            },
-          ],
-        },
-        {
-          id: "4",
-          name: "Personal",
-          type: "folder",
-          children: [],
-        },
-      ],
-    },
-    {
-      id: "5",
-      name: "Images",
-      type: "folder",
-      children: [
-        {
-          id: "6",
-          name: "vacation.jpg",
-          type: "file",
-        },
-      ],
-    },
-  ]);
-
+const FileManager = () => {
+  // State
+  const [items, setItems] = useState<FileSystemItem[]>([]);
+  const [currentPath, setCurrentPath] = useState<string[]>([]);
+  const [currentParentId, setCurrentParentId] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [editingItem, setEditingItem] = useState<string | null>(null);
-  const [newName, setNewName] = useState("");
-  const [currentPath, setCurrentPath] = useState("/");
-  const [currentFolder, setCurrentFolder] = useState<FileItem[]>(fileSystem);
+  const [editName, setEditName] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<FileSystemItem[]>([]);
+  const [isSearching, setIsSearching] = useState<boolean>(false);
 
-  const getItemPath = (item: FileItem, items: FileItem[]): string | null => {
-    const findPath = (
-      currentItems: FileItem[],
-      targetId: string,
-      currentPath: string = ""
-    ): string | null => {
-      for (const currentItem of currentItems) {
-        const itemPath = currentPath + "/" + currentItem.name;
-        if (currentItem.id === targetId) {
-          return itemPath;
-        }
-        if (currentItem.children) {
-          const foundPath = findPath(currentItem.children, targetId, itemPath);
-          if (foundPath) return foundPath;
-        }
-      }
-      return null;
-    };
-    return findPath(items, item.id);
+  // Generate a unique ID
+  const generateId = (): string => {
+    return Math.random().toString(36).substring(2, 9);
   };
 
-  const findItemByPath = (path: string): FileItem | null => {
-    const findInArray = (
-      items: FileItem[],
-      currentPath: string = ""
-    ): FileItem | null => {
-      for (const item of items) {
-        const itemPath = currentPath + "/" + item.name;
-        if (itemPath === path) return item;
-        if (item.children) {
-          const found = findInArray(item.children, itemPath);
-          if (found) return found;
-        }
-      }
-      return null;
-    };
-    return findInArray(fileSystem);
-  };
-
-  const navigateToFolder = (folder: FileItem) => {
-    if (folder.type === "folder") {
-      const path = getItemPath(folder, fileSystem);
-      if (path) {
-        setCurrentPath(path);
-        setCurrentFolder(folder.children || []);
-      }
+  // Initialize the file system with a root directory
+  useEffect(() => {
+    if (items.length === 0) {
+      const rootItems: FileSystemItem[] = [
+        { id: "root", name: "Home", type: "folder", parentId: null },
+        {
+          id: "documents",
+          name: "Documents",
+          type: "folder",
+          parentId: "root",
+        },
+        { id: "images", name: "Images", type: "folder", parentId: "root" },
+        { id: "readme", name: "README.txt", type: "file", parentId: "root" },
+      ];
+      setItems(rootItems);
+      setCurrentPath(["Home"]);
+      setCurrentParentId("root");
     }
+  }, [items.length]);
+
+  // Get items in the current directory
+  const getCurrentItems = (): FileSystemItem[] => {
+    if (isSearching) {
+      return searchResults;
+    }
+    return items.filter((item) => item.parentId === currentParentId);
   };
 
+  // Create a new item (file or folder)
+  const createItem = (type: FileType) => {
+    const newName = type === "folder" ? "New Folder" : "New File.txt";
+    const newId = generateId();
+    const newItem: FileSystemItem = {
+      id: newId,
+      name: newName,
+      type,
+      parentId: currentParentId,
+    };
+    setItems([...items, newItem]);
+    setEditingItem(newId);
+    setEditName(newName);
+  };
+
+  // Delete an item
+  const deleteItem = (id: string) => {
+    // Recursive function to get all child IDs
+    const getChildrenIds = (itemId: string): string[] => {
+      const children = items.filter((item) => item.parentId === itemId);
+      const childrenIds = children.map((child) => child.id);
+      const descendantIds = children
+        .filter((child) => child.type === "folder")
+        .flatMap((folder) => getChildrenIds(folder.id));
+      return [...childrenIds, ...descendantIds];
+    };
+
+    const idsToRemove = [id, ...getChildrenIds(id)];
+    setItems(items.filter((item) => !idsToRemove.includes(item.id)));
+  };
+
+  // Navigate to a folder
+  const navigateToFolder = (id: string, name: string) => {
+    setIsSearching(false);
+    setCurrentParentId(id);
+    setCurrentPath([...currentPath, name]);
+  };
+
+  // Navigate up one level
   const navigateUp = () => {
-    if (currentPath === "/") return;
+    if (currentPath.length <= 1) return;
 
-    const parentPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
-    const parent = findItemByPath(parentPath);
+    const newPath = [...currentPath];
+    newPath.pop();
+    setCurrentPath(newPath);
 
-    if (parent) {
-      setCurrentPath(parentPath);
-      setCurrentFolder(parent.children || []);
-    } else {
-      setCurrentPath("/");
-      setCurrentFolder(fileSystem);
-    }
-  };
-
-  const addNewFile = (parentPath: string) => {
-    const parent = findItemByPath(parentPath);
-    if (!parent || parent.type !== "folder") return;
-
-    const newFile: FileItem = {
-      id: Date.now().toString(),
-      name: "New File",
-      type: "file",
-    };
-
-    // Create updated children array immediately
-    const updatedChildren = [...(parent.children || []), newFile];
-
-    // Update currentFolder first if we're in the correct folder
-    if (currentPath === parentPath) {
-      setCurrentFolder(updatedChildren);
-    }
-
-    // Then update the file system
-    setFileSystem((prev) => {
-      const updateChildren = (items: FileItem[]): FileItem[] => {
-        return items.map((item) => {
-          if (getItemPath(item, prev) === parentPath) {
-            return {
-              ...item,
-              children: updatedChildren,
-            };
-          }
-          if (item.children) {
-            return {
-              ...item,
-              children: updateChildren(item.children),
-            };
-          }
-          return item;
-        });
-      };
-      return updateChildren(prev);
-    });
-  };
-
-  const startEditing = (itemId: string, currentName: string) => {
-    setEditingItem(itemId);
-    setNewName(currentName);
-  };
-
-  const saveEdit = (itemPath: string) => {
-    if (!newName.trim()) return;
-
-    setFileSystem((prev) => {
-      const updateName = (items: FileItem[]): FileItem[] => {
-        return items.map((item) => {
-          if (getItemPath(item, prev) === itemPath) {
-            return {
-              ...item,
-              name: newName,
-            };
-          }
-          if (item.children) {
-            return {
-              ...item,
-              children: updateName(item.children),
-            };
-          }
-          return item;
-        });
-      };
-      const updatedSystem = updateName(prev);
-
-      // Update currentFolder if we're in a subfolder
-      if (currentPath !== "/") {
-        const parent = findItemByPath(currentPath);
-        if (parent) {
-          setCurrentFolder(parent.children || []);
-        }
-      } else {
-        setCurrentFolder(updatedSystem);
-      }
-
-      return updatedSystem;
-    });
-
-    setEditingItem(null);
-    setNewName("");
-  };
-
-  const renderFileItem = (item: FileItem) => {
-    return (
-      <div key={item.id} className="flex items-center gap-2 py-1">
-        {editingItem === item.id ? (
-          <div className="flex gap-2">
-            <Input
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-              className="h-6"
-            />
-            <Button
-              size="sm"
-              onClick={() => saveEdit(getItemPath(item, fileSystem) || "")}
-            >
-              Save
-            </Button>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <span
-              className="cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
-              onClick={() => navigateToFolder(item)}
-            >
-              {item.name}
-            </span>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => startEditing(item.id, item.name)}
-            >
-              ✎
-            </Button>
-            {item.type === "folder" && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => addNewFile(getItemPath(item, fileSystem) || "")}
-              >
-                +
-              </Button>
-            )}
-          </div>
-        )}
-      </div>
+    // Find the parent ID
+    const currentFolder = items.find(
+      (item) =>
+        item.name === currentPath[currentPath.length - 1] &&
+        item.parentId === currentParentId
     );
+
+    if (currentFolder) {
+      setCurrentParentId(currentFolder.parentId);
+    } else {
+      // If we can't find the current folder, navigate to root
+      setCurrentParentId("root");
+      setCurrentPath(["Home"]);
+    }
   };
 
-  const navigateToPath = (path: string) => {
-    if (path === "/") {
-      setCurrentPath("/");
-      setCurrentFolder(fileSystem);
+  // Navigate to a specific path level
+  const navigateToPathLevel = (index: number) => {
+    if (index === 0) {
+      // Navigate to root
+      setCurrentParentId("root");
+      setCurrentPath(["Home"]);
+      setIsSearching(false);
       return;
     }
 
-    const targetFolder = findItemByPath(path);
-    if (targetFolder && targetFolder.type === "folder") {
-      setCurrentPath(path);
-      setCurrentFolder(targetFolder.children || []);
+    // Build path up to the clicked index
+    const newPath = currentPath.slice(0, index + 1);
+    setCurrentPath(newPath);
+
+    // Find the folder ID at this path level
+    let folderId = "root";
+    for (let i = 1; i <= index; i++) {
+      const folderName = newPath[i];
+      const folder = items.find(
+        (item) => item.name === folderName && item.parentId === folderId
+      );
+      if (folder) {
+        folderId = folder.id;
+      } else {
+        // Fallback to root if we can't find the path
+        setCurrentParentId("root");
+        setCurrentPath(["Home"]);
+        setIsSearching(false);
+        return;
+      }
     }
+
+    setCurrentParentId(folderId);
+    setIsSearching(false);
   };
 
-  const Breadcrumbs = () => {
-    const pathSegments = currentPath.split("/").filter(Boolean);
+  // Begin editing an item's name
+  const startRenaming = (id: string, name: string) => {
+    setEditingItem(id);
+    setEditName(name);
+  };
 
+  // Save the new name of an item
+  const saveNewName = () => {
+    if (!editingItem) return;
+
+    setItems(
+      items.map((item) =>
+        item.id === editingItem ? { ...item, name: editName } : item
+      )
+    );
+    setEditingItem(null);
+  };
+
+  // Handle search
+  const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      setIsSearching(false);
+      return;
+    }
+
+    const results = items.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+    setIsSearching(true);
+  };
+
+  // Clear search
+  const clearSearch = () => {
+    setSearchTerm("");
+    setIsSearching(false);
+  };
+
+  // Get the breadcrumb path
+  const getBreadcrumbs = () => {
     return (
-      <div className="flex items-center gap-2">
-        <Button
-          variant="outline"
-          onClick={() => navigateToPath("/")}
-          className="px-2"
-        >
-          Root
-        </Button>
-        {pathSegments.map((segment, index) => {
-          const path = "/" + pathSegments.slice(0, index + 1).join("/");
-          return (
-            <div key={path} className="flex items-center">
-              <span className="mx-2">/</span>
-              <Button
-                variant="ghost"
-                onClick={() => navigateToPath(path)}
-                className="px-2"
-              >
-                {segment}
-              </Button>
-            </div>
-          );
-        })}
+      <div className="flex items-center space-x-1 text-sm mb-4 overflow-x-auto">
+        {currentPath.map((name, index) => (
+          <div key={index} className="flex items-center">
+            {index > 0 && (
+              <ChevronRight size={16} className="mx-1 text-gray-400" />
+            )}
+            <button
+              onClick={() => navigateToPathLevel(index)}
+              className="hover:bg-gray-100 px-2 py-1 rounded flex items-center"
+            >
+              {index === 0 && <Home size={16} className="mr-1" />}
+              <span>{name}</span>
+            </button>
+          </div>
+        ))}
       </div>
     );
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Google Drive File System</h1>
-      <div className="border rounded-lg p-4">
-        <div className="mb-4 flex items-center gap-2">
-          <Button variant="outline" onClick={navigateUp}>
-            ↑
-          </Button>
-          <span className="font-semibold">Current Path: </span>
-          <Breadcrumbs />
+    <div className="w-full max-w-4xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">File Manager</h1>
+
+      {/* Search */}
+      <div className="flex mb-4">
+        <div className="flex w-full max-w-md border rounded overflow-hidden">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search files and folders..."
+            className="flex-grow px-4 py-2 outline-none"
+            onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+          />
+          <button
+            onClick={handleSearch}
+            className="bg-blue-500 text-white px-4 py-2 flex items-center"
+          >
+            <Search size={16} />
+          </button>
         </div>
-        {currentFolder.map((item) => renderFileItem(item))}
+        {isSearching && (
+          <button
+            onClick={clearSearch}
+            className="ml-2 px-3 py-2 border rounded hover:bg-gray-100"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      {/* Action buttons */}
+      <div className="flex space-x-2 mb-4">
+        <button
+          onClick={() => createItem("folder")}
+          className="bg-green-500 text-white px-4 py-2 rounded flex items-center"
+        >
+          <FolderOpen size={16} className="mr-2" />
+          New Folder
+        </button>
+        <button
+          onClick={() => createItem("file")}
+          className="bg-blue-500 text-white px-4 py-2 rounded flex items-center"
+        >
+          <File size={16} className="mr-2" />
+          New File
+        </button>
+        {currentPath.length > 1 && !isSearching && (
+          <button
+            onClick={navigateUp}
+            className="border px-4 py-2 rounded hover:bg-gray-100"
+          >
+            Go Up
+          </button>
+        )}
+      </div>
+
+      {/* Breadcrumbs */}
+      {!isSearching ? (
+        getBreadcrumbs()
+      ) : (
+        <div className="mb-4 text-sm">
+          <span className="font-medium">Search results for: </span>
+          <span className="italic">{searchTerm}</span>
+        </div>
+      )}
+
+      {/* File list */}
+      <div className="border rounded overflow-hidden">
+        <div className="bg-gray-100 px-4 py-2 flex font-medium">
+          <div className="w-8"></div>
+          <div className="flex-grow">Name</div>
+          <div className="w-24">Type</div>
+          <div className="w-24">Actions</div>
+        </div>
+
+        <div className="divide-y">
+          {getCurrentItems().length > 0 ? (
+            getCurrentItems().map((item) => (
+              <div
+                key={item.id}
+                className="px-4 py-2 flex items-center hover:bg-gray-50"
+              >
+                <div className="w-8">
+                  {item.type === "folder" ? (
+                    <FolderOpen size={18} className="text-yellow-500" />
+                  ) : (
+                    <File size={18} className="text-blue-500" />
+                  )}
+                </div>
+
+                <div className="flex-grow">
+                  {editingItem === item.id ? (
+                    <input
+                      type="text"
+                      value={editName}
+                      onChange={(e) => setEditName(e.target.value)}
+                      onBlur={saveNewName}
+                      onKeyPress={(e) => e.key === "Enter" && saveNewName()}
+                      className="border px-2 py-1 w-full"
+                      autoFocus
+                    />
+                  ) : (
+                    <div
+                      className={`${
+                        item.type === "folder"
+                          ? "hover:text-blue-500 cursor-pointer"
+                          : ""
+                      }`}
+                      onClick={() =>
+                        item.type === "folder" &&
+                        navigateToFolder(item.id, item.name)
+                      }
+                    >
+                      {item.name}
+                    </div>
+                  )}
+                </div>
+
+                <div className="w-24 text-gray-500">{item.type}</div>
+
+                <div className="w-24 flex space-x-2">
+                  <button
+                    onClick={() => startRenaming(item.id, item.name)}
+                    className="p-1 hover:bg-gray-200 rounded"
+                  >
+                    <Edit size={16} />
+                  </button>
+                  <button
+                    onClick={() => deleteItem(item.id)}
+                    className="p-1 hover:bg-gray-200 rounded text-red-500"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="px-4 py-8 text-center text-gray-500">
+              {isSearching
+                ? "No matching files or folders found"
+                : "This folder is empty"}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-export default GoogleDriveFileSystem;
+export default FileManager;
