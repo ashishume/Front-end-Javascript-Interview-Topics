@@ -140,7 +140,7 @@ const ExpenseSplittingApp = () => {
     }
 
     try {
-      const userRef = await addDoc(collection(db, "users"), {
+      await addDoc(collection(db, "users"), {
         name: newUserName,
         createdAt: new Date().toISOString(),
       });
