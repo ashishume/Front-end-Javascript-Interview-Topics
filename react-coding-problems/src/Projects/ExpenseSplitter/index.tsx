@@ -1,32 +1,4 @@
 import { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  orderBy,
-  QuerySnapshot,
-  DocumentData,
-} from "firebase/firestore";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBTNI0AHWWh5Q6Vx-mkdSMb7K2Ua7VDNpA",
-  authDomain: "cycle-demo-client.firebaseapp.com",
-  projectId: "cycle-demo-client",
-  storageBucket: "cycle-demo-client.firebasestorage.app",
-  messagingSenderId: "641959779564",
-  appId: "1:641959779564:web:2546dba74b39eedf4099c9",
-  measurementId: "G-B50G4LYHSH",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 // Add TypeScript interfaces at the top of the file
 interface User {
@@ -129,7 +101,7 @@ const ExpenseSplittingApp = () => {
   const [settlements, setSettlements] = useState<Settlement[]>([]);
 
   // Add a new user
-  const addUser = async () => {
+  const addUser = () => {
     if (newUserName.trim() === "") return;
 
     const userExists = users.some(
@@ -141,16 +113,8 @@ const ExpenseSplittingApp = () => {
       return;
     }
 
-    try {
-      await addDoc(collection(db, "users"), {
-        name: newUserName,
-        createdAt: new Date().toISOString(),
-      });
-      setNewUserName("");
-    } catch (error) {
-      console.error("Error adding user: ", error);
-      alert("Error adding user. Please try again.");
-    }
+    setUsers([...users, { id: Date.now().toString(), name: newUserName }]);
+    setNewUserName("");
   };
 
   // Toggle user selection for expense splitting
@@ -171,7 +135,7 @@ const ExpenseSplittingApp = () => {
   };
 
   // Add a new expense
-  const addExpense = async () => {
+  const addExpense = () => {
     if (
       !newExpense.paidBy ||
       !newExpense.amount ||
@@ -191,29 +155,25 @@ const ExpenseSplittingApp = () => {
       return;
     }
 
-    try {
-      const expenseData = {
-        paidBy: newExpense.paidBy,
-        paidByName: paidByUser.name,
-        amount: parseFloat(newExpense.amount),
-        description: newExpense.description,
-        splitWith: newExpense.splitWith,
-        date: new Date().toLocaleDateString(),
-        createdAt: new Date().toISOString(),
-      };
+    const newExpenseEntry: Expense = {
+      id: Date.now().toString(),
+      paidBy: newExpense.paidBy,
+      paidByName: paidByUser.name,
+      amount: parseFloat(newExpense.amount),
+      description: newExpense.description,
+      splitWith: newExpense.splitWith,
+      date: new Date().toLocaleDateString(),
+    };
 
-      await addDoc(collection(db, "expenses"), expenseData);
+    setExpenses([...expenses, newExpenseEntry]);
+    setNewExpense({
+      paidBy: "",
+      amount: "",
+      description: "",
+      splitWith: [],
+    });
 
-      setNewExpense({
-        paidBy: "",
-        amount: "",
-        description: "",
-        splitWith: [],
-      });
-    } catch (error) {
-      console.error("Error adding expense: ", error);
-      alert("Error adding expense. Please try again.");
-    }
+    calculateSettlements([...expenses, newExpenseEntry]);
   };
 
   // Calculate settlements
@@ -289,7 +249,7 @@ const ExpenseSplittingApp = () => {
   };
 
   // Remove user
-  const removeUser = async (userId: string) => {
+  const removeUser = (userId: string) => {
     // Check if user is involved in any expenses
     const userInExpenses = expenses.some(
       (expense) =>
@@ -301,65 +261,42 @@ const ExpenseSplittingApp = () => {
       return;
     }
 
-    try {
-      await deleteDoc(doc(db, "users", userId));
-    } catch (error) {
-      console.error("Error removing user: ", error);
-      alert("Error removing user. Please try again.");
-    }
+    setUsers(users.filter((user) => user.id !== userId));
   };
 
   // Remove expense
-  const removeExpense = async (expenseId: string) => {
-    try {
-      await deleteDoc(doc(db, "expenses", expenseId));
-    } catch (error) {
-      console.error("Error removing expense: ", error);
-      alert("Error removing expense. Please try again.");
-    }
+  const removeExpense = (expenseId: string) => {
+    const updatedExpenses = expenses.filter(
+      (expense) => expense.id !== expenseId
+    );
+    setExpenses(updatedExpenses);
+    calculateSettlements(updatedExpenses);
   };
 
-  // Set up real-time listeners for Firestore data
+  // Local storage for persistence
   useEffect(() => {
-    // Users listener
-    const usersQuery = query(
-      collection(db, "users"),
-      orderBy("createdAt", "asc")
-    );
-    const usersUnsubscribe = onSnapshot(
-      usersQuery,
-      (snapshot: QuerySnapshot<DocumentData>) => {
-        const usersData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as User[];
-        setUsers(usersData);
-      }
-    );
+    // Load data from localStorage on initial render
+    const loadedUsers = localStorage.getItem("splitwise-users");
+    const loadedExpenses = localStorage.getItem("splitwise-expenses");
+    const loadedSettlements = localStorage.getItem("splitwise-settlements");
 
-    // Expenses listener
-    const expensesQuery = query(
-      collection(db, "expenses"),
-      orderBy("createdAt", "desc")
-    );
-    const expensesUnsubscribe = onSnapshot(
-      expensesQuery,
-      (snapshot: QuerySnapshot<DocumentData>) => {
-        const expensesData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Expense[];
-        setExpenses(expensesData);
-        calculateSettlements(expensesData);
-      }
-    );
-
-    // Cleanup listeners on component unmount
-    return () => {
-      usersUnsubscribe();
-      expensesUnsubscribe();
-    };
+    if (loadedUsers) setUsers(JSON.parse(loadedUsers));
+    if (loadedExpenses) setExpenses(JSON.parse(loadedExpenses));
+    if (loadedSettlements) setSettlements(JSON.parse(loadedSettlements));
   }, []);
+
+  // Save data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("splitwise-users", JSON.stringify(users));
+  }, [users]);
+
+  useEffect(() => {
+    localStorage.setItem("splitwise-expenses", JSON.stringify(expenses));
+  }, [expenses]);
+
+  useEffect(() => {
+    localStorage.setItem("splitwise-settlements", JSON.stringify(settlements));
+  }, [settlements]);
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
