@@ -13,5 +13,8 @@
     "concurrently": "^8.2.2",
     "firebase": "^11.8.1",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/firebase": "^3.2.3"
   }
 }

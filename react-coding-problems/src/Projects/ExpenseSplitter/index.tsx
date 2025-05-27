@@ -9,6 +9,8 @@ import {
   onSnapshot,
   query,
   orderBy,
+  QuerySnapshot,
+  DocumentData,
 } from "firebase/firestore";
 
 // Firebase configuration
@@ -324,27 +326,33 @@ const ExpenseSplittingApp = () => {
       collection(db, "users"),
       orderBy("createdAt", "asc")
     );
-    const usersUnsubscribe = onSnapshot(usersQuery, (snapshot) => {
-      const usersData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as User[];
-      setUsers(usersData);
-    });
+    const usersUnsubscribe = onSnapshot(
+      usersQuery,
+      (snapshot: QuerySnapshot<DocumentData>) => {
+        const usersData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as User[];
+        setUsers(usersData);
+      }
+    );
 
     // Expenses listener
     const expensesQuery = query(
       collection(db, "expenses"),
       orderBy("createdAt", "desc")
     );
-    const expensesUnsubscribe = onSnapshot(expensesQuery, (snapshot) => {
-      const expensesData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Expense[];
-      setExpenses(expensesData);
-      calculateSettlements(expensesData);
-    });
+    const expensesUnsubscribe = onSnapshot(
+      expensesQuery,
+      (snapshot: QuerySnapshot<DocumentData>) => {
+        const expensesData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Expense[];
+        setExpenses(expensesData);
+        calculateSettlements(expensesData);
+      }
+    );
 
     // Cleanup listeners on component unmount
     return () => {
