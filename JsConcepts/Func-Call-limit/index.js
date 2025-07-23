@@ -2,7 +2,7 @@
  * Implement a function rateLimit which takes a function, a limit, and a time.
  * The function should be called no more than limit times in time milliseconds.
  */
-function rateLimit(func, limit, time) {
+function funcCallLimit(func, limit, time) {
   let calls = [];
 
   return function (...args) {
@@ -19,9 +19,9 @@ function rateLimit(func, limit, time) {
   };
 }
 
-const rateLimitedFunc = rateLimit(console.log, 3, 1000); // 3 calls per 1 second
+const funcCall = funcCallLimit(console.log, 3, 1000); // 3 calls per 1 second
 
-rateLimitedFunc("Hello");
-rateLimitedFunc("World");
-rateLimitedFunc("!");
-rateLimitedFunc("2222"); // This call will be ignored because the limit has been reached
+funcCall("Hello");
+funcCall("World");
+funcCall("!");
+funcCall("not called");
