@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // Allow access to users collection
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+    
+    // Allow access to expenses collection
+    match /expenses/{expenseId} {
+      allow read, write: if true;
+    }
+  }
+} 
