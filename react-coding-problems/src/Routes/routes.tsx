@@ -91,7 +91,8 @@ import ZustandDemo from "../Projects/Zustand-demo";
 import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
 import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
 import ExpenseSplitter from "@/Projects/ExpenseSplitter";
-import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem";
+import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem/practice";
+import MovieBooking from "@/Projects/Movie-Booking";
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -102,6 +103,7 @@ export const routes: {
     routeName: "/find-dom-el-via-click",
     component: <FindDomElementViaClick />,
   },
+  { routeName: "/movie-booking", component: <MovieBooking /> },
   { routeName: "/expense-generator", component: <ExpenseGenerator /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
   { routeName: "/expense-splitter", component: <ExpenseSplitter /> },
