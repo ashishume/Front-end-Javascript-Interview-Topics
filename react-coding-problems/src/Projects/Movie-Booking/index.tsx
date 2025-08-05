@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const MovieBooking = () => {
-  const [seats, setSeats] = useState([
+  const [seats] = useState([
     [
       { seatNumber: 1, seatType: "premium" },
       { seatNumber: 2, seatType: "premium" },
