@@ -93,6 +93,8 @@ import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
 import ExpenseSplitter from "@/Projects/ExpenseSplitter";
 import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem/practice";
 import MovieBooking from "@/Projects/Movie-Booking";
+import SortList from "@/Projects/Sort-List";
+
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -136,6 +138,7 @@ export const routes: {
   { routeName: "/tabs", component: <Tabs /> },
   { routeName: "/accordion", component: <Accordion /> },
   { routeName: "/zustand-demo", component: <ZustandDemo /> },
+  { routeName: "/sort-list", component: <SortList /> },
   {
     routeName: "/dark-mode/*",
     component: (
