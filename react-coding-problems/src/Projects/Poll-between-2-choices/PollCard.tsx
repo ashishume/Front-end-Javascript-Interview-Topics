@@ -6,6 +6,7 @@ interface PollCardProps {
   viewWinner: boolean | null;
   setWinner: (isWon: boolean) => void;
   onVote: (id: number) => void;
+  calculateVoteMessage: (poll: any) => string;
 }
 
 const PollCard: React.FC<PollCardProps> = ({
@@ -13,38 +14,8 @@ const PollCard: React.FC<PollCardProps> = ({
   viewWinner,
   setWinner,
   onVote,
+  calculateVoteMessage,
 }) => {
-  const calculateVoteMessage = () => {
-    const [vote1, vote2] = poll.options;
-    let message = "";
-    const diff = vote1.votes - vote2.votes;
-
-    /** winner has not been announced yet */
-    if (viewWinner === null || viewWinner === false) {
-      /** make sure both are not in initial state */
-      if (vote1.votes !== 0 || vote2.votes !== 0) {
-        /** if both are on same votes its a tie */
-        if (vote1.votes !== vote2.votes) {
-          message = `${
-            diff > 0 ? vote1.text : vote2.text
-          } leading by ${Math.abs(diff)}`;
-        } else {
-          message = "It's a tie";
-        }
-      }
-    } else if (viewWinner === true) {
-      /** winner has been announced  */
-      if (vote1.votes === vote2.votes) {
-        message = "It's a tie";
-      } else {
-        message = `${diff > 0 ? vote1.text : vote2.text} won by ${Math.abs(
-          diff
-        )} vote(s)`;
-      }
-    }
-    return message;
-  };
-
   return (
     <div>
       <div className="flex flex-row justify-center items-center">
@@ -65,7 +36,7 @@ const PollCard: React.FC<PollCardProps> = ({
           </div>
         ))}
       </div>
-      <p className="text-center mt-5">{calculateVoteMessage()}</p>
+      <p className="text-center mt-5">{calculateVoteMessage(poll)}</p>
 
       <div className="text-center">
         <Button
