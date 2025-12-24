@@ -8,7 +8,7 @@
     "dev": "concurrently \"cd JsConcepts && npm run dev\""
   },
   "author": "Ashish Debnath",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "concurrently": "^8.2.2",
     "firebase": "^11.8.1",
