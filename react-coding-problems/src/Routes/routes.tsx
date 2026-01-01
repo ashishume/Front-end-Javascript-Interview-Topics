@@ -91,6 +91,7 @@ import ExpenseSplitter from "@/Projects/ExpenseSplitter";
 import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem/practice";
 import MovieBooking from "@/Projects/Movie-Booking";
 import SortList from "@/Projects/Sort-List";
+import SearchWithVirtualisation from "@/Projects/Search-bar-with-virtualisation";
 
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
@@ -101,6 +102,10 @@ export const routes: {
   {
     routeName: "/find-dom-el-via-click",
     component: <FindDomElementViaClick />,
+  },
+  {
+    routeName: "/search-bar-with-virtualisation",
+    component: <SearchWithVirtualisation />,
   },
   { routeName: "/movie-booking", component: <MovieBooking /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
