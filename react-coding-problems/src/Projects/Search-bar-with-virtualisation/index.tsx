@@ -1,6 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { forwardRef, useEffect, useRef, useState } from "react";
+import useDebouce from "./use-debounce";
+import useSearchQuery from "./use-search";
+import useFetchUsers from "./use-fetch-users";
 
 const SearchWithVirtualisation = () => {
   const limit = 50;
@@ -8,37 +9,24 @@ const SearchWithVirtualisation = () => {
   const [allUsers, setAllUsers] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [query, setQuery] = useState("");
+  const debouncedValue = useDebouce(query);
+  const { searchData } = useSearchQuery(debouncedValue);
+  const { isLoading, data, error } = useFetchUsers(hasMore, limit, skip);
 
-  const { isLoading, data, error } = useQuery({
-    queryKey: ["fetch-users", limit, skip],
-    queryFn: async ({ queryKey }): Promise<any> => {
-      const [, limit, skip] = queryKey as [string, number, number];
-      const response = await axios.get(
-        `https://dummyjson.com/users?limit=${limit}&skip=${skip}`
-      );
-      return response.data;
-    },
-    enabled: hasMore, // Don't fetch if no more data
-  });
-
-  // Accumulate users when new data arrives
   useEffect(() => {
-    if (data?.users) {
+    if (data?.users && !searchData) {
       if (skip === 0) {
-        // First load - replace all users
-        setAllUsers(data.users);
+        setAllUsers(data?.users);
       } else {
-        // Subsequent loads - append new users
-        setAllUsers((prev) => [...prev, ...data.users]);
+        setAllUsers((prev) => [...prev, ...data?.users]);
+        const total = data?.total;
+        const currentTotal = data?.users?.length + skip;
+        setHasMore(currentTotal < total);
+        setIsLoadingMore(false);
       }
-
-      // Check if there's more data to load
-      const total = data.total || 0;
-      const currentCount = skip + data.users.length;
-      setHasMore(currentCount < total);
-      setIsLoadingMore(false);
     }
-  }, [data, skip]);
+  }, [skip, data]);
 
   const handleReachBottom = () => {
     if (!isLoading && !isLoadingMore && hasMore && data) {
@@ -47,20 +35,41 @@ const SearchWithVirtualisation = () => {
     }
   };
 
+  const handleChange = (e: any) => {
+    if (e.target.value) {
+      setQuery(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (searchData?.users) {
+      setAllUsers(searchData?.users);
+    }
+  }, [skip, searchData]);
+
   return (
-    <BotttomTrigger onReachBottom={handleReachBottom}>
-      {isLoading && skip === 0 && <div>Loading...</div>}
-      {error && <div>Error loading users</div>}
+    <>
       <div className="p-2 m-1">
-        {allUsers.map((user: any) => (
-          <div key={user.id}>{user.firstName}</div>
-        ))}
-        {isLoadingMore && <div>Loading more...</div>}
-        {!hasMore && allUsers.length > 0 && (
-          <div className="text-center p-4">No more users to load</div>
-        )}
+        <input
+          placeholder="search..."
+          className="p-1"
+          onChange={handleChange}
+        />
       </div>
-    </BotttomTrigger>
+      <BotttomTrigger onReachBottom={handleReachBottom}>
+        {isLoading && skip === 0 && <div>Loading...</div>}
+        {error && <div>Error loading users</div>}
+        <div className="p-2 m-1">
+          {allUsers?.map((user: any) => (
+            <div key={user.id}>{user.firstName}</div>
+          ))}
+          {isLoadingMore && !searchData && <div>Loading more...</div>}
+          {!hasMore && allUsers.length > 0 && (
+            <div className="text-center p-4">No more users to load</div>
+          )}
+        </div>
+      </BotttomTrigger>
+    </>
   );
 };
 
