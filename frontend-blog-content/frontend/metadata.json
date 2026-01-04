@@ -201,5 +201,75 @@
     "date": "2026-01-04",
     "excerpt": "JavaScript provides two ways to define functions: Function Statements (declarations) and Function Expressions. They differ in hoisting behavior, when they can be called, and their use cases.",
     "category": "frontend"
+  },
+  "30-ResizeObserver.md": {
+    "title": "ResizeObserver API",
+    "slug": "30-resize-observer",
+    "date": "2026-01-04",
+    "excerpt": "The ResizeObserver API provides a way to asynchronously observe changes to the dimensions of an element's content or border box. It's useful for tracking size changes of elements dynamically, which is particularly helpful for responsive layouts and adaptive components.",
+    "category": "frontend"
+  },
+  "31-MutationObserver.md": {
+    "title": "MutationObserver API",
+    "slug": "31-mutation-observer",
+    "date": "2026-01-04",
+    "excerpt": "The MutationObserver interface provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature, which was part of the DOM3 Events specification. MutationObserver is also commonly referred to as DOM Observer.",
+    "category": "frontend"
+  },
+  "32-WeakRef.md": {
+    "title": "WeakRef in JavaScript",
+    "slug": "32-weakref",
+    "date": "2026-01-04",
+    "excerpt": "WeakRef is an object that holds a weak reference to another object, which allows the referenced object to be garbage collected even if there are no strong references to it. This is useful for scenarios where you want to hold onto an object as long as it's needed, but you don't want to prevent it from being garbage collected once it's no longer in use.",
+    "category": "frontend"
+  },
+  "33-ES6-Modules.md": {
+    "title": "ES6 Modules in JavaScript",
+    "slug": "33-es6-modules",
+    "date": "2026-01-04",
+    "excerpt": "ES6 Modules (ECMAScript 2015) provide a standardized way to organize and share code across JavaScript files. They enable better code organization, dependency management, and support for static analysis and tree shaking.",
+    "category": "frontend"
+  },
+  "34-History-API.md": {
+    "title": "History API in JavaScript",
+    "slug": "34-history-api",
+    "date": "2026-01-04",
+    "excerpt": "The History API provides access to the browser's session history, allowing you to manipulate the browser history and navigate programmatically without full page reloads. It's essential for building Single Page Applications (SPAs) and implementing client-side routing.",
+    "category": "frontend"
+  },
+  "35-PostMessage-API.md": {
+    "title": "PostMessage API in JavaScript",
+    "slug": "35-postmessage-api",
+    "date": "2026-01-04",
+    "excerpt": "The PostMessage API allows secure cross-origin communication between windows, iframes, and web workers. It provides a safe way to exchange data between different origins without violating the same-origin policy.",
+    "category": "frontend"
+  },
+  "36-Prefetch-Preload-Preconnect.md": {
+    "title": "Prefetch, Preload, and Preconnect in JavaScript",
+    "slug": "36-prefetch-preload-preconnect",
+    "date": "2026-01-04",
+    "excerpt": "Prefetch, Preload, and Preconnect are resource hints that allow browsers to optimize resource loading. They help improve page load performance by giving the browser hints about what resources will be needed and when.",
+    "category": "frontend"
+  },
+  "37-Tree-Shaking.md": {
+    "title": "Tree Shaking in JavaScript",
+    "slug": "37-tree-shaking",
+    "date": "2026-01-04",
+    "excerpt": "Tree shaking is a process used in modern JavaScript bundlers to eliminate dead code before adding it to the final bundle. It analyzes the dependency graph of your code, identifies unused exports, and removes them to reduce the final bundle size.",
+    "category": "frontend"
+  },
+  "38-How-Browser-Renders-Page.md": {
+    "title": "How Browser Renders a Page",
+    "slug": "38-how-browser-renders-page",
+    "date": "2026-01-04",
+    "excerpt": "Understanding how browsers render web pages is crucial for web performance optimization. The browser follows a specific sequence of steps known as the Critical Rendering Path (CRP) to transform HTML, CSS, and JavaScript into pixels on the screen.",
+    "category": "frontend"
+  },
+  "39-Shadow-DOM.md": {
+    "title": "Shadow DOM in JavaScript",
+    "slug": "39-shadow-dom",
+    "date": "2026-01-04",
+    "excerpt": "Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree. This shadow DOM tree starts with a shadow root, underneath which you can attach any element, in the same way as the normal DOM. Shadow DOM provides encapsulation for styles and markup, enabling component isolation.",
+    "category": "frontend"
   }
 }
