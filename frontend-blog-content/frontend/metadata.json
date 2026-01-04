@@ -2,79 +2,78 @@
   "01-Promises.md": {
     "title": "Promises in JavaScript",
     "slug": "01-promises",
-    "date": "2024-01-01",
+    "date": "2026-01-04",
     "excerpt": "A Promise in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises have three states: pending, fulfilled, or rejected.",
     "category": "frontend"
   },
   "02-Event-Loop.md": {
     "title": "Event Loop in JavaScript",
     "slug": "02-event-loop",
-    "date": "2024-01-02",
+    "date": "2026-01-04",
     "excerpt": "JavaScript is a single-threaded language, meaning it can only execute one task at a time. The Event Loop is the mechanism that allows JavaScript to handle asynchronous operations despite being single-threaded.",
     "category": "frontend"
   },
   "03-Hoisting.md": {
     "title": "Hoisting in JavaScript",
     "slug": "03-hoisting",
-    "date": "2024-01-03",
+    "date": "2026-01-04",
     "excerpt": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase, before code execution.",
     "category": "frontend"
   },
   "04-Closures.md": {
     "title": "Closures in JavaScript",
     "slug": "04-closures",
-    "date": "2024-01-04",
+    "date": "2026-01-04",
     "excerpt": "A closure is a function bundled together with its lexical environment (surrounding state). In JavaScript, closures are created every time a function is created, at function creation time.",
     "category": "frontend"
   },
   "05-Var-Let-Const-Scope.md": {
     "title": "Var, Let, and Const - Scope and Differences",
     "slug": "05-var-let-const-scope",
-    "date": "2024-01-05",
+    "date": "2026-01-04",
     "excerpt": "JavaScript provides three ways to declare variables: var, let, and const. Each has different scoping rules and behaviors.",
     "category": "frontend"
   },
   "06-Execution-Context.md": {
     "title": "Execution Context in JavaScript",
     "slug": "06-execution-context",
-    "date": "2024-01-06",
+    "date": "2026-01-04",
     "excerpt": "An Execution Context is an abstract concept that holds information about the environment in which the current code is being executed. It contains the code that's currently running and everything that aids in its execution.",
     "category": "frontend"
   },
   "07-Prototype.md": {
     "title": "Prototype in JavaScript",
     "slug": "07-prototype",
-    "date": "2024-01-07",
+    "date": "2026-01-04",
     "excerpt": "Prototypes are the mechanism by which JavaScript objects inherit features from one another. Every object in JavaScript has a built-in property called its prototype.",
     "category": "frontend"
   },
   "08-Async-Await-vs-Promises.md": {
     "title": "Async/Await vs Promises",
     "slug": "08-async-await-vs-promises",
-    "date": "2024-01-08",
+    "date": "2026-01-04",
     "excerpt": "Both Promises and async/await are used in JavaScript to handle asynchronous operations. async/await is syntactic sugar built on top of Promises, introduced in ES2017, that allows you to write asynchronous code in a more synchronous and readable manner.",
     "category": "frontend"
   },
   "09-Debouncing-Throttling.md": {
     "title": "Debouncing and Throttling in JavaScript",
     "slug": "09-debouncing-throttling",
-    "date": "2024-01-09",
+    "date": "2026-01-04",
     "excerpt": "Debouncing and Throttling are techniques used to control how often a function is executed, especially useful for performance optimization in event handlers.",
     "category": "frontend"
   },
   "10-Call-Bind-Apply.md": {
     "title": "Call, Bind, and Apply in JavaScript",
     "slug": "10-call-bind-apply",
-    "date": "2024-01-10",
+    "date": "2026-01-04",
     "excerpt": "call, bind, and apply are methods available on all JavaScript functions. They allow you to control the value of this when a function is executed, and in the case of call and apply, immediately invoke the function.",
     "category": "frontend"
   },
   "11-Inheritance.md": {
     "title": "Inheritance in JavaScript",
     "slug": "11-inheritance",
-    "date": "2024-01-11",
+    "date": "2026-01-04",
     "excerpt": "Inheritance is a mechanism that allows one class to inherit properties and methods from another class. In JavaScript, inheritance can be achieved through various methods, with ES6 classes being the most modern approach.",
     "category": "frontend"
   }
 }
-
