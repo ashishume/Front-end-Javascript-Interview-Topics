@@ -271,5 +271,75 @@
     "date": "2026-01-04",
     "excerpt": "Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree. This shadow DOM tree starts with a shadow root, underneath which you can attach any element, in the same way as the normal DOM. Shadow DOM provides encapsulation for styles and markup, enabling component isolation.",
     "category": "frontend"
+  },
+  "41-Promise-Chaining.md": {
+    "title": "Promise Chaining in JavaScript",
+    "slug": "41-promise-chaining",
+    "date": "2026-01-04",
+    "excerpt": "Promise chaining is a powerful technique in JavaScript that allows you to execute multiple asynchronous operations sequentially, where each operation depends on the result of the previous one. This approach helps avoid the 'callback hell' problem and makes asynchronous code more readable and maintainable.",
+    "category": "frontend"
+  },
+  "42-Pipe-and-Compose.md": {
+    "title": "Pipe and Compose in JavaScript",
+    "slug": "42-pipe-and-compose",
+    "date": "2026-01-04",
+    "excerpt": "Pipe and Compose are functional programming utilities that allow you to combine multiple functions into a single function. They help eliminate nested function calls and create more readable, maintainable code by processing data through a series of transformations.",
+    "category": "frontend"
+  },
+  "43-Flatten-Object.md": {
+    "title": "Flatten Object in JavaScript",
+    "slug": "43-flatten-object",
+    "date": "2026-01-04",
+    "excerpt": "Flattening an object means converting a nested object structure into a single-level object where nested keys are represented as dot-notation paths. This is a common operation when working with complex data structures, API responses, or when preparing data for storage or transmission.",
+    "category": "frontend"
+  },
+  "44-ForEach-vs-Map.md": {
+    "title": "ForEach vs Map in JavaScript",
+    "slug": "44-foreach-vs-map",
+    "date": "2026-01-04",
+    "excerpt": "Understanding the difference between forEach() and map() is crucial for writing effective JavaScript code. While they appear similar, they serve different purposes and have distinct behaviors that affect how you can use them.",
+    "category": "frontend"
+  },
+  "45-Object-Property-Descriptors.md": {
+    "title": "Object Property Descriptors in JavaScript",
+    "slug": "45-object-property-descriptors",
+    "date": "2026-01-04",
+    "excerpt": "Object Property Descriptors allow you to configure and control the behavior of object properties in JavaScript. They provide fine-grained control over how properties can be accessed, modified, and enumerated, enabling you to create more robust and secure objects.",
+    "category": "frontend"
+  },
+  "46-Observables-vs-Promises.md": {
+    "title": "Observables vs Promises in JavaScript",
+    "slug": "46-observables-vs-promises",
+    "date": "2026-01-04",
+    "excerpt": "Both Observables and Promises are used to handle asynchronous operations in JavaScript, but they serve different purposes and have distinct characteristics. Understanding their differences is crucial for choosing the right tool for your use case.",
+    "category": "frontend"
+  },
+  "47-Publisher-Subscriber-Pattern.md": {
+    "title": "Publisher Subscriber Pattern in JavaScript",
+    "slug": "47-publisher-subscriber-pattern",
+    "date": "2026-01-04",
+    "excerpt": "The Publisher/Subscriber (PubSub) pattern is a messaging pattern where senders of messages (publishers) don't program the messages to be sent directly to specific receivers (subscribers). Instead, publishers and subscribers are decoupled through a message broker or event channel.",
+    "category": "frontend"
+  },
+  "48-Module-Pattern.md": {
+    "title": "Module Pattern in JavaScript",
+    "slug": "48-module-pattern",
+    "date": "2026-01-04",
+    "excerpt": "The Module Pattern is a design pattern in JavaScript that allows you to group related variables and functions together into a single object, providing encapsulation and a way to create private and public members. This pattern helps organize code, prevent global namespace pollution, and create more maintainable applications.",
+    "category": "frontend"
+  },
+  "49-Function-Chaining.md": {
+    "title": "Function Chaining in JavaScript",
+    "slug": "49-function-chaining",
+    "date": "2026-01-04",
+    "excerpt": "Function chaining (also known as method chaining) is a technique that allows you to call multiple methods on an object in a single statement, where each method returns the object itself (or a chainable value), enabling subsequent method calls. This pattern creates fluent, readable APIs that are common in libraries like jQuery, Lodash, and many modern JavaScript frameworks.",
+    "category": "frontend"
+  },
+  "50-LRU-Cache.md": {
+    "title": "LRU Cache in JavaScript",
+    "slug": "50-lru-cache",
+    "date": "2026-01-04",
+    "excerpt": "LRU (Least Recently Used) Cache is a caching strategy that evicts the least recently used items when the cache reaches its maximum capacity. It's one of the most common cache eviction policies and is widely used in computer systems, databases, and web applications for efficient memory management.",
+    "category": "frontend"
   }
 }
