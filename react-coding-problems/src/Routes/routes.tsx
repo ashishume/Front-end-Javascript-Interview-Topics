@@ -92,6 +92,7 @@ import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem/practice";
 import MovieBooking from "@/Projects/Movie-Booking";
 import SortList from "@/Projects/Sort-List";
 import SearchWithVirtualisation from "@/Projects/Search-bar-with-virtualisation";
+import VirtualList from "@/Projects/VirtualList";
 
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
@@ -108,6 +109,7 @@ export const routes: {
     component: <SearchWithVirtualisation />,
   },
   { routeName: "/movie-booking", component: <MovieBooking /> },
+  { routeName: "/virtual-list", component: <VirtualList /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
   { routeName: "/expense-splitter", component: <ExpenseSplitter /> },
   { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
