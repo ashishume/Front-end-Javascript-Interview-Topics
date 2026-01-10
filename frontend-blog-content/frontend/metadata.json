@@ -348,5 +348,12 @@
     "date": "2026-01-04",
     "excerpt": "Offline First App is a web application that works offline. It's one of the most common cache eviction policies and is widely used in computer systems, databases, and web applications for efficient memory management.",
     "category": "frontend"
+  },
+  "React-virtual-List.md": {
+    "title": "Virtual Scrolling in React",
+    "slug": "react-virtual-list",
+    "date": "2026-01-09",
+    "excerpt": "Virtual scrolling (also called windowing) is an optimization technique that only renders the items currently visible in the viewport, plus a small buffer zone. It solves DOM bloat issues when rendering large lists.",
+    "category": "frontend"
   }
 }
