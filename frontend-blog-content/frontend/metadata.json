@@ -1,345 +1,352 @@
 {
-  "01-Promises.md": {
+  "Promises.md": {
     "title": "Promises in JavaScript",
-    "slug": "01-promises",
+    "slug": "promises",
     "date": "2026-01-04",
     "excerpt": "A Promise in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises have three states: pending, fulfilled, or rejected.",
     "category": "frontend"
   },
-  "02-Event-Loop.md": {
+  "Event-Loop.md": {
     "title": "Event Loop in JavaScript",
-    "slug": "02-event-loop",
+    "slug": "event-loop",
     "date": "2026-01-04",
     "excerpt": "JavaScript is a single-threaded language, meaning it can only execute one task at a time. The Event Loop is the mechanism that allows JavaScript to handle asynchronous operations despite being single-threaded.",
     "category": "frontend"
   },
-  "03-Hoisting.md": {
+  "Hoisting.md": {
     "title": "Hoisting in JavaScript",
-    "slug": "03-hoisting",
+    "slug": "hoisting",
     "date": "2026-01-04",
     "excerpt": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase, before code execution.",
     "category": "frontend"
   },
-  "04-Closures.md": {
+  "Closures.md": {
     "title": "Closures in JavaScript",
-    "slug": "04-closures",
+    "slug": "closures",
     "date": "2026-01-04",
     "excerpt": "A closure is a function bundled together with its lexical environment (surrounding state). In JavaScript, closures are created every time a function is created, at function creation time.",
     "category": "frontend"
   },
-  "05-Var-Let-Const-Scope.md": {
+  "Var-Let-Const-Scope.md": {
     "title": "Var, Let, and Const - Scope and Differences",
-    "slug": "05-var-let-const-scope",
+    "slug": "var-let-const-scope",
     "date": "2026-01-04",
     "excerpt": "JavaScript provides three ways to declare variables: var, let, and const. Each has different scoping rules and behaviors.",
     "category": "frontend"
   },
-  "06-Execution-Context.md": {
+  "Execution-Context.md": {
     "title": "Execution Context in JavaScript",
-    "slug": "06-execution-context",
+    "slug": "execution-context",
     "date": "2026-01-04",
     "excerpt": "An Execution Context is an abstract concept that holds information about the environment in which the current code is being executed. It contains the code that's currently running and everything that aids in its execution.",
     "category": "frontend"
   },
-  "07-Prototype.md": {
+  "Prototype.md": {
     "title": "Prototype in JavaScript",
-    "slug": "07-prototype",
+    "slug": "prototype",
     "date": "2026-01-04",
     "excerpt": "Prototypes are the mechanism by which JavaScript objects inherit features from one another. Every object in JavaScript has a built-in property called its prototype.",
     "category": "frontend"
   },
-  "08-Async-Await-vs-Promises.md": {
+  "Async-Await-vs-Promises.md": {
     "title": "Async/Await vs Promises",
-    "slug": "08-async-await-vs-promises",
+    "slug": "async-await-vs-promises",
     "date": "2026-01-04",
     "excerpt": "Both Promises and async/await are used in JavaScript to handle asynchronous operations. async/await is syntactic sugar built on top of Promises, introduced in ES2017, that allows you to write asynchronous code in a more synchronous and readable manner.",
     "category": "frontend"
   },
-  "09-Debouncing-Throttling.md": {
+  "Debouncing-Throttling.md": {
     "title": "Debouncing and Throttling in JavaScript",
-    "slug": "09-debouncing-throttling",
+    "slug": "debouncing-throttling",
     "date": "2026-01-04",
     "excerpt": "Debouncing and Throttling are techniques used to control how often a function is executed, especially useful for performance optimization in event handlers.",
     "category": "frontend"
   },
-  "10-Call-Bind-Apply.md": {
+  "Call-Bind-Apply.md": {
     "title": "Call, Bind, and Apply in JavaScript",
-    "slug": "10-call-bind-apply",
+    "slug": "call-bind-apply",
     "date": "2026-01-04",
     "excerpt": "call, bind, and apply are methods available on all JavaScript functions. They allow you to control the value of this when a function is executed, and in the case of call and apply, immediately invoke the function.",
     "category": "frontend"
   },
-  "11-Inheritance.md": {
+  "Inheritance.md": {
     "title": "Inheritance in JavaScript",
-    "slug": "11-inheritance",
+    "slug": "inheritance",
     "date": "2026-01-04",
     "excerpt": "Inheritance is a mechanism that allows one class to inherit properties and methods from another class. In JavaScript, inheritance can be achieved through various methods, with ES6 classes being the most modern approach.",
     "category": "frontend"
   },
-  "12-Proxy.md": {
+  "Proxy.md": {
     "title": "Proxy in JavaScript",
-    "slug": "12-proxy",
+    "slug": "proxy",
     "date": "2026-01-04",
     "excerpt": "The Proxy object enables you to create a proxy for another object, which can intercept and redefine fundamental operations for that object. It acts as an observer, allowing you to monitor and control property access, assignment, and other operations.",
     "category": "frontend"
   },
-  "13-Symbols.md": {
+  "Symbols.md": {
     "title": "Symbols in JavaScript",
-    "slug": "13-symbols",
+    "slug": "symbols",
     "date": "2026-01-04",
     "excerpt": "Symbols are unique and immutable primitive values introduced in ES6. They are primarily used as unique property keys for objects, helping avoid naming collisions and enabling private-like properties.",
     "category": "frontend"
   },
-  "14-Map-Set-WeakMap-WeakSet.md": {
+  "Map-Set-WeakMap-WeakSet.md": {
     "title": "Map, Set, WeakMap, and WeakSet in JavaScript",
-    "slug": "14-map-set-weakmap-weakset",
+    "slug": "map-set-weakmap-weakset",
     "date": "2026-01-04",
     "excerpt": "JavaScript provides specialized collection types beyond plain objects and arrays: Map, Set, WeakMap, and WeakSet. Each serves different purposes and has unique characteristics for storing and managing data.",
     "category": "frontend"
   },
-  "15-Currying.md": {
+  "Currying.md": {
     "title": "Currying in JavaScript",
-    "slug": "15-currying",
+    "slug": "currying",
     "date": "2026-01-04",
     "excerpt": "Currying is a functional programming technique where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. It allows for partial application of functions and creates more reusable code.",
     "category": "frontend"
   },
-  "16-Generator-Functions.md": {
+  "Generator-Functions.md": {
     "title": "Generator Functions in JavaScript",
-    "slug": "16-generator-functions",
+    "slug": "generator-functions",
     "date": "2026-01-04",
     "excerpt": "Generator functions are special functions that can be paused and resumed. They use the yield keyword to pause execution and return values incrementally. Generators are particularly useful for handling asynchronous operations and creating iterators.",
     "category": "frontend"
   },
-  "17-Shallow-Deep-Copy.md": {
+  "Shallow-Deep-Copy.md": {
     "title": "Shallow Copy vs Deep Copy in JavaScript",
-    "slug": "17-shallow-deep-copy",
+    "slug": "shallow-deep-copy",
     "date": "2026-01-04",
     "excerpt": "Understanding the difference between shallow and deep copying is crucial when working with objects and arrays in JavaScript. The choice affects whether nested objects are shared or independently copied.",
     "category": "frontend"
   },
-  "18-Intersection-Observer.md": {
+  "Intersection-Observer.md": {
     "title": "Intersection Observer API",
-    "slug": "18-intersection-observer",
+    "slug": "intersection-observer",
     "date": "2026-01-04",
     "excerpt": "The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or the viewport. It's commonly used for lazy loading images, infinite scrolling, and scroll-based animations.",
     "category": "frontend"
   },
-  "19-Web-Workers.md": {
+  "Web-Workers.md": {
     "title": "Web Workers in JavaScript",
-    "slug": "19-web-workers",
+    "slug": "web-workers",
     "date": "2026-01-04",
     "excerpt": "Web Workers allow you to run JavaScript code in background threads, separate from the main execution thread. This enables performing heavy computations without blocking the UI, improving application responsiveness.",
     "category": "frontend"
   },
-  "20-Service-Workers.md": {
+  "Service-Workers.md": {
     "title": "Service Workers",
-    "slug": "20-service-workers",
+    "slug": "service-workers",
     "date": "2026-01-04",
     "excerpt": "Service Workers are a type of web worker that act as a proxy between web applications, the browser, and the network. They enable features like offline functionality, push notifications, background sync, and caching strategies.",
     "category": "frontend"
   },
-  "21-Session-LocalStorage-Cookies.md": {
+  "Session-LocalStorage-Cookies.md": {
     "title": "Session Storage, Local Storage, and Cookies",
-    "slug": "21-session-localstorage-cookies",
+    "slug": "session-localstorage-cookies",
     "date": "2026-01-04",
     "excerpt": "JavaScript provides three mechanisms for storing data in the browser: Session Storage, Local Storage, and Cookies. Each has different characteristics, use cases, and limitations.",
     "category": "frontend"
   },
-  "22-Spread-Rest.md": {
+  "Spread-Rest.md": {
     "title": "Spread vs Rest Operators in JavaScript",
-    "slug": "22-spread-rest",
+    "slug": "spread-rest",
     "date": "2026-01-04",
     "excerpt": "The spread and rest operators use the same syntax but serve different purposes. The spread operator expands iterables into individual elements, while the rest operator collects multiple elements into an array.",
     "category": "frontend"
   },
-  "23-Type-Conversion-Coercion.md": {
+  "Type-Conversion-Coercion.md": {
     "title": "Type Conversion and Type Coercion in JavaScript",
-    "slug": "23-type-conversion-coercion",
+    "slug": "type-conversion-coercion",
     "date": "2026-01-04",
     "excerpt": "JavaScript is a dynamically typed language, meaning variables can change types. Type Conversion (explicit) is when you manually convert types, while Type Coercion (implicit) is when JavaScript automatically converts types.",
     "category": "frontend"
   },
-  "24-Temporal-Dead-Zone.md": {
+  "Temporal-Dead-Zone.md": {
     "title": "Temporal Dead Zone (TDZ) in JavaScript",
-    "slug": "24-temporal-dead-zone",
+    "slug": "temporal-dead-zone",
     "date": "2026-01-04",
     "excerpt": "The Temporal Dead Zone (TDZ) is the period between entering a scope and the variable declaration where variables cannot be accessed. This affects let and const declarations but not var.",
     "category": "frontend"
   },
-  "25-For-in-For-of.md": {
+  "For-in-For-of.md": {
     "title": "For...in vs For...of Loops in JavaScript",
-    "slug": "25-for-in-for-of",
+    "slug": "for-in-for-of",
     "date": "2026-01-04",
     "excerpt": "JavaScript provides two different loop constructs: for...in and for...of. They serve different purposes and iterate over different types of data structures.",
     "category": "frontend"
   },
-  "26-DOMContentLoaded.md": {
+  "DOMContentLoaded.md": {
     "title": "DOMContentLoaded Event",
-    "slug": "26-domcontentloaded",
+    "slug": "domcontentloaded",
     "date": "2026-01-04",
     "excerpt": "The DOMContentLoaded event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. It's the preferred event for executing JavaScript that manipulates the DOM.",
     "category": "frontend"
   },
-  "27-Event-Emitter.md": {
+  "Event-Emitter.md": {
     "title": "Event Emitter Pattern in JavaScript",
-    "slug": "27-event-emitter",
+    "slug": "event-emitter",
     "date": "2026-01-04",
     "excerpt": "The Event Emitter pattern is a design pattern where an object (emitter) maintains a list of listeners and notifies them when events occur. It's the foundation of Node.js's EventEmitter and is commonly used for implementing pub-sub patterns.",
     "category": "frontend"
   },
-  "28-Pass-by-Value-Reference.md": {
+  "Pass-by-Value-Reference.md": {
     "title": "Pass by Value vs Pass by Reference in JavaScript",
-    "slug": "28-pass-by-value-reference",
+    "slug": "pass-by-value-reference",
     "date": "2026-01-04",
     "excerpt": "Understanding how JavaScript passes values to functions is crucial. JavaScript always passes by value, but for objects and arrays, the value being passed is a reference to the object.",
     "category": "frontend"
   },
-  "29-Function-Statement-Expression.md": {
+  "Function-Statement-Expression.md": {
     "title": "Function Statement vs Function Expression in JavaScript",
-    "slug": "29-function-statement-expression",
+    "slug": "function-statement-expression",
     "date": "2026-01-04",
     "excerpt": "JavaScript provides two ways to define functions: Function Statements (declarations) and Function Expressions. They differ in hoisting behavior, when they can be called, and their use cases.",
     "category": "frontend"
   },
-  "30-ResizeObserver.md": {
+  "ResizeObserver.md": {
     "title": "ResizeObserver API",
-    "slug": "30-resize-observer",
+    "slug": "resize-observer",
     "date": "2026-01-04",
     "excerpt": "The ResizeObserver API provides a way to asynchronously observe changes to the dimensions of an element's content or border box. It's useful for tracking size changes of elements dynamically, which is particularly helpful for responsive layouts and adaptive components.",
     "category": "frontend"
   },
-  "31-MutationObserver.md": {
+  "MutationObserver.md": {
     "title": "MutationObserver API",
-    "slug": "31-mutation-observer",
+    "slug": "mutation-observer",
     "date": "2026-01-04",
     "excerpt": "The MutationObserver interface provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature, which was part of the DOM3 Events specification. MutationObserver is also commonly referred to as DOM Observer.",
     "category": "frontend"
   },
-  "32-WeakRef.md": {
+  "WeakRef.md": {
     "title": "WeakRef in JavaScript",
-    "slug": "32-weakref",
+    "slug": "weakref",
     "date": "2026-01-04",
     "excerpt": "WeakRef is an object that holds a weak reference to another object, which allows the referenced object to be garbage collected even if there are no strong references to it. This is useful for scenarios where you want to hold onto an object as long as it's needed, but you don't want to prevent it from being garbage collected once it's no longer in use.",
     "category": "frontend"
   },
-  "33-ES6-Modules.md": {
+  "ES6-Modules.md": {
     "title": "ES6 Modules in JavaScript",
-    "slug": "33-es6-modules",
+    "slug": "es6-modules",
     "date": "2026-01-04",
     "excerpt": "ES6 Modules (ECMAScript 2015) provide a standardized way to organize and share code across JavaScript files. They enable better code organization, dependency management, and support for static analysis and tree shaking.",
     "category": "frontend"
   },
-  "34-History-API.md": {
+  "History-API.md": {
     "title": "History API in JavaScript",
-    "slug": "34-history-api",
+    "slug": "history-api",
     "date": "2026-01-04",
     "excerpt": "The History API provides access to the browser's session history, allowing you to manipulate the browser history and navigate programmatically without full page reloads. It's essential for building Single Page Applications (SPAs) and implementing client-side routing.",
     "category": "frontend"
   },
-  "35-PostMessage-API.md": {
+  "PostMessage-API.md": {
     "title": "PostMessage API in JavaScript",
-    "slug": "35-postmessage-api",
+    "slug": "postmessage-api",
     "date": "2026-01-04",
     "excerpt": "The PostMessage API allows secure cross-origin communication between windows, iframes, and web workers. It provides a safe way to exchange data between different origins without violating the same-origin policy.",
     "category": "frontend"
   },
-  "36-Prefetch-Preload-Preconnect.md": {
+  "Prefetch-Preload-Preconnect.md": {
     "title": "Prefetch, Preload, and Preconnect in JavaScript",
-    "slug": "36-prefetch-preload-preconnect",
+    "slug": "prefetch-preload-preconnect",
     "date": "2026-01-04",
     "excerpt": "Prefetch, Preload, and Preconnect are resource hints that allow browsers to optimize resource loading. They help improve page load performance by giving the browser hints about what resources will be needed and when.",
     "category": "frontend"
   },
-  "37-Tree-Shaking.md": {
+  "Tree-Shaking.md": {
     "title": "Tree Shaking in JavaScript",
-    "slug": "37-tree-shaking",
+    "slug": "tree-shaking",
     "date": "2026-01-04",
     "excerpt": "Tree shaking is a process used in modern JavaScript bundlers to eliminate dead code before adding it to the final bundle. It analyzes the dependency graph of your code, identifies unused exports, and removes them to reduce the final bundle size.",
     "category": "frontend"
   },
-  "38-How-Browser-Renders-Page.md": {
+  "How-Browser-Renders-Page.md": {
     "title": "How Browser Renders a Page",
-    "slug": "38-how-browser-renders-page",
+    "slug": "how-browser-renders-page",
     "date": "2026-01-04",
     "excerpt": "Understanding how browsers render web pages is crucial for web performance optimization. The browser follows a specific sequence of steps known as the Critical Rendering Path (CRP) to transform HTML, CSS, and JavaScript into pixels on the screen.",
     "category": "frontend"
   },
-  "39-Shadow-DOM.md": {
+  "Shadow-DOM.md": {
     "title": "Shadow DOM in JavaScript",
-    "slug": "39-shadow-dom",
+    "slug": "shadow-dom",
     "date": "2026-01-04",
     "excerpt": "Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree. This shadow DOM tree starts with a shadow root, underneath which you can attach any element, in the same way as the normal DOM. Shadow DOM provides encapsulation for styles and markup, enabling component isolation.",
     "category": "frontend"
   },
-  "41-Promise-Chaining.md": {
+  "Promise-Chaining.md": {
     "title": "Promise Chaining in JavaScript",
-    "slug": "41-promise-chaining",
+    "slug": "promise-chaining",
     "date": "2026-01-04",
     "excerpt": "Promise chaining is a powerful technique in JavaScript that allows you to execute multiple asynchronous operations sequentially, where each operation depends on the result of the previous one. This approach helps avoid the 'callback hell' problem and makes asynchronous code more readable and maintainable.",
     "category": "frontend"
   },
-  "42-Pipe-and-Compose.md": {
+  "Pipe-and-Compose.md": {
     "title": "Pipe and Compose in JavaScript",
-    "slug": "42-pipe-and-compose",
+    "slug": "pipe-and-compose",
     "date": "2026-01-04",
     "excerpt": "Pipe and Compose are functional programming utilities that allow you to combine multiple functions into a single function. They help eliminate nested function calls and create more readable, maintainable code by processing data through a series of transformations.",
     "category": "frontend"
   },
-  "43-Flatten-Object.md": {
+  "Flatten-Object.md": {
     "title": "Flatten Object in JavaScript",
-    "slug": "43-flatten-object",
+    "slug": "flatten-object",
     "date": "2026-01-04",
     "excerpt": "Flattening an object means converting a nested object structure into a single-level object where nested keys are represented as dot-notation paths. This is a common operation when working with complex data structures, API responses, or when preparing data for storage or transmission.",
     "category": "frontend"
   },
-  "44-ForEach-vs-Map.md": {
+  "ForEach-vs-Map.md": {
     "title": "ForEach vs Map in JavaScript",
-    "slug": "44-foreach-vs-map",
+    "slug": "foreach-vs-map",
     "date": "2026-01-04",
     "excerpt": "Understanding the difference between forEach() and map() is crucial for writing effective JavaScript code. While they appear similar, they serve different purposes and have distinct behaviors that affect how you can use them.",
     "category": "frontend"
   },
-  "45-Object-Property-Descriptors.md": {
+  "Object-Property-Descriptors.md": {
     "title": "Object Property Descriptors in JavaScript",
-    "slug": "45-object-property-descriptors",
+    "slug": "object-property-descriptors",
     "date": "2026-01-04",
     "excerpt": "Object Property Descriptors allow you to configure and control the behavior of object properties in JavaScript. They provide fine-grained control over how properties can be accessed, modified, and enumerated, enabling you to create more robust and secure objects.",
     "category": "frontend"
   },
-  "46-Observables-vs-Promises.md": {
+  "Observables-vs-Promises.md": {
     "title": "Observables vs Promises in JavaScript",
-    "slug": "46-observables-vs-promises",
+    "slug": "observables-vs-promises",
     "date": "2026-01-04",
     "excerpt": "Both Observables and Promises are used to handle asynchronous operations in JavaScript, but they serve different purposes and have distinct characteristics. Understanding their differences is crucial for choosing the right tool for your use case.",
     "category": "frontend"
   },
-  "47-Publisher-Subscriber-Pattern.md": {
+  "Publisher-Subscriber-Pattern.md": {
     "title": "Publisher Subscriber Pattern in JavaScript",
-    "slug": "47-publisher-subscriber-pattern",
+    "slug": "publisher-subscriber-pattern",
     "date": "2026-01-04",
     "excerpt": "The Publisher/Subscriber (PubSub) pattern is a messaging pattern where senders of messages (publishers) don't program the messages to be sent directly to specific receivers (subscribers). Instead, publishers and subscribers are decoupled through a message broker or event channel.",
     "category": "frontend"
   },
-  "48-Module-Pattern.md": {
+  "Module-Pattern.md": {
     "title": "Module Pattern in JavaScript",
-    "slug": "48-module-pattern",
+    "slug": "module-pattern",
     "date": "2026-01-04",
     "excerpt": "The Module Pattern is a design pattern in JavaScript that allows you to group related variables and functions together into a single object, providing encapsulation and a way to create private and public members. This pattern helps organize code, prevent global namespace pollution, and create more maintainable applications.",
     "category": "frontend"
   },
-  "49-Function-Chaining.md": {
+  "Function-Chaining.md": {
     "title": "Function Chaining in JavaScript",
-    "slug": "49-function-chaining",
+    "slug": "function-chaining",
     "date": "2026-01-04",
     "excerpt": "Function chaining (also known as method chaining) is a technique that allows you to call multiple methods on an object in a single statement, where each method returns the object itself (or a chainable value), enabling subsequent method calls. This pattern creates fluent, readable APIs that are common in libraries like jQuery, Lodash, and many modern JavaScript frameworks.",
     "category": "frontend"
   },
-  "50-LRU-Cache.md": {
+  "LRU-Cache.md": {
     "title": "LRU Cache in JavaScript",
-    "slug": "50-lru-cache",
+    "slug": "lru-cache",
     "date": "2026-01-04",
     "excerpt": "LRU (Least Recently Used) Cache is a caching strategy that evicts the least recently used items when the cache reaches its maximum capacity. It's one of the most common cache eviction policies and is widely used in computer systems, databases, and web applications for efficient memory management.",
+    "category": "frontend"
+  },
+  "Offline-First-App.md": {
+    "title": "Offline First App in JavaScript",
+    "slug": "offline-first-app",
+    "date": "2026-01-04",
+    "excerpt": "Offline First App is a web application that works offline. It's one of the most common cache eviction policies and is widely used in computer systems, databases, and web applications for efficient memory management.",
     "category": "frontend"
   }
 }

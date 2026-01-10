@@ -93,6 +93,7 @@ import MovieBooking from "@/Projects/Movie-Booking";
 import SortList from "@/Projects/Sort-List";
 import SearchWithVirtualisation from "@/Projects/Search-bar-with-virtualisation";
 import VirtualList from "@/Projects/VirtualList";
+import OfflineFirstApp from "@/Projects/Offline-first-app";
 
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
@@ -107,6 +108,10 @@ export const routes: {
   {
     routeName: "/search-bar-with-virtualisation",
     component: <SearchWithVirtualisation />,
+  },
+  {
+    routeName: "/offline-first-app",
+    component: <OfflineFirstApp />,
   },
   { routeName: "/movie-booking", component: <MovieBooking /> },
   { routeName: "/virtual-list", component: <VirtualList /> },
