@@ -345,7 +345,7 @@
   "Offline-First-App.md": {
     "title": "Offline First App in JavaScript",
     "slug": "offline-first-app",
-    "date": "2026-01-04",
+    "date": "2026-01-11",
     "excerpt": "Offline First App is a web application that works offline. It's one of the most common cache eviction policies and is widely used in computer systems, databases, and web applications for efficient memory management.",
     "category": "frontend"
   },
