@@ -149,6 +149,9 @@ const OfflineFirstApp = () => {
     }
   };
 
+  //supabase pass
+  // RV3bxxocMfinqakN
+
   const addLocalNotesIntoAPI = useCallback(async () => {
     if (!isOnline) return;
 

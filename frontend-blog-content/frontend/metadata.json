@@ -406,5 +406,165 @@
     "excerpt": "Virtual scrolling (also called windowing) is an optimization technique that only renders the items currently visible in the viewport, plus a small buffer zone. It solves DOM bloat issues when rendering large lists.",
     "category": "frontend",
     "tags": ["react", "performance", "virtualization", "optimization"]
+  },
+  "Abort-Controller.md": {
+    "title": "Abort Controller in JavaScript",
+    "slug": "abort-controller",
+    "date": "2026-01-24",
+    "excerpt": "The AbortController interface represents a controller object that allows you to abort one or more Web requests as and when desired. It's particularly useful for canceling fetch requests, preventing race conditions, and managing multiple API calls.",
+    "category": "frontend",
+    "tags": ["javascript", "browser-api", "async", "fetch"]
+  },
+  "Callbacks.md": {
+    "title": "Callbacks in JavaScript",
+    "slug": "callbacks",
+    "date": "2026-01-24",
+    "excerpt": "In JavaScript, a callback is a function passed into another function as an argument to be executed later. Callbacks are fundamental to JavaScript's asynchronous programming model and are used extensively in event handling, timers, and asynchronous operations.",
+    "category": "frontend",
+    "tags": ["javascript", "fundamentals", "async", "functions"]
+  },
+  "Callback-Hell.md": {
+    "title": "Callback Hell in JavaScript",
+    "slug": "callback-hell",
+    "date": "2026-01-24",
+    "excerpt": "Callback Hell (also known as 'Pyramid of Doom') occurs when multiple nested callbacks are used, making code difficult to read, maintain, and debug. This is a common problem in JavaScript when dealing with asynchronous operations using callbacks.",
+    "category": "frontend",
+    "tags": ["javascript", "async", "callbacks", "best-practices"]
+  },
+  "Arrow-vs-Normal-Function.md": {
+    "title": "Arrow Functions vs Normal Functions in JavaScript",
+    "slug": "arrow-vs-normal-function",
+    "date": "2026-01-24",
+    "excerpt": "JavaScript provides two ways to define functions: normal functions (function declarations/expressions) and arrow functions (introduced in ES6). While they may seem similar, they have important differences that affect how they work, especially regarding this, arguments, and constructor usage.",
+    "category": "frontend",
+    "tags": ["javascript", "es6", "functions", "this-keyword"]
+  },
+  "Memoization.md": {
+    "title": "Memoization in JavaScript",
+    "slug": "memoization",
+    "date": "2026-01-24",
+    "excerpt": "Memoization is an optimization technique used to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. It's a form of caching that trades memory for speed.",
+    "category": "frontend",
+    "tags": ["javascript", "performance", "optimization", "caching"]
+  },
+  "Circuit-Breaker.md": {
+    "title": "Circuit Breaker Pattern in JavaScript",
+    "slug": "circuit-breaker",
+    "date": "2026-01-24",
+    "excerpt": "The Circuit Breaker pattern is a design pattern used to prevent cascading failures in distributed systems. It acts as a safety mechanism that stops requests to a failing service, allowing it to recover, and prevents the failure from spreading to other parts of the system.",
+    "category": "frontend",
+    "tags": ["javascript", "design-patterns", "error-handling", "resilience"]
+  },
+  "Event-Delegation.md": {
+    "title": "Event Delegation in JavaScript",
+    "slug": "event-delegation",
+    "date": "2026-01-24",
+    "excerpt": "Event Delegation is a technique in JavaScript where instead of adding event listeners to individual child elements, you add a single event listener to a parent element. This listener then handles events that bubble up from child elements.",
+    "category": "frontend",
+    "tags": ["javascript", "dom", "events", "performance"]
+  },
+  "Fetch-with-Timeout.md": {
+    "title": "Fetch with Timeout in JavaScript",
+    "slug": "fetch-with-timeout",
+    "date": "2026-01-24",
+    "excerpt": "Fetch with timeout is a technique to abort HTTP requests that take longer than a specified duration. This prevents hanging requests and provides better user experience by failing fast when network conditions are poor.",
+    "category": "frontend",
+    "tags": ["javascript", "fetch", "async", "error-handling"]
+  },
+  "Recursive-Functions.md": {
+    "title": "Recursive Functions in JavaScript",
+    "slug": "recursive-functions",
+    "date": "2026-01-24",
+    "excerpt": "A recursive function is a function that calls itself during its execution. Recursion is a powerful programming technique that allows you to solve complex problems by breaking them down into smaller, similar subproblems.",
+    "category": "frontend",
+    "tags": ["javascript", "algorithms", "functions", "programming"]
+  },
+  "Two-Way-Binding.md": {
+    "title": "Two-Way Binding in JavaScript",
+    "slug": "two-way-binding",
+    "date": "2026-01-24",
+    "excerpt": "Two-way binding is a pattern where data flows in both directions: from the model to the view (data binding) and from the view to the model (event binding). When the model changes, the view updates automatically, and when the view changes (user input), the model updates automatically.",
+    "category": "frontend",
+    "tags": ["javascript", "data-binding", "dom", "patterns"]
+  },
+  "Map-Async-Limit.md": {
+    "title": "Map Async with Limit in JavaScript",
+    "slug": "map-async-limit",
+    "date": "2026-01-24",
+    "excerpt": "Map Async with Limit is a technique to process an array of items asynchronously while limiting the number of concurrent operations. This is crucial for preventing overwhelming APIs, managing resource usage, and controlling the rate of asynchronous operations.",
+    "category": "frontend",
+    "tags": ["javascript", "async", "performance", "concurrency"]
+  },
+  "Promise-with-Limit.md": {
+    "title": "Promise with Time Limit in JavaScript",
+    "slug": "promise-with-limit",
+    "date": "2026-01-24",
+    "excerpt": "Promise with Time Limit is a technique to add timeout functionality to promises, ensuring they complete within a specified duration. If a promise takes longer than the time limit, it will be rejected with a timeout error.",
+    "category": "frontend",
+    "tags": ["javascript", "promises", "async", "timeout"]
+  },
+  "Throttle-Promises.md": {
+    "title": "Throttle Promises in JavaScript",
+    "slug": "throttle-promises",
+    "date": "2026-01-24",
+    "excerpt": "Throttling promises is a technique to limit the number of concurrent promise executions. This is essential for managing API rate limits, preventing resource exhaustion, and controlling the flow of asynchronous operations.",
+    "category": "frontend",
+    "tags": ["javascript", "promises", "async", "rate-limiting"]
+  },
+  "Fetch-Interceptor.md": {
+    "title": "Fetch Request and Response Interceptor in JavaScript",
+    "slug": "fetch-interceptor",
+    "date": "2026-01-24",
+    "excerpt": "Fetch interceptors allow you to intercept and modify HTTP requests and responses globally. This is useful for adding authentication tokens, logging, error handling, request/response transformation, and implementing cross-cutting concerns like retry logic or caching.",
+    "category": "frontend",
+    "tags": ["javascript", "fetch", "interceptors", "http"]
+  },
+  "Flatten-Array-Nth-Level.md": {
+    "title": "Flatten Array to Nth Level in JavaScript",
+    "slug": "flatten-array-nth-level",
+    "date": "2026-01-24",
+    "excerpt": "Flattening an array means converting a nested array structure into a single-level array. When you need to flatten to a specific depth (Nth level), you control how many levels deep the flattening should go.",
+    "category": "frontend",
+    "tags": ["javascript", "arrays", "data-structures", "utilities"]
+  },
+  "Retry-with-Limit.md": {
+    "title": "Retry Function with Limit in JavaScript",
+    "slug": "retry-with-limit",
+    "date": "2026-01-24",
+    "excerpt": "Retry with limit is a pattern that attempts to execute a function multiple times (up to a specified limit) if it fails. This is essential for handling transient failures, network issues, and unreliable operations.",
+    "category": "frontend",
+    "tags": ["javascript", "error-handling", "async", "resilience"]
+  },
+  "Custom-Cookie.md": {
+    "title": "Custom Cookie Implementation in JavaScript",
+    "slug": "custom-cookie",
+    "date": "2026-01-24",
+    "excerpt": "Creating a custom cookie implementation allows you to have more control over cookie management, including expiration handling, parsing, and storage. This is useful for understanding how cookies work internally and for creating cookie-like storage mechanisms.",
+    "category": "frontend",
+    "tags": ["javascript", "browser-api", "storage", "cookies"]
+  },
+  "Sort-Array-Objects.md": {
+    "title": "Sort Array of Objects in JavaScript",
+    "slug": "sort-array-objects",
+    "date": "2026-01-24",
+    "excerpt": "Sorting arrays of objects is a common task in JavaScript. You can sort objects by one or multiple properties, in ascending or descending order, and handle various data types. The Array.sort() method with custom comparison functions is the primary tool for this.",
+    "category": "frontend",
+    "tags": ["javascript", "arrays", "sorting", "data-structures"]
+  },
+  "Negative-Array-Indexes.md": {
+    "title": "Negative Array Indexes using Proxy in JavaScript",
+    "slug": "negative-array-indexes",
+    "date": "2026-01-24",
+    "excerpt": "JavaScript arrays don't natively support negative indexing (like Python), but you can implement this feature using Proxy. Negative indexes allow you to access array elements from the end, where -1 refers to the last element, -2 to the second-to-last, and so on.",
+    "category": "frontend",
+    "tags": ["javascript", "proxy", "arrays", "metaprogramming"]
+  },
+  "Cache-with-Time-Limit.md": {
+    "title": "Cache with Time Limit in JavaScript",
+    "slug": "cache-with-time-limit",
+    "date": "2026-01-24",
+    "excerpt": "A time-limited cache is a caching mechanism where stored values automatically expire after a specified duration. This is useful for storing temporary data, API responses, computed values, and any data that has a limited validity period.",
+    "category": "frontend",
+    "tags": ["javascript", "caching", "data-structures", "performance"]
   }
 }
