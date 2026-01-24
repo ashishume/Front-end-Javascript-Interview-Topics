@@ -566,5 +566,61 @@
     "excerpt": "A time-limited cache is a caching mechanism where stored values automatically expire after a specified duration. This is useful for storing temporary data, API responses, computed values, and any data that has a limited validity period.",
     "category": "frontend",
     "tags": ["javascript", "caching", "data-structures", "performance"]
+  },
+  "Execute-Tasks-Series-Parallel-Race.md": {
+    "title": "Execute N Tasks in Series, Parallel, and Race in JavaScript",
+    "slug": "execute-tasks-series-parallel-race",
+    "date": "2026-01-24",
+    "excerpt": "When working with asynchronous tasks in JavaScript, you often need to execute them in different patterns: sequentially (series), concurrently (parallel), or as a race (first to complete). Each pattern serves different use cases and has different performance characteristics.",
+    "category": "frontend",
+    "tags": ["javascript", "async", "promises", "concurrency"]
+  },
+  "Function-Call-Limit.md": {
+    "title": "Function Call Limit (Rate Limiting) in JavaScript",
+    "slug": "function-call-limit",
+    "date": "2026-01-24",
+    "excerpt": "Function call limiting (rate limiting) is a technique to restrict how many times a function can be called within a specified time period. This is essential for preventing abuse, managing API rate limits, controlling resource usage, and protecting against excessive function invocations.",
+    "category": "frontend",
+    "tags": ["javascript", "rate-limiting", "performance", "security"]
+  },
+  "Function-Call-Only-Twice.md": {
+    "title": "Function Call Only Twice in JavaScript",
+    "slug": "function-call-only-twice",
+    "date": "2026-01-24",
+    "excerpt": "The 'function call only twice' pattern stores two instances of function invocation results and alternates between returning the first result on odd calls and the second result on even calls. This is useful for caching pairs of results, implementing toggle behavior, or creating stateful functions.",
+    "category": "frontend",
+    "tags": ["javascript", "functions", "caching", "patterns"]
+  },
+  "Array-GroupBy.md": {
+    "title": "Array GroupBy Polyfill in JavaScript",
+    "slug": "array-groupby",
+    "date": "2026-01-24",
+    "excerpt": "The groupBy method groups array elements based on a provided function. It returns an object where keys are the results of the grouping function and values are arrays of elements that produced that key. This is similar to SQL's GROUP BY clause and is useful for organizing and categorizing data.",
+    "category": "frontend",
+    "tags": ["javascript", "arrays", "data-structures", "polyfills"]
+  },
+  "Invert-Object-Key-Value.md": {
+    "title": "Invert Object Key-Value in JavaScript",
+    "slug": "invert-object-key-value",
+    "date": "2026-01-24",
+    "excerpt": "Inverting an object means swapping keys and values, where the original values become keys and the original keys become values. This is useful for creating lookup tables, reversing mappings, and transforming data structures. Special consideration must be given to handling duplicate values.",
+    "category": "frontend",
+    "tags": ["javascript", "objects", "data-structures", "utilities"]
+  },
+  "Debounce-with-Cancel.md": {
+    "title": "Debounce with Cancel in JavaScript",
+    "slug": "debounce-with-cancel",
+    "date": "2026-01-24",
+    "excerpt": "Debounce with cancel is an enhanced version of the debounce pattern that allows you to cancel pending function executions. This is useful when you need to abort debounced operations, clean up pending operations, or reset the debounce timer programmatically.",
+    "category": "frontend",
+    "tags": ["javascript", "debounce", "performance", "functions"]
+  },
+  "Caching-API-Calls.md": {
+    "title": "Caching API Calls in JavaScript",
+    "slug": "caching-api-calls",
+    "date": "2026-01-24",
+    "excerpt": "Caching API calls is a technique to store API responses temporarily to avoid redundant network requests. This improves performance, reduces server load, and provides better user experience by serving cached data when available and valid.",
+    "category": "frontend",
+    "tags": ["javascript", "api", "caching", "performance"]
   }
 }
