@@ -25,6 +25,20 @@ $card-width: 230px;
       background-color: #10120480;
       padding: 10px;
       min-width: $card-width;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &.drag-over {
+        background-color: rgba(76, 0, 143, 0.3);
+        border-color: rgba(76, 0, 143, 0.8);
+        transform: scale(1.02);
+        box-shadow: 0 4px 20px rgba(76, 0, 143, 0.4);
+      }
+
+      &.drag-source {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
       .add-task-btn {
         margin-top: 5px;
         margin-right: 5px;
@@ -44,8 +58,17 @@ $card-width: 230px;
         font-weight: 500;
         color: #ffffffd1;
         cursor: pointer;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+
+        &:hover {
+          background-color: #2a2f33;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
         &:active {
-          transform: scale(1.07);
+          transform: scale(1.05);
         }
       }
       .hide {
@@ -64,8 +87,28 @@ $card-width: 230px;
     .dummy-task {
       width: $card-width;
       border-radius: 10px;
-      background-color: rgb(114, 114, 114);
-      pointer-events: none; //important for removing drag glitchy effects
+      background: linear-gradient(
+        135deg,
+        rgba(76, 0, 143, 0.3),
+        rgba(76, 0, 143, 0.1)
+      );
+      border: 2px dashed rgba(76, 0, 143, 0.6);
+      pointer-events: none;
+      margin: 10px 0;
+      animation: pulse 1.5s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(76, 0, 143, 0.3);
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+      }
     }
   }
 }

@@ -14,7 +14,6 @@ import SwitchComponent from "@/Projects/SwitchComponent";
 import Walkthrough from "@/Projects/WalkThrough";
 import Search from "@/Projects/SearchWithDebounce";
 import ImageModalParent from "@/Projects/Image-Modal";
-import ProgressBar from "@/Projects/ProgressBar-with-Queue";
 import MultiStepper from "@/Projects/Multi-Stepper/multi-stepper";
 import NestedCheckboxes from "@/Projects/Nested-Checkboxes";
 import NestedCheckbox from "@/Projects/Checkbox-Nested";
@@ -64,8 +63,7 @@ import EcommerceRoutes from "@/Projects/e-commerce/ecommerce-routes";
 import TrelloBoard from "@/Projects/Trello-Board";
 import UseDeferredValueHook from "@/Projects/HOOKS/useDeferredValue-hook";
 import ReactPortal from "@/Projects/React-Portals";
-import SimpleProgressBarComp from "@/Projects/Progress-bar-with-css-(no queue)";
-import ProgressBarWithQueue from "@/Projects/Progress-bar-with-queue-new-with-css";
+import SimpleProgressBarComp from "@/Projects/Progress-bar-with-css-js"; // latest
 import TransferList from "@/Projects/Transfer-List";
 import Accordion from "@/Projects/Accordion";
 import TrafficLights from "@/Projects/Traffic-Lights";
@@ -84,13 +82,19 @@ import CanvasDrawing from "@/Projects/Canvas-Drawing";
 import ProductListing from "@/Projects/Product-Listing-Page";
 import MatchCountryCapitals from "@/Projects/Match-Country-Capitals-Game";
 import SnackbarHome from "@/Projects/Snackbar";
-import ExpenseGenerator from "@/Projects/ExpenseGenerator(incomplete)";
 import StarRatingAdvanced from "@/Projects/Star-Rating-Content-stack-interview";
 import UnControlledComp from "@/Projects/UncontrolledVsControlled";
 import ZustandDemo from "../Projects/Zustand-demo";
 import ReactQueryLibrary from "@/Projects/React-Query-Third-party-library";
 import FindDomElementViaClick from "@/Projects/Find-DOM-Element-Via-Click";
 import ExpenseSplitter from "@/Projects/ExpenseSplitter";
+import GoogleDriveFileSystem from "@/Projects/GoogleDriveFileSystem/practice";
+import MovieBooking from "@/Projects/Movie-Booking";
+import SortList from "@/Projects/Sort-List";
+import SearchWithVirtualisation from "@/Projects/Search-bar-with-virtualisation";
+import VirtualList from "@/Projects/VirtualList";
+import OfflineFirstApp from "@/Projects/Offline-first-app";
+
 // import ParentForm from "@/Projects/React-hook-form/ParentForm";
 export const routes: {
   routeName: string;
@@ -101,7 +105,16 @@ export const routes: {
     routeName: "/find-dom-el-via-click",
     component: <FindDomElementViaClick />,
   },
-  { routeName: "/expense-generator", component: <ExpenseGenerator /> },
+  {
+    routeName: "/search-bar-with-virtualisation",
+    component: <SearchWithVirtualisation />,
+  },
+  {
+    routeName: "/offline-first-app",
+    component: <OfflineFirstApp />,
+  },
+  { routeName: "/movie-booking", component: <MovieBooking /> },
+  { routeName: "/virtual-list", component: <VirtualList /> },
   { routeName: "/react-query", component: <ReactQueryLibrary /> },
   { routeName: "/expense-splitter", component: <ExpenseSplitter /> },
   { routeName: "/controlled-uncontrolled", component: <UnControlledComp /> },
@@ -110,6 +123,7 @@ export const routes: {
   { routeName: "/product-listing", component: <ProductListing /> },
   { routeName: "/canvas-drawing", component: <CanvasDrawing /> },
   { routeName: "/like-button", component: <LikeButton /> },
+  { routeName: "/google-drive", component: <GoogleDriveFileSystem /> },
   { routeName: "/polling-booth", component: <PollManager /> },
   { routeName: "/memory-game", component: <MemoryGame /> },
   { routeName: "/breadcrumbs", component: <BreadcrumbsComponent /> },
@@ -132,6 +146,7 @@ export const routes: {
   { routeName: "/tabs", component: <Tabs /> },
   { routeName: "/accordion", component: <Accordion /> },
   { routeName: "/zustand-demo", component: <ZustandDemo /> },
+  { routeName: "/sort-list", component: <SortList /> },
   {
     routeName: "/dark-mode/*",
     component: (
@@ -154,12 +169,7 @@ export const routes: {
   { routeName: "/auto-complete", component: <AutoComplete /> },
   { routeName: "/comments-section", component: <CommentsSection /> },
   { routeName: "/image-modal", component: <ImageModalParent /> },
-  {
-    routeName: "/progress-bar-with-queue-new",
-    component: <ProgressBarWithQueue />,
-  },
-  { routeName: "/progress-bar-simple", component: <SimpleProgressBarComp /> },
-  { routeName: "/progress-bar-dynamic", component: <ProgressBar /> },
+  { routeName: "/progress-bar-js-css", component: <SimpleProgressBarComp /> },
   { routeName: "/stepper", component: <MultiStepper /> },
   { routeName: "/nested-checkboxes", component: <NestedCheckboxes /> },
   { routeName: "/nested-checkbox", component: <NestedCheckbox /> },

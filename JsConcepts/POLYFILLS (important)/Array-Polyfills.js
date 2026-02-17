@@ -118,15 +118,37 @@ Array.prototype.customFilter = function (callback, context) {
 /** polyfill for reduce
  * @param context is optional
  */
-Array.prototype.customReduce = function (callback, initialValue) {
-  let accumulator = initialValue || undefined || Object(this)[0];
-  for (let i = initialValue !== undefined ? 0 : 1; i < this.length; i++) {
-    if (accumulator !== undefined) {
-      accumulator = callback.call(undefined, accumulator, this[i], i, this);
-    } else {
-      accumulator = this[i];
+// Polyfill for Array.prototype.reduce
+Array.prototype.myReduce = function (callback, initialValue) {
+  // Check if callback is a function
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+
+  const array = this; // 'this' refers to the array
+  let accumulator;
+  let startIndex;
+
+  // Case 1: initialValue is provided
+  if (arguments.length > 1) {
+    accumulator = initialValue;
+    startIndex = 0;
+  } else {
+    // Case 2: no initialValue provided
+    if (array.length === 0) {
+      throw new TypeError("Reduce of empty array with no initial value");
+    }
+    accumulator = array[0];
+    startIndex = 1;
+  }
+
+  // Loop through the array
+  for (let i = startIndex; i < array.length; i++) {
+    if (i in array) {
+      accumulator = callback(accumulator, array[i], i, array);
     }
   }
+
   return accumulator;
 };
 

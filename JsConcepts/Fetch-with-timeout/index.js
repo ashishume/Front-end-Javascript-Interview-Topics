@@ -1,5 +1,5 @@
 /**
- * fetch with timeout,=> if api doesnt respond within the given duration then 
+ * fetch with timeout,=> if api doesnt respond within the given duration then
  * fetching will get aborted with error
  * @param {*} url
  * @param {*} duration
@@ -8,34 +8,30 @@
 
 const fetchWithTimeout = (url, duration) => {
   return new Promise((resolve, reject) => {
-    const constroller = new AbortController();
-    const { signal } = constroller;
+    const controller = new AbortController();
+    const { signal } = controller;
     let timerId = null;
 
-    fetch(url, { signal })
-      .then((resp) => {
-        resp
-          .json()
-          .then((e) => {
-            clearTimeout(timerId);
-            resolve(e);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      })
-      .catch((err) => {
-        reject(err);
-      });
+    fetch(url, { signal }).then((resp) => {
+      resp
+        .json()
+        .then((e) => {
+          clearTimeout(timerId);
+          resolve(e);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
 
     timerId = setTimeout(() => {
-      console.log("Aborted");
-      constroller.abort();
+      console.log("aborted");
+      controller.abort();
     }, duration);
   });
 };
 
-fetchWithTimeout("https://jsonplaceholder.typicode.com/todos/1", 100)
+fetchWithTimeout("https://jsonplaceholder.typicode.com/todos/1", 200)
   .then((resp) => {
     console.log(resp);
   })

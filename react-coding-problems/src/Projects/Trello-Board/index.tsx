@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useCallback } from "react";
 import "./style.scss";
 import { tasksData } from "./mock-data/data";
 import TaskCard from "./components/TaskCard";
@@ -29,6 +29,8 @@ const TrelloBoard = () => {
   const [inputActive, setInputActive] = useState(null as number | null);
   const [taskValue, setTaskValue] = useState("");
   const [boardValue, setBoardValue] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOverBoardId, setDragOverBoardId] = useState<number | null>(null);
 
   useEffect(() => {
     /** if any data available in localstorage then fetch */
@@ -47,76 +49,101 @@ const TrelloBoard = () => {
    * @param item dragged item
    * @param fromBoardId source board id
    */
-  function handleDragStart(e: any, item: ITask, fromBoardId: number) {
-    setIsPointerEventsDisabled(true);
-    /** store the dragged item */
-    setDraggedItem({
-      item,
-      fromBoardId,
-      toBoardId: null,
-    });
-    setItemHeight(e.target.getBoundingClientRect()?.height);
-  }
+  const handleDragStart = useCallback(
+    (e: any, item: ITask, fromBoardId: number) => {
+      setIsPointerEventsDisabled(true);
+      setIsDragging(true);
+      /** store the dragged item */
+      setDraggedItem({
+        item,
+        fromBoardId,
+        toBoardId: null,
+      });
+      setItemHeight(e.target.getBoundingClientRect()?.height);
+    },
+    []
+  );
 
   /**
    * handle drag movement
    * @param e drag event
    */
-  function handleDragOver(e: any) {
-    e.preventDefault();
-    const el = e.target;
-    /** while dragging set the target container */
-    setDraggedItem((prev) => ({ ...prev, toBoardId: parseInt(el.id) }));
-  }
+  const handleDragOver = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      const el = e.target;
+      const boardId = parseInt(el.id);
+
+      // Only update if the board ID has changed to prevent unnecessary re-renders
+      if (!isNaN(boardId) && boardId !== dragOverBoardId) {
+        setDragOverBoardId(boardId);
+        setDraggedItem((prev) => ({ ...prev, toBoardId: boardId }));
+      }
+    },
+    [dragOverBoardId]
+  );
 
   /**
    * on drop of the dragged element
    * @param event drag event
    * @returns
    */
-  async function handleDrop(event: any) {
-    setIsPointerEventsDisabled(false);
+  const handleDrop = useCallback(
+    async (event: any) => {
+      setIsPointerEventsDisabled(false);
+      setIsDragging(false);
+      setDragOverBoardId(null);
 
-    event.preventDefault();
-    const targetBoardId = parseInt(event.target.id);
-    /** if the element is dropped in same board id or there is no target id then cancel the event */
-    if (targetBoardId === draggedItem.fromBoardId || isNaN(targetBoardId)) {
-      setDraggedItem({
-        item: null,
-        fromBoardId: null,
-        toBoardId: null,
+      event.preventDefault();
+      const targetBoardId = parseInt(event.target.id);
+      /** if the element is dropped in same board id or there is no target id then cancel the event */
+      if (targetBoardId === draggedItem.fromBoardId || isNaN(targetBoardId)) {
+        setDraggedItem(dragInitialValue);
+        return false;
+      }
+
+      const updatedTasks: ITasks[] = tasks.map((taskList) => {
+        // If the current task list is the source board, remove the dragged item
+        if (taskList.boardId === draggedItem.fromBoardId) {
+          return {
+            ...taskList,
+            tasks: taskList.tasks.filter(
+              (task) => task.id !== draggedItem.item?.id
+            ),
+          };
+        }
+        // If the current task list is the target board, add the dragged item
+        if (taskList.boardId === targetBoardId && draggedItem.item) {
+          return {
+            ...taskList,
+            tasks: [...taskList.tasks, draggedItem.item],
+          };
+        }
+        return taskList; // Return unchanged task list if not source or target board
       });
-      return false;
+
+      // Update state with the modified task list
+      setTasks(updatedTasks);
+
+      /** update the latest data to localstorage */
+      updateLocalStorage(updatedTasks);
+      // Reset dragged item state
+      setDraggedItem(dragInitialValue);
+    },
+    [draggedItem, tasks]
+  );
+
+  /**
+   * handle drag leave to reset board highlighting
+   * @param e drag event
+   */
+  const handleDragLeave = useCallback((e: any) => {
+    // Only reset if we're leaving the board container entirely
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setDragOverBoardId(null);
+      setDraggedItem((prev) => ({ ...prev, toBoardId: null }));
     }
-
-    const updatedTasks: ITasks[] = tasks.map((taskList) => {
-      // If the current task list is the source board, remove the dragged item
-      if (taskList.boardId === draggedItem.fromBoardId) {
-        return {
-          ...taskList,
-          tasks: taskList.tasks.filter(
-            (task) => task.id !== draggedItem.item?.id
-          ),
-        };
-      }
-      // If the current task list is the target board, add the dragged item
-      if (taskList.boardId === targetBoardId && draggedItem.item) {
-        return {
-          ...taskList,
-          tasks: [...taskList.tasks, draggedItem.item],
-        };
-      }
-      return taskList; // Return unchanged task list if not source or target board
-    });
-
-    // Update state with the modified task list
-    await setTasks(updatedTasks);
-
-    /** update the latest data to localstorage */
-    await updateLocalStorage(updatedTasks);
-    // Reset dragged item state
-    await setDraggedItem(dragInitialValue);
-  }
+  }, []);
 
   /** create new board */
   async function addNewBoard() {
@@ -140,11 +167,11 @@ const TrelloBoard = () => {
   }
 
   /** update localstorage with new data */
-  function updateLocalStorage(updatedTasks: ITasks[]) {
+  const updateLocalStorage = useCallback((updatedTasks: ITasks[]) => {
     /** update the latest data to localstorage */
     const stringified = JSON.stringify(updatedTasks);
     localStorage.setItem("tasks", stringified);
-  }
+  }, []);
 
   /**
    * add new card in the board
@@ -190,16 +217,16 @@ const TrelloBoard = () => {
   }
 
   /** generate random id  */
-  function generateUniqueId(): number {
+  const generateUniqueId = useCallback((): number => {
     return Math.floor(Math.random() * 1000000000) + 1;
-  }
+  }, []);
 
   /** open edit task input field */
-  function handleEdit(cardData: ITask, boardId: number) {
+  const handleEdit = useCallback((cardData: ITask, boardId: number) => {
     setEditCardId(cardData.id);
     setInputActive(boardId);
     setTaskValue(cardData.title);
-  }
+  }, []);
 
   /**
    * edit task value field and submit
@@ -230,90 +257,121 @@ const TrelloBoard = () => {
       await updateLocalStorage(updatedTasks);
     }
   }
+  // Memoize the board rendering to prevent unnecessary re-renders
+  const renderBoard = useCallback(
+    ({ boardId, boardName, tasks: boardTasks }: ITasks) => {
+      return (
+        <div
+          className={`task-board ${
+            isDragging && dragOverBoardId === boardId ? "drag-over" : ""
+          } ${
+            isDragging && draggedItem.fromBoardId === boardId
+              ? "drag-source"
+              : ""
+          }`}
+          key={boardId}
+          id={`${boardId}`}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+        >
+          <div className="flex justify-between">
+            <div className="font-bold text-white">{boardName}</div>
+            <div className="">
+              <DeleteIcon
+                sx={{ color: grey[500] }}
+                onClick={() => removeBoardHandler(boardId)}
+              />
+            </div>
+          </div>
+          {boardTasks.map((value: ITask) => {
+            return (
+              <Fragment key={value.id}>
+                {/* show this actions button when task card is double clicked (on edit) */}
+                {editCardId !== null && editCardId === value.id ? (
+                  <ButtonActions
+                    editTaskHandler={editTaskHandler}
+                    isPointerEventsDisabled={isPointerEventsDisabled}
+                    inputActive={inputActive}
+                    boardId={boardId}
+                    editCardId={editCardId}
+                    updateTaskValue={(e) => setTaskValue(e.target.value)}
+                    taskValue={taskValue}
+                    addNewTask={addNewTask}
+                    resetAddTask={resetAddTask}
+                    addNewCard={addNewCard}
+                  />
+                ) : (
+                  // show default task cards
+                  <TaskCard
+                    handleDoubleClick={() => handleEdit(value, boardId)}
+                    key={value.id}
+                    value={value}
+                    onDragStart={(e) => handleDragStart(e, value, boardId)}
+                    className={`${
+                      draggedItem?.item?.id === value.id ? "hide" : ""
+                    }`}
+                  />
+                )}
+              </Fragment>
+            );
+          })}
+
+          {/* this is a dummy mask card highlight shows up while dragging is active */}
+          {isDragging && dragOverBoardId === boardId && itemHeight > 0 && (
+            <div
+              className="dummy-task"
+              style={{
+                height: itemHeight,
+              }}
+            ></div>
+          )}
+
+          {/* open this input field only for add task not for edit task */}
+          {editCardId === null ? (
+            <ButtonActions
+              isPointerEventsDisabled={isPointerEventsDisabled}
+              inputActive={inputActive}
+              boardId={boardId}
+              editCardId={editCardId}
+              updateTaskValue={(e) => setTaskValue(e.target.value)}
+              taskValue={taskValue}
+              editTaskHandler={() => {}}
+              addNewTask={addNewTask}
+              resetAddTask={resetAddTask}
+              addNewCard={addNewCard}
+            />
+          ) : null}
+        </div>
+      );
+    },
+    [
+      isDragging,
+      dragOverBoardId,
+      draggedItem,
+      editCardId,
+      isPointerEventsDisabled,
+      inputActive,
+      taskValue,
+      itemHeight,
+      handleDrop,
+      handleDragOver,
+      handleDragLeave,
+      handleEdit,
+      handleDragStart,
+      editTaskHandler,
+      addNewTask,
+      resetAddTask,
+      addNewCard,
+      removeBoardHandler,
+    ]
+  );
+
   return (
     <div className="trello-board-container">
       <h1 className="text-xl text-white">Axpo board</h1>
       <div className="content font-mono">
-        {tasks.map(({ boardId, boardName, tasks }) => {
-          return (
-            <div
-              className="task-board"
-              key={boardId}
-              id={`${boardId}`}
-              onDrop={handleDrop}
-              onDragOver={handleDragOver}
-            >
-              <div className="flex justify-between">
-                <div className="font-bold text-white">{boardName}</div>
-                <div className="">
-                  <DeleteIcon
-                    sx={{ color: grey[500] }}
-                    onClick={() => removeBoardHandler(boardId)}
-                  />
-                </div>
-              </div>
-              {tasks.map((value: ITask) => {
-                return (
-                  <Fragment key={value.id}>
-                    {/* show this actions button when task card is double clicked (on edit) */}
-                    {editCardId !== null && editCardId === value.id ? (
-                      <ButtonActions
-                        editTaskHandler={editTaskHandler}
-                        isPointerEventsDisabled={isPointerEventsDisabled}
-                        inputActive={inputActive}
-                        boardId={boardId}
-                        editCardId={editCardId}
-                        updateTaskValue={(e) => setTaskValue(e.target.value)}
-                        taskValue={taskValue}
-                        addNewTask={addNewTask}
-                        resetAddTask={resetAddTask}
-                        addNewCard={addNewCard}
-                      />
-                    ) : (
-                      // show default task cards
-                      <TaskCard
-                        handleDoubleClick={() => handleEdit(value, boardId)}
-                        key={value.id}
-                        value={value}
-                        onDragStart={(e) => handleDragStart(e, value, boardId)}
-                        className={`${
-                          draggedItem?.item?.id === value.id ? "hide" : ""
-                        }`}
-                      />
-                    )}
-                  </Fragment>
-                );
-              })}
-
-              {/* this is a dummy mask card highlight shows up while dragging is active */}
-              {draggedItem.toBoardId === boardId && itemHeight !== 0 ? (
-                <div
-                  className={`${itemHeight !== 0 ? "dummy-task" : ""}`}
-                  style={{
-                    height: itemHeight,
-                    display: itemHeight !== 0 ? "inline-block" : "none",
-                  }}
-                ></div>
-              ) : null}
-
-              {/* open this input field only for add task not for edit task */}
-              {editCardId === null ? (
-                <ButtonActions
-                  isPointerEventsDisabled={isPointerEventsDisabled}
-                  inputActive={inputActive}
-                  boardId={boardId}
-                  editCardId={editCardId}
-                  updateTaskValue={(e) => setTaskValue(e.target.value)}
-                  taskValue={taskValue}
-                  editTaskHandler={() => {}}
-                  addNewTask={addNewTask}
-                  resetAddTask={resetAddTask}
-                  addNewCard={addNewCard}
-                />
-              ) : null}
-            </div>
-          );
-        })}
+        {tasks.map(renderBoard)}
 
         {/* add board cards  */}
         <BoardActions

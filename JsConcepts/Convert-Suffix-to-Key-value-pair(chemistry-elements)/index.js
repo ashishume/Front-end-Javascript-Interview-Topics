@@ -1,7 +1,7 @@
 /**
- * Convert chemisty elements into json objects 
+ * Convert chemisty elements into json objects
  * Basically chemistry elements suffix into key value pair
- * @param {*} formula 
+ * @param {*} formula
  * @returns {json object}
  */
 function convertToJSON(formula) {
@@ -34,3 +34,8 @@ console.log(convertToJSON("H2O"));
 console.log(convertToJSON("C6H12"));
 console.log(convertToJSON("COOH"));
 console.log(convertToJSON("CH3COOH"));
+
+//output: {H: 2, O: 1}
+//output: {C: 6, H: 12}
+//output: {C: 1, O: 2, H: 1}
+//output: {C: 2, H: 4, O: 2}

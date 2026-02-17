@@ -26,7 +26,7 @@ const source = {
 function outputMethod(source) {
   let result = {};
   function flattenObject(source) {
-    for (key in source) {
+    for (const key in source) {
       if (key === "d" || key === "name" || key === "city" || key === "k") {
         result[key] = source[key];
       } else if (typeof source[key] === "object") {
