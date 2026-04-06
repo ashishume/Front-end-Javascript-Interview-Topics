@@ -2,5 +2,8 @@
   "liveServer.settings.port": 5501,
   "editor.codeActionsOnSave": {
     "source.removeUnusedImports": "explicit"
-  }
+  },
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "python.defaultInterpreterPath": "./python-backend/.venv/bin/python"
 }
