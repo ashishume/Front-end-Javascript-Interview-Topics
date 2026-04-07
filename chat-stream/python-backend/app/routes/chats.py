@@ -22,46 +22,41 @@ async def stream_openrouter(messages):
         "X-Title": "My Chat App",
     }
 
-    payload = { "model": "openai/gpt-4o-mini", "messages": messages, "stream": True}
+    payload = {"model": "openai/gpt-4o-mini", "messages": messages, "stream": True}
 
-    
     async with httpx.AsyncClient(timeout=None) as client:
-        async with client.stream("POST", OPENROUTER_API_URL, headers=headers, json=payload) as response:
+        async with client.stream(
+            "POST", OPENROUTER_API_URL, headers=headers, json=payload
+        ) as response:
             async for line in response.aiter_lines():
                 if line.startswith("data: "):
                     data = line.replace("data: ", "").strip()
                     if data == "[DONE]":
                         break
                     yield data
-            
 
-@router.get('/stream')
+
+@router.post("/stream")
 async def chat_stream(request: Request):
     body = await request.json()
     messages = body.get("messages", [])
-    
 
     async def event_generator():
         try:
 
             async for chunk in stream_openrouter(messages):
-              if chunk:
-                try:
-                    json_data= json.loads(chunk)  
-                    if json_data.get('choices'):
-                        delta= json_data['choices'][0].get('delta', {})
-                        if "content" in delta:
-                            yield {
-                                "event": "message",
-                                "data": delta["content"]
-                            }
-                except json.JSONDecodeError:
-                    continue  
+                if chunk:
+                    try:
+                        json_data = json.loads(chunk)
+                        if json_data.get("choices"):
+                            delta = json_data["choices"][0].get("delta", {})
+                            if "content" in delta:
+                                yield {"event": "message", "data": delta["content"]}
+                    except json.JSONDecodeError:
+                        continue
         except Exception as exc:
-            yield {
-                "event": "error",
-                "data": str(exc)
-            }      
+            yield {"event": "error", "data": str(exc)}
+
     return EventSourceResponse(event_generator())
 
 

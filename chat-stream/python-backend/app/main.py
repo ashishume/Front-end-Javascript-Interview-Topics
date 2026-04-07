@@ -2,10 +2,12 @@ import logging
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from app.db import close_pool, create_pool
 from app.routes import chats
 
 logger = logging.getLogger(__name__)
+
 
 
 @asynccontextmanager
@@ -31,6 +33,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Python Postgres API", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")
