@@ -1,31 +1,32 @@
 /** circuit breaker method */
+const circuitBreaker = (fn, maxFailures, resetTimeout) => {
+  let failures = 0;
+  let nextTry = 0; // timestamp when we can retry
 
-const circuitBreaker = (fn, maxAttempts, thresholdTimeLimit) => {
-  let failedAttempts = 0;
-  let isClosed = false;
-  let lastTimeFailure = 0;
-  return function (...args) {
-    if (isClosed) {
-      const diff = Date.now() - lastTimeFailure;
-      if (diff > thresholdTimeLimit) {
-        isClosed = false;
-      } else {
-        console.error("Service unavailable");
-        return;
-      }
+  return (...args) => {
+    const now = Date.now();
+
+    // 🚫 Circuit is OPEN
+    if (now < nextTry) {
+      console.error("Circuit open - request blocked");
+      return;
     }
 
     try {
       const result = fn(...args);
-      failedAttempts = 0;
+
+      // ✅ Success → reset state
+      failures = 0;
       return result;
-    } catch (e) {
-      failedAttempts++;
-      lastTimeFailure = Date.now();
-      if (failedAttempts >= maxAttempts) {
-        isClosed = true;
+    } catch (err) {
+      failures++;
+
+      // ❌ Open circuit if threshold reached
+      if (failures >= maxFailures) {
+        nextTry = now + resetTimeout;
       }
-      console.error("Error");
+
+      console.error("Execution failed");
     }
   };
 };

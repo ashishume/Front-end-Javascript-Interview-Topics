@@ -12,7 +12,7 @@ document.querySelector("#grandparent").addEventListener(
   () => {
     console.log("grandparent");
   },
-  { capture: false }
+  { capture: false },
 );
 document.querySelector("#parent").addEventListener(
   "click",
@@ -24,12 +24,12 @@ document.querySelector("#parent").addEventListener(
     //To stop the bubbling and prevent handlers on the current element from running,
     //there’s a method event.stopImmediatePropagation(). After it no other handlers execute.
   },
-  { capture: false }
+  { capture: false },
 );
 document.querySelector("#child").addEventListener(
   "click",
   () => {
     console.log("child");
   },
-  { capture: false } //shorthand false and passed as callback
+  { capture: false }, //shorthand false and passed as callback
 );
