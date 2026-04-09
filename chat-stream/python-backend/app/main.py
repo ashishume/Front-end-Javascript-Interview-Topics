@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.db import close_pool, create_pool
-from app.routes import chats
+from app.routes import chats,products
 
 logger = logging.getLogger(__name__)
 
@@ -74,7 +74,9 @@ async def root():
         "db_health": "/db/health",
     }
 
+
 app.include_router(chats.router, prefix="/chats", tags=["chats"])
+app.include_router(products.router, prefix="/products", tags=["tests"])
 
 
 def main():
