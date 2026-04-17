@@ -133,7 +133,7 @@ handleScroll(); // Executes immediately
 ```
 
 ### Trailing Throttle
-Executes the function **after** the delay period, ignoring the initial call.
+Does **not** run on the first call; it schedules **one** run after `delay` ms from the **first** call in a burst. While the timer is pending, later calls only update the stored arguments (they do **not** push the fire time later—that behavior is closer to **debounce**).
 
 ```javascript
 function throttleTrailing(func, delay) {
@@ -144,7 +144,7 @@ function throttleTrailing(func, delay) {
     if (!timeoutId) {
       timeoutId = setTimeout(() => {
         timeoutId = null;
-        func.apply(this, lastArgs); // Execute with last arguments
+        func.apply(this, lastArgs); // Execute with latest arguments from the burst
       }, delay);
     }
   };
@@ -158,10 +158,10 @@ const handleResize = throttleTrailing(() => {
 }, 1000);
 
 // User resizes window rapidly
-handleResize(); // Timer starts, will execute after 1000ms
-handleResize(); // Ignored (timer already running)
-handleResize(); // Ignored
-// After 1000ms, executes with last call's context
+handleResize(); // Timer starts; run is scheduled for ~1000ms from now
+handleResize(); // Timer already pending — only updates last args
+handleResize(); // Same
+// ~1000ms after the *first* resize in this burst, runs once (with latest args)
 ```
 
 ## Real-World Use Cases
@@ -207,13 +207,16 @@ const handleScroll = throttleTrailing(() => {
 window.addEventListener('scroll', handleScroll);
 ```
 
-### 4. Button Clicks (Debouncing)
+### 4. Button Clicks (avoid double submit)
+
+**Trailing debounce on `click` is usually a poor fit**: every click resets the timer, so the handler may never run if the user clicks again within the delay, or the submit feels laggy.
+
+Prefer **leading debounce** (first click runs, rapid repeats ignored) or disable the button until the request finishes:
 
 ```javascript
 const submitButton = document.getElementById('submit');
 
-const debouncedSubmit = debounceTrailing(() => {
-  // Submit form
+const debouncedSubmit = debounceLeading(() => {
   submitForm();
 }, 1000);
 
@@ -288,7 +291,7 @@ setTimeout(() => {
 3. **Choose appropriate delays**:
    - Search: 300-500ms
    - Scroll/Resize: 100-250ms
-   - Button clicks: 1000ms (prevent double-clicks)
+   - Double-submit: short leading debounce (e.g. 300–500ms), or disable the control until the async work completes (often better than a long timer)
 
 4. **Consider context binding**:
    - Use `func.apply(this, args)` to preserve `this` context

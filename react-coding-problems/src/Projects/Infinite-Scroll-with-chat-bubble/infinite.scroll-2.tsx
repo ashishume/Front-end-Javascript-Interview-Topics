@@ -1,18 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import "./infinite-scroll-2.scss";
-import data from "./chatData.json";
 import { Loader } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const InfiniteScroll = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [page, setPageNumber] = useState<number>(1);
   const [loading, setLoading] = useState(false);
-  const [currentChat, setCurentChat] = useState("");
-  const [showChat, setShowChat] = useState(false);
+  // const [currentChat, setCurentChat] = useState("");
+  // const [showChat, setShowChat] = useState(false);
   const inputRef = useRef(null as any);
-  const containerRef = useRef(null as any);
-  const [chatList, setChatList] = useState([] as any);
+  // const containerRef = useRef(null as any);
+  // const [chatList, setChatList] = useState([] as any);
   const [index, setIndex] = useState(null as any);
 
   useEffect(() => {
@@ -22,9 +20,9 @@ const InfiniteScroll = () => {
     }
 
     // delay the mock api call
-    setTimeout(() => {
-      setChatList(data.data);
-    }, 1000);
+    // setTimeout(() => {
+    //   setChatList(data.data);
+    // }, 500);
 
     setLoading(true);
 
@@ -46,34 +44,34 @@ const InfiniteScroll = () => {
     }
   }
 
-  function handleChange(e: any) {
-    setCurentChat(e.target.value);
-  }
+  // function handleChange(e: any) {
+  //   setCurentChat(e.target.value);
+  // }
 
-  function sendChat() {
-    let newChat = {
-      id: Math.floor(Math.random() * 1000),
-      text: currentChat,
-      sentBy: "CurrentUserId", // we can replace this with current logged in userID
-      receivedAt: new Date(),
-    };
-    setChatList((prev: any) => [...prev, { ...newChat }]);
+  // function sendChat() {
+  //   let newChat = {
+  //     id: Math.floor(Math.random() * 1000),
+  //     text: currentChat,
+  //     sentBy: "CurrentUserId", // we can replace this with current logged in userID
+  //     receivedAt: new Date(),
+  //   };
+  //   setChatList((prev: any) => [...prev, { ...newChat }]);
 
-    /** mock the delay receiver's message */
-    setTimeout(() => {
-      let randomNewChat = {
-        id: Math.floor(Math.random() * 1000),
-        text: currentChat + " " + currentChat,
-        sentBy: "Ashish",
-        receivedAt: new Date(),
-      };
+  //   /** mock the delay receiver's message */
+  //   setTimeout(() => {
+  //     let randomNewChat = {
+  //       id: Math.floor(Math.random() * 1000),
+  //       text: currentChat + " " + currentChat,
+  //       sentBy: "Ashish",
+  //       receivedAt: new Date(),
+  //     };
 
-      setChatList((prev: any) => [...prev, { ...randomNewChat }]);
-    }, 1000);
+  //     setChatList((prev: any) => [...prev, { ...randomNewChat }]);
+  //   }, 1000);
 
-    // clear the input field
-    setCurentChat("");
-  }
+  //   // clear the input field
+  //   setCurentChat("");
+  // }
 
   /** make api call */
   async function makeApiCall() {
@@ -85,11 +83,11 @@ const InfiniteScroll = () => {
     await setProducts((prevData) => [...prevData, ...newData]);
 
     /** hide the chat when more api is called */
-    setShowChat(false);
+    // setShowChat(false);
   }
 
   function openChatWindow(product: any) {
-    setShowChat(true);
+    // setShowChat(true);
     setIndex(product.id);
   }
 
@@ -111,7 +109,7 @@ const InfiniteScroll = () => {
             })}
           <div>{loading ? <Loader /> : null}</div>
         </div>
-        {showChat ? (
+        {/* {showChat ? (
           <div className="chatbot-container" ref={containerRef}>
             <div className="chat-content">
               {chatList?.length ? (
@@ -119,9 +117,8 @@ const InfiniteScroll = () => {
                   return (
                     <div
                       key={value.id}
-                      className={`chat-bubble ${
-                        value?.sentBy === "CurrentUserId" ? "received-chat" : ""
-                      }`}
+                      className={`chat-bubble ${value?.sentBy === "CurrentUserId" ? "received-chat" : ""
+                        }`}
                     >
                       {value.text}
                     </div>
@@ -144,7 +141,7 @@ const InfiniteScroll = () => {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );
