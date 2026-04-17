@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 12px;
+            margin: 0;
+            background: #fafafa;
+        }
+
+        h1 {
+            font-size: 1rem;
+            margin: 0 0 8px;
+        }
+
+        button {
+            margin: 4px 8px 4px 0;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        #log {
+            margin-top: 12px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #e4e4e7;
+            border-radius: 8px;
+            min-height: 72px;
+            white-space: pre-wrap;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Inside iframe (separate HTML file)</h1>
+    <button type="button" id="btn-greeting">Send greeting to parent</button>
+    <button type="button" id="btn-cart">Send cart payload to parent</button>
+    <div id="log">Waiting for messages from parent…</div>
+    <script>
+        (function () {
+            var params = new URLSearchParams(location.search);
+            var PARENT_ORIGIN = params.get("parent");
+            var logEl = document.getElementById("log");
+
+            if (!PARENT_ORIGIN) {
+                logEl.textContent =
+                    "Missing ?parent= origin query param. Load this page via the React demo iframe only.";
+                return;
+            }
+
+            function log(line) {
+                var t = new Date().toLocaleTimeString();
+                logEl.textContent =
+                    (logEl.textContent ? logEl.textContent + "\n" : "") +
+                    t +
+                    " — " +
+                    line;
+            }
+
+            window.addEventListener("message", function (event) {
+                if (event.origin !== PARENT_ORIGIN) return;
+                var data = event.data || {};
+                if (data.type === "PING") {
+                    log("From parent: PING " + JSON.stringify(data));
+                }
+            });
+
+            document.getElementById("btn-greeting").addEventListener("click", function () {
+                window.parent.postMessage(
+                    {
+                        type: "USER_ACTION",
+                        payload: { action: "greeting", message: "Hello from iframe" },
+                    },
+                    PARENT_ORIGIN
+                );
+            });
+
+            document.getElementById("btn-cart").addEventListener("click", function () {
+                window.parent.postMessage(
+                    {
+                        type: "USER_ACTION",
+                        payload: {
+                            action: "add-to-cart",
+                            itemId: "SKU-42",
+                            qty: 2,
+                            priceUsd: 19.99,
+                        },
+                    },
+                    PARENT_ORIGIN
+                );
+            });
+        })();
+    </script>
+</body>
+
+</html>
