@@ -1,55 +1,51 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 /** 1 is visible and 0 is non-visible */
 const BOX_DATA = [
   [1, 1, 0],
   [1, 0, 0],
-  [1, 1, 1],
+  [1, 1, 1]
 ];
 
 const InteractiveShape = () => {
-  /** set the data items with bool false default value */
-  const [activeItems, setActiveItems] = useState<number[]>([]);
-
-  /** mark each cell as true */
-  const handleClick = (index: number) => {
-    if (!activeItems.includes(index)) {
-      setActiveItems((prev) => [...prev, index]);
-    }
+  const [selectedBoxes, setSelectedBoxes] = useState([]);
+  const [isActive, setActive] = useState(false);
+  const handleClick = (index) => {
+    setSelectedBoxes((prev) => [...prev, index]);
   };
 
+  let timer;
   useEffect(() => {
-    let timer: any;
-    if (allVisibleItemsLen() === activeItems.length) {
+    if (BOX_DATA.flat(1).filter((v) => v === 1)?.length === selectedBoxes.length) {
       timer = setInterval(() => {
-        setActiveItems((prev) => {
-          const newArr = prev.slice(0, -1);
-          if (newArr.length === 0) {
+        setSelectedBoxes((prev) => {
+          const arr = prev.slice(0, -1);
+          setActive(true);
+          if (arr.length === 0) {
             clearInterval(timer);
+            setActive(false);
           }
-          return newArr;
+          return arr;
         });
       }, 500);
     }
-  }, [activeItems]);
-
-  const allVisibleItemsLen = () => {
-    return BOX_DATA.flat(1).filter((v) => v === 1)?.length;
-  };
-
+  }, [selectedBoxes]);
   return (
-    <div className="container">
-      <div className="inline-grid grid-cols-3 gap-4 ">
-        {BOX_DATA.flat(1).map((row, index) => {
+    <div className="container w-[500px] h-[500px]">
+      <div className="grid grid-cols-3">
+        {BOX_DATA.flat(1).map((boxItem, i) => {
           return (
-            <div key={index}>
-              <div
-                key={index}
-                className={`border-4 rounded p-1 w-20 h-20 text-center flex flex-row justify-center items-center m-2 ${
-                  activeItems.includes(index) ? "bg-slate-500" : ""
-                } ${row === 0 ? "hidden" : ""}`}
-                onClick={() => handleClick(index)}
-              ></div>
+            <div key={i}>
+              {boxItem === 1 && (
+                <div
+                  onClick={() => (!selectedBoxes.includes(i) ? handleClick(i) : null)}
+                  className="bg-green-100 border h-[100px] w-[100px] hover:bg-green-400 m-4 flex justify-center items-center"
+                  style={{
+                    ...(selectedBoxes.includes(i) ? { backgroundColor: 'green' } : {}),
+                    ...(isActive ? { pointerEvents: 'none' } : {})
+                  }}
+                ></div>
+              )}
             </div>
           );
         })}
