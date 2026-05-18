@@ -16,16 +16,18 @@ async function fetchDataWithTimeout(url, timeout) {
     }
     return await response.json();
   } catch (error) {
-    if (error.name === "AbortError") {
-      console.log("Request timed out"); // Handle timeout error
+    if (error.name === 'AbortError') {
+      console.log('Request timed out'); // Handle timeout error
     } else {
-      console.error("Error fetching data:", error); // Handle other errors
+      console.error('Error fetching data:', error); // Handle other errors
     }
+  } finally {
+    clearTimeout(timeoutId); // always clear
   }
 }
 
 // Example usage:
-const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 const timeoutInSeconds = 1; // Timeout in seconds
 
 fetchDataWithTimeout(apiUrl, timeoutInSeconds * 1000).then((res) => {
